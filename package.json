@@ -5,7 +5,9 @@
   "main": "app/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app/server.js"
+    "start": "node app/server.js",
+    "build": "npm run css-build",
+    "css-build": "./node_modules/.bin/node-sass app/static/css/scss/application.scss ./app/static/css/application.css"
   },
   "repository": {
     "type": "git",
