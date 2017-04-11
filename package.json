@@ -1,0 +1,21 @@
+{
+  "name": "sbhacksiv",
+  "version": "1.0.0",
+  "description": "SB Hacks IV Website",
+  "main": "app/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dannycho7/sbhacksiv.git"
+  },
+  "keywords": [],
+  "author": "Danny Cho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dannycho7/sbhacksiv/issues"
+  },
+  "homepage": "https://github.com/dannycho7/sbhacksiv#readme"
+}
