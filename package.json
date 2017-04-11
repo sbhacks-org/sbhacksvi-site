@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/dannycho7/sbhacksiv/issues"
   },
-  "homepage": "https://github.com/dannycho7/sbhacksiv#readme"
+  "homepage": "https://github.com/dannycho7/sbhacksiv#readme",
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "express": "^4.15.2"
+  }
 }
