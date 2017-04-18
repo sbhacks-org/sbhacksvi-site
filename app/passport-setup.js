@@ -21,6 +21,9 @@ passport.use(new LocalStrategy({
 }, (username, password, done) => {
   Users.findOne({email: username}, (err, user) => {
     if (err) { throw err; }
+    if (!user) {
+      return done(null, false, {message: 'No such user with email ' + username +'exists'});
+    }
     bcrypt.compare(password, user.password, (err, res) => {
       if (err) { throw err; }
       if (res) {
