@@ -1,5 +1,8 @@
 <%- include ./partials/header.ejs %>
 
+  <% if (locals.message) { %>
+    <h1><%- message %></h1>
+  <% } %>
   <form id="login-form" action="/signup" method="post">
 
     <div class="form-group">
@@ -9,7 +12,7 @@
 
     <div class="form-group">
       <label for="email">Email address</label>
-      <input type="text" name="email" class="form-control" id="email-input" aria-describedby="emailDescr" placeholder="Enter email">
+      <input type="email" name="email" class="form-control" id="email-input" aria-describedby="emailDescr" placeholder="Enter email">
       <small id="emailDescr" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
 

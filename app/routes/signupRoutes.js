@@ -20,8 +20,12 @@ router.post('/', (req, res) => {
           password: hash
         });
         newUser.save((err) => {
-          if(err) { throw err; }
-          res.render('login', {success: "Successfully created an account"});
+          if(err) {
+            console.log(err);
+            res.render('signup', {message: "Unsuccessful on creating an account"});
+          } else {
+            res.render('login', {success: "Successfully created an account"});
+          }
         });
     });
   });
