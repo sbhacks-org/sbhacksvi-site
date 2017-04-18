@@ -8,7 +8,7 @@ const passport = require('./passport-setup');
 
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://sbhacksiv:temp1234@ds019054.mlab.com:19054/sbhacksiv");
+mongoose.connect("mongodb://127.0.0.1:27017/sbhacksiv");
 
 const defaultRoutes = require(path.join(__dirname,'routes/defaultRoutes'));
 const signupRoutes = require(path.join(__dirname, 'routes/signupRoutes'));
