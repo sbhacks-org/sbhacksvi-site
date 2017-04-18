@@ -4,13 +4,13 @@ const passport = require('passport');
 
 router.get('/login', (req, res) => {
   if(req.isAuthenticated()){
-    res.redirect('/content');
+    res.redirect('/user/content');
   } else {
     res.render('login');
   }
 });
 
-router.post('/login', passport.authenticate("local", {failureRedirect: '/login'}), (req, res) => {
+router.post('/login', passport.authenticate("local", {failureRedirect: '/user/login'}), (req, res) => {
   console.log('redirecting to /content');
   res.redirect('/user/content');
 });
