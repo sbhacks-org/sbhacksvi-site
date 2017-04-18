@@ -1,4 +1,6 @@
 html,body {
+  padding: 0;
+  margin: 0;
   text-align: center;
 }
 
@@ -6,15 +8,9 @@ h1{
   color: black;
 }
 
-form {
-  display: block;
-  padding: 50px;
-}
-
-input {
-  display: block;
-  margin: 10px 0px auto;
-  font-size: 30px;
-  height: 15%;
-  width: 70%;
+#login-form {
+  width: 30%;
+  text-align: left;
+  display: inline-block;
+  padding: 50px 0;
 }
