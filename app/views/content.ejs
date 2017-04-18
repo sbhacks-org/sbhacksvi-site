@@ -1,11 +1,7 @@
-<html>
-  <head>
-    <title>SB Hacks IV</title>
-    <link rel="stylesheet" type="text/css" href="/css/application.css" />
-  </head>
-  <body>
-    <h1>Hello <%- user.name %> have successfully accessed the content</h1>
-    <a href = '/user/logout'>Logout</a>
-  </body>
-  <!--<script src="/js/request.js"></script>-->
-</html>
+<%- include ./partials/header.ejs %>
+
+  <h1>Hello <%- user.name %>, you have successfully accessed the content</h1>
+  
+  <a href = '/user/logout'>Logout</a>
+
+<%- include ./partials/footer.ejs %>
