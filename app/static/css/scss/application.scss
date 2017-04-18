@@ -1,3 +1,20 @@
+html,body {
+  text-align: center;
+}
+
 h1{
   color: black;
-} 
+}
+
+form {
+  display: block;
+  padding: 50px;
+}
+
+input {
+  display: block;
+  margin: 10px 0px auto;
+  font-size: 30px;
+  height: 15%;
+  width: 70%;
+}
