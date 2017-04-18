@@ -4,10 +4,12 @@
     <link rel="stylesheet" type="text/css" href="/css/application.css" />
   </head>
   <body>
-    <form id="signup-form" action="/signup" method="post" onsubmit="return submitSignUp()">
+    <form id="signup-form" action="/signup" method="post">
       <input type="text" placeholder="name" name="full_name"/>
+      <input type="password" placeholder="password" name="password"/>
+      <input type="text" placeholder="Email Address" name="email"/>
       <input type="submit" value="submit" />
     </form>
   </body>
-  <script src="/js/request.js"></script>
+  <!--<script src="/js/request.js"></script>-->
 </html>
