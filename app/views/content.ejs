@@ -1,7 +1,9 @@
 <%- include ./partials/header.ejs %>
 
   <h1>Hello <%- user.name %>, you have successfully accessed the content</h1>
-  
+  <p>Email: <%- user.email %></p>
+  <p><a href= <%- "/tmp/" + user.filename %> >Resume</a></p>
+
   <a href = '/user/logout'>Logout</a>
 
 <%- include ./partials/footer.ejs %>
