@@ -2,3 +2,4 @@ node_modules/
 *log*
 *application.css*
 tmp/
+.env
