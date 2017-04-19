@@ -2,9 +2,20 @@ const router = require('express').Router();
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const fs = require('fs');
+
+// multer settings & configuration
 const multer = require('multer');
+const storageOptions = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'tmp/');
+  },
+  filename: (req, file, cb) => {
+    console.log(req);
+    cb(null, Date.now() + '-' + file.originalname);
+  }
+});
 const upload = multer({
-  dest: 'tmp/',
+  storage: storageOptions,
   fileFilter: (req, file, cb) => {
     if(file.size > 4000000) {
       return cb(new Error('File size was too big'));
@@ -13,7 +24,8 @@ const upload = multer({
       return cb(new Error('File was not a pdf'));
     }
     cb(null, true);
-  }
+  },
+
 }).single('resume');
 
 router.get('/', (req, res) => {

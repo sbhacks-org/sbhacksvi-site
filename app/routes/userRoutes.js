@@ -26,12 +26,12 @@ function isLoggedIn(req, res, next){
   if (req.isAuthenticated()){
     return next();
   }
-  res.sendStatus(401);
+  res.status(401).send('You cannot access this page');
 }
 
 router.get('/content', isLoggedIn, (req, res) => {
   console.log('loaded up content');
-  res.render('content', {user: req.user});
+  res.render('content', { user: req.user });
 });
 
 module.exports = router;
