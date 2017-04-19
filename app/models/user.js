@@ -15,6 +15,10 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+  filename: {
+    type: String,
+    required: true
+  },
   created_at: Date,
   updated_at: Date
 });
