@@ -31,6 +31,9 @@ app.use(passport.session());
 
 
 // Routes
+app.get('/tmp/:filename', (req, res) => {
+  res.sendFile(path.join(__dirname, '..','tmp', req.params.filename));
+});
 app.use('/', defaultRoutes);
 app.use('/signup', signupRoutes);
 app.use('/user', userRoutes);
