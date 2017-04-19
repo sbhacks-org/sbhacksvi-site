@@ -3,7 +3,7 @@
   <% if (locals.message) { %>
     <h1><%- message %></h1>
   <% } %>
-  <form id="login-form" action="/signup" method="post">
+  <form id="login-form" action="/signup" method="post" encType="multipart/form-data">
 
     <div class="form-group">
       <label for="name">Name</label>
@@ -20,6 +20,10 @@
       <label for="password">Password</label>
       <input type="password" name="password" class="form-control" id="password" placeholder="Password">
     </div>
+
+    <label class="btn btn-default btn-file">
+        <input type="file" name="resume" hidden>
+    </label>
 
     <button type="submit" class="btn btn-primary">Submit</button>
 
