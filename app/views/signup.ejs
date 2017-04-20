@@ -3,7 +3,7 @@
   <% if (locals.message) { %>
     <h1><%- message %></h1>
   <% } %>
-  <form id="login-form" action="/signup" method="post" encType="multipart/form-data" onsubmit="return getSignedRequest(this)">
+  <form id="login-form" action="/signup" method="post" onsubmit="return getSignedRequest(this)">
 
     <div class="form-group">
       <label for="name">Name</label>
@@ -23,6 +23,7 @@
 
     <label class="btn btn-default btn-file">
         <input id="resume-input" type="file" name="resume" hidden>
+        <input id="resume-src" type="hidden" name="resume-src" value="" />
     </label>
 
     <button type="submit" class="btn btn-primary">Submit</button>
