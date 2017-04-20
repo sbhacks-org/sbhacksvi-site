@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/dannycho7/sbhacksiv#readme",
   "dependencies": {
+    "aws-sdk": "^2.43.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.1",
     "dotenv": "^4.0.0",

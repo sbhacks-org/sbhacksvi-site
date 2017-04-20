@@ -1,5 +1,6 @@
 node_modules/
 *log*
 *application.css*
-tmp/
+tmp/*
+!tmp/.gitkeep
 .env
