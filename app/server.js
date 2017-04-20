@@ -1,4 +1,6 @@
 require('dotenv').config();
+
+// Server Dependency Setup
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -7,10 +9,13 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const passport = require('./passport-setup');
 
+// Temporary DB choice -- Will migrate to Postgres later
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://127.0.0.1:27017/sbhacksiv");
 
+
+// Routing
 const defaultRoutes = require(path.join(__dirname,'routes/defaultRoutes'));
 const signupRoutes = require(path.join(__dirname, 'routes/signupRoutes'));
 const userRoutes = require(path.join(__dirname, 'routes/userRoutes'));

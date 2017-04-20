@@ -3,7 +3,7 @@
   <% if (locals.message) { %>
     <h1><%- message %></h1>
   <% } %>
-  <form id="login-form" action="/signup" method="post" encType="multipart/form-data" onsubmit="return getSignedDummy(this)">
+  <form id="login-form" action="/signup" method="post" encType="multipart/form-data" onsubmit="return getSignedRequest(this)">
 
     <div class="form-group">
       <label for="name">Name</label>
@@ -29,4 +29,4 @@
 
   </form>
 
-<%- include ./partials/footer.ejs %>
+<%- include ./partials/footer-signup.ejs %>
