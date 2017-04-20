@@ -3,14 +3,19 @@ const passport = require('passport');
 
 
 router.get('/login', (req, res) => {
-  if(req.isAuthenticated()){
-    res.redirect('/user/content');
-  } else {
-    res.render('login');
+  if (req.isAuthenticated()){
+    return res.redirect('/user/content');
   }
+  if (req.query.status == "unsuccessful"){
+    return res.render('login', { message: "Wrong Username or Password. Please try again." });
+  }
+  if (req.query.status == "success"){
+    return res.render('login', { message: "Successfully created an account" });
+  }
+  res.render('login');
 });
 
-router.post('/login', passport.authenticate("local", {failureRedirect: '/user/login'}), (req, res) => {
+router.post('/login', passport.authenticate("local", {failureRedirect: '/user/login?status=unsuccessful'}), (req, res) => {
   console.log('redirecting to /content');
   res.redirect('/user/content');
 });
