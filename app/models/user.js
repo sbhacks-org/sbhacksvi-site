@@ -15,7 +15,7 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  filename: {
+  resume_url: {
     type: String,
     required: true
   },
