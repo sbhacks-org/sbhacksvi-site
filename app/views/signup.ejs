@@ -3,22 +3,22 @@
   <% if (locals.message) { %>
     <h1><%- message %></h1>
   <% } %>
-  <form id="login-form" action="/signup" method="post" onsubmit="return getSignedRequest(this)">
+  <form id="login-form" action="/signup" method="POST" onsubmit="return handleSubmit(this)">
 
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" name="name" class="form-control" id="name-input" placeholder="What's your name?">
+      <input type="text" name="name" class="form-control" id="name-input" placeholder="What's your name?" required>
     </div>
 
     <div class="form-group">
       <label for="email">Email address</label>
-      <input type="email" name="email" class="form-control" id="email-input" aria-describedby="emailDescr" placeholder="Enter email">
+      <input type="email" name="email" class="form-control" id="email-input" aria-describedby="emailDescr" placeholder="Enter email" required>
       <small id="emailDescr" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
 
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+      <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
     </div>
 
     <label class="btn btn-default btn-file">
