@@ -15,6 +15,9 @@ const defaultRoutes = require(path.join(__dirname,'routes/defaultRoutes'));
 const signupRoutes = require(path.join(__dirname, 'routes/signupRoutes'));
 const userRoutes = require(path.join(__dirname, 'routes/userRoutes'));
 
+//AWS S3
+const s3 = require('aws-sdk/clients/s3');
+
 
 // Middleware
 app.set('view engine', 'ejs');

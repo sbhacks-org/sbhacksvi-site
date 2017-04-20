@@ -3,7 +3,7 @@
   <% if (locals.message) { %>
     <h1><%- message %></h1>
   <% } %>
-  <form id="login-form" action="/signup" method="post" encType="multipart/form-data">
+  <form id="login-form" action="/signup" method="post" encType="multipart/form-data" onsubmit="return getSignedDummy(this)">
 
     <div class="form-group">
       <label for="name">Name</label>
@@ -22,7 +22,7 @@
     </div>
 
     <label class="btn btn-default btn-file">
-        <input type="file" name="resume" hidden>
+        <input id="resume-input" type="file" name="resume" hidden>
     </label>
 
     <button type="submit" class="btn btn-primary">Submit</button>
