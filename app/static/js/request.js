@@ -8,9 +8,13 @@ function handleSubmit(form){
   xhr.onreadystatechange = function(){
     if(xhr.readyState == 4){
       if(xhr.status == 200){
-        var response = xhr.responseText;
+        var response = JSON.parse(xhr.responseText).unique;
         if(response == "yes"){
-          getSignedRequest(form);
+          var file = document.getElementById("resume-input").files[0];
+          if(fileValidation(file) == true){
+            form.submit();
+            return true;
+          }
         } else {
           alert("Please enter a unique email");
         }
@@ -25,49 +29,8 @@ function handleSubmit(form){
   return false;
 }
 
-function getSignedRequest(form){
-  var file = document.getElementById("resume-input").files[0];
-  if(fileValidation(file) == false){
-    return false;
-  } else {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/signup/getSignedRequest?filename=' + file.name + '&' + 'filetype=' + file.type + '&filesize=' + file.size);
-    xhr.onreadystatechange = function(){
-      if(xhr.readyState == 4){
-        if(xhr.status == 200 && xhr.responseText != ""){
-          var response = JSON.parse(xhr.responseText);
-          uploadFile(file, response.signedRequest, response.url, form);
-        }
-        else{
-          alert("Failed to receive auth for file upload");
-        }
-      }
-    };
-    xhr.send();
-  }
-  return false;
-}
-
-function uploadFile(file, signedRequest, url, form){
-  var xhr = new XMLHttpRequest();
-  xhr.open('PUT', signedRequest);
-  xhr.onreadystatechange = () => {
-    if(xhr.readyState === 4){
-      if(xhr.status === 200){
-        document.getElementById('resume-src').value = url;
-        form.submit();
-      }
-      else{
-        alert('Could not upload file.');
-      }
-    }
-  };
-  xhr.send(file);
-}
-
 // Check on client side for file size and type
 function fileValidation(file){
-  return true; // remove this!
   if(file == null){
     alert('A resume is required');
     return false;
