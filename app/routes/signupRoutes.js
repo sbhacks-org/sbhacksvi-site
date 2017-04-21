@@ -4,47 +4,42 @@ const bcrypt = require('bcryptjs');
 
 //AWS S3
 const aws = require('aws-sdk');
+const s3 = new aws.S3();
 
-router.get('/getSignedRequest', (req, res) => {
-  aws.config.update({
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
-  });
-  bcrypt.genSalt(10, function(err, salt) {
-    bcrypt.hash(Date.now().toString(), salt, function(err, hash) {
-      const s3 = new aws.S3();
-      // Base 64 does not include underscore
-      const fileName = hash.replace(/\//g,'_') + '-' + req.query.filename;
-      const fileType = req.query.filetype;
-
-      if(fileType != 'application/pdf' || req.query.filesize > 4194304){
-        // very weak security measures
-        return res.end();
-      }
-
-      const s3Params = {
-        Bucket: process.env.S3_BUCKET_NAME,
-        Key: fileName,
-        Expires: 60,
-        ContentType: fileType,
-        ACL: 'public-read'
-      };
-
-      s3.getSignedUrl('putObject', s3Params, (err, data) => {
-        if(err){
-          return res.end();
-        }
-        const returnData = {
-          signedRequest: data,
-          url: 'https://'+ process.env.S3_BUCKET_NAME +'.s3.amazonaws.com/' + fileName
-        };
-        console.log(returnData);
-        res.write(JSON.stringify(returnData));
-        res.end();
+// multer settings & configuration
+const multer = require('multer');
+const multerS3 = require('multer-s3');
+const storageOptions = multerS3({
+  s3: s3,
+  acl: 'public-read',
+  bucket: process.env.S3_BUCKET_NAME,
+  contentType: function(req, file, cb){
+    // Forcing content type to be PDF to be viewable in browser by S3
+    cb(null, 'application/pdf');
+  },
+  metadata: function (req, file, cb) {
+    cb(null, {fieldName: file.fieldname});
+  },
+  key: function (req, file, cb) {
+    bcrypt.genSalt(10, function(err, salt) {
+      bcrypt.hash(Date.now().toString(), salt, function(err, hash) {
+        // Setting file name and configuring it to not start new directories since this is base64 encoding
+        cb(null, hash.replace(/\//g,'_') + file.originalname);
       });
     });
-  });
+  }
 });
+const upload = multer({
+  storage: storageOptions,
+  limits: { fileSize: 4194304 },
+  fileFilter: (req, file, cb) => {
+    if(file.mimetype != 'application/pdf') {
+      return cb(new Error('File was not a pdf'));
+    }
+    cb(null, true);
+  },
+
+}).single('resume');
 
 router.get('/', (req, res) => {
   if (req.isAuthenticated()) {
@@ -57,22 +52,32 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res, next) => {
-  console.log(req.body);
-  bcrypt.genSalt(10, function(err, salt) {
-    bcrypt.hash(req.body.password, salt, function(err, hash) {
-        let newUser = new User({
-          name: req.body.name,
-          email: req.body.email,
-          password: hash,
-          resume_url: req.body['resume-src']
-        });
-        newUser.save((err) => {
-          if(err) {
-            console.log(err);
-            return res.redirect('/signup?status=unsuccessful');
-          }
-          return res.redirect('/user/login?status=success');
-        });
+  aws.config.update({
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+  });
+  upload(req, res, (err) => {
+    console.log(req.file);
+    if(err || !req.file) {
+      console.log(err);
+      return res.redirect('/signup?status=unsuccessful');
+    }
+    bcrypt.genSalt(10, function(err, salt) {
+      bcrypt.hash(req.body.password, salt, function(err, hash) {
+          let newUser = new User({
+            name: req.body.name,
+            email: req.body.email,
+            password: hash,
+            resume_url: req.file.location
+          });
+          newUser.save((err) => {
+            if(err) {
+              console.log(err);
+              return res.redirect('/signup?status=unsuccessful');
+            }
+            return res.redirect('/user/login?status=success');
+          });
+      });
     });
   });
 });
@@ -83,35 +88,10 @@ router.post('/unique', (req, res, next) => {
   User.findOne({ 'email': email }, (err, user) => {
     if(err) { throw err; }
     if(user){
-      return res.end("no");
+      return res.json({ unique: "no" });
     }
-    return res.end("yes"); // means yes this is a unique email
+    return res.json({ unique: "yes"}); // means yes this is a unique email
   });
 });
-
-/*
-// multer settings & configuration
-const multer = require('multer');
-const storageOptions = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'tmp/');
-  },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + '-' + file.originalname);
-  }
-});
-const upload = multer({
-  storage: storageOptions,
-  fileFilter: (req, file, cb) => {
-    if(file.size > 4000000) {
-      return cb(new Error('File size was too big'));
-    }
-    if(file.mimetype != 'application/pdf') {
-      return cb(new Error('File was not a pdf'));
-    }
-    cb(null, true);
-  },
-
-}).single('resume'); */
 
 module.exports = router;
