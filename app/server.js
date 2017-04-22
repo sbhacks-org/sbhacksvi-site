@@ -12,7 +12,7 @@ const passport = require('./passport-setup');
 // Temporary DB choice -- Will migrate to Postgres later
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://127.0.0.1:27017/sbhacksiv");
+mongoose.connect(process.env.DATABASE_URI);
 
 
 // Routing
@@ -28,10 +28,15 @@ app.use(express.static(path.join(__dirname, 'static')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(session({
-    secret: "tHiSiSasEcRetStr",
+app.use(session(
+  {
+    secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: false }));
+    saveUninitialized: false
+  })
+);
+
+// Passport initialize
 app.use(passport.initialize());
 app.use(passport.session());
 
