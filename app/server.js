@@ -9,10 +9,18 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const passport = require('./passport-setup');
 
-// Temporary DB choice -- Will migrate to Postgres later
-const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
-mongoose.connect(process.env.DATABASE_URI);
+// Connecting to postgres database
+const models = require('./models/index');
+models.sequelize.sync({
+    force: true // Temporary for development
+  }).then(() => {
+    console.log("Successfully migrated and connected to database");
+    app.listen(port, () => {
+      console.log('Server listening in on port', port);
+    });
+  }).catch((err) => {
+    console.log("Could not connect to database", err);
+  });
 
 
 // Routing
@@ -50,8 +58,4 @@ app.use('/user', userRoutes);
 app.get('*', (req, res) => {
   console.log("Invalid URL processed: ", req.url);
   res.status(404).render('404', {url: req.url});
-});
-
-app.listen(port, () => {
-  console.log('Server listening in on port', port);
 });
