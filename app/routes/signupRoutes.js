@@ -56,6 +56,8 @@ router.post('/', (req, res, next) => {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
   });
+
+  // Request multipart body gets parsed through multer
   upload(req, res, (err) => {
     console.log(req.file);
     if(err || !req.file) {
