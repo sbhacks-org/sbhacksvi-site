@@ -38,6 +38,21 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
       isUrl: true
       }
+    },
+    year: {
+      type: DataTypes.INTEGER,
+      validate: {
+        min: 0,
+        max: 10
+      }
+    },
+    rating: {
+      type: DataTypes.INTEGER,
+      validate: {
+        isNumeric: true,
+        min: 0,
+        max: 6
+      }
     }
   }, {
     classMethods: {
