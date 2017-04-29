@@ -1,7 +1,7 @@
 {
   "name": "sbhacksiv",
   "version": "1.0.0",
-  "description": "SB Hacks IV Website",
+  "description": "The SB Hacks IV Website, which enables students to apply for our 36 hour hackathon hosted in Winter 2018",
   "main": "app/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
