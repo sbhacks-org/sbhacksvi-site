@@ -1,39 +1,55 @@
 'use strict';
+
 module.exports = function(sequelize, DataTypes) {
   var user = sequelize.define('user', {
+    uid: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: DataTypes.UUIDV4
+    },
     first_name: {
       type: DataTypes.STRING,
       validate: {
         is: ["^[a-z]+$",'i']
-      }
+      },
+      allowNull: false
     },
     last_name: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
         is: ["^[a-z]+$",'i']
       }
     },
     email: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
         isEmail: true
       }
     },
     password: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false
     },
     resume_url: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
-        isUrl: true
+      isUrl: true
       }
     }
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        user.belongsTo(models.school, {
+          foreignKey: {
+            allowNull: false
+          }
+        });
       }
     }
   });
+
   return user;
 };
