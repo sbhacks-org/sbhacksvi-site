@@ -59,24 +59,31 @@ router.post('/', (req, res, next) => {
 
   // Request multipart body gets parsed through multer
   upload(req, res, (err) => {
-    console.log(req.file);
+    console.log(req.file); // Remove during production
     if(err || !req.file) {
       console.log(err);
       return res.redirect('/signup?status=unsuccessful');
     }
     bcrypt.genSalt(10, function(err, salt) {
       bcrypt.hash(req.body.password, salt, function(err, hash) {
-        models.user.create({
-          first_name: req.body.first_name,
-          last_name: req.body.last_name,
-          email: req.body.email,
-          password: hash,
-          resume_url: req.file.location
-        }).then(() => {
-          res.redirect('./user/login?status=success');
-        }).catch((err) => {
-          console.log(err);
-          res.redirect('/signup?status=unsuccessful');
+        models.school.findOne({
+          where: {
+            name: 'UC Santa Barbara' // Temporarily set as UC Santa Barbara
+          }
+        }).then((school) => {
+          models.user.create({
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            email: req.body.email,
+            password: hash,
+            resume_url: req.file.location,
+            schoolId: school.dataValues.id
+          }).then(() => {
+            res.redirect('./user/login?status=success');
+          }).catch((err) => {
+            console.log(err);
+            res.redirect('/signup?status=unsuccessful');
+          });
         });
       });
     });
