@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const User = require('../models/user');
+const models = require('../models/index');
 const bcrypt = require('bcryptjs');
 
 //AWS S3
@@ -64,7 +64,7 @@ router.post('/', (req, res, next) => {
     }
     bcrypt.genSalt(10, function(err, salt) {
       bcrypt.hash(req.body.password, salt, function(err, hash) {
-          let newUser = new User({
+          let newUser = models.user.({
             name: req.body.name,
             email: req.body.email,
             password: hash,
