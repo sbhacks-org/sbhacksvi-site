@@ -64,34 +64,40 @@ router.post('/', (req, res, next) => {
     }
     bcrypt.genSalt(10, function(err, salt) {
       bcrypt.hash(req.body.password, salt, function(err, hash) {
-          let newUser = models.user.({
-            name: req.body.name,
-            email: req.body.email,
-            password: hash,
-            resume_url: req.file.location
-          });
-          newUser.save((err) => {
-            if(err) {
-              console.log(err);
-              return res.redirect('/signup?status=unsuccessful');
-            }
-            return res.redirect('/user/login?status=success');
-          });
+        models.user.create({
+          first_name: req.body.first_name,
+          last_name: req.body.last_name,
+          email: req.body.email,
+          password: hash,
+          resume_url: req.file.location
+        }).then(() => {
+          res.redirect('./user/login?status=success');
+        }).catch((err) => {
+          console.log(err);
+          res.redirect('/signup?status=unsuccessful');
+        });
       });
     });
   });
 });
 
+
 // route for validating unique email (/signup/unique)
 router.post('/unique', (req, res, next) => {
   let email = req.body.email;
-  User.findOne({ 'email': email }, (err, user) => {
-    if(err) { throw err; }
-    if(user){
+  models.user.findOne({
+    where: {
+      email: req.body.email
+    }
+  }).then((result) => {
+    if(result){
       return res.json({ unique: "no" });
     }
-    return res.json({ unique: "yes"}); // means yes this is a unique email
+    return res.json({ unique: "yes" });
+  }).catch((err) => {
+    throw err;
   });
+
 });
 
 module.exports = router;
