@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app/server.js",
     "build": "npm run css-build",
-    "css-build": "./node_modules/.bin/node-sass app/static/css/scss/application.scss ./app/static/css/application.css"
+    "css-build": "./node_modules/.bin/node-sass app/static/css/scss/application.scss ./app/static/css/application.css",
+    "db:migrate": "./node_modules/.bin/sequelize db:migrate --config app/config/config.json --migrations-path app/migrations --models-path app/models --seeders-path app/seeders"
   },
   "repository": {
     "type": "git",
