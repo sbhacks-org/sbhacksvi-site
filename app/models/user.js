@@ -53,6 +53,9 @@ module.exports = function(sequelize, DataTypes) {
         min: 0,
         max: 6
       }
+    },
+    accepted: {
+      type: DataTypes.BOOLEAN
     }
   }, {
     classMethods: {
