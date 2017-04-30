@@ -12,7 +12,6 @@ const passport = require('./passport-setup');
 const logger = require('morgan');
 const favicon = require('serve-favicon');
 
-
 // Connecting to postgres database
 const models = require('./models/index');
 models.sequelize.sync({
