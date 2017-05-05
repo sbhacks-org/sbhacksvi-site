@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app/server.js",
+    "start:dev": "nodemon app/server.js", 
     "build": "npm run css-build",
     "css-build": "./node_modules/.bin/node-sass app/static/css/scss/application.scss ./app/static/css/application.css",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate"
@@ -42,6 +43,7 @@
   },
   "devDependencies": {
     "node-sass": "^4.5.2",
+    "nodemon": "^1.11.0",
     "sequelize-cli": "^2.7.0"
   }
 }
