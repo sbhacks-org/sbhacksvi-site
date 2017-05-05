@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const models = require('../models/index');
 const bcrypt = require('bcryptjs');
+const methods = require('./methods/signup');
 
 //AWS S3
 const aws = require('aws-sdk');
@@ -13,16 +14,16 @@ const storageOptions = multerS3({
   s3: s3,
   acl: 'public-read',
   bucket: process.env.S3_BUCKET_NAME,
-  contentType: function(req, file, cb){
+  contentType: (req, file, cb) => {
     // Forcing content type to be PDF to be viewable in browser by S3
     cb(null, 'application/pdf');
   },
-  metadata: function (req, file, cb) {
+  metadata: (req, file, cb) => {
     cb(null, {fieldName: file.fieldname});
   },
   key: function (req, file, cb) {
     bcrypt.genSalt(10, function(err, salt) {
-      bcrypt.hash(Date.now().toString(), salt, function(err, hash) {
+      bcrypt.hash(Date.now().toString(), salt, (err, hash) => {
         // Setting file name and configuring it to not start new directories since this is base64 encoding
         cb(null, hash.replace(/\//g,'_') + file.originalname);
       });
@@ -43,7 +44,7 @@ const upload = multer({
 
 router.get('/', (req, res) => {
   if (req.isAuthenticated()) {
-    return res.redirect('/user/content');
+    return res.redirect('/user/dashboard');
   }
   if (req.query.status == "unsuccessful"){
     return res.render('signup', { message: "Error in creating account."})
@@ -59,35 +60,19 @@ router.post('/', (req, res, next) => {
 
   // Request multipart body gets parsed through multer
   upload(req, res, (err) => {
-    console.log(req.file); // Remove during production
-    if(err || !req.file) {
+    // console.log(req.file); // Remove during production
+    if(err || !req.file || !methods.validate(req.body)) {
       console.log(err);
       return res.redirect('/signup?status=unsuccessful');
     }
-    bcrypt.genSalt(10, function(err, salt) {
-      bcrypt.hash(req.body.password, salt, function(err, hash) {
-        models.school.findOne({
-          where: {
-            name: 'UC Santa Barbara' // Temporarily set as UC Santa Barbara
-          }
-        }).then((school) => {
-          models.user.create({
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
-            email: req.body.email,
-            password: hash,
-            resume_url: req.file.location,
-            schoolId: school.dataValues.id
-          }).then(() => {
-            res.redirect('./user/login?status=success');
-          }).catch((err) => {
-            console.log(err);
-            res.redirect('/signup?status=unsuccessful');
-          });
-        });
+
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(req.body.password, salt, (err, hash) => {
+        methods.saveUser(req, res, hash, models);
       });
     });
   });
+
 });
 
 

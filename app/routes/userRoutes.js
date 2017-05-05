@@ -17,7 +17,7 @@ router.get('/login', (req, res) => {
 
 router.post('/login', passport.authenticate("local", {failureRedirect: '/user/login?status=unsuccessful'}), (req, res) => {
   console.log('redirecting to /content');
-  res.redirect('/user/content');
+  res.redirect('/user/dashboard');
 });
 
 router.get('/logout', (req, res) => {
@@ -34,9 +34,9 @@ function isLoggedIn(req, res, next){
   res.status(401).send('You cannot access this page');
 }
 
-router.get('/content', isLoggedIn, (req, res) => {
+router.get('/dashboard', isLoggedIn, (req, res) => {
   console.log('loaded up content');
-  res.render('content', { user: req.user });
+  res.render('dashboard', { user: req.user });
 });
 
 module.exports = router;
