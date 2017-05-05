@@ -24,6 +24,7 @@ module.exports = function(sequelize, DataTypes) {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       validate: {
         isEmail: true
       }
@@ -35,8 +36,9 @@ module.exports = function(sequelize, DataTypes) {
     resume_url: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       validate: {
-      isUrl: true
+        isUrl: true
       }
     },
     year: {
@@ -44,6 +46,14 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         min: 0,
         max: 10
+      }
+    },
+    transportation: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+      validate: {
+        min: 0,
+        max: 3
       }
     },
     rating: {

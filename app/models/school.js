@@ -4,7 +4,8 @@ module.exports = function(sequelize, DataTypes) {
   var school = sequelize.define('school', {
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
     }
   }, {
     classMethods: {
