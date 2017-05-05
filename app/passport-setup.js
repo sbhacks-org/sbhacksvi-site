@@ -31,7 +31,7 @@ passport.use(new LocalStrategy({
       email: username
     }
   }).then((user) => {
-    console.log("Found", user);
+    // console.log("Found", user);
     if (!user) {
       return done(null, false, { message: 'No such user with email ' + username +'exists' });
     }
