@@ -32,6 +32,26 @@
       <input type="text" name="school" class="form-control" id="school-input" value="UC Santa Barbara" disabled>
     </div>
 
+    <div class="form-group">
+      <label for="year">Year</label>
+      <select class="form-control" id="year-input" name="year" placeholder="What year are you?" required>
+        <option value="1">1st year college</option>
+        <option value="2">2nd year college</option>
+        <option value="3">3rd year college</option>
+        <option value="4">4th year college</option>
+        <option value="5">Graduate Student</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="transportation">Transportation</label>
+      <select class="form-control" id="transportation-input" name="transportation" placeholder="How will you get here?" required>
+        <option value='1'>I can provide my own means of transportation</option>
+        <option value='2'>I would prefer to be provided bussing in California</option>
+        <option value='3'>I require travel reimbursement (This may or may not be something we can provide)</option>
+      </select>
+    </div>
+
     <label class="btn btn-default btn-file">
         <input id="resume-input" type="file" name="resume" hidden>
         <!--<input id="resume-src" type="hidden" name="resume-src" value="" />-->

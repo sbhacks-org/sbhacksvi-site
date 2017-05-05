@@ -1,0 +1,18 @@
+<%- include ./partials/header.ejs %>
+
+  <h1>Hello <%- user.first_name %>, you have successfully accessed the content</h1>
+  <p>Email: <%- user.email %></p>
+  <p>Year: <%- user.year %></p>
+  <p>Updated at: <%- user.updatedAt %></p>
+  <p>Accepted:
+    <% if (user.accepted == true) { %>
+      Yes
+    <% } else { %>
+      no
+    <% } %>
+  </p>
+  <p><a href= <%- user['resume_url'] %> >Resume</a></p>
+
+  <a href = '/user/logout'>Logout</a>
+
+<%- include ./partials/footer.ejs %>
