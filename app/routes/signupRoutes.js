@@ -3,13 +3,11 @@ const models = require('../models/index');
 const bcrypt = require('bcryptjs');
 const methods = require('./methods/signup');
 
-//AWS S3
+// multerS3 setup
 const aws = require('aws-sdk');
 const s3 = new aws.S3();
-
-// multer settings & configuration
-const multer = require('multer');
 const multerS3 = require('multer-s3');
+
 const storageOptions = multerS3({
   s3: s3,
   acl: 'public-read',
@@ -19,7 +17,7 @@ const storageOptions = multerS3({
     cb(null, 'application/pdf');
   },
   metadata: (req, file, cb) => {
-    cb(null, {fieldName: file.fieldname});
+    cb(null, { fieldName: file.fieldname });
   },
   key: function (req, file, cb) {
     bcrypt.genSalt(10, function(err, salt) {
@@ -30,17 +28,8 @@ const storageOptions = multerS3({
     });
   }
 });
-const upload = multer({
-  storage: storageOptions,
-  limits: { fileSize: 4194304 },
-  fileFilter: (req, file, cb) => {
-    if(file.mimetype != 'application/pdf') {
-      return cb(new Error('File was not a pdf'));
-    }
-    cb(null, true);
-  },
 
-}).single('resume');
+const upload = require('./methods/fileUpload')(storageOptions);
 
 router.get('/', (req, res) => {
   if (req.isAuthenticated()) {
