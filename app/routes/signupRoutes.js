@@ -2,12 +2,11 @@ const router = require('express').Router();
 const models = require('../models/index');
 const bcrypt = require('bcryptjs');
 const methods = require('./methods/signup');
-
+const passport = require('passport');
 // multerS3 setup
 const aws = require('aws-sdk');
 const s3 = new aws.S3();
 const multerS3 = require('multer-s3');
-
 const storageOptions = multerS3({
   s3: s3,
   acl: 'public-read',
@@ -21,9 +20,9 @@ const storageOptions = multerS3({
   },
   key: function (req, file, cb) {
     bcrypt.genSalt(10, function(err, salt) {
-      bcrypt.hash(Date.now().toString(), salt, (err, hash) => {
+      bcrypt.hash(Date.now().toString() + file.originalname, salt, (err, hash) => {
         // Setting file name and configuring it to not start new directories since this is base64 encoding
-        cb(null, hash.replace(/\//g,'_') + file.originalname);
+        cb(null, hash.replace(/\//g,'_'));
       });
     });
   }
@@ -42,28 +41,34 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res, next) => {
-  aws.config.update({
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
-  });
 
   // Request multipart body gets parsed through multer
   upload(req, res, (err) => {
-    // console.log(req.file); // Remove during production
-    if(err || !req.file || !methods.validate(req.body)) {
+    console.log(req.file); // Remove during production
+    if(err || !req.file) {
       console.log(err);
       return res.redirect('/signup?status=unsuccessful');
     }
 
-    bcrypt.genSalt(10, (err, salt) => {
-      bcrypt.hash(req.body.password, salt, (err, hash) => {
-        methods.saveUser(req, res, hash, models);
+    passport.authenticate('signup', (err, user, info) => {
+      if (err) {
+        return next(err);
+      }
+      if (!user) {
+        return res.redirect('/signup?message=' + info.message);
+      }
+      req.logIn(user, (err) => {
+        if (err) {
+          return next(err);
+        }
+        // TODO Change this redirect into a successfully created account page
+        return res.redirect('/user/dashboard?message=Successfully created an account');
       });
-    });
+    })(req, res, next);
+
   });
 
 });
-
 
 // route for validating unique email (/signup/unique)
 router.post('/unique', (req, res, next) => {
