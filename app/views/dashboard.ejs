@@ -1,4 +1,7 @@
 <%- include ./partials/header.ejs %>
+  <% if (locals.message) { %>
+    <h1><%- message %></h1>
+  <% } %>
 
   <h1>Hello <%- user.first_name %>, you have successfully accessed the content</h1>
   <p>Email: <%- user.email %></p>
@@ -12,6 +15,13 @@
     <% } %>
   </p>
   <p><a href= <%- user['resume_url'] %> >Resume</a></p>
+
+  <form action="/user/update" method="POST" enctype="multipart/form-data">
+    <label class="btn btn-default btn-file">
+        <input id="resume-input" type="file" name="resume" hidden>
+    </label>
+    <button type="submit" class="btn btn-primary">Update Resume</button>
+  </form>
 
   <a href = '/user/logout'>Logout</a>
 
