@@ -7,7 +7,7 @@ const app = express();
 const path = require('path');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const passport = require('./passport-setup');
+const passport = require('./config/passport-setup')();
 const logger = require('morgan');
 const favicon = require('serve-favicon');
 
@@ -15,7 +15,7 @@ const favicon = require('serve-favicon');
  * sequelize-db-setup also makes app listen on port
  * returns instance of models object
  */
-const models = require('./sequelize-setup')(app);
+const models = require('./config/sequelize-setup')(app);
 
 
 // Middleware
