@@ -1,13 +1,28 @@
-module.exports.validate = (reqBody) => {
-  // Expecting req.body as parameter
-  if (reqBody.transportation < 0 || reqBody.transportation > 3) {
-    reqBody.transportation = 0;
-  }
+const models = require('../../models');
 
+module.exports.validate = (req, done) => {
+  // Expecting req.body as parameter
+  if (req.body.transportation < 0 || req.body.transportation > 3) {
+    req.body.transportation = 0;
+  }
+  console.log("Entered validate function");
+  /* Add validation here. I'll add a dummy one Temporarily
+   * TODO : Add more legit validation
+   */
+  if (!req.body.email) {
+    done(null, false, { message: 'Please enter a valid email' });
+    return false;
+  }
+  if (req.body.first_name && req.body.last_name && req.body.email && req.file.location && req.body.transportation && req.body.year) {
+
+  } else {
+    // all good
+    return false;
+  }
   return true;
 }
 
-module.exports.saveUser = (req, res, hash, models) => {
+module.exports.saveUser = (req, hash, done) => {
   models.school.findOne({
     where: {
       name: 'UC Santa Barbara' // Temporarily set as UC Santa Barbara
@@ -19,14 +34,15 @@ module.exports.saveUser = (req, res, hash, models) => {
       email: req.body.email,
       password: hash,
       resume_url: req.file.location,
+      resume_key: req.file.key,
       schoolId: school.dataValues.id,
       transportation: req.body.transportation,
       year: req.body.year
-    }).then(() => {
-      res.redirect('./user/login?status=success');
+    }).then((user) => {
+      return done(null, user);
     }).catch((err) => {
       console.log(err);
-      res.redirect('/signup?status=unsuccessful');
+      return done(null, false, { message: 'Could not create account. Internal Database error' })
     });
   });
 }
