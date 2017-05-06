@@ -41,6 +41,14 @@ module.exports = function(sequelize, DataTypes) {
         isUrl: true
       }
     },
+    resume_key: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        
+      }
+    },
     year: {
       type: DataTypes.INTEGER,
       validate: {
