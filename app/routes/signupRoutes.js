@@ -65,7 +65,6 @@ router.post('/', (req, res, next) => {
         return res.redirect('/user/dashboard?message=Successfully created an account');
       });
     })(req, res, next);
-
   });
 
 });

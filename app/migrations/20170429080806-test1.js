@@ -2,9 +2,9 @@
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
-    queryInterface.addColumn('users', 'cli_migration_test', {
+    /* queryInterface.addColumn('users', 'cli_migration_test', {
       type: Sequelize.STRING,
-    });
+    }); */
   },
 
   down: function (queryInterface, Sequelize) {
