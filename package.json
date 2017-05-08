@@ -8,6 +8,7 @@
     "start": "node src/bin/server.js",
     "start:dev": "./node_modules/.bin/nodemon src/bin/server.js",
     "build": "npm run css-build",
+    "react-build": "./node_modules/.bin/webpack --config webpack.config.js",
     "css-build": "./node_modules/.bin/node-sass src/static/css/scss/application.scss ./src/static/css/application.css",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate"
   },
