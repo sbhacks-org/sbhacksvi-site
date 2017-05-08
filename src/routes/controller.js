@@ -1,6 +1,6 @@
 /*
  * This is the main controller for routes
- * All imports of component routes go here and are configured here 
+ * All imports of component routes go here and are configured here
  */
 
 /*
@@ -37,5 +37,6 @@ module.exports = (app) => {
   app.use((err, req, res, next) => {
     console.log("Entered universal error handler");
     console.log(err);
+    res.status(401).send("Something went wrong.");
   });
 }

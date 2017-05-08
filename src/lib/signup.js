@@ -1,6 +1,6 @@
 /*
  * List of signup methods
- * Generally imported as signMethods object
+ * Generally imported as signMethods object by passport-setup.js
  * Should contain validation methods and helpers for saving/updating db
  */
 
@@ -12,7 +12,8 @@ module.exports.validate = (req, done) => {
     req.body.transportation = 0;
   }
   console.log("Entered validate function");
-  /* Add validation here. I'll add a dummy one Temporarily
+  /*
+   * Add validation here. I'll add a dummy one Temporarily
    * TODO : Add more legit validation
    */
   if (!req.body.email) {
@@ -48,7 +49,7 @@ module.exports.saveUser = (req, hash, done) => {
       return done(null, user);
     }).catch((err) => {
       console.log(err);
-      return done(null, false, { message: 'Could not create account. Internal Database error' })
+      return done(null, false, { message: 'Could not create account. User did not provide correct fields' })
     });
   });
 }
