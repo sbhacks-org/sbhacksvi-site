@@ -1,5 +1,9 @@
-module.exports.isLoggedIn = (req, res, next) => {
-  // console.log(req);
+/*
+ * Function to check if user is authenticated
+ * May be a future exploration to expand on this more
+ */
+
+module.exports = (req, res, next) => {
   if (req.isAuthenticated()){
     return next();
   }
