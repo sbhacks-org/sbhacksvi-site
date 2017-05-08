@@ -1,4 +1,9 @@
 /*
+ * This is the main controller for routes
+ * All imports of component routes go here and are configured here 
+ */
+
+/*
  * Setting up aws config for all routing since aws will refer to the same instance
  * Important that I put this before importing routes since the routes utilize this instance of aws
  */
