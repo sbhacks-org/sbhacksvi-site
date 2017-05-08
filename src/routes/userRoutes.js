@@ -26,7 +26,6 @@ router.post('/login', (req, res, next) => {
 
   passport.authenticate("login", (err, user, info) => {
     if (err) {
-      console.log("here");
       return next(err);
     }
     if (!user) {
@@ -93,7 +92,7 @@ router.post('/update', isLoggedIn, (req, res) => {
       return res.redirect('/user/dashboard?message=You need to upload a file');
     }
     updateTime(req.user).then(() => {
-      console.log("Successfully updated column updatedAt");
+      console.log("Successfully updated column \'updatedAt\'");
       return res.redirect('/user/dashboard?message=Successfully updated account');
     }).catch((err) => {
       console.log(err);

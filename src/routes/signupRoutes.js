@@ -2,6 +2,7 @@ const router = require('express').Router();
 const models = require('../models/index');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+
 // multerS3 setup
 const aws = require('aws-sdk');
 const s3 = new aws.S3();

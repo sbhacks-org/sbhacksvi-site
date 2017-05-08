@@ -19,10 +19,11 @@ This will not run without a .env file which I will give you
   * Type npm start to start the server
 
 ## TODO
+  * Create landing page for temporary deployment
+    * Work on ejs views first
+      * Convert to react when design feels fluid
   * Relook at models
     * Potentially need dietary Restrictions
       * Store as array of options?
-  * Reactjs implementation
-    * Server side render + Client side
   * Schools list
     * Easy integration with Reactjs passing in props of school list and updating state for autocomplete
