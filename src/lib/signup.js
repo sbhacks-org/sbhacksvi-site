@@ -46,10 +46,9 @@ module.exports.saveUser = (req, hash, done) => {
       transportation: req.body.transportation,
       year: req.body.year
     }).then((user) => {
-      return done(null, user);
+      return done(null, user, { message: 'Successfully created an account' });
     }).catch((err) => {
-      console.log(err);
-      return done(null, false, { message: 'Could not create account. User did not provide correct fields' })
+      return done(err, false);
     });
   });
 }
