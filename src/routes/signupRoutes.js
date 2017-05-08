@@ -37,6 +37,9 @@ router.get('/', (req, res) => {
   if (req.query.status == "unsuccessful"){
     return res.render('signup', { message: "Error in creating account."})
   }
+  if (req.query.message) {
+    res.locals.message = req.query.message;
+  }
   res.render('signup');
 });
 
@@ -44,9 +47,11 @@ router.post('/', (req, res, next) => {
 
   // Request multipart body gets parsed through multer
   upload(req, res, (err) => {
-    console.log(req.file); // Remove during production
-    if(err || !req.file) {
-      console.log(err);
+    console.log("File:",req.file); // Remove during production
+    if(err) {
+      return next(err);
+    }
+    if(!req.file) {
       return res.redirect('/signup?status=unsuccessful');
     }
 
@@ -62,7 +67,7 @@ router.post('/', (req, res, next) => {
           return next(err);
         }
         // TODO Change this redirect into a successfully created account page
-        return res.redirect('/user/dashboard?message=Successfully created an account');
+        return res.redirect('/user/dashboard?message=' + info.message);
       });
     })(req, res, next);
   });

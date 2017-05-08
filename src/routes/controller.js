@@ -37,6 +37,6 @@ module.exports = (app) => {
   app.use((err, req, res, next) => {
     console.log("Entered universal error handler");
     console.log(err);
-    res.status(401).send("Something went wrong.");
+    res.send("Something went wrong page.");
   });
 }
