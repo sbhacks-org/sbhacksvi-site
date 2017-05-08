@@ -6,6 +6,7 @@ const port = ( process.env.PORT || 5000 );
 const express = require('express');
 const app = express();
 
+// importing all changes to app object
 require('../app')(app);
 
 // Connecting to postgres database
@@ -20,7 +21,7 @@ models.sequelize.sync({
   }).then(() => {
     console.log("Successfully added UC Santa Barbara to schools table");
   }).catch((err) => {
-    console.log("Could not insert into schools table the value UC Santa Barbara");
+    console.log("Could not insert into schools table the value \'UC Santa Barbara\', because it already existed");
   });
 
   app.listen(port, () => {
