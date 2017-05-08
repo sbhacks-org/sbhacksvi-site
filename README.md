@@ -11,17 +11,17 @@ This is the website for SB Hacks IV
  - cd sbhacksiv
  - npm install
  - npm run build
- - Setup Database
-  - Install PSQL
-  - Create user 'sbhacksiv' with password '1234'
-  - Create database 'sbhacksiv_development'
+ * Setup Database
+  * Install PSQL
+  * Create user 'sbhacksiv' with password '1234'
+  * Create database 'sbhacksiv_development'
  - npm start
 
 ## TODO
- - Relook at models
-  - Potentially need dietary Restrictions
-   - Store as array of options?
- - Reactjs implementation
-  - Server side render + Client side
- - Schools list
-  - Easy integration with Reactjs passing in props of school list and updating state for autocomplete
+ * Relook at models
+  * Potentially need dietary Restrictions
+   * Store as array of options?
+ * Reactjs implementation
+  * Server side render + Client side
+ * Schools list
+  * Easy integration with Reactjs passing in props of school list and updating state for autocomplete
