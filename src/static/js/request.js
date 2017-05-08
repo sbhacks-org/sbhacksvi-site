@@ -1,3 +1,8 @@
+/*
+ * Functions for the signup form
+ * Client side validation (I should probably remove this comment in production)
+ */
+
 function handleSubmit(form){
   var email_input = document.getElementById('email-input');
   if(!email_input){
@@ -25,7 +30,7 @@ function handleSubmit(form){
   }
   var body = 'email=' + email_input.value;
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhr.send(body) ;
+  xhr.send(body);
   return false;
 }
 
