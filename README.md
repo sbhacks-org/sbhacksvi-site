@@ -37,8 +37,6 @@ This will not run without a .env file which I will give you
   * Create landing page for temporary deployment
     * Work on ejs views first
       * Convert to react when design feels fluid
-  * Error handling for signup/registration
-    * Handle malicious user input
   * Relook at models
     * Potentially need dietary Restrictions
       * Store as array of options?
