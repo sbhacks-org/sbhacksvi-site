@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const models = require('../models/index');
 const bcrypt = require('bcryptjs');
-const methods = require('../lib/signup');
 const passport = require('passport');
 // multerS3 setup
 const aws = require('aws-sdk');
@@ -28,7 +27,7 @@ const storageOptions = multerS3({
   }
 });
 
-const upload = require('../lib/fileUpload')(storageOptions);
+let upload = require('../lib/upload')(storageOptions);
 
 router.get('/', (req, res) => {
   if (req.isAuthenticated()) {

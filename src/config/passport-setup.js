@@ -1,6 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const signMethods = require('../lib/signup');
+const signupMethods = require('../lib/signup');
 const models = require('../models/index');
 const bcrypt = require('bcryptjs');
 
@@ -56,10 +56,10 @@ module.exports = () => {
     passwordField: 'password'
   }, (req, username, password, done) => {
 
-    if(signMethods.validate(req, done)){
+    if(signUpMethods.validate(req, done)){
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(req.body.password, salt, (err, hash) => {
-            signMethods.saveUser(req, hash, done);
+            signUpMethods.saveUser(req, hash, done);
         });
       });
     }

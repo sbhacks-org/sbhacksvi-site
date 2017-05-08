@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const passport = require('passport');
-const methods = require('../lib/authentication');
+const updateTime = require('../lib/updateTime');
+const isLoggedIn = require('../lib/isLoggedIn');
 const aws = require('aws-sdk');
 const s3 = new aws.S3();
 const multerS3 = require('multer-s3');
@@ -51,14 +52,14 @@ router.get('/logout', (req, res) => {
   }
 });
 
-router.get('/dashboard', methods.isLoggedIn, (req, res) => {
+router.get('/dashboard', isLoggedIn, (req, res) => {
   if (req.query.message) {
     res.locals.message = req.query.message;
   }
   res.render('dashboard', { user: req.user });
 });
 
-router.post('/update', methods.isLoggedIn, (req, res) => {
+router.post('/update', isLoggedIn, (req, res) => {
   let update_key = req.user.resume_key;
   console.log('update key', update_key);
 
@@ -78,7 +79,7 @@ router.post('/update', methods.isLoggedIn, (req, res) => {
     }
   });
 
-  let upload = require('../lib/fileUpload')(storageOptions);
+  let upload = require('../lib/upload')(storageOptions);
 
   // Request multipart body gets parsed through multer
   upload(req, res, (err) => {
@@ -91,7 +92,7 @@ router.post('/update', methods.isLoggedIn, (req, res) => {
     if(!req.file) {
       return res.redirect('/user/dashboard?message=You need to upload a file');
     }
-    methods.updateTime(req.user).then(() => {
+    updateTime(req.user).then(() => {
       console.log("Successfully updated column updatedAt");
       return res.redirect('/user/dashboard?message=Successfully updated account');
     }).catch((err) => {
