@@ -1,3 +1,9 @@
+/*
+ * List of signup methods
+ * Generally imported as signMethods object
+ * Should contain validation methods and helpers for saving/updating db
+ */
+
 const models = require('../models');
 
 module.exports.validate = (req, done) => {
