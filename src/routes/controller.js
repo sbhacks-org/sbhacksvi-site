@@ -23,6 +23,10 @@ module.exports = (app) => {
   /*
    * Routes defined here
    */
+  app.use((req, res) => {
+    // Universal catcher; Disable other routes for now
+    res.render('index');
+  });
 
   app.use('/', defaultRoutes);
   app.use('/signup', signupRoutes);
