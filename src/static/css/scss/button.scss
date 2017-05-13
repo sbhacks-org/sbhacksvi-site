@@ -1,0 +1,24 @@
+button{
+	font-family: 'bungee';
+	margin: 0 auto;
+	padding: 5px 20px;
+	font-size: 20px;
+	text-align: center;
+	text-decoration: none;
+	background-color: #2da3ee;
+	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #33ccff), color-stop(100%, #2DC2E0));
+	background-image: -moz-linear-gradient(#33ccff 0%, #2DC2E0 100%);
+	background-image: -webkit-linear-gradient(#33ccff 0%, #2DC2E0 100%);
+	background-image: linear-gradient(#33ccff 0%, #2DC2E0 100%);
+	color: white;
+	border: 3px solid rgb(11,87,148);
+	border-radius:3px;
+
+	&:hover {
+		cursor: pointer;
+		background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #19C6FF), color-stop(100%, #07BCE0));
+		background-image: -moz-linear-gradient(#19C6FF 0%, #07BCE0 100%);
+		background-image: -webkit-linear-gradient(#19C6FF 0%, #07BCE0 100%);
+		background-image: linear-gradient(#19C6FF 0%, #07BCE0 100%);
+	}
+}
