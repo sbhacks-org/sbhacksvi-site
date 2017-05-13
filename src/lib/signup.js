@@ -1,6 +1,6 @@
 /*
  * List of signup methods
- * Generally imported as signMethods object by passport-setup.js
+ * Imported as signUpMethods object by passport-setup.js
  * Should contain validation methods and helpers for saving/updating db
  */
 
@@ -23,8 +23,16 @@ module.exports.validate = (req, done) => {
   if (req.body.first_name && req.body.last_name && req.body.email && req.file.location && req.body.transportation && req.body.year) {
 
   } else {
-    // all good
     return false;
+  }
+  if(req.body.linkedin != null && !req.body.linkedin.includes('linkedin')) {
+    req.body.linkedin = null;
+  }
+  
+  console.log('Random body value:', req.body.x);
+  if(req.body.github != null && !req.body.github.includes('github')) {
+    console.log("github link:", req.body.github);
+    req.body.github = null;
   }
   return true;
 }
@@ -35,6 +43,7 @@ module.exports.saveUser = (req, hash, done) => {
       name: 'UC Santa Barbara' // Temporarily set as UC Santa Barbara
     }
   }).then((school) => {
+    console.log(req.body.github);
     models.user.create({
       first_name: req.body.first_name,
       last_name: req.body.last_name,
@@ -44,7 +53,14 @@ module.exports.saveUser = (req, hash, done) => {
       resume_key: req.file.key,
       schoolId: school.dataValues.id,
       transportation: req.body.transportation,
-      year: req.body.year
+      year: req.body.year,
+      level_of_study: req.body.level_of_study,
+      github: req.body.github,
+      linkedin: req.body.linkedin,
+      major: req.body.major,
+      phone_number: req.body.phone_number,
+      shirt_size: req.body.shirt_size,
+      gender: req.body.gender
     }).then((user) => {
       return done(null, user, { message: 'Successfully created an account' });
     }).catch((err) => {
