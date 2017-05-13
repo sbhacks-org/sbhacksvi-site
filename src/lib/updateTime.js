@@ -1,3 +1,7 @@
+/*
+ * function to manually update the updatedAt column
+ */
+
 const models = require('../models/index');
 
 module.exports = (user) => {
@@ -7,6 +11,7 @@ module.exports = (user) => {
         uid: user.uid
       }
     }).then((user) => {
+      user.changed('updatedAt', true); // key point
       user.update({
         updatedAt: new Date()
       }).then(() => {
