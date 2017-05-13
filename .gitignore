@@ -1,5 +1,5 @@
 node_modules/
-*log*
+*.log*
 *application.css*
 .env
 bundle.js

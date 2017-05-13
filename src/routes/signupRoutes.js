@@ -22,7 +22,7 @@ const storageOptions = multerS3({
     bcrypt.genSalt(10, function(err, salt) {
       bcrypt.hash(Date.now().toString() + file.originalname, salt, (err, hash) => {
         // Setting file name and configuring it to not start new directories since this is base64 encoding
-        cb(null, hash.replace(/\//g,'_'));
+        cb(null, hash.replace(/\//g,'_') + '\/' + file.originalname);
       });
     });
   }
