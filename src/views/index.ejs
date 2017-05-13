@@ -1,7 +1,90 @@
-<%- include ./partials/header.ejs %>
+<!DOCTYPE html>
+<html>
 
-  <h1>Index</h1>
-  <a href="/user/login">Login to view content</a>
-  <a href="/signup">Signup to view content</a>
+<head>
+	<title>SB Hacks IV</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Bungee');
 
-<%- include ./partials/footer.ejs %>
+		body {
+			text-align: center;
+			font-family: 'Bungee', cursive;
+		}
+
+		#container {
+			position: absolute;
+			top: 45%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		h1 {
+			font-size: 4.5em;
+			color: #ecc702;
+			margin: 0;
+		}
+
+		h2 {
+			font-size: 2em;
+			color: #666;
+			margin: 0;
+		}
+
+		p {
+			font-size: 1.25em;
+			color: #999;
+		}
+
+		.button{
+			display: inline-block;
+			width: 100px;
+
+			margin: 2em auto;
+			padding: 10px 25px;
+			text-align: center;
+			text-decoration: none;
+			background-color: #2da3ee;
+			background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #33ccff), color-stop(100%, #2DC2E0));
+			background-image: -moz-linear-gradient(#33ccff 0%, #2DC2E0 100%);
+			background-image: -webkit-linear-gradient(#33ccff 0%, #2DC2E0 100%);
+			background-image: linear-gradient(#33ccff 0%, #2DC2E0 100%);
+			color:white;
+			border: 3px solid rgb(11,87,148);
+			border-radius:3px;
+		}
+
+		.button:hover {
+			background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #19C6FF), color-stop(100%, #07BCE0));
+			background-image: -moz-linear-gradient(#19C6FF 0%, #07BCE0 100%);
+			background-image: -webkit-linear-gradient(#19C6FF 0%, #07BCE0 100%);
+			background-image: linear-gradient(#19C6FF 0%, #07BCE0 100%);
+		}
+
+		a {
+			color: #999;
+			text-decoration: underline;
+		}
+
+
+	</style>
+</head>
+
+<body>
+	<div id="container">
+		<img width="500" src="/images/logo.png"></img>
+
+
+	 	<h1>SB Hacks IV</h1>
+		<h2>January 19-21, 2018</h2>
+
+		<a href="sbhacksiii.herokuapp.com"><div class="button">Past Site</div></a>
+
+		<p>Interested in being a sponser? Shoot us an email at <a href="mailto:ucsbhacks@gmail.com">ucsbhacks@gmail.com</a></p>
+	</div>
+</body>
+
+</html>
+
+ 
+
+
