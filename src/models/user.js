@@ -33,6 +33,18 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
+    phone_number: {
+      type: DataTypes.STRING
+    },
+    gender: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [0, 20]
+      }
+    },
+    major: {
+      type: DataTypes.STRING
+    },
     resume_url: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -45,24 +57,38 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-      validate: {
-        
-      }
     },
-    year: {
+    graduation_year: {
       type: DataTypes.INTEGER,
       validate: {
-        min: 0,
-        max: 10
+        min: 2016,
+        max: 2030
       }
+    },
+    level_of_study: {
+      type: DataTypes.STRING
     },
     transportation: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
+      type: DataTypes.STRING
+    },
+    github: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true,
       validate: {
-        min: 0,
-        max: 3
+        isUrl: true
       }
+    },
+    linkedin: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true,
+      validate: {
+        isUrl: true
+      }
+    },
+    shirt_size: {
+      type: DataTypes.STRING,
     },
     rating: {
       type: DataTypes.INTEGER,
@@ -71,6 +97,9 @@ module.exports = function(sequelize, DataTypes) {
         min: 0,
         max: 6
       }
+    },
+    checked_in: {
+      type: DataTypes.BOOLEAN
     },
     accepted: {
       type: DataTypes.BOOLEAN
