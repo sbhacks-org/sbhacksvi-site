@@ -41,4 +41,3 @@ This will not run without a .env file which I will give you
     * Potentially need dietary Restrictions
       * Store as array of options?
   * Schools list
-    * Easy integration with Reactjs passing in props of school list and updating state for autocomplete
