@@ -20,16 +20,19 @@ module.exports.validate = (req, done) => {
     done(null, false, { message: 'Please enter a valid email' });
     return false;
   }
-  if (req.body.first_name && req.body.last_name && req.body.email && req.file.location && req.body.transportation && req.body.year) {
-
+  if(req.body.shirt_size != 'S' && req.body.shirt_size != 'M' && req.body.shirt_size != 'L' && req.body.shirt_size != 'XL') {
+    done(null, false, { message: 'Not a valid shirt size' });
+    return false;
+  }
+  if (req.body.first_name && req.body.last_name && req.body.email && req.file.location && req.body.transportation && req.body.graduation_year) {
+    // these are the required fields
   } else {
+    done(null, false, { message: 'Missing Fields' });
     return false;
   }
   if(req.body.linkedin != null && !req.body.linkedin.includes('linkedin')) {
     req.body.linkedin = null;
   }
-  
-  console.log('Random body value:', req.body.x);
   if(req.body.github != null && !req.body.github.includes('github')) {
     console.log("github link:", req.body.github);
     req.body.github = null;
@@ -53,7 +56,7 @@ module.exports.saveUser = (req, hash, done) => {
       resume_key: req.file.key,
       schoolId: school.dataValues.id,
       transportation: req.body.transportation,
-      year: req.body.year,
+      graduation_year: req.body.graduation_year,
       level_of_study: req.body.level_of_study,
       github: req.body.github,
       linkedin: req.body.linkedin,
