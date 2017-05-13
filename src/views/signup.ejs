@@ -33,22 +33,69 @@
     </div>
 
     <div class="form-group">
-      <label for="year">Year</label>
-      <select class="form-control" id="year-input" name="year" placeholder="What year are you?" required>
-        <option value="1">1st year college</option>
-        <option value="2">2nd year college</option>
-        <option value="3">3rd year college</option>
-        <option value="4">4th year college</option>
-        <option value="5">Graduate Student</option>
+      <label for="level_of_study">Level of Study</label>
+      <select class="form-control" id="level_of_study-input" name="level_of_study" placeholder="What is your level of study?" required>
+        <option value='High School'>High School</option>
+        <option value='Undergraduate'>Undergraduate</option>
+        <option value='Graduate'>Graduate</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="year">Graduation Year</label>
+      <select class="form-control" id="year-input" name="graduation_year" placeholder="When do you graduate?" required>
+        <option value="2020">2020</option>
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+        <option value="2017">2017</option>
       </select>
     </div>
 
     <div class="form-group">
       <label for="transportation">Transportation</label>
-      <select class="form-control" id="transportation-input" name="transportation" placeholder="How will you get here?" required>
+      <select class="form-control" id="transportation-input" name="transportation" required>
         <option value='1'>I can provide my own means of transportation</option>
         <option value='2'>I would prefer to be provided bussing in California</option>
         <option value='3'>I require travel reimbursement (This may or may not be something we can provide)</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="github">Github</label>
+      <input type="text" name="github" class="form-control" id="github-input" placeholder="https://github.com/username">
+    </div>
+
+    <div class="form-group">
+      <label for="linkedin">LinkedIn</label>
+      <input type="text" name="linkedin" class="form-control" id="linkedin-input" placeholder="https://linkedin.com/in/username">
+    </div>
+
+    <div class="form-group">
+      <label for="major">Major</label>
+      <input type="text" name="major" class="form-control" id="major-input" placeholder="e.g. Computer Science">
+    </div>
+
+    <div class="form-group">
+      <label for="phone_number">Phone Number</label>
+      <input type="text" name="phone_number" class="form-control" id="phone_number-input" placeholder="Don't worry we won't call you unless it's an emergency">
+    </div>
+
+    <div class="form-group">
+      <label for="shirt_size">Shirt Size</label>
+      <select class="form-control" id="shirt_size-input" name="shirt_size" required>
+        <option value='Small'>Small</option>
+        <option value='Medium'>Medium</option>
+        <option value='Large'>Large</option>
+        <option value='X-Large'>X-Large</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <select class="form-control" id="gender-input" name="gender" required>
+        <option value='Male'>Male</option>
+        <option value='Female'>Female</option>
+        <option value='Other'>Other</option>
       </select>
     </div>
 
