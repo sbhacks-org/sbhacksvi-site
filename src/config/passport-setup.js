@@ -22,6 +22,8 @@ module.exports = () => {
         return done(null, user);
       }
       return done(null, false, { message: "I hope this error gets handled" });
+    }).catch((err) => {
+      return done(null, false, { message: "Nice try tampering with sessions" })
     });
   });
 

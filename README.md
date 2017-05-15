@@ -41,3 +41,4 @@ This will not run without a .env file which I will give you
     * Potentially need dietary Restrictions
       * Store as array of options?
   * Schools list
+  * Convert out of Memorystore
