@@ -46,7 +46,6 @@ module.exports.saveUser = (req, hash, done) => {
       name: 'UC Santa Barbara' // Temporarily set as UC Santa Barbara
     }
   }).then((school) => {
-    console.log(req.body.github);
     models.user.create({
       first_name: req.body.first_name,
       last_name: req.body.last_name,

@@ -7,10 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/bin/server.js",
     "start:dev": "./node_modules/.bin/nodemon src/bin/server.js",
-    "build": "npm run css-build",
+    "build": "npm run css-build && npm run landing-build",
     "build:dev": "./node_modules/.bin/node-sass --watch ./src/static/css/scss/application.scss ./src/static/css/application.css",
     "react-build": "./node_modules/.bin/webpack --config webpack.config.js",
     "css-build": "./node_modules/.bin/node-sass ./src/static/css/scss/application.scss ./src/static/css/application.css",
+    "landing-build": "./node_modules/.bin/node-sass ./src/static/css/scss/landingpage/landingpage.scss ./src/static/css/landingpage.css",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate"
   },
   "repository": {
