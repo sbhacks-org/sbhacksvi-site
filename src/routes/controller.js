@@ -5,6 +5,7 @@
 
 /*
  * Setting up aws config for all routing since aws will refer to the same instance
+ * Lowkey scared of getting overcharged on this so... figure out how to prevent exploits before releasing
  * Important that I put this before importing routes since the routes utilize this instance of aws
  */
 const aws = require('aws-sdk');
@@ -14,15 +15,18 @@ aws.config.update({
 });
 
 const path = require('path');
-const defaultRoutes = require(path.join(__dirname,'defaultRoutes'));
+const defaultRoutes = require(path.join(__dirname, 'defaultRoutes'));
 const signupRoutes = require(path.join(__dirname, 'signupRoutes'));
 const userRoutes = require(path.join(__dirname, 'userRoutes'));
+const subscriberRoutes = require(path.join(__dirname, 'subscriberRoutes'));
 
-
+/*
+ * Routes defined here
+ */
 module.exports = (app) => {
-  /*
-   * Routes defined here
-   */
+ 
+  // Merely just for current deployment
+  app.use('/subscribe', subscriberRoutes);
   if(process.env.NODE_ENV == "production") {
     app.use((req, res) => {
       // Universal catcher; Disable other routes for now
