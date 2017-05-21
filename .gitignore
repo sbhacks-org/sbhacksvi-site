@@ -1,5 +1,5 @@
 node_modules/
-*.log*
+*.log
 .env
 bundle.js
-*.DS_Store
+.DS_Store
