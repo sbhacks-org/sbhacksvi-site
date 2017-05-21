@@ -2,6 +2,7 @@
 const express = require('express');
 const path = require('path');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const bodyParser = require('body-parser');
 const passport = require('./config/passport-setup')();
 const logger = require('morgan');
@@ -23,7 +24,11 @@ module.exports = (app) => {
     {
       secret: process.env.SESSION_SECRET,
       resave: false,
-      saveUninitialized: false
+      saveUninitialized: false,
+      store: new MongoStore({
+        url: process.env.SESSION_STORE,
+        ttl: 24 * 60 * 60
+      })
     })
   );
 
