@@ -27,7 +27,7 @@ module.exports = (app) => {
       saveUninitialized: false,
       store: new MongoStore({
         url: process.env.SESSION_STORE,
-        ttl: 24 * 60 * 60
+        ttl: 14 * 24 * 60 * 60 
       })
     })
   );
