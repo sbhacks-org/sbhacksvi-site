@@ -38,3 +38,5 @@ This will not run without a .env file which I will give you <br/>
   * Create landing page for temporary deployment
     * Work on ejs views first
       * Convert to react when design feels fluid
+    * Modern index file implementation
+      * SEO

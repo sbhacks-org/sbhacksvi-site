@@ -4,8 +4,8 @@
  */
 
 module.exports = (req, res, next) => {
-  if (req.isAuthenticated()){
-    return next();
-  }
-  res.status(401).send("Place 401 page here. You do not have access to this page!");
+	if (req.isAuthenticated()){
+		return next();
+	}
+	res.status(401).send("Place 401 page here. You do not have access to this page!");
 };
