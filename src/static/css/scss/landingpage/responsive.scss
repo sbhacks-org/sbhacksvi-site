@@ -28,17 +28,24 @@
   }
 }
 
-@media all and (max-width: 480px) {
+@media all and (max-width: 500px) {
   .logo {
     font-size: 5em;
   }
+  #container {
+    margin-top: 25px;
+  }
 }
 
-
+@media all and (max-width: 450px) {
+  .logo {
+    font-size: 4em;
+  }
+}
 
 @media all and (max-width: 400px) {
   .logo {
-    font-size: 4em;
+    font-size: 3.5em;
   }
   #date {
     font-size: 1.5em; 
@@ -48,5 +55,11 @@
 @media all and (max-width: 375px) {
   a {
     margin-bottom: 25px;
+  }
+}
+
+@media all and (max-width: 350px) {
+  .logo {
+    font-size: 3em;
   }
 }
