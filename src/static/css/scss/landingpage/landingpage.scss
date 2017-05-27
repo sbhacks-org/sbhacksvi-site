@@ -5,7 +5,7 @@ $l-blue: #33ccff;
 
 /* @import 'waves'; */
 @import 'button';
-@import 'responsive';
+
 
 html, body {
   background-color: #414288;
@@ -15,7 +15,6 @@ html, body {
   height: 100%;
   width: 100%;
   font-family: 'Raleway', sans-serif;
-  overflow: hidden;
 }
 
 #container {
@@ -56,3 +55,5 @@ a {
     color: #5FB49C;
   }
 }
+
+@import 'responsive';

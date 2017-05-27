@@ -1,30 +1,52 @@
-@media only screen and (max-height: 560px) {
-  body, html {
-    overflow-y: visible;
-  }
-  #waves {
-    position: relative;
-  }
-}
 @media only screen and (max-width: 860px) {
-  .logo {
-    width: 40%;
-  }
   button {
     font-size: 16px;
+    margin-bottom: 1px;
   }
   h1 {
     font-size: 1.8em;
   }
+
 }
 @media only screen and (max-width: 760px) {
   body, html {
     overflow-y: visible;
   }
-  #waves {
-    position: relative;
-  }
   p {
     font-size: 0.8em;
+  }
+}
+
+@media all and (max-width: 584px) {
+  .logo {
+    font-size: 6em;
+  }
+}
+@media all and (max-width: 560px) {
+  body, html {
+    overflow-y: visible;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .logo {
+    font-size: 5em;
+  }
+}
+
+
+
+@media all and (max-width: 400px) {
+  .logo {
+    font-size: 4em;
+  }
+  #date {
+    font-size: 1.5em; 
+  }
+}
+
+@media all and (max-width: 375px) {
+  a {
+    margin-bottom: 25px;
   }
 }
