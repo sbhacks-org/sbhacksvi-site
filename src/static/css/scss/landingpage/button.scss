@@ -1,24 +1,66 @@
-button{
-	font-family: 'bungee', cursive;
-	margin: 0 auto;
-	padding: 5px 20px;
-	font-size: 20px;
-	text-align: center;
-	text-decoration: none;
-	background-color: #2da3ee;
-	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #33ccff), color-stop(100%, #2DC2E0));
-	background-image: -moz-linear-gradient(#33ccff 0%, #2DC2E0 100%);
-	background-image: -webkit-linear-gradient(#33ccff 0%, #2DC2E0 100%);
-	background-image: linear-gradient(#33ccff 0%, #2DC2E0 100%);
-	color: white;
-	border: 3px solid rgb(11,87,148);
-	border-radius:3px;
+//=== Drawing effect
+
+@mixin btn-border-drawing($color: #ccc, $hover: black, $width: 2px, $vertical: top, $horizontal: left, $duration: 0.25s) {
+	box-shadow: inset 0 0 0 $width $color;
+	color: $color;
+	transition: color $duration $duration/3;
+	position: relative;
+
+	&::before, &::after {
+		border: 0 solid transparent;
+		box-sizing: border-box;
+		content: '';
+		pointer-events: none;
+		position: absolute;
+		width: 0; height: 0;
+
+		#{$vertical}: 0; 
+		#{$horizontal}: 0;
+	}
+
+	&::before {
+		$h-side: if($horizontal == 'left', 'right', 'left');
+		border-#{$vertical}-width: $width;
+		border-#{$h-side}-width: $width;
+	}
+
+	&::after {
+		$v-side: if($vertical == 'top', 'bottom', 'top');
+
+		border-#{$v-side}-width: $width;
+		border-#{$horizontal}-width: $width;
+	}
 
 	&:hover {
-		cursor: pointer;
-		background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #19C6FF), color-stop(100%, #07BCE0));
-		background-image: -moz-linear-gradient(#19C6FF 0%, #07BCE0 100%);
-		background-image: -webkit-linear-gradient(#19C6FF 0%, #07BCE0 100%);
-		background-image: linear-gradient(#19C6FF 0%, #07BCE0 100%);
+		color: $hover;
+		&::before, &::after {
+			border-color: $hover;
+			transition: border-color 0s, width $duration, height $duration;
+			width: 100%;
+			height: 100%;
+		}
+
+		&::before { transition-delay: 0s, 0s, $duration; }
+
+		&::after { transition-delay: 0s, $duration, 0s; }
 	}
 }
+
+.draw-border {
+	@include btn-border-drawing(#58afd1, #ffe593, 4px, bottom, right);
+}
+
+//=== Button styling, semi-ignore
+.btn {
+	background: none;
+	border: none;
+	cursor: pointer;
+	line-height: 1.5;
+	font-size: 1.2rem;
+	font-weight: 700;
+	padding: 1em 2em;
+	letter-spacing: 0.05rem;
+	margin: 0 15px;
+	&:focus { outline: 2px dotted #55d7dc; }
+}
+
