@@ -66,7 +66,7 @@ router.post("/", (req, res, next) => {
 				if (err) {
 					return next(err);
 				}
-        // TODO Change this redirect into a successfully created account page
+        		// TODO Change this redirect into a successfully created account page
 				return res.redirect("/user/dashboard?message=" + info.message);
 			});
 		})(req, res, next);

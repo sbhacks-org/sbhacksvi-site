@@ -10,7 +10,7 @@ const helmet = require("helmet");
 const favicon = require("serve-favicon");
 
 module.exports = (app) => {
-  // Middleware
+	// Middleware
 	app.set("view engine", "ejs");
 	app.set("views", path.join(__dirname, "views"));
 	app.use(express.static(path.join(__dirname, "static")));
@@ -32,10 +32,10 @@ module.exports = (app) => {
 		})
   );
 
-  // Passport initialize
+	// Passport initialize
 	app.use(passport.initialize());
 	app.use(passport.session());
 
-  // Call main route controller here
+	// Call main route controller here
 	require("./routes/controller")(app);
 };

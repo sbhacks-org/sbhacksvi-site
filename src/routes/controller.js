@@ -29,7 +29,7 @@ module.exports = (app) => {
 	app.use("/subscribe", subscriberRoutes);
 	if(process.env.NODE_ENV == "production") {
 		app.use((req, res) => {
-      // Universal catcher; Disable other routes for now
+			// Universal catcher; Disable other routes for now
 			res.render("index");
 		});
 	}
