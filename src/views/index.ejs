@@ -4,7 +4,6 @@
 		<link rel="stylesheet" type="text/css" href="/css/landingpage.css" />
 	</head>
 <body>
-
 	<div id="container">
 		<h1 class="logo">SB Hacks IV</h1>
 
@@ -16,17 +15,27 @@
 				<button class="btn draw-border">Past Site</button>
 			</a>
 
-			<button class="btn draw-border">Signup</button>
+			<button class="btn draw-border trigger">Signup</button>
 		</div>
 		
-
-		<!-- <form action="/subscribe" method="POST">
-			<input type="email" name="email" />
-			<button class="btn draw-border">Submit</button>
-		</form> -->
+		<div class="modal-wrapper">
+			<div class="modal">
+				<h3>Applications are not yet open</h3>
+				<p>Feel free to leave your email here and we will notify you as soon as it is released</p>
+				<form action="/subscribe" method="POST">
+					<label for="email">Email: </label><input type="email" name="email" />
+					<button type="submit">Submit</button>
+				</form>
+			</div>
+			
+		</div>
 		
 		<p>Interested in being a sponsor? <br /> Shoot us an email at <a href="mailto:ucsbhacks@gmail.com">ucsbhacks@gmail.com</a></p>
 	</div>
 
 </body>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+		  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+		  crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/modal.js"></script>
 </html>

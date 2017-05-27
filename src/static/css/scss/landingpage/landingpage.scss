@@ -1,10 +1,13 @@
 $l-blue: #33ccff;
+$d-green: #5FB49C;
+$l-green: #98DFAF;
 
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 
 /* @import 'waves'; */
 @import 'button';
+@import 'modal';
 @import 'responsive';
 
 html, body {
@@ -40,7 +43,7 @@ html, body {
 
 h1 {
   font-size: 2em;
-  color: #5FB49C;
+  color: $d-green;
 }
 
 p {
@@ -49,10 +52,10 @@ p {
 }
 
 a {
-  color: #98DFAF;
+  color: $l-green;
   display: inline-block;
   text-decoration: underline;
   &:hover {
-    color: #5FB49C;
+    color: $d-green;
   }
 }
