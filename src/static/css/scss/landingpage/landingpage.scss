@@ -1,37 +1,58 @@
 $l-blue: #33ccff;
 
-@import url('https://fonts.googleapis.com/css?family=Bungee');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 
 /* @import 'waves'; */
-/* @import 'button'; */
+@import 'button';
 @import 'responsive';
 
 html, body {
+  background-color: #414288;
   padding: 0;
   margin: 0;
   text-align: center;
   height: 100%;
   width: 100%;
-  font-family: 'Bungee', cursive;
+  font-family: 'Raleway', sans-serif;
   overflow: hidden;
 }
 
-.logo {
+#container {
+  padding-top: 2.5%;
+  position: relative;
+}
+
+.logo-img {
   width: 25%;
   margin: 20px
 }
+
+.logo {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 7em;
+  margin-top: 0;
+}
+
+.row {
+  margin: 35px 0 60px 0;
+}
+
 h1 {
   font-size: 2em;
-  color: #ecc702;
-  margin: 0;
+  color: #5FB49C;
 }
 
 p {
   font-size: 1em;
-  color: rgb(150,150,150);
+  color: #DEEFB7;
 }
 
 a {
-  color: #999;
+  color: #98DFAF;
+  display: inline-block;
   text-decoration: underline;
+  &:hover {
+    color: #5FB49C;
+  }
 }
