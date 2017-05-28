@@ -1,4 +1,4 @@
-.modal-wrapper{
+#modal-wrapper{
   text-align: center;
   width:100%;
   height:100%;
@@ -13,16 +13,16 @@
   transition: all 0.25s ease-in-out;
 }
 
-.modal-wrapper.open{
+#modal-wrapper.open{
   opacity:1;
   visibility:visible;
-  .modal{
+  #modal{
     margin-top: 10%;
     opacity:1;
   }
 }
 
-.modal{
+#modal{
   display:inline-block;
   padding: 35px 20px;
   margin: 20% 0 0 0;
@@ -61,5 +61,55 @@
     }
     &:after {
     }
+  }
+  form {
+    transition: all 0.25s ease;
+  }
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
+}
+
+#loader.onclic {
+  font-size:0;
+  border-left-color: $d-green;
+  animation: rotating 2s 0.25s linear infinite;
+  -webkit-animation: rotating 2s 0.25s linear infinite;
+  -moz-animation: rotating 2s 0.25s linear infinite;
+  -o-animation: rotating 2s 0.25s linear infinite;
+  &:hover {
+    color: $l-green;
+    background: white;
+  }
+}
+
+#loader {
+  display: inline-block;
+  border: 3px solid $gray;
+  border-radius:40px;
+  width: 40px;
+  padding: 5px;
+  height: 40px;
+}
+
+#loader.validated {
+  border-color: $d-green;
+  font-size: 40px;
+  color: white;
+  background: $d-green;
+  &:after {
+    font-family:'FontAwesome';
+    content:"\f00c";
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
