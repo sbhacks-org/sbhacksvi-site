@@ -5,7 +5,6 @@ $(document).ready(function() {
 	});
 	document.getElementById('modal-wrapper').className = 'transition';
 	document.getElementById('modal-wrapper').addEventListener('click', function(e) {
-		console.log('clicked modal-wrapper')
 		$('#modal-wrapper').toggleClass('open');
 	}, false);
 	document.getElementById('modal').addEventListener('click', function(e) {
@@ -23,21 +22,36 @@ function handleSubmit() {
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			setTimeout(function() {
-				load.className = "validated";
+			if(JSON.parse(this.response).success == true) {
+				setTimeout(function(response) {
+						load.className = "validated";
+						setTimeout(function(){
+							if(load && subscribe_container) {
+								if (email) {
+									email.value = "";
+								}
+								subscribe_container.removeChild(load);
+								$('#modal-wrapper').toggleClass('open');
+								setTimeout(function() {
+									subscribe.removeAttribute("class");
+								}, 250);
+							}
+						}, 2000);
+				} , 1000);
+			} else {
 				setTimeout(function(){
-					if(load && subscribe_container) {
-						if (email) {
-							email.value = "";
-						}
-						subscribe_container.removeChild(load);
-						$('#modal-wrapper').toggleClass('open');
-						setTimeout(function() {
+					load.className = "failure";
+					setTimeout(function(){
+						if(load && subscribe_container) {
+							if (email) {
+								email.value = "";
+							}
+							subscribe_container.removeChild(load);
 							subscribe.removeAttribute("class");
-						}, 250);
-					}
-				}, 2000);
-			}, 1000);
+						}
+					}, 2000);
+				}, 500);
+			}
 		}
 	}
 

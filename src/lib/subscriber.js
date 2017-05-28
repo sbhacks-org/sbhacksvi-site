@@ -5,10 +5,10 @@ module.exports.saveSubscriber = (req, res) => {
 		email: req.body.email
 	}).then(() => {
 		// Success
-		res.send("Successfully subscribed!");
+		res.json({ success: true });
 	}).catch((err) => {
 		// Probably already exists
-		res.send("Email already registered");
+		res.json({ success: false });
 		console.error(err);
 	});
 };

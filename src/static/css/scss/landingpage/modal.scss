@@ -108,6 +108,17 @@
   }
 }
 
+#loader.failure {
+  border-color: #ec3434;
+  font-size: 40px;
+  color: white;
+  background: #ec3434;
+  &:after {
+    font-family:'FontAwesome';
+    content:"\f00d";
+  }
+}
+
 @keyframes rotating {
   from {
     transform: rotate(0deg);
