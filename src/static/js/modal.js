@@ -31,7 +31,10 @@ function handleSubmit() {
 							email.value = "";
 						}
 						subscribe_container.removeChild(load);
-						subscribe.removeAttribute("class");
+						$('#modal-wrapper').toggleClass('open');
+						setTimeout(function() {
+							subscribe.removeAttribute("class");
+						}, 250);
 					}
 				}, 2000);
 			}, 1000);
