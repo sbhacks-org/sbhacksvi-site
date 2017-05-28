@@ -162,9 +162,7 @@
 
 @media all and (max-width: 560px) {
   body, html {
-    overflow-y: visible; }
-  body {
-    padding-bottom: 50px; } }
+    overflow-y: visible; } }
 
 @media all and (max-width: 500px) {
   .logo {
@@ -200,7 +198,7 @@ html, body {
   font-family: 'Raleway', sans-serif; }
 
 #container {
-  padding-top: 2.5%;
+  padding: 2.5% 0;
   position: relative; }
 
 .logo-img {
@@ -249,9 +247,7 @@ a {
 
 @media all and (max-width: 560px) {
   body, html {
-    overflow-y: visible; }
-  body {
-    padding-bottom: 50px; } }
+    overflow-y: visible; } }
 
 @media all and (max-width: 500px) {
   .logo {
