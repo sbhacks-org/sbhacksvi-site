@@ -1,12 +1,15 @@
 #modal-wrapper{
+  visibility:hidden;
   text-align: center;
   width:100%;
   height:100%;
   position:fixed;
   top:0; left:0;
   background:rgba(51,51,51,0.75);
-  visibility:hidden;
   opacity:0;
+}
+
+.transition {
   -webkit-transition: all 0.25s ease-in-out;
   -moz-transition: all 0.25s ease-in-out;
   -o-transition: all 0.25s ease-in-out;

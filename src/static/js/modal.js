@@ -3,6 +3,7 @@ $(document).ready(function() {
 		$('#modal-wrapper').toggleClass('open');
 		return false;
 	});
+	document.getElementById('modal-wrapper').className = 'transition';
 	document.getElementById('modal-wrapper').addEventListener('click', function(e) {
 		console.log('clicked modal-wrapper')
 		$('#modal-wrapper').toggleClass('open');
