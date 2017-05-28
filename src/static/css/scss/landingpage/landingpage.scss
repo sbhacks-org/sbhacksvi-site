@@ -1,10 +1,14 @@
 $l-blue: #33ccff;
+$d-green: #5FB49C;
+$l-green: #98DFAF;
+$gray: #bbbbbb;
+
 
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 
-/* @import 'waves'; */
 @import 'button';
+@import 'modal';
 @import 'responsive';
 
 html, body {
@@ -15,7 +19,6 @@ html, body {
   height: 100%;
   width: 100%;
   font-family: 'Raleway', sans-serif;
-  overflow: hidden;
 }
 
 #container {
@@ -40,7 +43,7 @@ html, body {
 
 h1 {
   font-size: 2em;
-  color: #5FB49C;
+  color: $l-green;
 }
 
 p {
@@ -49,10 +52,12 @@ p {
 }
 
 a {
-  color: #98DFAF;
+  color: $l-green;
   display: inline-block;
   text-decoration: underline;
   &:hover {
-    color: #5FB49C;
+    color: $d-green;
   }
 }
+
+@import 'responsive';
