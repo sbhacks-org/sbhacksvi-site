@@ -40,16 +40,21 @@
     &:focus {
       outline-color: $l-green;
     }
+
+    height: 25px;
+    font-size: 0.9em;
+    margin: 0 10px;
   }
   p {
     color: rgb(51,51,51);
   }
   button {
+    font-size: 0.9em;
     outline:none;
-    height: 40px;
+    height: 35px;
     text-align: center;
-    width: 130px;
-    border-radius:40px;
+    width: 100px;
+    border-radius:30px;
     background: #fff;
     border: 2px solid $d-green;
     color: $d-green;
@@ -67,6 +72,10 @@
   }
   form {
     transition: all 0.25s ease;
+    font-size: 1.1em;
+    * {
+      vertical-align: middle;   
+    }
   }
 }
 
