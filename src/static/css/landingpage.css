@@ -34,6 +34,7 @@
       transition-delay: 0s, 0.25s, 0s; }
 
 .btn {
+  font-family: 'Raleway', sans-serif;
   background: none;
   border: none;
   cursor: pointer;
@@ -81,16 +82,21 @@
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
   color: #333333; }
-  #modal input:focus {
-    outline-color: #98DFAF; }
+  #modal input {
+    height: 25px;
+    font-size: 0.9em;
+    margin: 0 10px; }
+    #modal input:focus {
+      outline-color: #98DFAF; }
   #modal p {
     color: #333333; }
   #modal button {
+    font-size: 0.9em;
     outline: none;
-    height: 40px;
+    height: 35px;
     text-align: center;
-    width: 130px;
-    border-radius: 40px;
+    width: 100px;
+    border-radius: 30px;
     background: #fff;
     border: 2px solid #5FB49C;
     color: #5FB49C;
@@ -103,7 +109,10 @@
       background: #98DFAF;
       border: #98DFAF; }
   #modal form {
-    transition: all 0.25s ease; }
+    transition: all 0.25s ease;
+    font-size: 1.1em; }
+    #modal form * {
+      vertical-align: middle; }
 
 .hidden {
   display: none;
@@ -161,11 +170,9 @@
 
 @media only screen and (max-width: 760px) {
   body, html {
-    overflow-y: visible; }
-  p {
-    font-size: 0.8em; } }
+    overflow-y: visible; } }
 
-@media all and (max-width: 584px) {
+@media all and (max-width: 660px) {
   .logo {
     font-size: 6em; } }
 
@@ -173,33 +180,42 @@
   body, html {
     overflow-y: visible; } }
 
-@media all and (max-width: 500px) {
+@media all and (max-width: 530px) {
   .logo {
     font-size: 5em; }
-  #container {
-    margin-top: 25px; } }
+  #date {
+    font-size: 2em; }
+  .btn {
+    font-size: 1em;
+    padding: 1em 1.75em; }
+  #container > p {
+    font-size: 1.2em; } }
 
-@media all and (max-width: 450px) {
+@media all and (max-width: 430px) {
   .logo {
-    font-size: 4em; } }
+    font-size: 4em; }
+  #date {
+    font-size: 1.5em; }
+  .btn {
+    font-size: 1em;
+    padding: 1em 1.75em; }
+  #container > p {
+    font-size: 1em; } }
 
 @media all and (max-width: 412px) {
   #modal button {
     margin-top: 10px; } }
 
-@media all and (max-width: 400px) {
+@media all and (max-width: 350px) {
   .logo {
     font-size: 3.5em; }
   #date {
-    font-size: 1.5em; } }
-
-@media all and (max-width: 392px) {
-  a {
-    margin-bottom: 25px; } }
-
-@media all and (max-width: 350px) {
-  .logo {
-    font-size: 3em; } }
+    font-size: 1.5em; }
+  .btn {
+    font-size: 1em;
+    padding: 0.75em 1.5em; }
+  #container > p {
+    font-size: 1em; } }
 
 html, body {
   background-color: #414288;
@@ -210,7 +226,12 @@ html, body {
   width: 100%;
   font-family: 'Raleway', sans-serif; }
 
+body {
+  display: table; }
+
 #container {
+  display: table-cell;
+  vertical-align: middle;
   padding: 2.5% 0;
   position: relative; }
 
@@ -223,6 +244,9 @@ html, body {
   font-size: 7em;
   margin-top: 0; }
 
+#date {
+  font-size: 2.5em; }
+
 .row {
   margin: 35px 0 60px 0; }
 
@@ -231,7 +255,7 @@ h1 {
   color: #98DFAF; }
 
 p {
-  font-size: 1em;
+  font-size: 1.25em;
   color: #DEEFB7; }
 
 a {
@@ -250,11 +274,9 @@ a {
 
 @media only screen and (max-width: 760px) {
   body, html {
-    overflow-y: visible; }
-  p {
-    font-size: 0.8em; } }
+    overflow-y: visible; } }
 
-@media all and (max-width: 584px) {
+@media all and (max-width: 660px) {
   .logo {
     font-size: 6em; } }
 
@@ -262,30 +284,39 @@ a {
   body, html {
     overflow-y: visible; } }
 
-@media all and (max-width: 500px) {
+@media all and (max-width: 530px) {
   .logo {
     font-size: 5em; }
-  #container {
-    margin-top: 25px; } }
+  #date {
+    font-size: 2em; }
+  .btn {
+    font-size: 1em;
+    padding: 1em 1.75em; }
+  #container > p {
+    font-size: 1.2em; } }
 
-@media all and (max-width: 450px) {
+@media all and (max-width: 430px) {
   .logo {
-    font-size: 4em; } }
+    font-size: 4em; }
+  #date {
+    font-size: 1.5em; }
+  .btn {
+    font-size: 1em;
+    padding: 1em 1.75em; }
+  #container > p {
+    font-size: 1em; } }
 
 @media all and (max-width: 412px) {
   #modal button {
     margin-top: 10px; } }
 
-@media all and (max-width: 400px) {
+@media all and (max-width: 350px) {
   .logo {
     font-size: 3.5em; }
   #date {
-    font-size: 1.5em; } }
-
-@media all and (max-width: 392px) {
-  a {
-    margin-bottom: 25px; } }
-
-@media all and (max-width: 350px) {
-  .logo {
-    font-size: 3em; } }
+    font-size: 1.5em; }
+  .btn {
+    font-size: 1em;
+    padding: 0.75em 1.5em; }
+  #container > p {
+    font-size: 1em; } }

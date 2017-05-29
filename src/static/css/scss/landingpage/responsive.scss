@@ -12,12 +12,9 @@
   body, html {
     overflow-y: visible;
   }
-  p {
-    font-size: 0.8em;
-  }
 }
 
-@media all and (max-width: 584px) {
+@media all and (max-width: 660px) {
   .logo {
     font-size: 6em;
   }
@@ -28,18 +25,40 @@
   }
 }
 
-@media all and (max-width: 500px) {
+@media all and (max-width: 530px) {
   .logo {
     font-size: 5em;
   }
-  #container {
-    margin-top: 25px;
+  #date {
+    font-size: 2em;
+  }
+
+  .btn {
+    font-size: 1em;
+    padding: 1em 1.75em;
+  }
+
+  #container > p {
+    font-size: 1.2em;
   }
 }
 
-@media all and (max-width: 450px) {
+@media all and (max-width: 430px) {
   .logo {
     font-size: 4em;
+  }
+
+  #date {
+    font-size: 1.5em;
+  }
+
+  .btn {
+    font-size: 1em;
+    padding: 1em 1.75em;
+  }
+
+  #container > p {
+    font-size: 1em;
   }
 }
 
@@ -49,23 +68,21 @@
   }
 }
 
-@media all and (max-width: 400px) {
+@media all and (max-width: 350px) {
   .logo {
     font-size: 3.5em;
   }
+
   #date {
-    font-size: 1.5em; 
+    font-size: 1.5em;
   }
-}
 
-@media all and (max-width: 392px) {
-  a {
-    margin-bottom: 25px;
+  .btn {
+    font-size: 1em;
+    padding: 0.75em 1.5em;
   }
-}
 
-@media all and (max-width: 350px) {
-  .logo {
-    font-size: 3em;
+  #container > p {
+    font-size: 1em;
   }
 }
