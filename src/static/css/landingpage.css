@@ -183,6 +183,10 @@
   .logo {
     font-size: 4em; } }
 
+@media all and (max-width: 412px) {
+  #modal button {
+    margin-top: 10px; } }
+
 @media all and (max-width: 400px) {
   .logo {
     font-size: 3.5em; }
@@ -267,6 +271,10 @@ a {
 @media all and (max-width: 450px) {
   .logo {
     font-size: 4em; } }
+
+@media all and (max-width: 412px) {
+  #modal button {
+    margin-top: 10px; } }
 
 @media all and (max-width: 400px) {
   .logo {
