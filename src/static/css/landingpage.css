@@ -189,7 +189,7 @@
     font-size: 1em;
     padding: 1em 1.75em; }
   #container > p {
-    font-size: 1.25em; } }
+    font-size: 1.2em; } }
 
 @media all and (max-width: 430px) {
   .logo {
@@ -199,14 +199,6 @@
   .btn {
     font-size: 1em;
     padding: 1em 1.75em; }
-  #container > p {
-    font-size: 1.1em; } }
-
-@media all and (max-width: 400px) {
-  .logo {
-    font-size: 3.5em; }
-  #date {
-    font-size: 1.5em; }
   #container > p {
     font-size: 1em; } }
 
@@ -297,7 +289,7 @@ a {
     font-size: 1em;
     padding: 1em 1.75em; }
   #container > p {
-    font-size: 1.25em; } }
+    font-size: 1.2em; } }
 
 @media all and (max-width: 430px) {
   .logo {
@@ -307,14 +299,6 @@ a {
   .btn {
     font-size: 1em;
     padding: 1em 1.75em; }
-  #container > p {
-    font-size: 1.1em; } }
-
-@media all and (max-width: 400px) {
-  .logo {
-    font-size: 3.5em; }
-  #date {
-    font-size: 1.5em; }
   #container > p {
     font-size: 1em; } }
 
