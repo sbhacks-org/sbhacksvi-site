@@ -8,20 +8,10 @@
   }
 
 }
-@media only screen and (max-width: 760px) {
-  body, html {
-    overflow-y: visible;
-  }
-}
 
 @media all and (max-width: 660px) {
   .logo {
     font-size: 6em;
-  }
-}
-@media all and (max-width: 560px) {
-  body, html {
-    overflow-y: visible;
   }
 }
 
