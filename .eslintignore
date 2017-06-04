@@ -1,0 +1,6 @@
+node_modules/
+bundle.js
+models/
+migrations/
+# temporarily adding react components in here
+components/
