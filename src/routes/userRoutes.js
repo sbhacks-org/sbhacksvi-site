@@ -2,9 +2,7 @@ const router = require("express").Router();
 const passport = require("passport");
 const updateTime = require("../lib/updateTime");
 const isLoggedIn = require("../lib/isLoggedIn");
-const aws = require("aws-sdk");
-const s3 = new aws.S3();
-const multerS3 = require("multer-s3");
+const efp = require("express-form-post");
 
 router.get("/login", (req, res) => {
 	if (req.isAuthenticated()){
@@ -62,33 +60,30 @@ router.post("/update", isLoggedIn, (req, res, next) => {
 	let update_key = req.user.resume_key;
 	console.log("update key", update_key);
 
-	let storageOptions = multerS3({
-		s3: s3,
-		acl: "public-read",
-		bucket: process.env.S3_BUCKET_NAME,
-		contentType: (req, file, cb) => {
-      // Forcing content type to be PDF to be viewable in browser by S3
-			cb(null, "application/pdf");
+	const formPost = efp({
+		store: "aws-s3",
+		promise: true,
+		filename: function(originalname) {
+			return update_key;
 		},
-		metadata: (req, file, cb) => {
-			cb(null, { fieldName: file.fieldname });
+		validateFile: function(cb, fieldname, mimetype) {
+			if(mimetype != "application/pdf") {
+				return cb(false);
+			}
+			cb();
 		},
-		key: function (req, file, cb) {
-			cb(null, update_key);
+		api: {
+			accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+	        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+	        bucketName: process.env.S3_BUCKET_NAME,
+	        ACL: "public-read"
 		}
 	});
 
-	let upload = require("../lib/upload")(storageOptions);
-
-  // Request multipart body gets parsed through multer
-	upload(req, res, (err) => {
-		console.log(req.file); // Remove during production
-
-		if(err) {
-			console.log(err);
-			res.status(300).send("Error");
-		}
-		if(!req.file) {
+  	// Request multipart body gets parsed through multer
+	formPost.upload(req, res).then(() => {
+		console.log(req.files); // Remove during production
+		if(Object.keys(req.files) == 0) {
 			return res.redirect("/user/dashboard?message=You need to upload a file");
 		}
 		updateTime(req.user).then(() => {
@@ -98,6 +93,10 @@ router.post("/update", isLoggedIn, (req, res, next) => {
 			console.log(err);
 			next(err);
 		});
+	}).catch((err) => {
+		console.log(err);
+		res.status(300).send("Error");
+		
 	});
 
 });

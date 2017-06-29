@@ -7,6 +7,7 @@
 const models = require("../models");
 
 module.exports.validate = (req, done) => {
+	console.log(req.body);
   // Expecting req.body as parameter
 	if (req.body.transportation < 0 || req.body.transportation > 3) {
 		req.body.transportation = 0;
@@ -24,7 +25,7 @@ module.exports.validate = (req, done) => {
 		done(null, false, { message: "Not a valid shirt size" });
 		return false;
 	}
-	if (req.body.first_name && req.body.last_name && req.body.email && req.file.location && req.body.transportation && req.body.graduation_year) {
+	if (req.body.first_name && req.body.last_name && req.body.email && req.files.resume.Location && req.body.transportation && req.body.graduation_year) {
     // these are the required fields
 	} else {
 		done(null, false, { message: "Missing Fields" });
@@ -51,8 +52,8 @@ module.exports.saveUser = (req, hash, done) => {
 			last_name: req.body.last_name,
 			email: req.body.email,
 			password: hash,
-			resume_url: req.file.location,
-			resume_key: req.file.key,
+			resume_url: req.files.resume.Location,
+			resume_key: req.files.resume.key,
 			schoolId: school.dataValues.id,
 			transportation: req.body.transportation,
 			graduation_year: req.body.graduation_year,
