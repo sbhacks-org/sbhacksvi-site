@@ -3,7 +3,23 @@ const passport = require("passport");
 const updateTime = require("../lib/updateTime");
 const isLoggedIn = require("../lib/isLoggedIn");
 const efp = require("express-form-post");
-
+const formPost = efp({
+	store: "aws-s3",
+	promise: true,
+	filename: function(req, file, cb) {
+		cb(req.user.resume_key);
+	},
+	validateFile: function(fieldname, mimetype, cb) {
+		if(mimetype != "application/pdf") {
+			return cb(false);
+		}
+		cb();
+	},
+	api: {
+		bucketName: process.env.S3_BUCKET_NAME,
+		ACL: "public-read"
+	}
+});
 router.get("/login", (req, res) => {
 	if (req.isAuthenticated()){
 		return res.redirect("/user/dashboard");
@@ -57,30 +73,7 @@ router.get("/dashboard", isLoggedIn, (req, res) => {
 });
 
 router.post("/update", isLoggedIn, (req, res, next) => {
-	let update_key = req.user.resume_key;
-	console.log("update key", update_key);
-
-	const formPost = efp({
-		store: "aws-s3",
-		promise: true,
-		filename: function(originalname) {
-			return update_key;
-		},
-		validateFile: function(cb, fieldname, mimetype) {
-			if(mimetype != "application/pdf") {
-				return cb(false);
-			}
-			cb();
-		},
-		api: {
-			accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-	        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-	        bucketName: process.env.S3_BUCKET_NAME,
-	        ACL: "public-read"
-		}
-	});
-
-  	// Request multipart body gets parsed through multer
+	// Request multipart body gets parsed through multer
 	formPost.upload(req, res).then(() => {
 		console.log(req.files); // Remove during production
 		if(Object.keys(req.files) == 0) {

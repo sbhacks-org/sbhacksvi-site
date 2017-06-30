@@ -8,10 +8,10 @@ const formPost = efp({
 	store: "aws-s3",
 	maxfileSize: 4194304,
 	promise: true,
-	validateBody: function(cb, body) {
+	validateBody: function(body, cb) {
 		cb();
 	},
-	validateFile: function(cb, fieldname, mimetype) {
+	validateFile: function(fieldname, mimetype, cb) {
 		if(fieldname != "resume") {
 			return cb(false);
 		}
@@ -20,20 +20,21 @@ const formPost = efp({
 		}
 		cb();
 	},
-	filename: function(originalname) {
-		return Date.now() + '-' + originalname;
+	filename: function(req, file, cb) {
+		bcrypt.genSalt(10, function(err, salt) {
+			bcrypt.hash(Date.now().toString() + file.originalname, salt, (err, hash) => {
+				cb(hash.replace(/\//g, "_") + "\/" + file.originalname);
+			});
+		});
 	},
 	api: {
-		accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-        bucketName: process.env.S3_BUCKET_NAME,
-        ACL: "public-read"
+		bucketName: process.env.S3_BUCKET_NAME,
+		ACL: "public-read"
 	}
 });
 
 router.post("/", (req, res, next) => {
-
-  	// Request multipart body gets parsed through multer
+	// Request multipart body gets parsed through multer
 	formPost.upload(req, res).then(() => {
 		console.log("Files:",req.files); // Remove during production
 		passport.authenticate("signup", (err, user, info) => {
@@ -52,7 +53,8 @@ router.post("/", (req, res, next) => {
 			});
 		})(req, res, next);
 	}).catch((err) => {
-		return res.redirect("/signup?status=unsuccessful");
+		throw err; // temporary
+		// return res.redirect("/signup?status=unsuccessful");
 	});
 });
 
