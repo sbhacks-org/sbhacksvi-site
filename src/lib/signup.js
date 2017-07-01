@@ -18,24 +18,23 @@ module.exports.validate = (req, done) => {
    * TODO : Add more legit validation
    */
 	if (!req.body.email) {
-		done(null, false, { message: "Please enter a valid email" });
+		done(new Error("Please enter a valid email"), false);
 		return false;
 	}
 	if(req.body.shirt_size != "S" && req.body.shirt_size != "M" && req.body.shirt_size != "L" && req.body.shirt_size != "XL") {
-		done(null, false, { message: "Not a valid shirt size" });
+		done(new Error("Not a valid shirt size"), false);
 		return false;
 	}
 	if (req.body.first_name && req.body.last_name && req.body.email && req.files.resume.Location && req.body.transportation && req.body.graduation_year) {
     // these are the required fields
 	} else {
-		done(null, false, { message: "Missing Fields" });
+		done(new Error("Missing Fields"), false);
 		return false;
 	}
 	if(req.body.linkedin != null && !req.body.linkedin.includes("linkedin")) {
 		req.body.linkedin = null;
 	}
 	if(req.body.github != null && !req.body.github.includes("github")) {
-		console.log("github link:", req.body.github);
 		req.body.github = null;
 	}
 	return true;

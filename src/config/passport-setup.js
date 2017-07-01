@@ -21,9 +21,9 @@ module.exports = () => {
 			if(user){
 				return done(null, user);
 			}
-			return done(null, false, { message: "I hope this error gets handled" });
+			return done(new Error("I hope this error gets handled"), false);
 		}).catch((err) => {
-			return done(err, false, { message: "Nice try tampering with sessions" });
+			return done(new Error(err.message), false);
 		});
 	});
 
@@ -38,7 +38,7 @@ module.exports = () => {
 		}).then((user) => {
       // console.log("Found", user);
 			if (!user) {
-				return done(null, false, { message: "No such user with email " + username +" exists" });
+				return done(new Error("No such user with email " + username + " exists"), false);
 			}
 			bcrypt.compare(password, user.password, (err, res) => {
 				if (err) { throw err; }
@@ -46,7 +46,7 @@ module.exports = () => {
 					return done(null, user);
 				}
 				else {
-					return done(null, false, { message: "invalid password" });
+					return done(new Error("invalid password"), false);
 				}
 			});
 		});
