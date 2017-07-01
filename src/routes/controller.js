@@ -37,13 +37,13 @@ module.exports = (app) => {
 	app.use("/signup", signupRoutes);
 	app.use("/user", userRoutes);
 
-  // Somewhat Error handling for development purposes
+  	// Somewhat Error handling for development purposes
 	app.use((req, res) => {
 		console.log("Invalid URL processed: ", req.url);
 		res.status(404).render("404", {url: req.url});
 	});
 
-	app.use((err, req, res) => {
+	app.use((err, req, res, next) => {
 		console.log("Entered universal error handler");
 		console.log(err);
 		res.send("Something went wrong page.");
