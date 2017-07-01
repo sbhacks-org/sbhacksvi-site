@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/dannycho7/sbhacksiv#readme",
   "dependencies": {
-    "aws-sdk": "^2.43.0",
+    "aws-sdk": "^2.80.0",
     "bcryptjs": "^2.4.3",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
@@ -36,7 +36,7 @@
     "dotenv": "^4.0.0",
     "ejs": "^2.5.6",
     "express": "^4.15.2",
-    "express-form-post": "^1.2.1",
+    "express-form-post": "^1.2.2",
     "express-session": "^1.15.2",
     "helmet": "^3.6.0",
     "morgan": "^1.8.1",

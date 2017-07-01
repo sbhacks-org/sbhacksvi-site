@@ -24,16 +24,7 @@ router.get("/login", (req, res) => {
 	if (req.isAuthenticated()){
 		return res.redirect("/user/dashboard");
 	}
-	if (req.query.status == "unsuccessful") {
-		res.locals.message = "Wrong Username or Password. Please try again.";
-	}
-	if (req.query.status == "success") {
-		res.locals.message = "Successfully created an account";
-	}
-	if(req.query.message) {
-		res.locals.message = req.query.message;
-	}
-	res.render("login");
+	res.render("login", { message: req.flash("user") });
 });
 
 router.post("/login", (req, res, next) => {
@@ -43,7 +34,8 @@ router.post("/login", (req, res, next) => {
 			return next(err);
 		}
 		if (!user) {
-			return res.redirect("/user/login?message=" + info.message);
+			req.flash("login", info.message)
+			return res.redirect("/user/login");
 		}
 		req.logIn(user, (err) => {
 			if (err) {
@@ -66,10 +58,10 @@ router.get("/logout", (req, res) => {
 });
 
 router.get("/dashboard", isLoggedIn, (req, res) => {
-	if (req.query.message) {
-		res.locals.message = req.query.message;
-	}
-	res.render("dashboard", { user: req.user });
+	res.render("dashboard", {
+		user: req.user,
+		message: req.flash("user")
+	});
 });
 
 router.post("/update", isLoggedIn, (req, res, next) => {
@@ -77,11 +69,13 @@ router.post("/update", isLoggedIn, (req, res, next) => {
 	formPost.upload(req, res).then(() => {
 		console.log(req.files); // Remove during production
 		if(Object.keys(req.files) == 0) {
+			req.flash("user", "You need to upload a file");
 			return res.redirect("/user/dashboard?message=You need to upload a file");
 		}
 		updateTime(req.user).then(() => {
 			console.log("Successfully updated column \'updatedAt\'");
-			return res.redirect("/user/dashboard?message=Successfully updated account");
+			req.flash("user", "Successfully updated account");
+			return res.redirect("/user/dashboard");
 		}).catch((err) => {
 			console.log(err);
 			next(err);
