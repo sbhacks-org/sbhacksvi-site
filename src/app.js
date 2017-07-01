@@ -2,6 +2,7 @@
 const express = require("express");
 const path = require("path");
 const session = require("express-session");
+const flash = require("connect-flash");
 const MongoStore = require("connect-mongo")(session);
 const bodyParser = require("body-parser");
 const passport = require("./config/passport-setup")();
@@ -20,17 +21,16 @@ module.exports = (app) => {
 	app.use(helmet());
 	app.use(logger("dev"));
 
-	app.use(session(
-		{
-			secret: process.env.SESSION_SECRET,
-			resave: false,
-			saveUninitialized: false,
-			store: new MongoStore({
-				url: process.env.SESSION_STORE,
-				ttl: 14 * 24 * 60 * 60 
-			})
+	app.use(session({
+		secret: process.env.SESSION_SECRET,
+		resave: false,
+		saveUninitialized: false,
+		store: new MongoStore({
+			url: process.env.SESSION_STORE,
+			ttl: 14 * 24 * 60 * 60 
 		})
-  );
+	}));
+	app.use(flash());
 
 	// Passport initialize
 	app.use(passport.initialize());
