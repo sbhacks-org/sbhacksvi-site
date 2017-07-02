@@ -24,6 +24,13 @@ const subscriberRoutes = require(path.join(__dirname, "subscriberRoutes"));
  * Routes defined here
  */
 module.exports = (app) => {
+	
+	app.use((req, res, next) => {
+		res.locals.message = req.flash("info");
+		res.locals.user = req.user;
+		next();
+	});
+
 	// Merely just for current deployment
 	app.use("/subscribe", subscriberRoutes);
 	if(process.env.NODE_ENV == "production") {

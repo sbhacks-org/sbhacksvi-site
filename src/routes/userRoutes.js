@@ -24,7 +24,7 @@ router.get("/login", (req, res) => {
 	if (req.isAuthenticated()){
 		return res.redirect("/user/dashboard");
 	}
-	res.render("login", { message: req.flash("user") });
+	res.render("login");
 });
 
 router.post("/login", (req, res, next) => {
@@ -34,7 +34,7 @@ router.post("/login", (req, res, next) => {
 			return next(err);
 		}
 		if (!user) {
-			req.flash("login", info.message)
+			req.flash("info", info.message)
 			return res.redirect("/user/login");
 		}
 		req.logIn(user, (err) => {
@@ -57,35 +57,26 @@ router.get("/logout", (req, res) => {
 	}
 });
 
-router.get("/dashboard", isLoggedIn, (req, res) => {
-	res.render("dashboard", {
-		user: req.user,
-		message: req.flash("user")
+router.get("/dashboard", isLoggedIn, (req, res) => res.render("dashboard"));
+
+
+router.use("/update", isLoggedIn, formPost.middleware(), (req, res, next) => {
+	console.log(req.files); // Remove during production
+	if(Object.keys(req.files) == 0) {
+		req.flash("info", "You need to upload a file");
+		return res.redirect("/user/dashboard");
+	}
+	updateTime(req.user).then(() => {
+		req.flash("info", "Successfully updated account");
+		return res.redirect("/user/dashboard");
+	}).catch((err) => {
+		console.log(err);
+		next(err);
 	});
 });
 
-router.post("/update", isLoggedIn, (req, res, next) => {
-	// Request multipart body gets parsed through multer
-	formPost.upload(req, res).then(() => {
-		console.log(req.files); // Remove during production
-		if(Object.keys(req.files) == 0) {
-			req.flash("user", "You need to upload a file");
-			return res.redirect("/user/dashboard?message=You need to upload a file");
-		}
-		updateTime(req.user).then(() => {
-			console.log("Successfully updated column \'updatedAt\'");
-			req.flash("user", "Successfully updated account");
-			return res.redirect("/user/dashboard");
-		}).catch((err) => {
-			console.log(err);
-			next(err);
-		});
-	}).catch((err) => {
-		console.log(err);
-		res.status(300).send("Error");
-		
-	});
-
+router.use("/update", (err, req, res, next) => {
+	throw err; // temporary
 });
 
 module.exports = router;
