@@ -8,15 +8,15 @@ const models = require("../models");
 
 module.exports.validate = (req, done) => {
 	console.log(req.body);
-  // Expecting req.body as parameter
+	// Expecting req.body as parameter
 	if (req.body.transportation < 0 || req.body.transportation > 3) {
 		req.body.transportation = 0;
 	}
 	console.log("Entered validate function");
-  /*
-   * Add validation here. I'll add a dummy one Temporarily
-   * TODO : Add more legit validation
-   */
+	/*
+	 * Add validation here. I'll add a dummy one Temporarily
+	 * TODO : Add more legit validation
+	 */
 	if (!req.body.email) {
 		done(new Error("Please enter a valid email"), false);
 		return false;

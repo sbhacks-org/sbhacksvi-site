@@ -36,7 +36,6 @@ module.exports = () => {
 				email: username
 			}
 		}).then((user) => {
-      // console.log("Found", user);
 			if (!user) {
 				return done(new Error("No such user with email " + username + " exists"), false);
 			}

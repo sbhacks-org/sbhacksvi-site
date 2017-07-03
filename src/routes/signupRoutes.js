@@ -8,7 +8,7 @@ router.post("/", formPost.middleware(), (req, res, next) => {
 		if (err) return next(err);
 		req.logIn(user, (err) => {
 			if (err) return next(err);
-			req.flash("info", "Successfully created an account");
+			req.flash("info", info.message);
 			return res.redirect("/user/dashboard");
 		});
 	})(req, res, next);

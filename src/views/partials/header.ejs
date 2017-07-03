@@ -7,5 +7,7 @@
   </head>
   <body>
   <% if (locals.message) { %>
-    <h1><%- message %></h1>
+    <% for(let key in message) { %>
+      <h1><%- message[key] %></h1>
+    <% } %>
   <% } %>

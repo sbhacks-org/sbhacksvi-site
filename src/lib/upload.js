@@ -29,4 +29,4 @@ const formPost = efp({
 	}
 });
 
-module.exports = formPost
+module.exports = formPost;

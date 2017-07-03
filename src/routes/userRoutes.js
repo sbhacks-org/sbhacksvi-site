@@ -34,7 +34,7 @@ router.post("/login", (req, res, next) => {
 			return next(err);
 		}
 		if (!user) {
-			req.flash("info", info.message)
+			req.flash("info", info.message);
 			return res.redirect("/user/login");
 		}
 		req.logIn(user, (err) => {
