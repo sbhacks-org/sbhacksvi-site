@@ -14,10 +14,10 @@ module.exports = (app) => {
 	// Middleware
 	app.set("view engine", "ejs");
 	app.set("views", path.join(__dirname, "views"));
+	app.use(favicon(path.join(__dirname, "static/images", "favicon.ico")));
 	app.use(express.static(path.join(__dirname, "static")));
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({ extended: false }));
-	app.use(favicon(path.join(__dirname, "static/images", "favicon.ico")));
 	app.use(helmet());
 	app.use(logger("dev"));
 

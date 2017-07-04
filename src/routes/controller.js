@@ -2,12 +2,6 @@
  * This is the main controller for routes
  * All imports of component routes go here and are configured here
  */
-
-/*
- * Setting up aws config for all routing since aws will refer to the same instance
- * Lowkey scared of getting overcharged on this so... figure out how to prevent exploits before releasing
- * Important that I put this before importing routes since the routes utilize this instance of aws
- */
 const aws = require("aws-sdk");
 aws.config.update({
 	accessKeyId: process.env.AWS_ACCESS_KEY_ID,

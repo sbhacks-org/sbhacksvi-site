@@ -28,7 +28,6 @@ router.get("/login", (req, res) => {
 });
 
 router.post("/login", (req, res, next) => {
-
 	passport.authenticate("login", (err, user, info) => {
 		if (err) {
 			return next(err);
