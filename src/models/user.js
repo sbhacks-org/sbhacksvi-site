@@ -1,7 +1,7 @@
 "use strict";
 
 module.exports = function(sequelize, DataTypes) {
-	var user = sequelize.define("user", {
+	var User = sequelize.define("user", {
 		uid: {
 			type: DataTypes.UUID,
 			primaryKey: true,
@@ -104,17 +104,14 @@ module.exports = function(sequelize, DataTypes) {
 		accepted: {
 			type: DataTypes.BOOLEAN
 		}
-	}, {
-		classMethods: {
-			associate: function(models) {
-				user.belongsTo(models.school, {
-					foreignKey: {
-						allowNull: false
-					}
-				});
-			}
-		}
 	});
 
-	return user;
+	User.associate = function(models) {
+		User.belongsTo(models.school, {
+			foreignKey: {
+				allowNull: false
+			}
+		});
+	}
+	return User;
 };

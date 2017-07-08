@@ -8,7 +8,7 @@ router.post("/", formPost.middleware(), (req, res, next) => {
 		if (err) return next(err);
 		if (!user) {
 			req.flash("info", info.message);
-			return res.redirect("/signup");
+			return res.redirect("/signup");	
 		}
 		req.logIn(user, (err) => {
 			if (err) return next(err);
