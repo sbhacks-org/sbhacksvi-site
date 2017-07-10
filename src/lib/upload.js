@@ -7,11 +7,11 @@ const formPost = efp({
 	validateBody: function(body, cb) {
 		cb();
 	},
-	validateFile: function(fieldname, mimetype, cb) {
-		if(fieldname != "resume") {
-			return cb(new Error("Please do not try and upload more files than allowed"));
+	validateFile: function(file, cb, skip) {
+		if(file.fieldname != "resume") {
+			return skip();
 		}
-		if(mimetype != "application/pdf") {
+		if(file.mimetype != "application/pdf") {
 			return cb(new Error("File was not a pdf"));
 		}
 		cb();

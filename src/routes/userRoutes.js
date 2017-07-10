@@ -9,8 +9,8 @@ const formPost = efp({
 	filename: function(req, file, cb) {
 		cb(req.user.resume_key);
 	},
-	validateFile: function(fieldname, mimetype, cb) {
-		if(mimetype != "application/pdf") {
+	validateFile: function(file, cb) {
+		if(file.mimetype != "application/pdf") {
 			return cb(false);
 		}
 		cb();
