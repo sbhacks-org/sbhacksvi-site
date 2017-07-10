@@ -11,7 +11,7 @@ require("../app")(app);
 
 // Connecting to postgres database
 models.sequelize.sync({
-	// force: true // Temporary for development
+	logging: false
 }).then(() => {
 	console.log("Successfully migrated and connected to database");
 

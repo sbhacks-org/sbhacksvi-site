@@ -7,40 +7,38 @@
 const models = require("../models");
 
 module.exports.validate = (req, done) => {
-	console.log(req.body);
-  // Expecting req.body as parameter
-	if (req.body.transportation < 0 || req.body.transportation > 3) {
-		req.body.transportation = 0;
-	}
-	console.log("Entered validate function");
-  /*
-   * Add validation here. I'll add a dummy one Temporarily
-   * TODO : Add more legit validation
-   */
-	if (!req.body.email) {
-		done(new Error("Please enter a valid email"), false);
-		return false;
-	}
-	if(req.body.shirt_size != "S" && req.body.shirt_size != "M" && req.body.shirt_size != "L" && req.body.shirt_size != "XL") {
-		done(new Error("Not a valid shirt size"), false);
-		return false;
-	}
-	if (req.body.first_name && req.body.last_name && req.body.email && req.files.resume.Location && req.body.transportation && req.body.graduation_year) {
-    // these are the required fields
-	} else {
-		done(new Error("Missing Fields"), false);
-		return false;
-	}
-	if(req.body.linkedin != null && !req.body.linkedin.includes("linkedin")) {
-		req.body.linkedin = null;
-	}
-	if(req.body.github != null && !req.body.github.includes("github")) {
-		req.body.github = null;
-	}
-	return true;
+	return new Promise((resolve, reject) => {
+		// Expecting req.body as parameter
+		if (req.body.transportation < 0 || req.body.transportation > 3) {
+			req.body.transportation = 0;
+		}
+		/*
+		 * Add validation here. I'll add a dummy one Temporarily
+		 * TODO : Add more legit validation
+		 */
+		if (!req.body.email) {
+			return reject({ message: "Please enter a valid email"});
+		}
+
+		if(!["S", "M", "L", "XL"].includes(req.body.shirt_size)) {
+			return reject({message: "Not a valid shirt size" });
+		}
+		if(req.body.first_name && req.body.last_name && req.body.email && req.files.resume && req.body.transportation && req.body.graduation_year) {
+	    // these are the required fields
+		} else {
+			return reject({ message: "Missing Fields" });
+		}
+		if(req.body.linkedin != null && !req.body.linkedin.includes("linkedin")) {
+			req.body.linkedin = null;
+		}
+		if(req.body.github != null && !req.body.github.includes("github")) {
+			req.body.github = null;
+		}
+		return resolve();
+	});
 };
 
-module.exports.saveUser = (req, hash, done) => {
+module.exports.saveUser = (req, password_digest, done) => {
 	models.school.findOne({
 		where: {
 			name: "UC Santa Barbara" // Temporarily set as UC Santa Barbara
@@ -50,7 +48,7 @@ module.exports.saveUser = (req, hash, done) => {
 			first_name: req.body.first_name,
 			last_name: req.body.last_name,
 			email: req.body.email,
-			password: hash,
+			password: password_digest,
 			resume_url: req.files.resume.Location,
 			resume_key: req.files.resume.key,
 			schoolId: school.dataValues.id,
@@ -64,9 +62,9 @@ module.exports.saveUser = (req, hash, done) => {
 			shirt_size: req.body.shirt_size,
 			gender: req.body.gender
 		}).then((user) => {
-			return done(null, user, { message: "Successfully created an account" });
+			return done(null, user);
 		}).catch((err) => {
-			return done(err, false);
+			return done(err);
 		});
 	});
 };

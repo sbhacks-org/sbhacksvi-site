@@ -7,11 +7,11 @@ const formPost = efp({
 	validateBody: function(body, cb) {
 		cb();
 	},
-	validateFile: function(fieldname, mimetype, cb) {
-		if(fieldname != "resume") {
-			return cb(new Error("Please do not try and upload more files than allowed"));
+	validateFile: function(file, cb, skip) {
+		if(file.fieldname != "resume") {
+			return skip();
 		}
-		if(mimetype != "application/pdf") {
+		if(file.mimetype != "application/pdf") {
 			return cb(new Error("File was not a pdf"));
 		}
 		cb();
@@ -19,7 +19,6 @@ const formPost = efp({
 	filename: function(req, file, cb) {
 		bcrypt.genSalt(10, function(err, salt) {
 			bcrypt.hash(Date.now().toString() + file.originalname, salt, (err, hash) => {
-				console.log("File name:", hash.replace(/\//g, "_") + file.originalname);
 				cb(hash.replace(/\//g, "_").substr(0,8) + Date.now() + "\/" + file.originalname);
 			});
 		});
@@ -30,4 +29,4 @@ const formPost = efp({
 	}
 });
 
-module.exports = formPost
+module.exports = formPost;

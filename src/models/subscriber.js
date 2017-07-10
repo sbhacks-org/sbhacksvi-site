@@ -1,6 +1,6 @@
 "use strict";
 module.exports = function(sequelize, DataTypes) {
-	var subscriber = sequelize.define("subscriber", {
+	var Subscriber = sequelize.define("subscriber", {
 		email: {
 			type: DataTypes.STRING,
 			allowNull: false,
@@ -9,12 +9,6 @@ module.exports = function(sequelize, DataTypes) {
 				isEmail: true
 			}
 		}
-	}, {
-		classMethods: {
-			associate: function(models) {
-        // associations can be defined here
-			}
-		}
 	});
-	return subscriber;
+	return Subscriber;
 };

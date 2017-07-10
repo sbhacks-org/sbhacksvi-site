@@ -18,35 +18,31 @@ module.exports = () => {
 				uid: id
 			}
 		}).then((user) => {
-			if(user){
-				return done(null, user);
-			}
-			return done(new Error("I hope this error gets handled"), false);
+			done(null, user);
 		}).catch((err) => {
-			return done(new Error(err.message), false);
+			return done(err, undefined);
 		});
 	});
 
 	passport.use("login", new LocalStrategy({
 		usernameField: "email",
 		passwordField: "password"
-	}, (username, password, done) => {
+	}, (email, password, done) => {
 		models.user.findOne({
 			where: {
-				email: username
+				email: email
 			}
 		}).then((user) => {
-      // console.log("Found", user);
 			if (!user) {
-				return done(new Error("No such user with email " + username + " exists"), false);
+				return done(null, false, { message: "No such user with email " + email + " exists" });
 			}
 			bcrypt.compare(password, user.password, (err, res) => {
-				if (err) { throw err; }
+				if (err) { done(err); }
 				if (res) {
 					return done(null, user);
 				}
 				else {
-					return done(new Error("invalid password"), false);
+					return done(null, false, { message: "invalid password" });
 				}
 			});
 		});
@@ -56,16 +52,18 @@ module.exports = () => {
 		passReqToCallback: true,
 		usernameField: "email",
 		passwordField: "password"
-	}, (req, username, password, done) => {
-
-		if(signUpMethods.validate(req, done)){
+	}, (req, email, password, done) => {
+		signUpMethods.validate(req, done)
+		.then(() => {
 			bcrypt.genSalt(10, (err, salt) => {
-				bcrypt.hash(req.body.password, salt, (err, hash) => {
-					signUpMethods.saveUser(req, hash, done);
+				bcrypt.hash(req.body.password, salt, (err, password_digest) => {
+					signUpMethods.saveUser(req, password_digest, done);
 				});
 			});
-		}
-
+		})
+		.catch((info) => {
+			done(null, false, info);
+		});
 	}));
 
 	return passport;

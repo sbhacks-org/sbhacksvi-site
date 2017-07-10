@@ -3,34 +3,30 @@ const models = require("../models/index");
 const passport = require("passport");
 const formPost = require("../lib/upload");
 
-router.post("/", (req, res, next) => {
-	// Request multipart body gets parsed through multer
-	formPost.upload(req, res).then(() => {
-		console.log("Files:",req.files); // Remove during production
-		passport.authenticate("signup", (err, user, info) => {
-			if (err) {
-				req.flash("user", err.message);
-				return res.redirect("/signup");
-			}
-			req.logIn(user, (err) => {
-				if (err) {
-					throw err;
-				}
-				req.flash("user", "Successfully created an account");
-				return res.redirect("/user/dashboard");
-			});
-		})(req, res, next);
-	}).catch((err) => {
-		req.flash("user", err.message);
-		return res.redirect("/signup");
-	});
+router.post("/", formPost.middleware(), (req, res, next) => {
+	passport.authenticate("signup", (err, user, info) => {
+		if (err) return next(err);
+		if (!user) {
+			req.flash("info", info.message);
+			return res.redirect("/signup");	
+		}
+		req.logIn(user, (err) => {
+			if (err) return next(err);
+			req.flash("info", "Successfully created an account");
+			return res.redirect("/user/dashboard");
+		});
+	})(req, res, next);
+});
+
+// efp error catcher
+router.use("/", (err, req, res, next) => {
+	req.flash("info", err.message);
+	return res.redirect("/signup");
 });
 
 router.get("/", (req, res) => {
-	if (req.isAuthenticated()) {
-		return res.redirect("/user/dashboard");
-	}
-	res.render("signup", { message: req.flash("user") });
+	if (req.isAuthenticated()) return res.redirect("/user/dashboard");
+	res.render("signup");
 });
 
 // route for validating unique email (/signup/unique)
@@ -41,9 +37,9 @@ router.post("/unique", (req, res) => {
 		}
 	}).then((result) => {
 		if(result){
-			return res.json({ unique: "no" });
+			return res.json({ unique: false });
 		}
-		return res.json({ unique: "yes" });
+		return res.json({ unique: true });
 	}).catch((err) => {
 		throw err;
 	});

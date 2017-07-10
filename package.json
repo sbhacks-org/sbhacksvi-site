@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/dannycho7/sbhacksiv#readme",
   "dependencies": {
-    "aws-sdk": "^2.80.0",
+    "aws-sdk": "^2.82.0",
     "bcryptjs": "^2.4.3",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
@@ -38,7 +38,7 @@
     "dotenv": "^4.0.0",
     "ejs": "^2.5.6",
     "express": "^4.15.2",
-    "express-form-post": "^1.2.2",
+    "express-form-post": "^1.3.0",
     "express-session": "^1.15.2",
     "helmet": "^3.6.0",
     "morgan": "^1.8.1",
@@ -49,7 +49,7 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-router-dom": "^4.1.1",
-    "sequelize": "^3.30.4",
+    "sequelize": "^4.2.1",
     "sequelize-cli": "^2.7.0",
     "serve-favicon": "^2.4.2"
   },

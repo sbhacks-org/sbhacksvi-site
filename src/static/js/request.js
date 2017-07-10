@@ -14,7 +14,7 @@ function handleSubmit(form){
 		if(xhr.readyState == 4){
 			if(xhr.status == 200){
 				var response = JSON.parse(xhr.responseText).unique;
-				if(response == "yes"){
+				if(response){
 					var file = document.getElementById("resume-input").files[0];
 					if(fileValidation(file) == true){
 						form.submit();
