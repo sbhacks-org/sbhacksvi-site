@@ -13,6 +13,7 @@ const defaultRoutes = require(path.join(__dirname, "defaultRoutes"));
 const signupRoutes = require(path.join(__dirname, "signupRoutes"));
 const userRoutes = require(path.join(__dirname, "userRoutes"));
 const subscriberRoutes = require(path.join(__dirname, "subscriberRoutes"));
+const liveRoutes = require(path.join(__dirname, "liveRoutes"));
 
 /*
  * Routes defined here
@@ -37,6 +38,7 @@ module.exports = (app) => {
 	app.use("/", defaultRoutes);
 	app.use("/signup", signupRoutes);
 	app.use("/user", userRoutes);
+	app.use("/live", liveRoutes);
 
 	// Somewhat Error handling for development purposes
 	app.use((req, res) => {
