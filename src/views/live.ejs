@@ -1,0 +1,98 @@
+<html>
+	<head>
+		<link rel='stylesheet' type="text/css" href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' />
+		<link rel="stylesheet" type="text/css" href="/css/livepage.css" />
+
+		<title>SB Hacks IV: Live</title>
+	</head>
+	<body>
+		<nav>
+		  <ul>
+		    <li><a href="http://sbhacks.com" style="color:#98DFAF;">SB Hacks IV</a></li>
+		    <li class="active"><a href="#FAQ">FAQ</a></li>
+		    <li><a href="#Schedule">Schedule</a></li>
+		    <li><a href="#Map">Map</a></li>
+		    <li><a href="#Challenges">Challenges</a></li>
+		  </ul>
+		</nav>
+		<div class="row">
+			<h1 class="title">Live Page</h1>
+			<p> Welcome to SB Hacks Live Page, where you can obtain the newest information about this event!</p>
+			<p>Please log into our slack channel for help and other activities.</p>
+		</div>
+		<div id="project" class="row">
+			<p class="stitle">Project Due On Sunday 10AM</p>
+			<p id="demo"></p>
+
+			<script>
+			// Set the date we're counting down to
+			var countDownDate = new Date("Jan 21, 2018 10:00:00").getTime();
+
+			// Update the count down every 1 second
+			var x = setInterval(function() {
+
+			    // Get todays date and time
+			    var now = new Date().getTime();
+			    
+			    // Find the distance between now an the count down date
+			    var distance = countDownDate - now;
+			    
+			    // Time calculations for days, hours, minutes and seconds
+			    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+			    
+			    // Output the result in an element with id="demo"
+			    document.getElementById("demo").innerHTML = days + " days " + hours + " hours "
+			    + minutes + " minutes " + seconds + " seconds ";
+			    
+			    // If the count down is over, write some text 
+			    if (distance < 0) {
+			        clearInterval(x);
+			        document.getElementById("demo").innerHTML = "Thank you for submitting. Results will be annouced soon!";
+			    }
+			}, 1000);
+			</script>
+
+			<a href="#"><img class="icon" src="./images/devpost.svg"> Submit Now!</a>
+			<br>
+			<br>
+		</div>
+		<br>
+		<div class="row">
+			<div id= "twitter-row" class="col-md-6">
+				<a class="twitter-timeline tw-align-center" data-height="40%" data-width="100%" data-theme="dark" href="https://twitter.com/SB_Hacks">Tweets by SB_Hacks</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+			</div>
+			<div id="side-info" class="col-md-6">
+				<br>
+				<br>
+				<p>Slack: <br><a href="http://localhost:5000/live">SBHACKSIV_STUB.slack.com</a></p>
+				<p>Incidence Report: <br><a href="http://localhost:5000/live"> STUB bit.ly LINK HERE</a></p>
+
+				<p>Wi-Fi SSID: <br>
+				<span style="color: white;">Edurom (UC students only)</span> <br>Password: <br>
+				<span style="color: white;">#Your password for your UC account</span></p>
+
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<h1 class="title" id="FAQ">FAQ</h1>
+		</div>
+		<div class="row">
+			<h1 class="title" id="Schedule">Schedule</h1>
+		</div>
+		<div class="row">
+			<h1 class="title" id="Map">Map</h1>
+			<iframe width="80%" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJcQL6_m0_6YAR9rR5ZjAzxVU&key=AIzaSyDAv2h8__EcJ19DzMw_UEEKY_81kMbPQ0o" allowfullscreen></iframe>
+		</div>
+		<div class="row">
+			<h1 class="title" id="Challenges">Challenges</h1>
+		</div>
+		<br>
+	</body>
+</html>
+
+
+
