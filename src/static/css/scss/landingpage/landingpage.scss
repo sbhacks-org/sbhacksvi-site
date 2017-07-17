@@ -2,6 +2,7 @@ $l-blue: #33ccff;
 $d-green: #5FB49C;
 $l-green: #98DFAF;
 $gray: #bbbbbb;
+$purple: #414288;
 
 
 @import url('https://fonts.googleapis.com/css?family=Raleway');
@@ -11,7 +12,7 @@ $gray: #bbbbbb;
 @import 'modal';
 
 html, body {
-  background-color: #414288;
+  background-color: $purple;
   padding: 0;
   margin: 0;
   text-align: center;
@@ -25,10 +26,7 @@ body {
 }
 
 #container {
-  display: table-cell;
-  vertical-align: middle;
   padding: 2.5% 0;
-  position: relative;
 }
 
 .logo-img {
@@ -69,4 +67,5 @@ a {
   }
 }
 
+@import 'faq';
 @import 'responsive';

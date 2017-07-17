@@ -174,10 +174,7 @@ body {
   display: table; }
 
 #container {
-  display: table-cell;
-  vertical-align: middle;
-  padding: 2.5% 0;
-  position: relative; }
+  padding: 2.5% 0; }
 
 .logo-img {
   width: 25%;
@@ -208,6 +205,55 @@ a {
   text-decoration: underline; }
   a:hover {
     color: #5FB49C; }
+
+#faq h1 {
+  font-size: 3em; }
+
+#faq ul {
+  list-style-type: none;
+  padding: 0; }
+  #faq ul li {
+    vertical-align: top;
+    display: inline-block;
+    width: 480px;
+    height: 400px;
+    background-color: #98DFAF;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 20px; }
+    #faq ul li div {
+      height: 180px;
+      width: 400px;
+      padding: 0 40px; }
+      #faq ul li div h2 {
+        display: inline-block;
+        width: 200px;
+        color: #414288;
+        text-align: right;
+        vertical-align: middle;
+        text-transform: uppercase; }
+      #faq ul li div img {
+        display: inline-block;
+        vertical-align: middle;
+        width: 150px;
+        padding: 0px 25px; }
+    #faq ul li p {
+      display: table-cell;
+      margin: 0;
+      height: 200px;
+      width: 400px;
+      padding: 0 50px;
+      vertical-align: middle;
+      color: black; }
+
+@keyframes pop {
+  50% {
+    transform: scale(0.85); }
+  100% {
+    transform: scale(1); } }
+  #faq ul li:hover div img {
+    animation-name: pop;
+    animation-duration: 0.75s; }
 
 @media only screen and (max-width: 860px) {
   button {
