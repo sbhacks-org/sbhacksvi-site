@@ -1,3 +1,4 @@
+require("dotenv").config();
 const nodemailer = require("nodemailer");
 const bunyan = require("bunyan");
 
@@ -11,6 +12,8 @@ let transporter = nodemailer.createTransport({
         name: 'nodemailer'
     }),
     debug: (process.env.NODE_ENV != "production") // include SMTP traffic in the logs
+}, {
+	from: `SB Hacks IV <${process.env.EMAIL}>`
 });
 
 module.exports = transporter
