@@ -11,7 +11,7 @@ router.post("/", formPost.middleware(), (req, res, next) => {
 		req.logIn(user, (err) => {
 			if (err) return next(err);
 			req.flash("info", "Successfully created an account");
-			return res.redirect("/user/dashboard");
+			return res.redirect("/dashboard");
 		});
 	})(req, res, next);
 });
@@ -23,7 +23,7 @@ router.use("/", (err, req, res, next) => {
 });
 
 router.get("/", (req, res) => {
-	if (req.isAuthenticated()) return res.redirect("/user/dashboard");
+	if (req.isAuthenticated()) return res.redirect("/dashboard");
 	res.render("signup");
 });
 

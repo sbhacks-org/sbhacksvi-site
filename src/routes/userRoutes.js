@@ -22,7 +22,7 @@ const formPost = efp({
 });
 router.get("/login", (req, res) => {
 	if (req.isAuthenticated()){
-		return res.redirect("/user/dashboard");
+		return res.redirect("/dashboard");
 	}
 	res.render("login");
 });
@@ -34,13 +34,13 @@ router.post("/login", (req, res, next) => {
 		}
 		if (!user) {
 			req.flash("info", info.message);
-			return res.redirect("/user/login");
+			return res.redirect("/login");
 		}
 		req.logIn(user, (err) => {
 			if (err) {
 				return next(err);
 			}
-			return res.redirect("/user/dashboard");
+			return res.redirect("/dashboard");
 		});
 	})(req, res, next);
 
@@ -63,11 +63,11 @@ router.use("/update", isLoggedIn, formPost.middleware(), (req, res, next) => {
 	console.log(req.files); // Remove during production
 	if(Object.keys(req.files) == 0) {
 		req.flash("info", "You need to upload a file");
-		return res.redirect("/user/dashboard");
+		return res.redirect("/dashboard");
 	}
 	updateTime(req.user).then(() => {
 		req.flash("info", "Successfully updated account");
-		return res.redirect("/user/dashboard");
+		return res.redirect("/dashboard");
 	}).catch((err) => {
 		console.log(err);
 		next(err);

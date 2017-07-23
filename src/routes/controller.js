@@ -37,7 +37,7 @@ module.exports = (app) => {
 
 	app.use("/", defaultRoutes);
 	app.use("/signup", signupRoutes);
-	app.use("/user", userRoutes);
+	app.use("/", userRoutes);
 	app.use("/live", liveRoutes);
 
 	// Somewhat Error handling for development purposes

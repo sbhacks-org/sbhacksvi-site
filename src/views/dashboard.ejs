@@ -12,13 +12,12 @@
   </p>
   <p><a href= <%- user['resume_url'] %> >Resume</a></p>
 
-  <form action="/user/update" method="POST" enctype="multipart/form-data">
+  <form action="/update" method="PUT" enctype="multipart/form-data">
     <label class="btn btn-default btn-file">
         <input id="resume-input" type="file" name="resume" hidden>
     </label>
     <button type="submit" class="btn btn-primary">Update Resume</button>
   </form>
-
-  <a href = '/user/logout'>Logout</a>
+  <a href = '/logout'>Logout</a>
 
 <%- include ./partials/footer.ejs %>
