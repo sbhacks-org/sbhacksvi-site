@@ -8,6 +8,10 @@ module.exports = function(sequelize, DataTypes) {
 			validate: {
 				isEmail: true
 			}
+		},
+		notified: {
+			type: DataTypes.BOOLEAN,
+			allowNull: true
 		}
 	});
 	return Subscriber;
