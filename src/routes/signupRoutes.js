@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const models = require("../models/index");
+const User = require("../models/index").user;
 const passport = require("passport");
 const formPost = require("../lib/upload");
 const signupMail = require("../mailer/mail_signup_success");
@@ -29,7 +29,7 @@ router.get("/", (req, res) => {
 
 // route for validating unique email (/signup/unique)
 router.post("/unique", (req, res) => {
-	models.user.findOne({
+	User.findOne({
 		where: {
 			email: req.body.email
 		}

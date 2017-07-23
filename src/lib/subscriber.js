@@ -1,7 +1,7 @@
-const models = require("../models/index");
+const Subscriber = require("../models/index").subscriber;
 
 module.exports.saveSubscriber = (req, res) => {
-	models.subscriber.create({
+	Subscriber.create({
 		email: req.body.email
 	}).then(() => {
 		// Success
