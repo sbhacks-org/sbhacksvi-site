@@ -2,14 +2,12 @@ const router = require("express").Router();
 const models = require("../models/index");
 const passport = require("passport");
 const formPost = require("../lib/upload");
+const signupMail = require("../mailer/mail_signup_success");
 
 router.post("/", formPost.middleware(), (req, res, next) => {
 	passport.authenticate("signup", (err, user, info) => {
-		if (err) return next(err);
-		if (!user) {
-			req.flash("info", info.message);
-			return res.redirect("/signup");	
-		}
+		if (err || !user) return next(err || info.message);
+		signupMail.send(user);
 		req.logIn(user, (err) => {
 			if (err) return next(err);
 			req.flash("info", "Successfully created an account");
