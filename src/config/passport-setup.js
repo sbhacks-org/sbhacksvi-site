@@ -32,7 +32,7 @@ passport.use("login", new LocalStrategy({
 		}
 	}).then((user) => {
 		if (!user) {
-			return done(null, false, { message: "No such user with email " + email + " exists" });
+			return done(null, false, { message: "Invalid credentials" });
 		}
 		bcrypt.compare(password, user.password, (err, res) => {
 			if (err) { done(err); }
@@ -40,7 +40,7 @@ passport.use("login", new LocalStrategy({
 				return done(null, user);
 			}
 			else {
-				return done(null, false, { message: "invalid password" });
+				return done(null, false, { message: "Invalid credentials" });
 			}
 		});
 	});
