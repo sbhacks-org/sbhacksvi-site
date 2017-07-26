@@ -68,8 +68,36 @@
 		li:hover div  {
 				img {
 					animation-name: pop;
-					animation-duration: 0.75s;
+					animation-duration: 0.5s;
 				}				
+		}
+	}
+}
+
+@media all and (max-width: 570px) {
+	#faq ul li {
+		width: 85%;
+		height: auto;
+		padding: 10px 0;
+
+		div {
+			height: auto;
+			padding: 0;
+			width: 100%;
+
+			* {
+				text-align: center;
+			}
+
+			h2 {
+				text-align: center;
+				width: 100%;
+				display: block !important;
+			}
+
+			img {
+				padding: 0;
+			}
 		}
 	}
 }

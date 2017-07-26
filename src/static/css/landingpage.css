@@ -253,7 +253,25 @@ a {
     transform: scale(1); } }
   #faq ul li:hover div img {
     animation-name: pop;
-    animation-duration: 0.75s; }
+    animation-duration: 0.5s; }
+
+@media all and (max-width: 520px) {
+  #faq ul li {
+    width: 85%;
+    height: auto;
+    padding: 10px 0; }
+    #faq ul li div {
+      height: auto;
+      padding: 0;
+      width: 100%; }
+      #faq ul li div * {
+        text-align: center; }
+      #faq ul li div h2 {
+        text-align: center;
+        width: 100%;
+        display: block !important; }
+      #faq ul li div img {
+        padding: 0; } }
 
 @media only screen and (max-width: 860px) {
   button {
