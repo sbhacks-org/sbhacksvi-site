@@ -208,7 +208,7 @@ a {
     color: #5FB49C; }
 
 #faq h1 {
-  font-size: 3em; }
+  font-size: 5em; }
 
 #faq ul {
   list-style-type: none;
@@ -273,54 +273,6 @@ a {
         display: block !important; }
       #faq ul li div img {
         padding: 0; } }
-
-@media only screen and (max-width: 860px) {
-  button {
-    font-size: 16px;
-    margin-bottom: 1px; }
-  h1 {
-    font-size: 1.8em; } }
-
-@media all and (max-width: 660px) {
-  .logo {
-    font-size: 6em; } }
-
-@media all and (max-width: 530px) {
-  .logo {
-    font-size: 5em; }
-  #date {
-    font-size: 2em; }
-  .btn {
-    font-size: 1em;
-    padding: 1em 1.75em; }
-  #container > p {
-    font-size: 1.2em; } }
-
-@media all and (max-width: 430px) {
-  .logo {
-    font-size: 4em; }
-  #date {
-    font-size: 1.5em; }
-  .btn {
-    font-size: 1em;
-    padding: 1em 1.75em; }
-  #container > p {
-    font-size: 1em; } }
-
-@media all and (max-width: 412px) {
-  #modal button {
-    margin-top: 10px; } }
-
-@media all and (max-width: 350px) {
-  .logo {
-    font-size: 3.5em; }
-  #date {
-    font-size: 1.5em; }
-  .btn {
-    font-size: 1em;
-    padding: 0.75em 1.5em; }
-  #container > p {
-    font-size: 1em; } }
 
 #container {
   height: 90vh;
@@ -540,10 +492,13 @@ a {
   color: #33ccff; }
 
 #starttext {
-  width: 25%;
+  width: 60%;
   display: block;
   margin: 0 auto;
   color: #33ccff; }
+
+#containertext {
+  margin-top: 5%; }
 
 @keyframes road-moving {
   0% {
@@ -1109,3 +1064,51 @@ a {
   border-radius: 50px;
   box-shadow: 100px 0 0 #fff;
   background: #fff; }
+
+@media only screen and (max-width: 860px) {
+  button {
+    font-size: 16px;
+    margin-bottom: 1px; }
+  h1 {
+    font-size: 1.8em; } }
+
+@media all and (max-width: 660px) {
+  .logo {
+    font-size: 6em; } }
+
+@media all and (max-width: 530px) {
+  .logo {
+    font-size: 5em; }
+  #date {
+    font-size: 2em; }
+  .btn {
+    font-size: 1em;
+    padding: 1em 1.75em; }
+  #container > p {
+    font-size: 1.2em; } }
+
+@media all and (max-width: 430px) {
+  .logo {
+    font-size: 4em; }
+  #date {
+    font-size: 1.5em; }
+  .btn {
+    font-size: 1em;
+    padding: 1em 1.75em; }
+  #container > p {
+    font-size: 1em; } }
+
+@media all and (max-width: 412px) {
+  #modal button {
+    margin-top: 10px; } }
+
+@media all and (max-width: 350px) {
+  .logo {
+    font-size: 3.5em; }
+  #date {
+    font-size: 1.5em; }
+  .btn {
+    font-size: 1em;
+    padding: 0.75em 1.5em; }
+  #container > p {
+    font-size: 1em; } }
