@@ -23,36 +23,137 @@
 	</head>
 <body>
 	<div id="container">
-		<h1 class="logo">SB Hacks IV</h1>
+		<div id="containertext">
+			<h1 class="logo">SB Hacks</h1>
+			<h2 id="subtext">#MAKEWAVES</h2>
 
-		<h1 id="date">January 19-21, 2018</h1>
-
-		<div class="row">
-			<!-- Credit to Giana from codepen for button styling https://codepen.io/giana/ -->
-			<a href="http://sbhacksiii.herokuapp.com">
-				<button class="btn draw-border">Past Site</button>
-			</a>
-
-			<button class="btn draw-border trigger">Signup</button>
+			<p id="starttext">
+				UCSB's 3rd annual hackathon is a 36 hour event fostering innovation and creativity through learning by doing, with some wicked prizes up for grabs. While taking breaks from building your projects, you'll enjoy free meals, attend fun mini-events, interact with sponsors, and make some friends along the way. Hope to see you there!
+			</p>
 		</div>
 		
-		<div id="modal-wrapper">
-			<div id="modal">
-				<h3>Applications are not yet open</h3>
-				<p>Feel free to leave your email here and we will notify you as soon as it is released</p>
-				<div id="subscribe_container">
-					<form action="/" id="subscribe">
-						<label for="email">Email: </label>
-						<input type="email" name="email" id="email-input" />
-						<button type="submit">Submit</button>
-					</form>
-				</div>
+				
+
+		
+
+		<div id="road"></div>
+		
+		<div class="sidewalkcontainer">
+			<div id="sidewalklip"></div>
+			<div id="sidewalk"></div>
+
+			<% for(var i=1; i<=6; i++) {%>
+			   <div class="sidewalktick sidewalktick<%= i %>"></div>
+			   <div class="sidewalktick sidewalktickupper sidewalktick<%= i %>"></div>
+			<% } %>
+		</div>
+		
+		<span id="background">
+			<div id="grass"></div>
+
+			<% for(var i=1; i<=6; i++) {%>
+			   <img src="images/tree.png" class="tree tree<%= i %>"></img>
+			<% } %>
+
+			<% for(var i=0; i<=9; i++) {%>
+			   <span class="roadtick roadtick<%= i %>"></span>
+			<% } %>
+
+			<img src="images/woodstocks.png" id="woodstocks"></img>
+			<p id="opensign">Open Now</p>
+
+			<div id="street">
+				<div id="pole"></div>
+				<div id="sign">Embarcadero<br/>del<br/>Norte</div>
 			</div>
-		</div>
+		</span>
 		
-		<p>Interested in being a sponsor? <br /> Shoot us an email at <a href="mailto:ucsbhacks@gmail.com">ucsbhacks@gmail.com</a></p>
+		<div class="car">
+			<div class="car-body">
+				<div class="car-top-back">
+					<div class="back-curve"></div>
+				</div>
+				<div class="car-gate"></div>
+				<div class="car-top-front">
+					<div class="wind-sheild"></div>
+				</div>
+				<div class="bonet-front"></div>
+				<div class="stepney"></div>
+			</div>
+			<div class="boundary-tyre-cover">
+				<div class="boundary-tyre-cover-back-bottom"></div>
+				<div class="boundary-tyre-cover-inner"></div>	
+			</div>
+			<div class="tyre-cover-front">
+				<div class="boundary-tyre-cover-inner-front"></div>
+			</div>
+			<div class="base-axcel">
+				
+			</div>
+			<div class="front-bumper"></div>
+			<div class="tyre">		
+				<div class="gap"></div>	
+			</div>
+			<div class="tyre front">
+				<div class="gap"></div>	
+			</div>
+			<div class="car-shadow"></div>
+		</div>
 	</div>
 
+	<div id="faq">
+		<h1>FAQ</h1>
+		<ul>
+			<li>
+				<div>
+					<h2>What's a hackathon</h2><img src="/images/bike.png" />	
+				</div>
+				<p>Hackathons are often described as a hybrid between a career fair and a science fair. A creative community of programmers - from novices to experienced - come together for 36 hours to make amazing projects. The projects are then judged by tech professionals from the industry and from academia.</p>
+			</li>
+			<li>
+				<div>
+					<h2>How much does it cost to attend</h2><img src="/images/bike.png" />
+				</div>
+				<p>Admission to the event, food, and swag will all be FREE. We'll be providing busses to select schools in California.</p>
+			</li>
+			<li>
+				<div>
+					<h2>Who can attend</h2><img src="/images/bike.png" />
+				</div>
+				<p>SB Hacks is accepting college students, graduate / PhD students, and high school students who are 18 or older.</p>
+			</li>
+			<li>
+				<div>
+					<h2>Can I have a team</h2><img src="/images/bike.png" />
+				</div>
+				<p>You can compete with up to 4 teammates. If you don't have a team, don't worry about it! We will match you up with compatible teammates at the event.</p>
+			</li>
+			<li>
+				<div>
+					<h2>What can I win</h2><img src="/images/bike.png" />
+				</div>
+				<p>Our prizes and their accompanying page is in the works and will be up shortly before the event!</p>
+			</li>
+			<li>
+				<div>
+					<h2>What should I bring</h2><img src="/images/bike.png" />
+				</div>	
+				<p>Bring your laptop, overnight gear, a water bottle, and a photo ID. MLH will be providing a hardware lab.</p>
+			</li>
+			<li>
+				<div>
+					<h2>When will acceptances come out</h2><img src="/images/bike.png" />
+				</div>
+				<p>Acceptances went out in early January, if you have questions about your registration email us.</p>
+			</li>
+			<li>
+				<div>
+					<h2>More Questions</h2><img src="/images/bike.png" />
+				</div>
+				<p>Feel free to email us with any questions at ucsbhacks@gmail.com</p>
+			</li>
+		</ul>
+	</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"
 		  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="

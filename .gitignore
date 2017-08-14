@@ -5,3 +5,4 @@ bundle.js
 .DS_Store
 .idea/
 db/
+src/static/css/*.css

@@ -1,0 +1,232 @@
+#container {
+	height: 90vh;
+	width: 100%;
+	position: relative;
+	overflow-x: hidden;
+	min-height: 750px;
+}
+
+#beach {
+	height: 5vh;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	background-color: rgb(254, 235, 198);
+}
+
+.tree {
+	width: 10%;
+	position: absolute;
+	bottom: 20vw;
+}
+
+.tree3 {
+	left: 3vw;
+	bottom: 11vh;
+	width: 5%;
+}
+.tree2 {
+	left: 7vw;
+	bottom: 12vh;
+	width: 8%;
+}
+.tree1 {
+	left: 4vw;
+	bottom: 12vh;
+}
+
+.tree4 {
+	left: 25vw;
+	bottom: 11vh;
+	width: 10%;
+}
+.tree5 {
+	left: 80vw;
+	bottom: 11vh;
+	width: 11%;
+}
+.tree6 {
+	left: 80vw;
+	bottom: 12vh;
+	width: 6%;
+}
+
+#road {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 5vh;
+	background-color: #665;
+}
+
+.roadtick {
+	border-bottom: 1vh solid yellow;
+	border-left: 0.05vh solid transparent;
+	border-right: 0.05vh solid transparent;
+
+	height: 0;
+    width: 6vw;
+    position: absolute;
+    bottom: 2vh;
+}
+
+@for $i from 0 through 9 {
+	.roadtick#{$i} {
+		left: 10vw * $i;
+	}
+}
+
+#grass {
+	height: 3vh;
+	width: 100%;
+	background-color: rgb(19,146,73);
+	position: absolute;
+	bottom: 10vh;
+}
+
+.sidewalkcontainer {
+	position: absolute;
+	bottom: 5vh;
+	width: 100%;
+	height: 5vh;
+}
+
+#sidewalklip {
+	height: 1vh;
+	width: 100%;
+	background-color: rgb(187,188,190);
+	position: absolute;
+	bottom: 0vh;
+}
+
+#sidewalk {
+	height: 4vh;
+	width: 100%;
+	background-color: rgb(208,209,211);
+	position: absolute;
+	bottom: 1vh;
+}
+
+.sidewalktick {
+	position: absolute;
+	bottom: 0vh;
+	height: 1vh;
+	background-color: #999;
+	width: 1px;
+}
+
+.sidewalktickupper {
+	position: absolute;
+	bottom: 1vh;
+	height: 6vh;
+}
+
+@for $i from 1 through 6 {
+	.sidewalktick#{$i} {
+		left: 15vw * $i;
+		transform-origin: bottom;
+	}
+}
+
+.sidewalktickupper.sidewalktick1 {
+	transform: rotate(7deg);
+}
+
+.sidewalktickupper.sidewalktick2 {
+	transform: rotate(5deg);
+}
+
+.sidewalktickupper.sidewalktick3 {
+	transform: rotate(2deg);
+}
+
+.sidewalktickupper.sidewalktick4 {
+	transform: rotate(-2deg);
+}
+
+.sidewalktickupper.sidewalktick5 {
+	transform: rotate(-5deg);
+}
+
+.sidewalktickupper.sidewalktick6 {
+	transform: rotate(-7deg);
+}
+
+#woodstocks {
+	position: absolute;
+	bottom: 10vh;
+	left: 50vw;
+	width: 25vw;
+}
+
+#opensign {
+	font-family: Pacifico;
+	color: #FFDD1B;
+	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FFDD1B, 0 0 35px #FFDD1B, 0 0 40px #FFDD1B, 0 0 50px #FFDD1B, 0 0 75px #FFDD1B;
+	position: absolute;
+	left: 50.5vw;
+	width: 25vw;
+	text-align: center;
+	font-size: 1vw;
+	bottom: 10vh;
+	height: 10vw;
+}
+
+#pole {
+	height: 10vw;
+	position: absolute;
+	bottom: 10vh;
+	width: 5px;
+	background-color: #888;
+	left: 37vw;
+}
+#sign {
+	position: absolute;
+	
+	background-color: #825a2c;
+	border-radius: 10%;
+	font-weight: bold;
+	left: 36vw;
+	color: white;
+	padding: 0 2%;
+	font-size: 1vw;
+	bottom: calc(10vh + 10vw);
+}
+
+#subtext {
+	font-family: 'Josefin Sans', sans-serif;
+  	font-size: 3em;
+  	color: $l-blue;
+}
+
+#starttext	 {
+	width: 60%;
+	display: block;
+	margin: 0 auto;
+	color: $l-blue;
+}
+
+#containertext {
+	margin-top: 5%;
+}
+
+
+@keyframes road-moving {
+		0% {
+			transform: translate(-101vw) scaleX(1);
+		}
+
+
+        50% {
+            transform: translate(101vw) scaleX(1);
+        }
+
+        51% {
+        	transform: translate(101vw) scaleX(-1);
+        }
+
+        100% {
+        	transform: translate(-101vw) scaleX(-1);
+        }
+    }
+
