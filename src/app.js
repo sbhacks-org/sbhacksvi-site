@@ -1,44 +1,46 @@
-// Server Dependency Setup
-const express = require("express");
-const path = require("path");
-const session = require("express-session");
-const flash = require("connect-flash");
-const MongoStore = require("connect-mongo")(session);
-const bodyParser = require("body-parser");
-const logger = require("morgan");
-const helmet = require("helmet");
-const favicon = require("serve-favicon");
-const passport = require("./config/passport-setup");
+const express = require("express"),
+path = require("path"),
+session = require("express-session"),
+flash = require("connect-flash"),
+MongoStore = require("connect-mongo")(session),
+bodyParser = require("body-parser"),
+logger = require("morgan"),
+helmet = require("helmet"),
+favicon = require("serve-favicon"),
+passport = require("passport");
 
-module.exports = (app) => {
-	// Init Middleware
-	app.use(helmet());
-	app.set("view engine", "ejs");
-	app.set("views", path.join(__dirname, "views"));
-	app.use(favicon(path.join(__dirname, "static/images", "favicon.ico")));
-	app.use(express.static(path.join(__dirname, "static")));
-	app.use(bodyParser.json());
-	app.use(bodyParser.urlencoded({ extended: false }));
-	app.use(logger("dev"));
+const app = express();
 
-	let SessionStore = process.env.NODE_ENV == "production" ? (
-		new MongoStore({
-			url: process.env.SESSION_STORE,
-			ttl: 14 * 24 * 60 * 60 
-		})) : undefined;
+app.use(helmet());
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+app.use(favicon(path.join(__dirname, "static/images", "favicon.ico")));
+app.use(express.static(path.join(__dirname, "static")));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(logger("dev"));
 
-	app.use(session({
-		secret: process.env.SESSION_SECRET,
-		resave: false,
-		saveUninitialized: false,
-		store: SessionStore
-	}));
-	app.use(flash());
+let SessionStore = process.env.NODE_ENV == "production" ? (
+	new MongoStore({
+		url: process.env.SESSION_STORE,
+		ttl: 14 * 24 * 60 * 60 
+	})
+) : undefined;
 
-	// Passport initialize
-	app.use(passport.initialize());
-	app.use(passport.session());
+app.use(session({
+	secret: process.env.SESSION_SECRET,
+	resave: false,
+	saveUninitialized: false,
+	store: SessionStore
+}));
+app.use(flash());
 
-	// Import main route controller here
-	require("./routes/controller")(app);
-};
+// Passport initialize
+require("./config/passport");
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Import main route controller here
+require("./routes/controller")(app);
+
+module.exports = app;

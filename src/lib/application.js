@@ -4,7 +4,7 @@
  * Should contain validation methods and helpers for saving/updating db
  */
 
-const models = require("../models");
+const { School, User, Application } = require("../models");
 
 module.exports.validate = (req, done) => {
 	return new Promise((resolve, reject) => {
@@ -38,33 +38,20 @@ module.exports.validate = (req, done) => {
 	});
 };
 
-module.exports.saveUser = (req, password_digest, done) => {
-	models.school.findOne({
-		where: {
-			name: "UC Santa Barbara" // Temporarily set as UC Santa Barbara
-		}
-	}).then((school) => {
-		models.user.create({
-			first_name: req.body.first_name,
-			last_name: req.body.last_name,
-			email: req.body.email,
-			password: password_digest,
-			resume_url: req.files.resume.Location,
-			resume_key: req.files.resume.key,
-			schoolId: school.dataValues.id,
-			transportation: req.body.transportation,
-			graduation_year: req.body.graduation_year,
-			level_of_study: req.body.level_of_study,
-			github: req.body.github,
-			linkedin: req.body.linkedin,
-			major: req.body.major,
-			phone_number: req.body.phone_number,
-			shirt_size: req.body.shirt_size,
-			gender: req.body.gender
-		}).then((user) => {
-			return done(null, user);
-		}).catch((err) => {
-			return done(err);
-		});
+module.exports.saveApplication = (req) => {
+	return Application.create({
+		user_id: req.user.id,
+		school_id: req.body.school_id || 6,
+		resume_url: req.files.resume.Location,
+		resume_key: req.files.resume.key,
+		transportation: req.body.transportation,
+		graduation_year: req.body.graduation_year,
+		level_of_study: req.body.level_of_study,
+		github: req.body.github || null,
+		linkedin: req.body.linkedin || null,
+		major: req.body.major,
+		phone_number: req.body.phone_number,
+		shirt_size: req.body.shirt_size,
+		gender: req.body.gender
 	});
 };

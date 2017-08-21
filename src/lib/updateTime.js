@@ -2,13 +2,13 @@
  * function to manually update the updatedAt column
  */
 
-const models = require("../models/index");
+const { User } = require("../models");
 
 module.exports = (user) => {
 	return new Promise((resolve, reject) => {
-		models.user.findOne({
+		User.findOne({
 			where: {
-				uid: user.uid
+				id: user.id
 			}
 		}).then((user) => {
 			user.changed("updatedAt", true); // key point

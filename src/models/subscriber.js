@@ -1,6 +1,6 @@
 "use strict";
 module.exports = function(sequelize, DataTypes) {
-	var Subscriber = sequelize.define("subscriber", {
+	var Subscriber = sequelize.define("Subscriber", {
 		email: {
 			type: DataTypes.STRING,
 			allowNull: false,
@@ -13,6 +13,8 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.BOOLEAN,
 			allowNull: true
 		}
+	}, {
+		tableName: "subscribers"
 	});
 	return Subscriber;
 };

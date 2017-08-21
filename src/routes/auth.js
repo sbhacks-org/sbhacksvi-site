@@ -3,23 +3,8 @@ const passport = require("passport");
 const updateTime = require("../lib/updateTime");
 const isLoggedIn = require("../lib/isLoggedIn");
 const efp = require("express-form-post");
-const formPost = efp({
-	store: "aws-s3",
-	promise: true,
-	filename: function(req, file, cb) {
-		cb(req.user.resume_key);
-	},
-	validateFile: function(file, cb) {
-		if(file.mimetype != "application/pdf") {
-			return cb(false);
-		}
-		cb();
-	},
-	api: {
-		bucketName: process.env.S3_BUCKET_NAME,
-		ACL: "public-read"
-	}
-});
+const { User } = require("../models");
+
 router.get("/login", (req, res) => {
 	if (req.isAuthenticated()){
 		return res.redirect("/dashboard");
@@ -56,26 +41,26 @@ router.get("/logout", (req, res) => {
 	}
 });
 
-router.get("/dashboard", isLoggedIn, (req, res) => res.render("dashboard"));
-
-
-router.use("/update", isLoggedIn, formPost.middleware(), (req, res, next) => {
-	console.log(req.files); // Remove during production
-	if(Object.keys(req.files) == 0) {
-		req.flash("info", "You need to upload a file");
-		return res.redirect("/dashboard");
-	}
-	updateTime(req.user).then(() => {
-		req.flash("info", "Successfully updated account");
-		return res.redirect("/dashboard");
-	}).catch((err) => {
-		console.log(err);
-		next(err);
-	});
+router.post("/signup", (req, res, next) => {
+	passport.authenticate("signup", (err, user, info) => {
+		if (err || !user) return next(err || new Error(info.message));
+		req.logIn(user, (err) => {
+			if (err) return next(err);
+			req.flash("info", "Successfully created an account");
+			return res.redirect("/dashboard");
+		});
+	})(req, res, next);
 });
 
-router.use("/update", (err, req, res, next) => {
-	throw err; // temporary
+// efp error catcher
+router.use("/signup", (err, req, res, next) => {
+	req.flash("info", err.message);
+	return res.redirect("/signup");
+});
+
+router.get("/signup", (req, res) => {
+	if (req.isAuthenticated()) return res.redirect("/dashboard");
+	res.render("signup");
 });
 
 module.exports = router;

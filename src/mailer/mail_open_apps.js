@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const transporter = require("./transporter");
 const renderTemplate = require("./renderTemplate");
-const Subscriber = require("../models").subscriber;
+const { Subscriber } = require("../models");
 
 Subscriber.findAll({})
 .then((subscribers) => {
