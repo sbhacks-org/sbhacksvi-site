@@ -34,7 +34,7 @@ module.exports = (app) => {
 	}
 
 	app.use("/", defaultRoutes);
-	app.use("/auth", authRoutes);
+	app.use("/", authRoutes);
 	app.use("/application", applicationRoutes);
 	app.use("/", userRoutes);
 	app.use("/live", liveRoutes);

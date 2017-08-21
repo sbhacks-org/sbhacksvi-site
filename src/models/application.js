@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     resume_url: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
       unique: true,
       validate: {
         isUrl: true
@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     resume_key: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
       unique: true,
     },
     graduation_year: {
@@ -87,7 +87,8 @@ module.exports = function(sequelize, DataTypes) {
     Application.belongsTo(User, {
       foreignKey: {
         name: "user_id",
-        allowNull: false
+        allowNull: false,
+        unique: true
       }
     })
   }

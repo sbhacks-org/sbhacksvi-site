@@ -1,11 +1,12 @@
 const router = require("express").Router();
 const efp = require("express-form-post");
 
-const { User } = require("../models");
+const { User, Application } = require("../models");
 const passport = require("passport");
 const signupMail = require("../mailer/mail_signup_success");
 const updateTime = require("../lib/updateTime");
 const isLoggedIn = require("../lib/isLoggedIn");
+const { saveApplication } = require("../lib/application");
 
 const formPostNew = require("../lib/upload");
 const formPostUpdate = efp({
@@ -26,10 +27,23 @@ const formPostUpdate = efp({
 	}
 });
 
+router.get("/", (req, res, next) => {
+	if(req.isAuthenticated()) {
+		res.render("application");
+	} else {
+		req.flash("info", "You must be logged in to apply");
+		res.redirect("/login");
+	}
+});
+
 router.post("/", formPostNew.middleware(), (req, res, next) => {
-	signupMail.send(user);
-	req.flash("info", "Successfully submitted an application");
-	return res.redirect("/dashboard");
+	console.log(req.body);
+	saveApplication(req)
+	.then((application) => {
+		signupMail.send(req.user);
+		req.flash("info", "Successfully submitted an application");
+		return res.redirect("/dashboard");
+	});
 });
 
 router.put("/", isLoggedIn, formPostUpdate.middleware(), (req, res, next) => {
