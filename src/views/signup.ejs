@@ -1,7 +1,7 @@
 <%- include ./partials/header.ejs %>
 
-  <form id="login-form" action="/auth/signup" method="POST" enctype="multipart/form-data" onsubmit="return handleSubmit(this)">
-  <!--<form id="login-form" action="/signup" method="POST" enctype="multipart/form-data">-->
+  <!--<form id="login-form" action="/signup" method="POST" onsubmit="return handleSubmit(this)">-->
+  <form id="login-form" action="/signup" method="POST">
     <div class="form-group">
       <label for="first_name">First Name</label>
       <input type="text" name="first_name" class="form-control" id="first_name-input" placeholder="What's your first name?" required>
