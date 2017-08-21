@@ -1,4 +1,4 @@
-const Subscriber = require("../models/index").subscriber;
+const { Subscriber } = require("../models");
 
 module.exports.saveSubscriber = (req, res) => {
 	Subscriber.create({

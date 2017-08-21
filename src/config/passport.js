@@ -1,7 +1,7 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const signUpMethods = require("../lib/signup");
-const models = require("../models/index");
+const { User } = require("../models/index");
 const bcrypt = require("bcryptjs");
 
 passport.serializeUser((user, done) => {
@@ -11,7 +11,7 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((id, done) => {
 	console.log("deserialize");
-	models.user.findOne({
+	User.findOne({
 		where: {
 			uid: id
 		}
@@ -26,7 +26,7 @@ passport.use("login", new LocalStrategy({
 	usernameField: "email",
 	passwordField: "password"
 }, (email, password, done) => {
-	models.user.findOne({
+	User.findOne({
 		where: {
 			email: email
 		}

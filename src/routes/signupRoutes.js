@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const User = require("../models/index").user;
+const { User } = require("../models");
 const passport = require("passport");
 const formPost = require("../lib/upload");
 const signupMail = require("../mailer/mail_signup_success");

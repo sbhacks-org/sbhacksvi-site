@@ -4,7 +4,7 @@
  * Should contain validation methods and helpers for saving/updating db
  */
 
-const models = require("../models");
+const { School, User } = require("../models");
 
 module.exports.validate = (req, done) => {
 	return new Promise((resolve, reject) => {
@@ -39,12 +39,12 @@ module.exports.validate = (req, done) => {
 };
 
 module.exports.saveUser = (req, password_digest, done) => {
-	models.school.findOne({
+	School.findOne({
 		where: {
 			name: "UC Santa Barbara" // Temporarily set as UC Santa Barbara
 		}
 	}).then((school) => {
-		models.user.create({
+		User.create({
 			first_name: req.body.first_name,
 			last_name: req.body.last_name,
 			email: req.body.email,
