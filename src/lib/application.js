@@ -38,17 +38,14 @@ module.exports.validate = (req, done) => {
 	});
 };
 
-module.exports.saveUser = (req, password_digest, done) => {
+module.exports.saveApplication = (req, password_digest, done) => {
 	School.findOne({
 		where: {
 			name: "UC Santa Barbara" // Temporarily set as UC Santa Barbara
 		}
 	}).then((school) => {
-		User.create({
-			first_name: req.body.first_name,
-			last_name: req.body.last_name,
-			email: req.body.email,
-			password: password_digest,
+		Application.create({
+			userId: req.user.uid,
 			resume_url: req.files.resume.Location,
 			resume_key: req.files.resume.key,
 			schoolId: school.dataValues.id,
