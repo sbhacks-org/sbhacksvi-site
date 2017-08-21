@@ -1,19 +1,16 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const signUpMethods = require("../lib/signup");
 const { User } = require("../models/index");
 const bcrypt = require("bcryptjs");
 
 passport.serializeUser((user, done) => {
-	console.log("serialize");
-	done(null, user.uid);
+	done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
-	console.log("deserialize");
 	User.findOne({
 		where: {
-			uid: id
+			id
 		}
 	}).then((user) => {
 		done(null, user);
@@ -51,16 +48,20 @@ passport.use("signup", new LocalStrategy({
 	usernameField: "email",
 	passwordField: "password"
 }, (req, email, password, done) => {
-	signUpMethods.validate(req, done)
-	.then(() => {
-		bcrypt.genSalt(10, (err, salt) => {
-			bcrypt.hash(req.body.password, salt, (err, password_digest) => {
-				signUpMethods.saveUser(req, password_digest, done);
+	bcrypt.genSalt(10, (err, salt) => {
+		bcrypt.hash(req.body.password, salt, (err, password_digest) => {
+			const { first_name, last_name, email } = req.body
+			User.create({
+				first_name,
+				last_name,
+				email,
+				password: password_digest
+			}).then((user) => {
+				return done(null, user);
+			}).catch((err) => {
+				return done(err);
 			});
 		});
-	})
-	.catch((info) => {
-		done(null, false, info);
 	});
 }));
 

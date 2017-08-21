@@ -1,12 +1,13 @@
 require("dotenv").config();
 global.Promise = require("bluebird");
 
-const models = require("../models/index");
+const models = require("../models");
 const port = ( process.env.PORT || 5000 );
 const app = require("../app");
 
 models.sequelize.sync({
-	logging: false
+	logging: false,
+	force: false
 }).then(() => {
 	console.log("Successfully migrated and connected to database");
 	app.listen(port, () => {
