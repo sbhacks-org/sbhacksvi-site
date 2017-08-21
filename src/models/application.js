@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     resume_url: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       unique: true,
       validate: {
         isUrl: true
@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     resume_key: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       unique: true,
     },
     graduation_year: {
@@ -73,16 +73,23 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN
     }
   }, {
-    classMethods: {
-      associate: function(models) {
-        const { School } = models;
-        Application.belongsTo(School, {
-          foreignKey: {
-            allowNull: false
-          }
-        });
-      }
-    }
+    tableName: "applications"
   });
+
+  Application.associate = function(models) {
+    const { School, User } = models;
+    Application.belongsTo(School, {
+      foreignKey: {
+        name: "school_id",
+        allowNull: false
+      }
+    });
+    Application.belongsTo(User, {
+      foreignKey: {
+        name: "user_id",
+        allowNull: false
+      }
+    })
+  }
   return Application;
 };

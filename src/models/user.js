@@ -2,7 +2,7 @@
 
 module.exports = function(sequelize, DataTypes) {
 	var User = sequelize.define("User", {
-		uid: {
+		id: {
 			type: DataTypes.UUID,
 			primaryKey: true,
 			defaultValue: DataTypes.UUIDV4
@@ -34,12 +34,14 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false
 		}
 	}, {
-		classMethods: {
-			associate: function(models) {
-				const { Application } = models;
-				User.hasOne(Application);
-			}
-		}
+		tableName: "users"
 	});
+
+	User.associate = function(models) {
+		const { Application } = models;
+		User.hasOne(Application, {
+			foreignKey: "user_id"
+		});
+	}
 	return User;
 };

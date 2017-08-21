@@ -8,7 +8,8 @@ module.exports = function(sequelize, DataTypes) {
 			unique: true
 		}
 	}, {
-		timestamps: false
+		timestamps: false,
+		tableName: "schools"
 	});
 
 	return School;
