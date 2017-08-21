@@ -9,15 +9,13 @@ aws.config.update({
 });
 
 const path = require("path");
-const defaultRoutes = require(path.join(__dirname, "defaultRoutes"));
-const signupRoutes = require(path.join(__dirname, "signupRoutes"));
-const userRoutes = require(path.join(__dirname, "userRoutes"));
-const subscriberRoutes = require(path.join(__dirname, "subscriberRoutes"));
-const liveRoutes = require(path.join(__dirname, "liveRoutes"));
+const defaultRoutes = require(path.join(__dirname, "default"));
+const userRoutes = require(path.join(__dirname, "user"));
+const authRoutes = require(path.join(__dirname, "auth"));
+const applicationRoutes = require(path.join(__dirname, "application"));
+const liveRoutes = require(path.join(__dirname, "live"));
+const subscriberRoutes = require(path.join(__dirname, "subscriber"));
 
-/*
- * Routes defined here
- */
 module.exports = (app) => {
 	
 	app.use((req, res, next) => {
@@ -36,7 +34,8 @@ module.exports = (app) => {
 	}
 
 	app.use("/", defaultRoutes);
-	app.use("/signup", signupRoutes);
+	app.use("/auth", authRoutes);
+	app.use("/application", applicationRoutes);
 	app.use("/", userRoutes);
 	app.use("/live", liveRoutes);
 
