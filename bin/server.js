@@ -1,9 +1,9 @@
 require("dotenv").config();
 global.Promise = require("bluebird");
 
-const models = require("../models");
+const models = require("../src/models");
+const app = require("../src/app");
 const port = ( process.env.PORT || 5000 );
-const app = require("../app");
 
 models.sequelize.sync({
 	logging: process.env.NODE_ENV !== "production",

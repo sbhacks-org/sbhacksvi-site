@@ -5,8 +5,8 @@
   "main": "app/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/bin/server.js",
-    "start:dev": "./node_modules/.bin/nodemon src/bin/server.js",
+    "start": "node bin/server.js",
+    "start:dev": "./node_modules/.bin/nodemon bin/server.js",
     "build": "npm run css-build && npm run landing-build && npm run live-build",
     "build:dev": "./node_modules/.bin/node-sass --watch ./src/static/css/scss/application.scss ./src/static/css/application.css",
     "react-build": "./node_modules/.bin/webpack --progress --config webpack.config.js",
