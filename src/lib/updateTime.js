@@ -8,7 +8,7 @@ module.exports = (user) => {
 	return new Promise((resolve, reject) => {
 		User.findOne({
 			where: {
-				uid: user.uid
+				id: user.id
 			}
 		}).then((user) => {
 			user.changed("updatedAt", true); // key point
