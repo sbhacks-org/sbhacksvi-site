@@ -6,7 +6,7 @@ const port = ( process.env.PORT || 5000 );
 const app = require("../app");
 
 models.sequelize.sync({
-	logging: false,
+	logging: process.env.NODE_ENV !== "production",
 	force: false
 }).then(() => {
 	console.log("Successfully migrated and connected to database");
