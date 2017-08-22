@@ -8,8 +8,4 @@ router.get("/dashboard", isLoggedIn, (req, res) => {
 	});
 });
 
-router.use("/update", (err, req, res, next) => {
-	throw err; // temporary
-});
-
 module.exports = router;

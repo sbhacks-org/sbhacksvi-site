@@ -43,7 +43,7 @@ router.get("/logout", (req, res) => {
 
 router.post("/signup", (req, res, next) => {
 	passport.authenticate("signup", (err, user, info) => {
-		if (err || !user) return next(err || new Error(info.message));
+		if (err || !user) return next(err.errors[0] || new Error(info.message));
 		req.logIn(user, (err) => {
 			if (err) return next(err);
 			req.flash("info", "Successfully created an account");

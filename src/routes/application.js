@@ -13,7 +13,10 @@ const formPostUpdate = efp({
 	store: "aws-s3",
 	promise: true,
 	filename: function(req, file, cb) {
-		cb(req.user.resume_key);
+		req.user.getApplication()
+		.then((application) => {
+			cb(application.resume_key);
+		});
 	},
 	validateFile: function(file, cb) {
 		if(file.mimetype != "application/pdf") {
@@ -46,7 +49,7 @@ router.post("/", formPostNew.middleware(), (req, res, next) => {
 	});
 });
 
-router.put("/", isLoggedIn, formPostUpdate.middleware(), (req, res, next) => {
+router.post("/update", isLoggedIn, formPostUpdate.middleware(), (req, res, next) => {
 	console.log(req.files); // Remove during production
 	if(Object.keys(req.files) == 0) {
 		req.flash("info", "You need to upload a file");
@@ -59,6 +62,10 @@ router.put("/", isLoggedIn, formPostUpdate.middleware(), (req, res, next) => {
 		console.log(err);
 		next(err);
 	});
+});
+
+router.use("/update", (err, req, res, next) => {
+	throw err; // temporary
 });
 
 // efp error catcher
