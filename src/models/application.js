@@ -29,8 +29,14 @@ module.exports = function(sequelize, DataTypes) {
     graduation_year: {
       type: DataTypes.INTEGER,
       validate: {
-        min: 2016,
-        max: 2030
+        min: {
+          args: 2016,
+          msg: "You must be a current student in order to apply"
+        },
+        max: {
+          args: 2030,
+          msg: "You must be graduating by 2030 to apply!"
+        }
       }
     },
     level_of_study: {
@@ -42,17 +48,15 @@ module.exports = function(sequelize, DataTypes) {
     github: {
       type: DataTypes.STRING,
       allowNull: true,
-      unique: true,
-      validate: {
-        isUrl: true
+      unique: {
+        msg: "Somebody has already applied with that github account already"
       }
     },
     linkedin: {
       type: DataTypes.STRING,
       allowNull: true,
-      unique: true,
-      validate: {
-        isUrl: true
+      unique: {
+        msg: "Somebody has already applied with that linkedin account already"
       }
     },
     shirt_size: {

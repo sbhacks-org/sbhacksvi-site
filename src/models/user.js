@@ -9,22 +9,30 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		first_name: {
 			type: DataTypes.STRING,
+			allowNull: false,
 			validate: {
-				is: ["^[a-z]+$","i"]
-			},
-			allowNull: false
+				is: {
+					args: ["^[a-z]+$","i"],
+					msg: "First name cannot contain numbers"
+				}
+			}
 		},
 		last_name: {
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-				is: ["^[a-z]+$","i"]
+				is:  {
+					args: ["^[a-z]+$","i"],
+					msg: "Last name cannot contain numbers"
+				}
 			}
 		},
 		email: {
 			type: DataTypes.STRING,
 			allowNull: false,
-			unique: true,
+			unique: {
+				msg: "This email has already been taken"
+			},
 			validate: {
 				isEmail: true
 			}
