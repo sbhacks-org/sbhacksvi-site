@@ -46,8 +46,7 @@ router.post("/signup", (req, res, next) => {
 		if (err || !user) return next(err.errors[0] || new Error(info.message));
 		req.logIn(user, (err) => {
 			if (err) return next(err);
-			req.flash("info", "Successfully created an account");
-			return res.redirect("/dashboard");
+			return res.json({ message: "Successfully created an account" });
 		});
 	})(req, res, next);
 });

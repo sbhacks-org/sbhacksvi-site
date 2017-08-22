@@ -1,9 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 
-import App from "./components/App";
+import Signup from "./components/Signup";
 
 ReactDOM.render(
-	<App />,
+	<BrowserRouter>
+		<Route path="/signup" component={Signup} />
+	</BrowserRouter>,
 	document.getElementById("root")
 );
