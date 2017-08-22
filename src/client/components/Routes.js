@@ -7,7 +7,7 @@ class Routes extends React.component {
 		return (
 			<div>
 				<Switch>
-				  <Route path = '*' component = {App} />
+				  <Route path="/signup" component={App} />
 				</Switch>
 			</div>
 		);
