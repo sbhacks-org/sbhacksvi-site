@@ -3,19 +3,16 @@ const LocalStrategy = require("passport-local").Strategy;
 const { User } = require("../models/index");
 const bcrypt = require("bcryptjs");
 
-passport.serializeUser((user, done) => {
-	done(null, user.id);
-});
+passport.serializeUser((user, done) => done(null, user.id));
 
 passport.deserializeUser((id, done) => {
 	User.findOne({
-		where: {
-			id
-		}
-	}).then((user) => {
+		where: { id }
+	})
+	.then((user) => {
 		done(null, user);
 	}).catch((err) => {
-		return done(err, undefined);
+		return done(err);
 	});
 });
 
@@ -28,9 +25,7 @@ passport.use("login", new LocalStrategy({
 			email: email
 		}
 	}).then((user) => {
-		if (!user) {
-			return done(null, false, { message: "Invalid credentials" });
-		}
+		if (!user) return done(null, false, { message: "Invalid credentials" });
 		bcrypt.compare(password, user.password, (err, res) => {
 			if (err) { done(err); }
 			if (res) {
@@ -50,7 +45,7 @@ passport.use("signup", new LocalStrategy({
 }, (req, email, password, done) => {
 	bcrypt.genSalt(10, (err, salt) => {
 		bcrypt.hash(req.body.password, salt, (err, password_digest) => {
-			const { first_name, last_name, email } = req.body;
+			const { f_name: first_name, l_name: last_name, email } = req.body;
 			User.create({
 				first_name,
 				last_name,
