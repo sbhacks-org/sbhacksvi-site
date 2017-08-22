@@ -9,7 +9,6 @@ aws.config.update({
 });
 
 const path = require("path");
-const defaultRoutes = require(path.join(__dirname, "default"));
 const userRoutes = require(path.join(__dirname, "user"));
 const authRoutes = require(path.join(__dirname, "auth"));
 const applicationRoutes = require(path.join(__dirname, "application"));
@@ -29,11 +28,19 @@ module.exports = (app) => {
 	if(process.env.NODE_ENV == "production") {
 		app.use((req, res) => {
 			// Universal catcher; Disable other routes for now
-			res.render("index");
+			res.render("landingpage");
 		});
 	}
 
-	app.use("/", defaultRoutes);
+	app.get("/",(req, res) => {
+		res.render("landingpage");
+	});
+
+	// React SPA for everything but the landing page
+	app.get("*", (req, res) => {
+		res.render("index");
+	});
+
 	app.use("/", authRoutes);
 	app.use("/application", applicationRoutes);
 	app.use("/", userRoutes);
