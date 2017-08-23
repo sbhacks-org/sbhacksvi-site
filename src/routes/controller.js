@@ -38,6 +38,7 @@ module.exports = (app) => {
 
 	// React SPA for everything but the landing page
 	app.get("*", (req, res) => {
+		res.locals.authenticated = req.isAuthenticated();
 		res.render("index");
 	});
 
