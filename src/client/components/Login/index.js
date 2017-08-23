@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { Redirect } from "react-router-dom";
 import { Form, Input, Button, Segment } from "semantic-ui-react";
 
+import { createHandleSubmit } from "../../form-helper";
 import Banner from "./Banner";
 
 class Signup extends React.Component {
@@ -19,41 +20,8 @@ class Signup extends React.Component {
 			isAuthenticated: window.__IS_AUTHENTICATED__
 		}
 
-		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleSubmit = createHandleSubmit("/login").bind(this);
 		this.onDismiss = this.onDismiss.bind(this);
-	}
-
-	addMissingFieldsErrors() {
-		const { password, email } = this.state.fields;
-		const missingFieldErrors = {};
-
-		if(!password) missingFieldErrors["password"] = "password can't be blank";
-		if(!email) missingFieldErrors["email"] = "email can't be blank";
-
-		this.setState({ errors: missingFieldErrors });
-	}
-
-	handleSubmit(evt) {
-		evt.preventDefault();
-
-		const { password, email } = this.state.fields;
-		const { history } = this.props;
-
-		if(!password || !email) return this.addMissingFieldsErrors();
-
-		this.setState({ loading: true });
-
-		let xhttp = new XMLHttpRequest();
-
-		xhttp.addEventListener("load", () => {
-			let response = JSON.parse(xhttp.responseText);
-			this.setState(Object.assign(response, { loading: false }));
-		});
-
-		xhttp.open("POST", "/login");
-		xhttp.setRequestHeader("Content-Type", "application/json");
-
-		xhttp.send(JSON.stringify(this.state.fields));
 	}
 
 	onDismiss() {

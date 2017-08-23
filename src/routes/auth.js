@@ -23,7 +23,6 @@ router.post("/login", (req, res, next) => {
 			return res.json({ isAuthenticated: true });
 		});
 	})(req, res, next);
-
 });
 
 router.get("/logout", (req, res) => {
@@ -53,7 +52,6 @@ router.post("/signup", (req, res, next) => {
 
 // efp error catcher
 router.use("/signup", (errors, req, res, next) => {
-	console.log(errors);
 	return res.json({ errors, isAuthenticated: false });
 });
 
