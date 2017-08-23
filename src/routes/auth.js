@@ -18,14 +18,19 @@ router.post("/login", (req, res, next) => {
 			return next(err);
 		}
 		if (!user) {
-			req.flash("info", info.message);
-			return res.redirect("/login");
+			return res.json({
+				isAuthenticated: false,
+				errors: {
+					email: "Wrong username/password combination",
+					password: "Wrong username/password combination"
+				}
+			});
 		}
 		req.logIn(user, (err) => {
 			if (err) {
 				return next(err);
 			}
-			return res.redirect("/dashboard");
+			return res.json({ isAuthenticated: true });
 		});
 	})(req, res, next);
 
@@ -42,20 +47,21 @@ router.get("/logout", (req, res) => {
 });
 
 router.post("/signup", (req, res, next) => {
+	console.log(req.body);
 	passport.authenticate("signup", (err, user, info) => {
-		if (err || !user) return next(err.errors[0] || new Error(info.message));
+		if(err) return next(err.errors);
+		if (!user) return next(new Error(info.message));
 		req.logIn(user, (err) => {
 			if (err) return next(err);
-			req.flash("info", "Successfully created an account");
-			return res.redirect("/dashboard");
+			return res.json({ isAuthenticated: true });
 		});
 	})(req, res, next);
 });
 
 // efp error catcher
-router.use("/signup", (err, req, res, next) => {
-	req.flash("info", err.message);
-	return res.redirect("/signup");
+router.use("/signup", (errors, req, res, next) => {
+	console.log(errors);
+	return res.json({ errors, isAuthenticated: false });
 });
 
 router.get("/signup", (req, res) => {
