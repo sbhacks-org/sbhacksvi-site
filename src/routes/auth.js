@@ -47,9 +47,12 @@ router.get("/logout", (req, res) => {
 });
 
 router.post("/signup", (req, res, next) => {
-	console.log(req.body);
 	passport.authenticate("signup", (err, user, info) => {
-		if(err) return next(err.errors);
+		if(err) {
+			let errors = {};
+			err.errors.forEach((validationError) => errors[validationError.path] = validationError.message);
+			return next(errors);
+		}
 		if (!user) return next(new Error(info.message));
 		req.logIn(user, (err) => {
 			if (err) return next(err);

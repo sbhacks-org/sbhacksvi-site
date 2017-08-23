@@ -43,10 +43,9 @@ passport.use("signup", new LocalStrategy({
 	usernameField: "email",
 	passwordField: "password"
 }, (req, email, password, done) => {
-	console.log("Reached here");
 	bcrypt.genSalt(10, (err, salt) => {
 		bcrypt.hash(req.body.password, salt, (err, password_digest) => {
-			const { f_name: first_name, l_name: last_name, email } = req.body;
+			const { first_name, last_name, email } = req.body;
 			User.create({
 				first_name,
 				last_name,
