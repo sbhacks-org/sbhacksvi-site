@@ -25,14 +25,14 @@ passport.use("login", new LocalStrategy({
 			email: email
 		}
 	}).then((user) => {
-		if (!user) return done(null, false, { message: "Invalid credentials" });
+		if (!user) return done(null, false, { username: "No such user with that email exists" });
 		bcrypt.compare(password, user.password, (err, res) => {
 			if (err) { done(err); }
 			if (res) {
 				return done(null, user);
 			}
 			else {
-				return done(null, false, { message: "Invalid credentials" });
+				return done(null, false, { password: "Incorrect password" });
 			}
 		});
 	});
@@ -43,10 +43,9 @@ passport.use("signup", new LocalStrategy({
 	usernameField: "email",
 	passwordField: "password"
 }, (req, email, password, done) => {
-	console.log("Reached here");
 	bcrypt.genSalt(10, (err, salt) => {
 		bcrypt.hash(req.body.password, salt, (err, password_digest) => {
-			const { f_name: first_name, l_name: last_name, email } = req.body;
+			const { first_name, last_name, email } = req.body;
 			User.create({
 				first_name,
 				last_name,

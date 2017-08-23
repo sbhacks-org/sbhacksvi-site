@@ -3,14 +3,16 @@ import ReactDOM from "react-dom";
 import { Redirect } from "react-router-dom";
 import { Form, Input, Button, Segment, Label } from "semantic-ui-react";
 
+import { createHandleSubmit } from "../../form-helper";
+
 class Signup extends React.Component {
 	constructor() {
 		super();
 
 		this.state = {
 			fields: {
-				f_name: "",
-				l_name: "",
+				first_name: "",
+				last_name: "",
 				email: "",
 				password: ""
 			},
@@ -18,43 +20,7 @@ class Signup extends React.Component {
 			errors: {}
 		}
 
-		this.handleSubmit = this.handleSubmit.bind(this);
-	}
-
-	addMissingFieldsErrors() {
-		console.log("Adding missing fields");
-		const { password, email } = this.state.fields;
-		const missingFieldErrors = {};
-
-		if(!password) missingFieldErrors["password"] = "Password can't be blank";
-		if(!email) missingFieldErrors["email"] = "Email can't be blank";
-
-		console.log(email);
-		this.setState({ errors: missingFieldErrors });
-	}
-
-	handleSubmit(evt) {
-		evt.preventDefault();
-
-		const { password, email } = this.state.fields;
-		const { history } = this.props;
-
-		if(!password || !email) return this.addMissingFieldsErrors();
-
-		this.setState({ loading: true });
-
-
-		let xhttp = new XMLHttpRequest();
-
-		xhttp.addEventListener("load", () => {
-			let response = JSON.parse(xhttp.responseText);
-			this.setState(Object.assign(response, { loading: false }));
-		});
-
-		xhttp.open("POST", "/signup");
-		xhttp.setRequestHeader("Content-Type", "application/json");
-
-		xhttp.send(JSON.stringify(this.state.fields));
+		this.handleSubmit = createHandleSubmit("/signup").bind(this);
 	}
 
 	updateField(field_name, field_value) {
@@ -66,7 +32,7 @@ class Signup extends React.Component {
 
 	render() {
 		const { isAuthenticated, loading, errors } = this.state;
-		const { f_name, l_name, email, password } = this.state.fields;
+		const { first_name, last_name, email, password } = this.state.fields;
 
 		if(isAuthenticated) {
 			return <Redirect to="/dashboard" />;
@@ -76,31 +42,33 @@ class Signup extends React.Component {
 			<Form size="large" action="/signup" method="POST" onSubmit={this.handleSubmit} loading={loading}>
 				<Segment stacked>
 					<Form.Group widths="equal">
-						<Form.Field error={Boolean(errors.f_name)}>
+						<Form.Field error={Boolean(errors.first_name)}>
 							<label>First Name</label>
 							<Input
 								fluid
 								icon="user"
 								iconPosition="left"
 								placeholder="First Name"
-								name="f_name"
+								name="first_name"
 								type="text"
-								value={f_name}
-								onChange={(el) => this.updateField("f_name", el.target.value) }
+								value={first_name}
+								onChange={(el) => this.updateField("first_name", el.target.value) }
 				            />
+				            { Boolean(errors.first_name) ? <Label basic color='red' pointing>{errors.first_name}</Label> : null }
 						</Form.Field>
-						<Form.Field error={Boolean(errors.l_name)}>
+						<Form.Field error={Boolean(errors.last_name)}>
 							<label>Last Name</label>
 							<Input
 								fluid
 								icon="user"
 								iconPosition="left"
 								placeholder="Last Name"
-								name="l_name"
+								name="last_name"
 								type="text"
-								value={l_name}
-								onChange={(el) => this.updateField("l_name", el.target.value)}
+								value={last_name}
+								onChange={(el) => this.updateField("last_name", el.target.value)}
 				            />
+				           	{ Boolean(errors.last_name) ? <Label basic color='red' pointing>{errors.last_name}</Label> : null }
 						</Form.Field>
 					</Form.Group>
 					<Form.Field error={Boolean(errors.email)}> 
@@ -115,7 +83,7 @@ class Signup extends React.Component {
 							value={email}
 							onChange={(el) => this.updateField("email", el.target.value)}
 			            />
-			            { Boolean(errors.email) ? <Label basic color='red' pointing>Please enter a value</Label> : null }
+			            { Boolean(errors.email) ? <Label basic color='red' pointing>{errors.email}</Label> : null }
 					</Form.Field>
 					<Form.Field	error={Boolean(errors.password)}>
 						<label>Password</label>
@@ -129,6 +97,7 @@ class Signup extends React.Component {
 							value={password}
 							onChange={(el) => this.updateField("password", el.target.value)}
 			            />
+			            { Boolean(errors.password) ? <Label basic color='red' pointing>{errors.password}</Label> : null }
 					</Form.Field>
 					<Button color='blue' fluid size='large'>Signup</Button>
 				</Segment>

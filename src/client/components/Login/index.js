@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { Redirect } from "react-router-dom";
 import { Form, Input, Button, Segment } from "semantic-ui-react";
 
+import { createHandleSubmit } from "../../form-helper";
 import Banner from "./Banner";
 
 class Signup extends React.Component {
@@ -19,36 +20,12 @@ class Signup extends React.Component {
 			isAuthenticated: window.__IS_AUTHENTICATED__
 		}
 
-		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleSubmit = createHandleSubmit("/login").bind(this);
 		this.onDismiss = this.onDismiss.bind(this);
 	}
 
-	handleSubmit(evt) {
-		evt.preventDefault();
-
-		this.setState({
-			loading: true
-		});
-
-		const { history } = this.props;
-
-		let xhttp = new XMLHttpRequest();
-
-		xhttp.addEventListener("load", () => {
-			let response = JSON.parse(xhttp.responseText);
-			this.setState(Object.assign(response, { loading: false }));
-		});
-
-		xhttp.open("POST", "/login");
-		xhttp.setRequestHeader("Content-Type", "application/json");
-
-		xhttp.send(JSON.stringify(this.state.fields));
-	}
-
 	onDismiss() {
-		this.setState({
-			errors: {}
-		})
+		this.setState({ errors: {} })
 	}
 
 	render() {
@@ -61,7 +38,7 @@ class Signup extends React.Component {
 			<div>
 				<Banner onDismiss={this.onDismiss} errors={errors} />
 				<Form size="large" action="/login" method="POST" onSubmit={this.handleSubmit}>
-					<Segment stacked>
+					<Segment>
 						<Form.Field>
 							<label>Email</label>
 							<Form.Input

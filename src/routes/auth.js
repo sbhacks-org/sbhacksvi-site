@@ -14,18 +14,8 @@ router.get("/login", (req, res) => {
 
 router.post("/login", (req, res, next) => {
 	passport.authenticate("login", (err, user, info) => {
-		if (err) {
-			return next(err);
-		}
-		if (!user) {
-			return res.json({
-				isAuthenticated: false,
-				errors: {
-					email: "Wrong username/password combination",
-					password: "Wrong username/password combination"
-				}
-			});
-		}
+		if (err) return next(err);
+		if (!user) return res.json({ errors: info });
 		req.logIn(user, (err) => {
 			if (err) {
 				return next(err);
@@ -33,7 +23,6 @@ router.post("/login", (req, res, next) => {
 			return res.json({ isAuthenticated: true });
 		});
 	})(req, res, next);
-
 });
 
 router.get("/logout", (req, res) => {
@@ -47,9 +36,12 @@ router.get("/logout", (req, res) => {
 });
 
 router.post("/signup", (req, res, next) => {
-	console.log(req.body);
 	passport.authenticate("signup", (err, user, info) => {
-		if(err) return next(err.errors);
+		if(err) {
+			let errors = {};
+			err.errors.forEach((validationError) => errors[validationError.path] = validationError.message);
+			return next(errors);
+		}
 		if (!user) return next(new Error(info.message));
 		req.logIn(user, (err) => {
 			if (err) return next(err);
@@ -60,7 +52,6 @@ router.post("/signup", (req, res, next) => {
 
 // efp error catcher
 router.use("/signup", (errors, req, res, next) => {
-	console.log(errors);
 	return res.json({ errors, isAuthenticated: false });
 });
 

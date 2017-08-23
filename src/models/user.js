@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
 			validate: {
 				is: {
 					args: ["^[a-z]+$","i"],
-					msg: "First name cannot contain numbers"
+					msg: "first name cannot contain numbers"
 				}
 			}
 		},
@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
 			validate: {
 				is:  {
 					args: ["^[a-z]+$","i"],
-					msg: "Last name cannot contain numbers"
+					msg: "last name cannot contain numbers"
 				}
 			}
 		},
@@ -31,10 +31,12 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.STRING,
 			allowNull: false,
 			unique: {
-				msg: "This email has already been taken"
+				msg: "this email has already been taken"
 			},
 			validate: {
-				isEmail: true
+				isEmail: {
+					msg: "must be a valid email"
+				}
 			}
 		},
 		password: {

@@ -2,16 +2,22 @@ import React from "react";
 import { Message } from "semantic-ui-react";
 
 const Banner = ({ errors, onDismiss }) => {
-	return (
-		Object.keys(errors).length > 0 ? 
+	let errorKeys = Object.keys(errors);
+	if(errorKeys.length) {
+		let list = [];
+		errorKeys.forEach((key) => list.push(errors[key]));
+		return (
 			<Message
 				negative
 				attached
 				onDismiss={onDismiss}
 				header="Wrong username/password combination"
-				content="Please try again."
-			/> : null
-	);
+				list={list}
+			/> 
+		);
+	} else {
+		return null;
+	}
 }
 
 export default Banner;
