@@ -18,14 +18,19 @@ router.post("/login", (req, res, next) => {
 			return next(err);
 		}
 		if (!user) {
-			req.flash("info", info.message);
-			return res.redirect("/login");
+			return res.json({
+				isAuthenticated: false,
+				errors: {
+					email: "Wrong username/password combination",
+					password: "Wrong username/password combination"
+				}
+			});
 		}
 		req.logIn(user, (err) => {
 			if (err) {
 				return next(err);
 			}
-			return res.redirect("/dashboard");
+			return res.json({ isAuthenticated: true });
 		});
 	})(req, res, next);
 

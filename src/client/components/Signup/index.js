@@ -28,7 +28,7 @@ class Signup extends React.Component {
 			history.push("/dashboard", { message });
 		});
 
-		xhttp.open("POST", "signup");
+		xhttp.open("POST", "/signup");
 		xhttp.setRequestHeader("Content-Type", "application/json");
 
 		xhttp.send(JSON.stringify(this.state));
