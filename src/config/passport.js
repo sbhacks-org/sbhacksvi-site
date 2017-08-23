@@ -25,14 +25,14 @@ passport.use("login", new LocalStrategy({
 			email: email
 		}
 	}).then((user) => {
-		if (!user) return done(null, false, { message: "Invalid credentials" });
+		if (!user) return done(null, false, { username: "No such user with that email exists" });
 		bcrypt.compare(password, user.password, (err, res) => {
 			if (err) { done(err); }
 			if (res) {
 				return done(null, user);
 			}
 			else {
-				return done(null, false, { message: "Invalid credentials" });
+				return done(null, false, { password: "Incorrect password" });
 			}
 		});
 	});

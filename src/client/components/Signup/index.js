@@ -22,7 +22,6 @@ class Signup extends React.Component {
 	}
 
 	addMissingFieldsErrors() {
-		console.log("Adding missing fields");
 		const { password, email } = this.state.fields;
 		const missingFieldErrors = {};
 

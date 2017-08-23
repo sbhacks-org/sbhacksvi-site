@@ -23,14 +23,25 @@ class Signup extends React.Component {
 		this.onDismiss = this.onDismiss.bind(this);
 	}
 
+	addMissingFieldsErrors() {
+		const { password, email } = this.state.fields;
+		const missingFieldErrors = {};
+
+		if(!password) missingFieldErrors["password"] = "password can't be blank";
+		if(!email) missingFieldErrors["email"] = "email can't be blank";
+
+		this.setState({ errors: missingFieldErrors });
+	}
+
 	handleSubmit(evt) {
 		evt.preventDefault();
 
-		this.setState({
-			loading: true
-		});
-
+		const { password, email } = this.state.fields;
 		const { history } = this.props;
+
+		if(!password || !email) return this.addMissingFieldsErrors();
+
+		this.setState({ loading: true });
 
 		let xhttp = new XMLHttpRequest();
 
@@ -46,9 +57,7 @@ class Signup extends React.Component {
 	}
 
 	onDismiss() {
-		this.setState({
-			errors: {}
-		})
+		this.setState({ errors: {} })
 	}
 
 	render() {
@@ -61,7 +70,7 @@ class Signup extends React.Component {
 			<div>
 				<Banner onDismiss={this.onDismiss} errors={errors} />
 				<Form size="large" action="/login" method="POST" onSubmit={this.handleSubmit}>
-					<Segment stacked>
+					<Segment>
 						<Form.Field>
 							<label>Email</label>
 							<Form.Input
