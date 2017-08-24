@@ -30,14 +30,6 @@ const formPostUpdate = efp({
 	}
 });
 
-router.get("/", (req, res, next) => {
-	if(req.isAuthenticated()) {
-		res.render("application");
-	} else {
-		req.flash("info", "You must be logged in to apply");
-		res.redirect("/login");
-	}
-});
 
 router.post("/", formPostNew.middleware(), (req, res, next) => {
 	console.log(req.body);
