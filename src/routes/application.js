@@ -6,43 +6,22 @@ const passport = require("passport");
 const signupMail = require("../mailer/mail_signup_success");
 const updateTime = require("../lib/updateTime");
 const isLoggedIn = require("../lib/isLoggedIn");
-const { saveApplication } = require("../lib/application");
+const { saveApplication, formPostUpload, formPostUpdate } = require("../lib/application");
 
-const formPostNew = require("../lib/upload");
-const formPostUpdate = efp({
-	store: "aws-s3",
-	promise: true,
-	filename: function(req, file, cb) {
-		req.user.getApplication()
-		.then((application) => {
-			cb(application.resume_key);
-		});
-	},
-	validateFile: function(file, cb) {
-		if(file.mimetype != "application/pdf") {
-			return cb(false);
-		}
-		cb();
-	},
-	api: {
-		bucketName: process.env.S3_BUCKET_NAME,
-		ACL: "public-read"
-	}
-});
-
-
-router.post("/", formPostNew.middleware(), (req, res, next) => {
-	console.log(req.body);
+router.post("/", isLoggedIn, formPostUpload.middleware(), (req, res, next) => {
+	console.log(req.body, req.files);
 	saveApplication(req)
 	.then((application) => {
-		signupMail.send(req.user);
-		req.flash("info", "Successfully submitted an application");
-		return res.redirect("/dashboard");
-	});
+		// signupMail.send(req.user);
+		return res.json({ success: true });
+	})
+	.catch((err) => console.log(err));
 });
 
 router.post("/update", isLoggedIn, formPostUpdate.middleware(), (req, res, next) => {
 	console.log(req.files); // Remove during production
+	
+	/*
 	if(Object.keys(req.files) == 0) {
 		req.flash("info", "You need to upload a file");
 		return res.redirect("/dashboard");
@@ -54,6 +33,7 @@ router.post("/update", isLoggedIn, formPostUpdate.middleware(), (req, res, next)
 		console.log(err);
 		next(err);
 	});
+	*/
 });
 
 router.use("/update", (err, req, res, next) => {
@@ -62,8 +42,8 @@ router.use("/update", (err, req, res, next) => {
 
 // efp error catcher
 router.use("/", (err, req, res, next) => {
-	req.flash("info", err.message);
-	return res.redirect("/application");
+	throw err;
+	return res.json({ errors: err });
 });
 
 module.exports = router;
