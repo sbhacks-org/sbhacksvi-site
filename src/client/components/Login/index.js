@@ -34,7 +34,7 @@ class Login extends React.Component {
 		const { state } = this.props.location;
 
 		if(isAuthenticated) {
-			return <Redirect to={ state ? "/application" : "/dashboard"} />;
+			return <Redirect to={ state ? state.referrer : "/dashboard"} />;
 		}
 		return (
 			<div>
