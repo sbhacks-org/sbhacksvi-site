@@ -92,7 +92,9 @@ module.exports = function(sequelize, DataTypes) {
       foreignKey: {
         name: "user_id",
         allowNull: false,
-        unique: true
+        unique: {
+          msg: "You may only submit only one application per account"
+        }
       }
     })
   }
