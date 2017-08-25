@@ -1,7 +1,8 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-
 import { Form, Input, Button, Dropdown, Icon } from "semantic-ui-react";
+
+import FileInput from "./FileInput";
 
 const school_opts = [
 	{ key: "UC Santa Barbara", value: 6, text: "UC Santa Barbara" }
@@ -46,7 +47,6 @@ class Application extends React.Component {
 
 		xhttp.addEventListener("load", () => {
 			let response = JSON.parse(xhttp.responseText);
-			console.log(response);	
 			if(response.success) return;
 			this.setState({ errors: response.errors, loading: false });
 		});
@@ -56,7 +56,6 @@ class Application extends React.Component {
 		var formData = new FormData();
 		
 		Object.keys(fields).forEach((field_name) => {
-			console.log(fields[field_name]);
 			fields[field_name] ? formData.append(field_name, fields[field_name]) : null
 		});
 
@@ -209,13 +208,11 @@ class Application extends React.Component {
 
 				<Form.Field>
 					<label>Upload Resume (PDF Only)</label>
-					<div className="ui input">
-						<input
-							type="file"
-							onChange={(evt, { value }) => this.updateField("resume", evt.target.files[0])}
-							accept="application/pdf"
-						/>
-					</div>
+					<FileInput
+						type="file"
+						onChange={(evt) => this.updateField("resume", evt.target.files[0])}
+						accept="application/pdf"
+					/>
 					
 				</Form.Field>
 
