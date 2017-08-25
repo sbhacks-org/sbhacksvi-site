@@ -208,12 +208,15 @@ class Application extends React.Component {
 				</Form.Group>
 
 				<Form.Field>
-					<label>Upload Resume</label>
-
-					<Input
-						type="file"
-						onChange={(evt, { value }) => this.updateField("resume", evt.target.files[0])}
-					/>
+					<label>Upload Resume (PDF Only)</label>
+					<div className="ui input">
+						<input
+							type="file"
+							onChange={(evt, { value }) => this.updateField("resume", evt.target.files[0])}
+							accept="application/pdf"
+						/>
+					</div>
+					
 				</Form.Field>
 
 			    <Button fluid color="blue">Submit</Button>
