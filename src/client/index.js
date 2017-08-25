@@ -11,7 +11,7 @@ ReactDOM.render(
 		<Switch>
 			<Route path="/signup" component={Signup} />
 			<Route path="/login" component={Login} />
-			<Route path="/application" component={Application} />
+			<Route path="/apply" component={Application} />
 		</Switch>
 	</BrowserRouter>,
 	document.getElementById("root")

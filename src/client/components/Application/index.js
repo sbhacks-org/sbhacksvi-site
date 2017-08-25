@@ -3,24 +3,72 @@ import { Redirect } from "react-router-dom";
 
 import { Form, Input, Button, Dropdown, Icon } from "semantic-ui-react";
 
+const school_opts = [
+	{ key: "UC Santa Barbara", value: 6, text: "UC Santa Barbara" }
+]
+
 class Application extends React.Component {
 	constructor() {
 		super();
 
 		this.state = {
-			isAuthenticated: window.__IS_AUTHENTICATED__
+			isAuthenticated: window.__IS_AUTHENTICATED__,
+			fields: {
+				school: null,
+				level_of_study: null,
+				graduation_year: null,
+				github: null,
+				linkedin: null,
+				major: null,
+				gender: null,
+				phone_number: null,
+				shirt_size: null,
+				transportation: null,
+				resume: null
+			}
 		}
+		this.submitApplication = this.submitApplication.bind(this);
+	}
+
+	updateField(field_name, field_value) {
+		const { fields } = this.state;
+		this.setState({
+			fields: { ...fields, [field_name]: field_value }
+		});
+	}
+
+	submitApplication() {
+		const { fields } = this.state;
+		const xhttp = new XMLHttpRequest();
+
+		xhttp.addEventListener("load", () => {
+			console.log("received response", xhttp.responseText);
+		});
+
+		xhttp.open("POST", "/application");
+
+		var formData = new FormData();
+		
+		Object.keys(fields).forEach((field_name) => {
+			console.log(fields[field_name]);
+			fields[field_name] ? formData.append(field_name, fields[field_name]) : null
+		});
+
+		xhttp.send(formData)
 	}
 
 	render() {
 		const { isAuthenticated } = this.state;
-
 		if(!isAuthenticated) {
-			return <Redirect to="/login" state={{}} />;
+			return <Redirect to={{
+							pathname: "/login",
+							state: { referrer: location.pathname }
+						}}
+					/>;
 		}
 
 		return (
-			<Form id="login-form" action="/application" method="POST" enctype="multipart/form-data">
+			<Form id="login-form" onSubmit={this.submitApplication}>
 
 				<Form.Group>
 				    <Form.Field width={6}>
@@ -29,9 +77,8 @@ class Application extends React.Component {
 				      	placeholder="What school do you currently attend?"
 				      	selection
 				      	search
-				      	options={[
-				      		{ key: "UC Santa Barbara", value: "UC Santa Barbara", text: "UC Santa Barbara" }
-				      	]}
+				      	options={school_opts}
+				      	onChange={(evt, { value }) => this.updateField("school", value)}
 				      />
 				    </Form.Field>
 
@@ -46,6 +93,7 @@ class Application extends React.Component {
 				      		{ key: "Undergraduate", value: "Undergraduate", text: "Undergraduate" },
 				      		{ key: "Graduate", value: "Graduate", text: "Graduate" }
 				      	]}
+						onChange={(evt, { value }) => this.updateField("level_of_study", value)}
 				      />
 				    </Form.Field>
 
@@ -61,6 +109,7 @@ class Application extends React.Component {
 				      		{ key: "2018", value: "2018", text: "2018" },
 				      		{ key: "2017", value: "2017", text: "2016" }
 				      	]}
+				      	onChange={(evt, { value }) => this.updateField("graduation_year", value)}
 				      />
 				    </Form.Field>
 				</Form.Group>
@@ -70,7 +119,10 @@ class Application extends React.Component {
 				    	<label>Github</label>
 				    	<Input
 				    		fluid
-				    		placeholder="@github_username"
+				    		icon="at"
+				    		iconPosition="left"
+				    		placeholder="github username"
+				    		onChange={(evt, { value }) => this.updateField("github", value)}
 				    	/>
 				    </Form.Field>
 
@@ -78,7 +130,10 @@ class Application extends React.Component {
 				    	<label>Linkedin</label>
 				    	<Input
 				    		fluid
-				    		placeholder="@linkedin_username"
+				    		icon="at"
+				    		iconPosition="left"
+				    		placeholder="linkedin username"
+				    		onChange={(evt, { value }) => this.updateField("linkedin", value)}
 				    	/>
 				    </Form.Field>
 
@@ -87,6 +142,7 @@ class Application extends React.Component {
 				    	<Input
 				    		fluid
 				    		placeholder="e.g. Computer Science"
+				    		onChange={(evt, { value }) => this.updateField("major", value)}
 				    	/>
 				    </Form.Field>
 				</Form.Group>
@@ -102,6 +158,7 @@ class Application extends React.Component {
 				      		{ key: "Female", value: "Female", text: "Female" },
 				      		{ key: "Other", value: "Other", text: "Other" }
 				      	]}
+				      	onChange={(evt, { value }) => this.updateField("gender", value)}
 				      />
 				    </Form.Field>
 
@@ -110,6 +167,7 @@ class Application extends React.Component {
 				    	<Input
 				    		fluid
 				    		placeholder="Don't worry we won't call you unless it's an emergency"
+				    		onChange={(evt, { value }) => this.updateField("phone_number", value)}
 				    	/>
 				    </Form.Field>
 				</Form.Group>
@@ -117,7 +175,7 @@ class Application extends React.Component {
 				    <Form.Field>
 				      <label>Shirt Size</label>
 				      <Dropdown
-				      	placeholder="gender"
+				      	placeholder="These are unisex sizes"
 				      	selection
 				      	options={[
 				      		{ key: "S", value: "S", text: "Small" },
@@ -125,6 +183,7 @@ class Application extends React.Component {
 				      		{ key: "L", value: "L", text: "Large" },
 				      		{ key: "XL", value: "XL", text: "X-Large" }
 				      	]}
+				      	onChange={(evt, { value }) => this.updateField("shirt_size", value)}
 				      />
 				    </Form.Field>
 
@@ -138,6 +197,7 @@ class Application extends React.Component {
 				      		{ key: "2", value: "2", text: "I would prefer to be provided bussing in California" },
 				      		{ key: "3", value: "3", text: "I require travel reimbursement (This may or may not be something we can provide)" },
 				      	]}
+				      	onChange={(evt, { value }) => this.updateField("transportation", value)}
 				      />
 				    </Form.Field>
 				</Form.Group>
@@ -145,7 +205,10 @@ class Application extends React.Component {
 				<Form.Field>
 					<label>Upload Resume</label>
 
-					<Input type="file"/>
+					<Input
+						type="file"
+						onChange={(evt, { value }) => this.updateField("resume", evt.target.files[0])}
+					/>
 				</Form.Field>
 
 			    <Button fluid color="blue">Submit</Button>
