@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const efp = require("express-form-post");
+const passport = require("passport");
 
 const { User, Application } = require("../models");
-const passport = require("passport");
 const signupMail = require("../mailer/mail_signup_success");
 const updateTime = require("../lib/updateTime");
 const isLoggedIn = require("../lib/isLoggedIn");
@@ -15,7 +15,15 @@ router.post("/", isLoggedIn, formPostUpload.middleware(), (req, res, next) => {
 		// signupMail.send(req.user);
 		return res.json({ success: true });
 	})
-	.catch((err) => console.log(err));
+	.catch((err) => {
+		let errors = {};
+		err.errors.forEach((validationError) => errors[validationError.path] = validationError.message);
+		return next(errors);
+	});
+});
+
+router.use("/", (errors, req, res, next) => {
+	return res.json({ errors });
 });
 
 router.post("/update", isLoggedIn, formPostUpdate.middleware(), (req, res, next) => {
@@ -38,12 +46,6 @@ router.post("/update", isLoggedIn, formPostUpdate.middleware(), (req, res, next)
 
 router.use("/update", (err, req, res, next) => {
 	throw err; // temporary
-});
-
-// efp error catcher
-router.use("/", (err, req, res, next) => {
-	throw err;
-	return res.json({ errors: err });
 });
 
 module.exports = router;

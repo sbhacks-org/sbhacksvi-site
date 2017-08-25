@@ -25,7 +25,8 @@ class Application extends React.Component {
 				shirt_size: null,
 				transportation: null,
 				resume: null
-			}
+			},
+			errors: {}
 		}
 		this.submitApplication = this.submitApplication.bind(this);
 	}
@@ -41,8 +42,13 @@ class Application extends React.Component {
 		const { fields } = this.state;
 		const xhttp = new XMLHttpRequest();
 
+		this.setState({ loading: true });
+
 		xhttp.addEventListener("load", () => {
-			console.log("received response", xhttp.responseText);
+			let response = JSON.parse(xhttp.responseText);
+			console.log(response);	
+			if(response.success) return;
+			this.setState({ errors: response.errors, loading: false });
 		});
 
 		xhttp.open("POST", "/application");
@@ -58,7 +64,7 @@ class Application extends React.Component {
 	}
 
 	render() {
-		const { isAuthenticated } = this.state;
+		const { isAuthenticated, loading, errors } = this.state;
 		if(!isAuthenticated) {
 			return <Redirect to={{
 							pathname: "/login",
@@ -68,10 +74,9 @@ class Application extends React.Component {
 		}
 
 		return (
-			<Form id="login-form" onSubmit={this.submitApplication}>
-
+			<Form id="login-form" onSubmit={this.submitApplication} loading={loading}>
 				<Form.Group>
-				    <Form.Field width={6}>
+				    <Form.Field width={6} error={Boolean(errors["school"])}>
 				      <label>School</label>
 				      <Dropdown
 				      	placeholder="What school do you currently attend?"
