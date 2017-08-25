@@ -25,6 +25,7 @@ export function createHandleSubmit(xhr_endpoint) {
 		xhttp.addEventListener("load", () => {
 			let response = JSON.parse(xhttp.responseText);
 			console.log(response);
+			window.__IS_AUTHENTICATED__ = true;
 			this.setState(Object.assign(response, { loading: false }));
 		});
 

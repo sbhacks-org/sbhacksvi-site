@@ -6,7 +6,7 @@ import { Form, Input, Button, Segment } from "semantic-ui-react";
 import { createHandleSubmit } from "../../form-helper";
 import Banner from "./Banner";
 
-class Signup extends React.Component {
+class Login extends React.Component {
 	constructor() {
 		super();
 
@@ -29,10 +29,12 @@ class Signup extends React.Component {
 	}
 
 	render() {
-		const { isAuthenticated, fields, errors, showMessage, loading } = this.state;
+		const { isAuthenticated, fields, errors, showMessage, loading, redirect_url } = this.state;
 		const { email, password } = fields;
+		const { state } = this.props.location;
+
 		if(isAuthenticated) {
-			return <Redirect to="/dashboard" />;
+			return <Redirect to={ state ? "/application" : "/dashboard"} />;
 		}
 		return (
 			<div>
@@ -79,4 +81,4 @@ class Signup extends React.Component {
 	}
 }
 
-export default Signup;
+export default Login;
