@@ -47,11 +47,14 @@ class Application extends React.Component {
 
 		xhttp.addEventListener("load", () => {
 			let response = JSON.parse(xhttp.responseText);
-			if(response.success) return;
-			this.setState({ errors: response.errors, loading: false });
+			if(response.success) {
+				this.props.history.push("/application");
+			} else {
+				this.setState({ errors: response.errors, loading: false });
+			}
 		});
 
-		xhttp.open("POST", "/application");
+		xhttp.open("POST", "/apply");
 
 		var formData = new FormData();
 		

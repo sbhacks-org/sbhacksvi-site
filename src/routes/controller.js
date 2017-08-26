@@ -39,8 +39,17 @@ module.exports = (app) => {
 
 	// React SPA for everything but the landing page
 	app.get("*", (req, res) => {
-		res.locals.authenticated = req.isAuthenticated();
-		res.render("index");
+		if(req.isAuthenticated()) {
+			res.locals.authenticated = true;
+			req.user.getApplication().then((application) => {
+				res.locals.application = application;
+				res.render("index");
+			});
+		} else {
+			res.render("index", {
+				authenticated: false, application: false
+			});
+		}
 	});
 
 	app.use("/", authRoutes);

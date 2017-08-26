@@ -8,12 +8,13 @@ const school_opts = [
 	{ key: "UC Santa Barbara", value: 6, text: "UC Santa Barbara" }
 ]
 
-class Application extends React.Component {
+class Profile extends React.Component {
 	constructor() {
 		super();
 
 		this.state = {
 			isAuthenticated: window.__IS_AUTHENTICATED__,
+			hasApplied: window.__HAS_APPLIED__,
 			fields: {
 				school: null,
 				level_of_study: null,
@@ -63,13 +64,19 @@ class Application extends React.Component {
 	}
 
 	render() {
-		const { isAuthenticated, loading, errors } = this.state;
+		const { isAuthenticated, loading, errors, hasApplied } = this.state;
 		if(!isAuthenticated) {
 			return <Redirect to={{
 							pathname: "/login",
 							state: { referrer: location.pathname }
 						}}
 					/>;
+		}
+
+		if(!hasApplied) {
+			return (
+				<div>You have not yet applied</div>
+			);
 		}
 
 		return (
@@ -223,4 +230,4 @@ class Application extends React.Component {
 	}
 }
 
-export default Application;
+export default Profile;
