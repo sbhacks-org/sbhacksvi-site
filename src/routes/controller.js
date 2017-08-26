@@ -11,6 +11,7 @@ aws.config.update({
 const path = require("path");
 const userRoutes = require(path.join(__dirname, "user"));
 const authRoutes = require(path.join(__dirname, "auth"));
+const applyRoutes = require(path.join(__dirname, "apply"));
 const applicationRoutes = require(path.join(__dirname, "application"));
 const liveRoutes = require(path.join(__dirname, "live"));
 const subscriberRoutes = require(path.join(__dirname, "subscriber"));
@@ -43,6 +44,7 @@ module.exports = (app) => {
 	});
 
 	app.use("/", authRoutes);
+	app.use("/apply", applyRoutes);
 	app.use("/application", applicationRoutes);
 	app.use("/", userRoutes);
 	app.use("/live", liveRoutes);
