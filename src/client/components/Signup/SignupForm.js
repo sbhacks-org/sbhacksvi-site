@@ -24,7 +24,7 @@ class Signup extends React.Component {
 	updateField(field_name, field_value) {
 		const { fields } = this.state;
 		this.setState({
-			fields: Object.assign({}, fields, { [field_name]: field_value })
+			fields: { ...fields, [field_name]: field_value }
 		});
 	}
 
@@ -32,12 +32,10 @@ class Signup extends React.Component {
 		const { loading, errors, fields: { first_name, last_name, email, password } } = this.state;
 		const { isAuthenticated } = this.props
 
-		if(isAuthenticated) {
-			return <Redirect to="/dashboard" />;
-		}
+		if(isAuthenticated) return <Redirect to={ location.state ? location.state.referrer : "/profile"} />;
 
 		return (
-			<Form size="large" action="/signup" method="POST" onSubmit={this.handleSubmit} loading={loading}>
+			<Form size="large" onSubmit={this.handleSubmit} loading={loading}>
 				<Segment stacked>
 					<Form.Group widths="equal">
 						<Form.Field error={Boolean(errors.first_name)}>

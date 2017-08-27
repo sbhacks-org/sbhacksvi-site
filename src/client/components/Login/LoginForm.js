@@ -29,11 +29,10 @@ class Login extends React.Component {
 	render() {
 		const { fields, errors, showMessage, loading, redirect_url } = this.state;
 		const { email, password } = fields;
-		const { location: { state }, isAuthenticated } = this.props;
+		const { isAuthenticated } = this.props;
 
-		if(isAuthenticated) {
-			return <Redirect to={ state ? state.referrer : "/dashboard"} />;
-		}
+		if(isAuthenticated) return <Redirect to="/profile" />;
+		
 		return (
 			<div>
 				<Banner onDismiss={this.onDismiss} errors={errors} />
