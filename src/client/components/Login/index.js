@@ -7,11 +7,9 @@ import LoginForm from "./LoginForm";
 import { createHandleSubmit } from "../auth-form-helper";
 
 const mapStateToProps = (state, ownProps) => {
-	const { isAuthenticated, info, application } = state.user;
+	const { isAuthenticated } = state.user;
 	return {
-		isAuthenticated,
-		info,
-		application
+		isAuthenticated
 	};
 };
 
