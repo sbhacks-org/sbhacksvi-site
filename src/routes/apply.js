@@ -8,11 +8,12 @@ const isLoggedIn = require("../lib/isLoggedIn");
 const { saveApplication, formPostUpload } = require("../lib/application");
 
 router.post("/", isLoggedIn, formPostUpload.middleware(), (req, res, next) => {
+	if(!req.files.resume) return next({ resume: "You must upload a resume" });
 	console.log(req.body, req.files);
 	saveApplication(req)
 	.then((application) => {
 		signupMail.send(req.user);
-		return res.json({ success: true });
+		return res.json({ success: true, application });
 	})
 	.catch((err) => {
 		let errors = {};
@@ -22,7 +23,9 @@ router.post("/", isLoggedIn, formPostUpload.middleware(), (req, res, next) => {
 });
 
 router.use("/", (errors, req, res, next) => {
-	return res.json({ errors });
+	if(errors instanceof Error) errors = errors.message; 
+	console.log("Received errors", errors);
+	return res.json({ success: false,  errors });
 });
 
 module.exports = router;

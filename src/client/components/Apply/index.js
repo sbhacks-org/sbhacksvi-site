@@ -1,6 +1,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import { Form, Input, Button, Dropdown, Icon } from "semantic-ui-react";
+import { Form, Input, Button, Dropdown, Icon, Label, Message } from "semantic-ui-react";
 
 import FileInput from "./FileInput";
 
@@ -88,7 +88,6 @@ class Application extends React.Component {
 				      	onChange={(evt, { value }) => this.updateField("school", value)}
 				      />
 				    </Form.Field>
-
 
 				    <Form.Field width={5}>
 				      <label>Level of study</label>
@@ -209,14 +208,14 @@ class Application extends React.Component {
 				    </Form.Field>
 				</Form.Group>
 
-				<Form.Field>
+				<Form.Field error={Boolean(errors.resume)}>
 					<label>Upload Resume (PDF Only)</label>
 					<FileInput
 						type="file"
 						onChange={(evt) => this.updateField("resume", evt.target.files[0])}
 						accept="application/pdf"
 					/>
-					
+					{ Boolean(errors.resume) ? <Label basic color='red' pointing>{errors.resume}</Label> : null }
 				</Form.Field>
 
 			    <Button fluid color="blue">Submit</Button>

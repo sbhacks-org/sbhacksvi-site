@@ -57,7 +57,7 @@ module.exports.formPostUpload = efp({
 			return skip();
 		}
 		if(file.mimetype != "application/pdf") {
-			return cb(new Error("File was not a pdf"));
+			return cb(JSON.stringify({ resume: "File must be a PDF" }));
 		}
 		cb();
 	},
