@@ -33,10 +33,3 @@ This will not run without a .env file which I will give you <br/>
     * Please spend time googling around first, though!
   * Always be looking/referencing other websites, especially other hackathon websites, for great design implementations
     * Personal websites of students also work well for observing modern design techniques
-
-## TODO
-  * Create landing page for temporary deployment
-    * Work on ejs views first
-      * Convert to react when design feels fluid
-    * Modern index file implementation
-      * SEO
