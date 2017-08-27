@@ -1,5 +1,4 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
 import { Form, Input, Dropdown, Icon } from "semantic-ui-react";
 
 import FileInput from "./presenters/FileInput";
@@ -14,7 +13,7 @@ class ProfileForm extends React.Component {
 		super(props);
 
 		this.state = props.originalApplication;
-		this.submitApplication = () => props.submitApplication(this.state.fields);
+		this.submitApplication = () => props.submitApplication(this.state);
 	}
 
 	updateField(field_name, field_value) {

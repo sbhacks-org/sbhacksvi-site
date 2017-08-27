@@ -1,4 +1,8 @@
 module.exports.populateWithApplicationFields = (application) => {
+	if(!application) {
+		return {};
+	}
+
 	return {
 		school: application.school || "",
 		level_of_study: application.level_of_study || "",

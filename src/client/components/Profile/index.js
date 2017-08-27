@@ -1,7 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+
 
 import ProfileForm from "./ProfileForm";
+import Banner from "./presenters/Banner";
 import { populateWithApplicationFields } from "./profile-helpers";
 
 const mapStateToProps = (state) => {
@@ -20,7 +23,8 @@ class Profile extends React.Component {
 		this.state = {
 			errors: {},
 			originalApplication: populateWithApplicationFields(props.application),
-			loading: false
+			loading: false,
+			message: ""
 		}
 
 		this.submitApplication = this.submitApplication.bind(this);
@@ -28,22 +32,21 @@ class Profile extends React.Component {
 
 	submitApplication(fields) {
 		const xhttp = new XMLHttpRequest();
+		const { originalApplication } = this.state;
 
 		this.setState({ loading: true });
 
 		xhttp.addEventListener("load", () => {
 			let response = JSON.parse(xhttp.responseText);
-			if(response.success) return;
-			this.setState({ errors: response.errors, loading: false });
+			this.setState({ errors: response.errors || {}, loading: false, message: response.message });
 		});
 
-		xhttp.open("POST", "/application");
+		xhttp.open("POST", "/application/update");
 
 		var formData = new FormData();
 		
 		Object.keys(fields).forEach((field_name) => {
-			// sending null is important; although a bit hacky in itself
-			fields[field_name] ? formData.append(field_name, fields[field_name] || null) : null
+			fields[field_name] !== originalApplication[field_name] ? formData.append(field_name, fields[field_name]) : null
 		});
 
 		xhttp.send(formData)
@@ -68,12 +71,15 @@ class Profile extends React.Component {
 		}
 
 		return (
-			<ProfileForm
-				originalApplication={originalApplication}
-				errors={errors}
-				loading={loading}
-				submitApplication={this.submitApplication}
-			/>
+			<div>
+				<Banner message={this.state.message} onDismiss={() => this.setState({ message: "" })}/>
+				<ProfileForm
+					originalApplication={originalApplication}
+					errors={errors}
+					loading={loading}
+					submitApplication={this.submitApplication}
+				/>
+			</div>
 		);
 	}
 }
