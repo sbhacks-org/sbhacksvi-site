@@ -47,7 +47,7 @@ class Application extends React.Component {
 		xhttp.addEventListener("load", () => {
 			let response = JSON.parse(xhttp.responseText);
 			if(response.success) {
-				this.props.history.push("/application");
+				this.props.history.push("/profile");
 			} else {
 				this.setState({ errors: response.errors, loading: false });
 			}

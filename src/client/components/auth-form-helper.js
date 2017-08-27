@@ -37,7 +37,7 @@ export function createHandleSubmit(dispatch, xhr_endpoint) {
 				let { info, application } = response;
 				dispatch(authSuccess(info, application));
 			} else {
-				this.setState(Object.assign(response, { loading: false }));
+				this.setState({ ...response, loading: false });
 			}			
 		});
 
