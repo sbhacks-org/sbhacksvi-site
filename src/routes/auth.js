@@ -15,7 +15,7 @@ router.get("/login", (req, res) => {
 router.post("/login", (req, res, next) => {
 	passport.authenticate("login", (err, user, info) => {
 		if (err) return next(err);
-		if (!user) return res.json({ errors: info });
+		if (!user) return res.json({ isAuthenticated: false, errors: info });
 		req.logIn(user, (err) => {
 			if (err) {
 				return next(err);

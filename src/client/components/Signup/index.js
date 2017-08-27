@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { Redirect } from "react-router-dom";
 import { Form, Input, Button, Segment, Label } from "semantic-ui-react";
 
-import { createHandleSubmit } from "../../form-helper";
+import { createHandleSubmit } from "../auth-form-helper";
 
 class Signup extends React.Component {
 	constructor() {

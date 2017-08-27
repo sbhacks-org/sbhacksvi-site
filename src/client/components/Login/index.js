@@ -1,84 +1,25 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { Redirect } from "react-router-dom";
-import { Form, Input, Button, Segment } from "semantic-ui-react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-import { createHandleSubmit } from "../../form-helper";
-import Banner from "./Banner";
+import { authSuccess } from "../../actions";
+import LoginForm from "./LoginForm";
+import { createHandleSubmit } from "../auth-form-helper";
 
-class Login extends React.Component {
-	constructor() {
-		super();
+const mapStateToProps = (state, ownProps) => {
+	const { isAuthenticated, info, application } = state.user;
+	return {
+		isAuthenticated,
+		info,
+		application
+	};
+};
 
-		this.state = {
-			fields: {
-				email: "",
-				password: ""
-			},
-			loading: false,
-			errors: {},
-			isAuthenticated: window.__IS_AUTHENTICATED__
-		}
-
-		this.handleSubmit = createHandleSubmit("/login").bind(this);
-		this.onDismiss = this.onDismiss.bind(this);
-	}
-
-	onDismiss() {
-		this.setState({ errors: {} })
-	}
-
-	render() {
-		const { isAuthenticated, fields, errors, showMessage, loading, redirect_url } = this.state;
-		const { email, password } = fields;
-		const { state } = this.props.location;
-
-		if(isAuthenticated) {
-			return <Redirect to={ state ? state.referrer : "/dashboard"} />;
-		}
-		return (
-			<div>
-				<Banner onDismiss={this.onDismiss} errors={errors} />
-				<Form size="large" action="/login" method="POST" onSubmit={this.handleSubmit}>
-					<Segment>
-						<Form.Field>
-							<label>Email</label>
-							<Form.Input
-								disabled={loading}
-								fluid
-								icon="at"
-								iconPosition="left"
-								placeholder="Email Address"
-								name="email"
-								type="email"
-								value={email}
-								onChange={(el) => this.setState({
-									fields: Object.assign({}, fields, { email: el.target.value })
-								})}
-				            />
-						</Form.Field>
-						<Form.Field>
-							<label>Password</label>
-							<Form.Input
-								disabled={loading}
-								fluid
-								icon="lock"
-								iconPosition="left"
-								placeholder="Password"
-								name="password"
-								type="password"
-								value={password}
-								onChange={(el) => this.setState({
-									fields: Object.assign({}, fields, { password: el.target.value })
-								})}
-				            />
-						</Form.Field>
-						<Button loading={loading} color='blue' fluid size='large'>Login</Button>
-					</Segment>
-				</Form>
-			</div>
-		);
-	}
+const mapDispatchToProps = (dispatch, ownProps) => {
+	return {
+		...bindActionCreators({ authSuccess }, dispatch),
+		handleSubmit: createHandleSubmit(dispatch, "/login")
+	};
 }
 
-export default Login;
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

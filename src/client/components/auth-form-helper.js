@@ -1,3 +1,6 @@
+import * as actionTypes from "../actionTypes";
+import { authSuccess } from "../actions";
+
 function addMissingFieldsErrors() {
 	const { password, email } = this.state.fields;
 	const missingFieldErrors = {};
@@ -8,12 +11,17 @@ function addMissingFieldsErrors() {
 	this.setState({ errors: missingFieldErrors });
 }
 
-export function createHandleSubmit(xhr_endpoint) {
+function sendXHR(xhr_endpoint, fields) {
+	this.open("POST", xhr_endpoint);
+	this.setRequestHeader("Content-Type", "application/json");
+	this.send(JSON.stringify(fields));
+}
 
+export function createHandleSubmit(dispatch, xhr_endpoint) {
 	return function(evt) {
 		evt.preventDefault();
 
-		const { password, email } = this.state.fields;
+		const { fields, fields: { password, email } } = this.state;
 		const { history } = this.props;
 
 		if(!password || !email) return addMissingFieldsErrors.call(this);
@@ -25,13 +33,16 @@ export function createHandleSubmit(xhr_endpoint) {
 		xhttp.addEventListener("load", () => {
 			let response = JSON.parse(xhttp.responseText);
 			console.log(response);
-			window.__IS_AUTHENTICATED__ = true;
-			this.setState(Object.assign(response, { loading: false }));
+			if(response.isAuthenticated) {
+				let { info, application } = response;
+				dispatch(authSuccess(info, application));
+			} else {
+				this.setState(Object.assign(response, { loading: false }));
+			}			
 		});
 
-		xhttp.open("POST", xhr_endpoint);
-		xhttp.setRequestHeader("Content-Type", "application/json");
+		sendXHR.call(xhttp, xhr_endpoint, fields);
+	};
+};
 
-		xhttp.send(JSON.stringify(this.state.fields));
-	}
-}
+
