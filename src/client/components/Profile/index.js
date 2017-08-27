@@ -21,6 +21,18 @@ const mapDispatchToProps = (dispatch) => {
 	return bindActionCreators({ updateSuccess }, dispatch);
 }
 
+function sendXHR(xhr_endpoint, fields, originalApplication) {
+	this.open("POST", xhr_endpoint);
+
+	var formData = new FormData();
+	
+	Object.keys(fields).forEach((field_name) => {
+		fields[field_name] !== originalApplication[field_name] ? formData.append(field_name, fields[field_name]) : null
+	});
+
+	this.send(formData)
+}
+
 class Profile extends React.Component {
 	constructor(props) {
 		super(props);
@@ -34,27 +46,29 @@ class Profile extends React.Component {
 		this.updateApplication = this.updateApplication.bind(this);
 	}
 
+	startUpdate() {
+		this.setState({ loading: true });
+	}
+
+	finishUpdate(response, fields) {
+		if(response.success) this.props.updateSuccess(fields);
+		this.setState({ errors: response.errors || {}, loading: false, message: response.message });
+	}
+
+	
+
 	updateApplication(fields) {
 		const xhttp = new XMLHttpRequest();
 		const { applicationFields: originalApplication } = this.props;
 
-		this.setState({ loading: true });
+		this.startUpdate();
 
 		xhttp.addEventListener("load", () => {
 			let response = JSON.parse(xhttp.responseText);
-			if(response.success) this.props.updateSuccess(fields);
-			this.setState({ errors: response.errors || {}, loading: false, message: response.message });
+			this.finishUpdate(response, fields);
 		});
 
-		xhttp.open("POST", "/profile/update");
-
-		var formData = new FormData();
-		
-		Object.keys(fields).forEach((field_name) => {
-			fields[field_name] !== originalApplication[field_name] ? formData.append(field_name, fields[field_name]) : null
-		});
-
-		xhttp.send(formData)
+		sendXHR.call(xhttp, "/profile/update", fields, originalApplication);
 	}
 
 	render() {
