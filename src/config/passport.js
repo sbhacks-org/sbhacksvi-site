@@ -1,13 +1,15 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const { User } = require("../models/index");
+const { User, Application } = require("../models/index");
 const bcrypt = require("bcryptjs");
 
 passport.serializeUser((user, done) => done(null, user.id));
 
 passport.deserializeUser((id, done) => {
-	User.findOne({
-		where: { id }
+	User.find({
+		where: { id },
+		include: [Application],
+		limit: 1
 	})
 	.then((user) => {
 		done(null, user);

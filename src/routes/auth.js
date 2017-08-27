@@ -4,13 +4,7 @@ const updateTime = require("../lib/updateTime");
 const isLoggedIn = require("../lib/isLoggedIn");
 const efp = require("express-form-post");
 const { User } = require("../models");
-
-router.get("/login", (req, res) => {
-	if (req.isAuthenticated()){
-		return res.redirect("/dashboard");
-	}
-	res.render("login");
-});
+const { authSuccessUserState } = require("../lib/auth");
 
 router.post("/login", (req, res, next) => {
 	passport.authenticate("login", (err, user, info) => {
@@ -20,7 +14,11 @@ router.post("/login", (req, res, next) => {
 			if (err) {
 				return next(err);
 			}
-			return res.json({ isAuthenticated: true });
+			req.user.getApplication()
+			.then((application) => {
+				let { dataValues: user } = req.user;
+				res.json(authSuccessUserState(user, application));
+			})
 		});
 	})(req, res, next);
 });

@@ -16,6 +16,8 @@ const applicationRoutes = require(path.join(__dirname, "application"));
 const liveRoutes = require(path.join(__dirname, "live"));
 const subscriberRoutes = require(path.join(__dirname, "subscriber"));
 
+const { authSuccessUserState } = require("../lib/auth");
+
 module.exports = (app) => {
 
 	// Merely just for current deployment
@@ -34,18 +36,10 @@ module.exports = (app) => {
 	// React SPA for everything but the landing page
 	app.get("*", (req, res) => {
 		if(req.isAuthenticated()) {
-			req.user.getApplication().then((application) => {
-				res.locals.preloadedState = {
-					user: {
-						isAuthenticated: true,
-						application
-					}
-				};
-				res.render("index");
-			});
-		} else {
-			res.render("index");
+			let { dataValues: user, application } = req.user;
+			res.locals.preloadedState = { user: authSuccessUserState(user, application) };
 		}
+		res.render("index");
 	});
 
 	app.use("/", authRoutes);
