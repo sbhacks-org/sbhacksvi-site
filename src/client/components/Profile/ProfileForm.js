@@ -1,84 +1,29 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import { Form, Input, Button, Dropdown, Icon } from "semantic-ui-react";
+import { Form, Input, Dropdown, Icon } from "semantic-ui-react";
 
 import FileInput from "./FileInput";
+import UpdateApplicationButton from "./UpdateApplicationButton";
 
 const school_opts = [
 	{ key: "UC Santa Barbara", value: 6, text: "UC Santa Barbara" }
 ]
 
-class Profile extends React.Component {
-	constructor() {
-		super();
+class ProfileForm extends React.Component {
+	constructor(props) {
+		super(props);
 
-		this.state = {
-			hasApplied: window.__HAS_APPLIED__,
-			fields: {
-				school: null,
-				level_of_study: null,
-				graduation_year: null,
-				github: null,
-				linkedin: null,
-				major: null,
-				gender: null,
-				phone_number: null,
-				shirt_size: null,
-				transportation: null,
-				resume: null
-			},
-			errors: {}
-		}
-		this.submitApplication = this.submitApplication.bind(this);
+		this.state = props.originalApplication;
+		this.submitApplication = () => props.submitApplication(this.state.fields);
 	}
 
 	updateField(field_name, field_value) {
-		const { fields } = this.state;
-		this.setState({
-			fields: { ...fields, [field_name]: field_value }
-		});
-	}
-
-	submitApplication() {
-		const { fields } = this.state;
-		const xhttp = new XMLHttpRequest();
-
-		this.setState({ loading: true });
-
-		xhttp.addEventListener("load", () => {
-			let response = JSON.parse(xhttp.responseText);
-			if(response.success) return;
-			this.setState({ errors: response.errors, loading: false });
-		});
-
-		xhttp.open("POST", "/application");
-
-		var formData = new FormData();
-		
-		Object.keys(fields).forEach((field_name) => {
-			fields[field_name] ? formData.append(field_name, fields[field_name]) : null
-		});
-
-		xhttp.send(formData)
+		this.setState({ [field_name]: field_value });
 	}
 
 	render() {
-		const { loading, errors, hasApplied } = this.state;
-		const { isAuthenticated } = this.props;
-		if(!isAuthenticated) {
-			return <Redirect to={{
-							pathname: "/login",
-							state: { referrer: location.pathname }
-						}}
-					/>;
-		}
-
-		if(!hasApplied) {
-			return (
-				<div>You have not yet applied</div>
-			);
-		}
-
+		const { errors, originalApplication, loading } = this.props;
+		
 		return (
 			<Form id="login-form" onSubmit={this.submitApplication} loading={loading}>
 				<Form.Group>
@@ -90,6 +35,7 @@ class Profile extends React.Component {
 				      	search
 				      	options={school_opts}
 				      	onChange={(evt, { value }) => this.updateField("school", value)}
+				      	value={this.state.school_id}
 				      />
 				    </Form.Field>
 
@@ -105,6 +51,7 @@ class Profile extends React.Component {
 				      		{ key: "Graduate", value: "Graduate", text: "Graduate" }
 				      	]}
 						onChange={(evt, { value }) => this.updateField("level_of_study", value)}
+						value={this.state.level_of_study}
 				      />
 				    </Form.Field>
 
@@ -114,13 +61,14 @@ class Profile extends React.Component {
 				      	placeholder="year"
 				      	selection
 				      	options={[
-				      		{ key: "2021", value: "2021", text: "2021" },
-				      		{ key: "2020", value: "2020", text: "2020" },
-				      		{ key: "2019", value: "2019", text: "2019" },
-				      		{ key: "2018", value: "2018", text: "2018" },
-				      		{ key: "2017", value: "2017", text: "2016" }
+				      		{ key: "2017", value: "2017", text: "2016" },
+							{ key: "2018", value: "2018", text: "2018" },
+							{ key: "2019", value: "2019", text: "2019" },
+							{ key: "2020", value: "2020", text: "2020" },
+				      		{ key: "2021", value: "2021", text: "2021" }
 				      	]}
 				      	onChange={(evt, { value }) => this.updateField("graduation_year", value)}
+				      	value={this.state.graduation_year}
 				      />
 				    </Form.Field>
 				</Form.Group>
@@ -134,6 +82,7 @@ class Profile extends React.Component {
 				    		iconPosition="left"
 				    		placeholder="github username"
 				    		onChange={(evt, { value }) => this.updateField("github", value)}
+				    		value={this.state.github}
 				    	/>
 				    </Form.Field>
 
@@ -145,6 +94,7 @@ class Profile extends React.Component {
 				    		iconPosition="left"
 				    		placeholder="linkedin username"
 				    		onChange={(evt, { value }) => this.updateField("linkedin", value)}
+				    		value={this.state.linkedin}
 				    	/>
 				    </Form.Field>
 
@@ -154,6 +104,7 @@ class Profile extends React.Component {
 				    		fluid
 				    		placeholder="e.g. Computer Science"
 				    		onChange={(evt, { value }) => this.updateField("major", value)}
+				    		value={this.state.major}
 				    	/>
 				    </Form.Field>
 				</Form.Group>
@@ -170,6 +121,7 @@ class Profile extends React.Component {
 				      		{ key: "Other", value: "Other", text: "Other" }
 				      	]}
 				      	onChange={(evt, { value }) => this.updateField("gender", value)}
+				      	value={this.state.gender}
 				      />
 				    </Form.Field>
 
@@ -179,6 +131,7 @@ class Profile extends React.Component {
 				    		fluid
 				    		placeholder="Don't worry we won't call you unless it's an emergency"
 				    		onChange={(evt, { value }) => this.updateField("phone_number", value)}
+				    		value={this.state.phone_number}
 				    	/>
 				    </Form.Field>
 				</Form.Group>
@@ -195,6 +148,7 @@ class Profile extends React.Component {
 				      		{ key: "XL", value: "XL", text: "X-Large" }
 				      	]}
 				      	onChange={(evt, { value }) => this.updateField("shirt_size", value)}
+				      	value={this.state.shirt_size}
 				      />
 				    </Form.Field>
 
@@ -209,6 +163,7 @@ class Profile extends React.Component {
 				      		{ key: "3", value: "3", text: "I require travel reimbursement (This may or may not be something we can provide)" },
 				      	]}
 				      	onChange={(evt, { value }) => this.updateField("transportation", value)}
+				      	value={this.state.transportation}
 				      />
 				    </Form.Field>
 				</Form.Group>
@@ -223,11 +178,14 @@ class Profile extends React.Component {
 					
 				</Form.Field>
 
-			    <Button fluid color="blue">Submit</Button>
+				<UpdateApplicationButton
+					originalApplication={originalApplication}
+					fields={this.state}
+				/>
 
 			</Form>
 		);
 	}
 }
 
-export default Profile;
+export default ProfileForm;
