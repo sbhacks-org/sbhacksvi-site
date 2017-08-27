@@ -8,8 +8,9 @@
   <div id="root" style="padding: 10%"></div>
 </body>
 <script type="text/javascript">
-	window.__IS_AUTHENTICATED__ = <%- authenticated %>;
-	window.__HAS_APPLIED__ = <%- Boolean(application) %>;
+	<% if(locals.preloadedState) { %>
+		window.__PRELOADED_STATE__ = JSON.parse('<%- JSON.stringify(preloadedState) %>');
+	<% } %>
 </script>
 <script type="text/javascript" src="/js/bundle.js"></script>
 </html>
