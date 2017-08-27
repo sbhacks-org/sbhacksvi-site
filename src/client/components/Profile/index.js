@@ -41,7 +41,7 @@ class Profile extends React.Component {
 			this.setState({ errors: response.errors || {}, loading: false, message: response.message });
 		});
 
-		xhttp.open("POST", "/application/update");
+		xhttp.open("POST", "/profile/update");
 
 		var formData = new FormData();
 		
