@@ -1,1 +1,2 @@
 export const AUTH_SUCCESS = "LOG_IN_SUCCESS";
+export const UPDATE_SUCCESS = "UPDATE_SUCCESS";

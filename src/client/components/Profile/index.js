@@ -1,19 +1,24 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-
+import { bindActionCreators } from "redux";
 
 import ProfileForm from "./ProfileForm";
 import Banner from "./presenters/Banner";
 import { populateWithApplicationFields } from "./profile-helpers";
+import { updateSuccess } from "../../actions";
 
 const mapStateToProps = (state) => {
-	const { isAuthenticated, application, info } = state.user;
+	const { isAuthenticated, applicationFields, info } = state.user;
 	return {
 		isAuthenticated,
-		application,
+		applicationFields,
 		info
 	}
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return bindActionCreators({ updateSuccess }, dispatch);
 }
 
 class Profile extends React.Component {
@@ -22,22 +27,22 @@ class Profile extends React.Component {
 
 		this.state = {
 			errors: {},
-			originalApplication: populateWithApplicationFields(props.application),
 			loading: false,
 			message: ""
 		}
 
-		this.submitApplication = this.submitApplication.bind(this);
+		this.updateApplication = this.updateApplication.bind(this);
 	}
 
-	submitApplication(fields) {
+	updateApplication(fields) {
 		const xhttp = new XMLHttpRequest();
-		const { originalApplication } = this.state;
+		const { applicationFields: originalApplication } = this.props;
 
 		this.setState({ loading: true });
 
 		xhttp.addEventListener("load", () => {
 			let response = JSON.parse(xhttp.responseText);
+			if(response.success) this.props.updateSuccess(fields);
 			this.setState({ errors: response.errors || {}, loading: false, message: response.message });
 		});
 
@@ -53,8 +58,8 @@ class Profile extends React.Component {
 	}
 
 	render() {
-		const { originalApplication, errors, loading } = this.state;
-		const { isAuthenticated, application, info } = this.props;
+		const { errors, loading } = this.state;
+		const { isAuthenticated, applicationFields, info } = this.props;
 
 		if(!isAuthenticated) {
 			return <Redirect to={{
@@ -64,7 +69,7 @@ class Profile extends React.Component {
 					/>;
 		}
 
-		if(!application) {
+		if(!applicationFields) {
 			return (
 				<div>You have not yet applied</div>
 			);
@@ -74,14 +79,14 @@ class Profile extends React.Component {
 			<div>
 				<Banner message={this.state.message} onDismiss={() => this.setState({ message: "" })}/>
 				<ProfileForm
-					originalApplication={originalApplication}
+					originalApplication={applicationFields}
 					errors={errors}
 					loading={loading}
-					submitApplication={this.submitApplication}
+					updateApplication={this.updateApplication}
 				/>
 			</div>
 		);
 	}
 }
 
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

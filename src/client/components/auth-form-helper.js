@@ -32,10 +32,9 @@ export function createHandleSubmit(dispatch, xhr_endpoint) {
 
 		xhttp.addEventListener("load", () => {
 			let response = JSON.parse(xhttp.responseText);
-			console.log(response);
 			if(response.isAuthenticated) {
-				let { info, application } = response;
-				dispatch(authSuccess(info, application));
+				let { info, applicationFields } = response;
+				dispatch(authSuccess(info, applicationFields));
 			} else {
 				this.setState({ ...response, loading: false });
 			}			

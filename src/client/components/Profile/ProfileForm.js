@@ -13,7 +13,7 @@ class ProfileForm extends React.Component {
 		super(props);
 
 		this.state = props.originalApplication;
-		this.submitApplication = () => props.submitApplication(this.state);
+		this.updateApplication = () => props.updateApplication(this.state);
 	}
 
 	updateField(field_name, field_value) {
@@ -24,7 +24,7 @@ class ProfileForm extends React.Component {
 		const { errors, originalApplication, loading } = this.props;
 		
 		return (
-			<Form id="login-form" onSubmit={this.submitApplication} loading={loading}>
+			<Form id="login-form" onSubmit={this.updateApplication} loading={loading}>
 				<Form.Group>
 				    <Form.Field width={6} error={Boolean(errors["school"])}>
 				      <label>School</label>

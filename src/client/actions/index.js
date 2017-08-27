@@ -1,9 +1,16 @@
 import * as actionTypes from "../actionTypes";
 
-export const authSuccess = (info, application) => {
+export const authSuccess = (info, applicationFields) => {
 	return {
 		type: actionTypes.AUTH_SUCCESS,
 		info,
-		application
+		applicationFields
 	};
+};
+
+export const updateSuccess = (applicationFields) => {
+	return {
+		type: actionTypes.UPDATE_SUCCESS,
+		applicationFields
+	}
 };
