@@ -36,8 +36,8 @@ module.exports = (app) => {
 	// React SPA for everything but the landing page
 	app.get("*", (req, res) => {
 		if(req.isAuthenticated()) {
-			let { dataValues: user, application } = req.user;
-			res.locals.preloadedState = { user: authSuccessUserState(user, application) };
+			let { dataValues: user, Application } = req.user;
+			res.locals.preloadedState = { user: authSuccessUserState(user, Application) };
 		}
 		res.render("index");
 	});

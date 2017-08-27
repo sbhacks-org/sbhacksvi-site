@@ -8,7 +8,7 @@ const isLoggedIn = require("../lib/isLoggedIn");
 const { saveApplication, formPostUpdate } = require("../lib/application");
 
 router.post("/update", isLoggedIn, formPostUpdate.middleware(), (req, res, next) => {
-	res.json({ message: {
+	res.json({ success: true, message: {
 		type: "success",
 		content: "Test content",
 		header: "test header"
