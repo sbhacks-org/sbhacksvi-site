@@ -1,8 +1,8 @@
 import * as actionTypes from "../actionTypes";
 import { authSuccess } from "../actions";
 
-function addMissingFieldsErrors() {
-	const { password, email } = this.state.fields;
+function addMissingFieldsErrors(fields) {
+	const { password, email } = fields;
 	const missingFieldErrors = {};
 
 	if(!password) missingFieldErrors["password"] = "password can't be blank";
@@ -17,16 +17,19 @@ function sendXHR(xhr_endpoint, fields) {
 	this.send(JSON.stringify(fields));
 }
 
+function startSubmit() {
+	this.setState({ loading: true });
+}
+
 export function createHandleSubmit(dispatch, xhr_endpoint) {
-	return function(evt) {
+	return function(evt, fields) {
 		evt.preventDefault();
 
-		const { fields, fields: { password, email } } = this.state;
-		const { history } = this.props;
+		const { password, email } = fields;
 
-		if(!password || !email) return addMissingFieldsErrors.call(this);
+		if(!password || !email) return addMissingFieldsErrors.call(this, fields);
 
-		this.setState({ loading: true });
+		startSubmit.call(this);
 
 		let xhttp = new XMLHttpRequest();
 

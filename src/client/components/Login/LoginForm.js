@@ -1,47 +1,31 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Redirect } from "react-router-dom";
 import { Form, Input, Button, Segment } from "semantic-ui-react";
 
-import Banner from "./Banner";
 
-class Login extends React.Component {
+class LoginForm extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			fields: {
-				email: "",
-				password: ""
-			},
-			loading: false,
-			errors: {}
+			email: "",
+			password: ""
 		}
 
 		this.handleSubmit = this.props.handleSubmit.bind(this);
-		this.onDismiss = this.onDismiss.bind(this);
-	}
-
-	onDismiss() {
-		this.setState({ errors: {} })
 	}
 
 	render() {
-		const { fields, errors, showMessage, loading, redirect_url } = this.state;
-		const { email, password } = fields;
-		const { isAuthenticated } = this.props;
-
-		if(isAuthenticated) return <Redirect to="/profile" />;
+		const { email, password }  = this.state;
+		const { loading } = this.props;
 		
 		return (
 			<div>
-				<Banner onDismiss={this.onDismiss} errors={errors} />
-				<Form size="large" action="/login" method="POST" onSubmit={this.handleSubmit}>
+				<Form size="large" action="/login" method="POST" onSubmit={(evt) => this.handleSubmit(evt, this.state)} loading={loading}>
 					<Segment>
 						<Form.Field>
 							<label>Email</label>
 							<Form.Input
-								disabled={loading}
 								fluid
 								icon="at"
 								iconPosition="left"
@@ -49,15 +33,12 @@ class Login extends React.Component {
 								name="email"
 								type="email"
 								value={email}
-								onChange={(el) => this.setState({
-									fields: Object.assign({}, fields, { email: el.target.value })
-								})}
+								onChange={(el) => this.setState({ email: el.target.value })}
 				            />
 						</Form.Field>
 						<Form.Field>
 							<label>Password</label>
 							<Form.Input
-								disabled={loading}
 								fluid
 								icon="lock"
 								iconPosition="left"
@@ -65,12 +46,10 @@ class Login extends React.Component {
 								name="password"
 								type="password"
 								value={password}
-								onChange={(el) => this.setState({
-									fields: Object.assign({}, fields, { password: el.target.value })
-								})}
+								onChange={(el) => this.setState({ password: el.target.value })}
 				            />
 						</Form.Field>
-						<Button loading={loading} color='blue' fluid size='large'>Login</Button>
+						<Button color='blue' fluid size='large'>Login</Button>
 					</Segment>
 				</Form>
 			</div>
@@ -78,4 +57,4 @@ class Login extends React.Component {
 	}
 }
 
-export default Login;
+export default LoginForm;
