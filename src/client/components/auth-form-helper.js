@@ -1,14 +1,15 @@
 import * as actionTypes from "../actionTypes";
 import { authSuccess } from "../actions";
 
-function addMissingFieldsErrors(fields) {
-	const { password, email } = fields;
+function getMissingFieldErrors(fields, required_fields) {
 	const missingFieldErrors = {};
 
-	if(!password) missingFieldErrors["password"] = "password can't be blank";
-	if(!email) missingFieldErrors["email"] = "email can't be blank";
-
-	this.setState({ errors: missingFieldErrors });
+	required_fields.forEach((required_field) => {
+		if(fields[required_field.name] === "") {
+			missingFieldErrors[required_field.name] = (required_field.label || required_field.name) + " can't be blank";
+		}
+	});
+	return missingFieldErrors;
 }
 
 function sendXHR(xhr_endpoint, fields) {
@@ -21,11 +22,11 @@ function startSubmit() {
 	this.setState({ loading: true });
 }
 
-export function createHandleSubmit(dispatch, xhr_endpoint) {
+export function createHandleSubmit(dispatch, xhr_endpoint, required_fields) {
 	return function(fields) {
-		const { password, email } = fields;
 
-		if(!password || !email) return addMissingFieldsErrors.call(this, fields);
+		let missingFieldErrors = getMissingFieldErrors(fields, required_fields);
+		if(Object.keys(missingFieldErrors).length > 0) return this.setState({ errors: missingFieldErrors });
 
 		startSubmit.call(this);
 

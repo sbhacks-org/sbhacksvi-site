@@ -17,7 +17,12 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
-		handleSubmit: createHandleSubmit(dispatch, "/signup")
+		handleSubmit: createHandleSubmit(dispatch, "/signup", [
+			{ name: "email", label: "Email" },
+			{ name: "password", label: "Password" },
+			{ name: "last_name", label: "Last name" },
+			{ name: "first_name", label: "First name" }
+		])
 	};
 }
 
