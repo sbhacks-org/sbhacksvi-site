@@ -27,7 +27,7 @@ passport.use("login", new LocalStrategy({
 			email: email
 		}
 	}).then((user) => {
-		if (!user) return done(null, false, { username: "No such user with that email exists" });
+		if (!user) return done(null, false, { email: "No such user with that email exists" });
 		bcrypt.compare(password, user.password, (err, res) => {
 			if (err) { done(err); }
 			if (res) {
@@ -48,6 +48,7 @@ passport.use("signup", new LocalStrategy({
 	bcrypt.genSalt(10, (err, salt) => {
 		bcrypt.hash(req.body.password, salt, (err, password_digest) => {
 			const { first_name, last_name, email } = req.body;
+			console.log(req.body);
 			User.create({
 				first_name,
 				last_name,

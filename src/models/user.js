@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
 			validate: {
 				is: {
 					args: ["^[a-z]+$","i"],
-					msg: "first name cannot contain numbers"
+					msg: "First name may only consist of letters"
 				}
 			}
 		},
@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
 			validate: {
 				is:  {
 					args: ["^[a-z]+$","i"],
-					msg: "last name cannot contain numbers"
+					msg: "Last name may only consist of letters"
 				}
 			}
 		},
