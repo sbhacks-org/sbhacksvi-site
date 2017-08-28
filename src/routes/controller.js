@@ -20,7 +20,7 @@ const subscriberRoutes = require(path.join(__dirname, "subscriber"));
 
 const { authSuccessUserState } = require("../lib/auth");
 
-function convertValidationError(err, res) {
+function convertValidationError(err) {
 	let errors = {};
 	err.errors.forEach((validationError) => errors[validationError.path] = validationError.message);
 	return errors;
@@ -57,7 +57,10 @@ module.exports = (app) => {
 	app.use("/live", liveRoutes);
 
 	app.use("*", (err, req, res, next) => {
+		if(err instanceof ValidationError) return res.json({ success: false, errors: convertValidationError(err) })
+
 		console.log(err);
+
 		if(err instanceof Error || err instanceof DatabaseError) {
 			return res.json({
 				message: {
@@ -67,9 +70,6 @@ module.exports = (app) => {
 				}
 			});
 		} 
-		if(err instanceof ValidationError) {
-			err = convertValidationError(err, res);
-		}
 		return res.json({ success: false, errors: err });
 	});
 };
