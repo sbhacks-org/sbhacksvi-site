@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
+import { Button } from "semantic-ui-react";
 
 import { authSuccess } from "../../actions";
 import { createHandleSubmit } from "../auth-form-helper";
@@ -44,11 +45,15 @@ class Signup extends React.Component {
 		if(isAuthenticated) return <Redirect to={ location.state ? location.state.referrer : "/profile"} />;
 
 		return (
-			<SignupForm
-				handleSubmit={this.handleSubmit}
-				loading={loading}
-				errors={errors}
-			/>
+			<div>
+				<h1>Sign Up</h1>
+				<SignupForm
+					handleSubmit={this.handleSubmit}
+					loading={loading}
+					errors={errors}
+				/>
+				<Link to="/login"><Button color="teal" fluid size="large">I already have an account and want to log in.</Button></Link>
+			</div>
 		);
 	}
 }

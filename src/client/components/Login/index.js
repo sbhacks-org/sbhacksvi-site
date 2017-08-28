@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
+import { Button } from "semantic-ui-react";
 
 import { authSuccess } from "../../actions";
 import { createHandleSubmit } from "../auth-form-helper";
@@ -57,6 +58,7 @@ class Login extends React.Component {
 					loading={loading}
 					errors={errors}
 				/>
+				<Link to="/signup"><Button color="teal" fluid size="large">I don't have an account yet.</Button></Link>
 			</div>
 		)
 	}

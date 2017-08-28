@@ -85,7 +85,7 @@ class SignupForm extends React.Component {
 		            />
 		            { Boolean(errors.password) ? <Label basic color='red' pointing>{errors.password}</Label> : null }
 				</Form.Field>
-				<Button color='blue' fluid size='large'>Signup</Button>
+				<Button color="blue" fluid size="large">Signup</Button>
 			</Form>
 		);
 	}
