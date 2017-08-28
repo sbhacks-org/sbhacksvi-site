@@ -50,8 +50,8 @@ class Profile extends React.Component {
 		this.setState({ loading: true });
 	}
 
-	finishUpdate(response, fields) {
-		if(response.success) this.props.updateSuccess(fields);
+	finishUpdate(response) {
+		if(response.success) this.props.updateSuccess(response.application);
 		this.setState({ errors: response.errors || {}, loading: false, message: response.message });
 	}
 
@@ -64,7 +64,7 @@ class Profile extends React.Component {
 
 		xhttp.addEventListener("load", () => {
 			let response = JSON.parse(xhttp.responseText);
-			this.finishUpdate(response, fields);
+			this.finishUpdate(response);
 		});
 
 		sendUpdateXHR.call(xhttp, fields, originalApplication);

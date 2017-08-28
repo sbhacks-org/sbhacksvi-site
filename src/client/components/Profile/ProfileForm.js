@@ -20,6 +20,12 @@ class ProfileForm extends React.Component {
 		this.setState({ [field_name]: field_value });
 	}
 
+	componentWillReceiveProps(nextProps) {
+		if(Object.keys(nextProps.errors) == 0) {
+			this.setState({ ...nextProps.originalApplication, resume: undefined });
+		}
+	}
+
 	render() {
 		const { errors, originalApplication, loading } = this.props;
 		

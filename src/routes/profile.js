@@ -6,6 +6,7 @@ const { User, Application } = require("../models");
 const signupMail = require("../mailer/mail_signup_success");
 const isLoggedIn = require("../lib/isLoggedIn");
 const { saveApplication, formPostUpdate, massageAttrsForUpdate } = require("../lib/application");
+const populateWithApplicationFields = require("../lib/populateWithApplicationFields");
 
 router.post("/update", isLoggedIn, formPostUpdate.middleware(), (req, res, next) => {
 	console.log(req.body);
@@ -15,11 +16,15 @@ router.post("/update", isLoggedIn, formPostUpdate.middleware(), (req, res, next)
 
 	Application.updateAttributes(attributes)
 	.then((application) => {
-		res.json({ success: true, message: {
-			type: "success",
-			header: "Successfully updated your application",
-			content: "You can continue to update application until 12/1/17"
-		}});
+		res.json({
+			success: true,
+			application: populateWithApplicationFields(application),
+			message: {
+				type: "success",
+				header: "Successfully updated your application",
+				content: "You can continue to update application until 12/1/17"
+			}
+		});
 	})
 	.catch((err) => next(err));
 	
