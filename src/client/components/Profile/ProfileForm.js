@@ -5,7 +5,7 @@ import FileInput from "./presenters/FileInput";
 import UpdateApplicationButton from "./presenters/UpdateApplicationButton";
 
 const school_opts = [
-	{ key: "UC Santa Barbara", value: 6, text: "UC Santa Barbara" }
+	{ key: "UC Santa Barbara", value: "6", text: "UC Santa Barbara" }
 ]
 
 class ProfileForm extends React.Component {
@@ -33,7 +33,7 @@ class ProfileForm extends React.Component {
 				      	selection
 				      	search
 				      	options={school_opts}
-				      	onChange={(evt, { value }) => this.updateField("school", value)}
+				      	onChange={(evt, { value }) => this.updateField("school_id", value)}
 				      	value={this.state.school_id}
 				      />
 				    </Form.Field>

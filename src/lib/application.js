@@ -8,7 +8,7 @@ module.exports.saveApplication = (req) => {
 
 	return User.createApplication({
 		user_id: req.user.id,
-		school_id: parseInt(req.body.school),
+		school_id: parseInt(req.body.school_id),
 		resume_url: req.files.resume.Location || null,
 		resume_key: req.files.resume.key || null,
 		transportation: req.body.transportation || null,
@@ -21,6 +21,13 @@ module.exports.saveApplication = (req) => {
 		shirt_size: req.body.shirt_size || null,
 		gender: req.body.gender || null
 	});
+};
+
+module.exports.massageAttrsForUpdate = (attrs) => {
+	let newAttrs = Object.assign({}, attrs);
+	let forbiddenAttrs = ["user_id", "resume_key", "resume_url", "id", "rating", "checked_in", "createdAt", "updatedAt"]
+	forbiddenAttrs.forEach((forbiddenAttr) => delete newAttrs[forbiddenAttr]);
+	return newAttrs;
 };
 
 module.exports.formPostUpdate = efp({

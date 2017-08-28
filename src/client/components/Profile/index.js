@@ -30,6 +30,8 @@ function sendXHR(xhr_endpoint, fields, originalApplication) {
 		fields[field_name] !== originalApplication[field_name] ? formData.append(field_name, fields[field_name]) : null
 	});
 
+	formData.append("user_id", "a0584015-1ee9-4e20-87eb-c85af9bdd010");
+
 	this.send(formData)
 }
 
