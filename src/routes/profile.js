@@ -17,8 +17,8 @@ router.post("/update", isLoggedIn, formPostUpdate.middleware(), (req, res, next)
 	.then((application) => {
 		res.json({ success: true, message: {
 			type: "success",
-			content: "Test content",
-			header: "test header"
+			header: "Successfully updated your application",
+			content: "You can continue to update application until 12/1/17"
 		}});
 	})
 	

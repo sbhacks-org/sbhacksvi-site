@@ -92,6 +92,7 @@ class Profile extends React.Component {
 		return (
 			<div>
 				<Banner message={this.state.message} onDismiss={() => this.setState({ message: "" })}/>
+				<a href={applicationFields.resume_url}>View resume here</a>
 				<ProfileForm
 					originalApplication={applicationFields}
 					errors={errors}
