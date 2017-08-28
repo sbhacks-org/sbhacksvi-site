@@ -12,6 +12,10 @@ class SignupForm extends React.Component {
 			email: "",
 			password: ""
 		}
+		this.handleSubmit = (evt) => {
+			evt.preventDefault();
+			this.props.handleSubmit(this.state);
+		}
 	}
 
 	updateField(field_name, field_value) {
@@ -22,7 +26,7 @@ class SignupForm extends React.Component {
 		const { loading, errors } = this.props;
 
 		return (
-			<Form size="large" onSubmit={(evt) => this.props.handleSubmit(evt, this.state)} loading={loading}>
+			<Form size="large" onSubmit={this.handleSubmit} loading={loading}>
 				<Segment stacked>
 					<Form.Group widths="equal">
 						<Form.Field error={Boolean(errors.first_name)}>

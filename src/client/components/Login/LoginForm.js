@@ -12,7 +12,10 @@ class LoginForm extends React.Component {
 			password: ""
 		}
 
-		this.handleSubmit = this.props.handleSubmit.bind(this);
+		this.handleSubmit = (evt) => {
+			evt.preventDefault();
+			this.props.handleSubmit(this.state);
+		};
 	}
 
 	render() {
@@ -21,7 +24,7 @@ class LoginForm extends React.Component {
 		
 		return (
 			<div>
-				<Form size="large" action="/login" method="POST" onSubmit={(evt) => this.handleSubmit(evt, this.state)} loading={loading}>
+				<Form size="large" action="/login" method="POST" onSubmit={this.handleSubmit} loading={loading}>
 					<Segment>
 						<Form.Field>
 							<label>Email</label>

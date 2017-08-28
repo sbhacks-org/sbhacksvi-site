@@ -22,9 +22,7 @@ function startSubmit() {
 }
 
 export function createHandleSubmit(dispatch, xhr_endpoint) {
-	return function(evt, fields) {
-		evt.preventDefault();
-
+	return function(fields) {
 		const { password, email } = fields;
 
 		if(!password || !email) return addMissingFieldsErrors.call(this, fields);

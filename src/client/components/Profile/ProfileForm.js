@@ -13,7 +13,10 @@ class ProfileForm extends React.Component {
 		super(props);
 
 		this.state = props.originalApplication;
-		this.updateApplication = () => props.updateApplication(this.state);
+		this.updateApplication = (evt) => {
+			evt.preventDefault();
+			props.updateApplication(this.state);
+		};
 	}
 
 	updateField(field_name, field_value) {

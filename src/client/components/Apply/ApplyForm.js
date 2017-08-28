@@ -25,7 +25,10 @@ class Application extends React.Component {
 			transportation: "",
 			resume: ""
 		}
-		this.submitApplication = () => this.props.submitApplication(this.state);
+		this.submitApplication = (evt) => {
+			evt.preventDefault();
+			this.props.submitApplication(this.state);
+		};
 	}
 
 	updateField(field_name, field_value) {
