@@ -45,21 +45,20 @@ class Apply extends React.Component {
 		this.setState({ loading: true });
 	}
 
-	finishUpdate(response, fields) {
+	finishUpdate(response) {
 		this.setState({ errors: response.errors || {}, loading: false });
-		if(response.success) this.props.submitSuccess(fields);
+		if(response.success) this.props.submitSuccess(response.application);
 	}
 
 
 	submitApplication(fields) {
-		console.log("Starting submit");
 		const xhttp = new XMLHttpRequest();
 
 		this.startUpdate();
 
 		xhttp.addEventListener("load", () => {
 			let response = JSON.parse(xhttp.responseText);
-			this.finishUpdate(response, fields);
+			this.finishUpdate(response);
 		});
 
 		sendApplyXHR.call(xhttp, fields);

@@ -6,6 +6,7 @@ const { User, Application } = require("../models");
 const signupMail = require("../mailer/mail_signup_success");
 const isLoggedIn = require("../lib/isLoggedIn");
 const { saveApplication, formPostUpload } = require("../lib/application");
+const populateWithApplicationFields = require("../lib/populateWithApplicationFields");
 
 router.post("/", isLoggedIn, formPostUpload.middleware(), (req, res, next) => {
 	if(!req.files.resume) return next({ resume: "You must upload a resume" });
@@ -15,7 +16,7 @@ router.post("/", isLoggedIn, formPostUpload.middleware(), (req, res, next) => {
 	saveApplication(req)
 	.then((application) => {
 		signupMail.send(req.user);
-		return res.json({ success: true, application });
+		return res.json({ success: true, application: populateWithApplicationFields(application) });
 	})
 	.catch((err) => {
 		return next(err);
