@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const passport = require("passport");
-const updateTime = require("../lib/updateTime");
-const isLoggedIn = require("../lib/isLoggedIn");
 const efp = require("express-form-post");
+
+const isLoggedIn = require("../lib/isLoggedIn");
 const { User } = require("../models");
 const { authSuccessUserState } = require("../lib/auth");
 
