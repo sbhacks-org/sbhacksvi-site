@@ -6,7 +6,7 @@ const Banner = ({ message, onDismiss }) => {
 		return (
 			<Message
 				success={message.type === "success"}
-				negative={message.type === "negative"}
+				negative={message.type === "failure"}
 				attached
 				onDismiss={onDismiss}
 				header={message.header}

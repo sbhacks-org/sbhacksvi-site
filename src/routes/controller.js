@@ -58,13 +58,18 @@ module.exports = (app) => {
 
 	app.use("*", (err, req, res, next) => {
 		console.log(err);
+		if(err instanceof Error || err instanceof DatabaseError) {
+			return res.json({
+				message: {
+					type: "failure",
+					header: "Something went wrong internally.",
+					content: "Please contact us at ucsbhacks@gmail.com"
+				}
+			});
+		} 
 		if(err instanceof ValidationError) {
 			err = convertValidationError(err, res);
 		}
-		if(err instanceof DatabaseError) {
-			res.json({ success: false, globalMessage: "Something went wrong internally." });
-		}
-		if(err instanceof Error) err = err.message; 
 		return res.json({ success: false, errors: err });
 	});
 };
