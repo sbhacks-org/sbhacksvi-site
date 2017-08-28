@@ -9,7 +9,6 @@ const { saveApplication, formPostUpdate, massageAttrsForUpdate } = require("../l
 const populateWithApplicationFields = require("../lib/populateWithApplicationFields");
 
 router.post("/update", isLoggedIn, formPostUpdate.middleware(), (req, res, next) => {
-	console.log(req.body);
 	const { Application } = req.user;
 
 	let attributes = massageAttrsForUpdate(req.body);

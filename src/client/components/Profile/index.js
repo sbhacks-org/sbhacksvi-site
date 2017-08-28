@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import { bindActionCreators } from "redux";
+import { Grid } from "semantic-ui-react";
 
 import ProfileForm from "./ProfileForm";
 import Banner from "./presenters/Banner";
@@ -91,13 +92,20 @@ class Profile extends React.Component {
 		return (
 			<div>
 				<Banner message={this.state.message} onDismiss={() => this.setState({ message: "" })}/>
-				<a href={applicationFields.resume_url}>View resume here</a>
-				<ProfileForm
-					originalApplication={applicationFields}
-					errors={errors}
-					loading={loading}
-					updateApplication={this.updateApplication}
-				/>
+				<h1>Application Status: Submitted</h1>
+				<Grid>
+					<Grid.Column width={3}>
+						<a target="_blank" href={applicationFields.resume_url}>View resume here</a>
+					</Grid.Column>
+					<Grid.Column width={13}>
+						<ProfileForm
+							originalApplication={applicationFields}
+							errors={errors}
+							loading={loading}
+							updateApplication={this.updateApplication}
+						/>
+					</Grid.Column>
+				</Grid>
 			</div>
 		);
 	}

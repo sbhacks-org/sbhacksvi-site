@@ -69,7 +69,7 @@ class Apply extends React.Component {
 		
 		if(!isAuthenticated) {
 			return <Redirect to={{
-							pathname: "/login",
+							pathname: "/signup",
 							state: { referrer: location.pathname }
 						}}
 					/>;
@@ -80,11 +80,14 @@ class Apply extends React.Component {
 		}
 
 		return (
-			<ApplyForm
-				submitApplication={this.submitApplication}
-				loading={this.state.loading}
-				errors={this.state.errors}
-			/>
+			<div>
+				<h1>SB Hacks IV Application</h1>
+				<ApplyForm
+					submitApplication={this.submitApplication}
+					loading={this.state.loading}
+					errors={this.state.errors}
+				/>
+			</div>
 		);
 	}
 }
