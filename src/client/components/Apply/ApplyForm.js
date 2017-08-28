@@ -14,7 +14,7 @@ class Application extends React.Component {
 
 		this.state = {
 			fields: {
-				school: null,
+				school_id: null,
 				level_of_study: null,
 				graduation_year: null,
 				github: null,
@@ -79,14 +79,14 @@ class Application extends React.Component {
 		return (
 			<Form id="login-form" onSubmit={this.submitApplication} loading={loading}>
 				<Form.Group>
-				    <Form.Field width={6} error={Boolean(errors["school"])}>
+				    <Form.Field width={6} error={Boolean(errors["school_id"])}>
 				      <label>School</label>
 				      <Dropdown
 				      	placeholder="What school do you currently attend?"
 				      	selection
 				      	search
 				      	options={school_opts}
-				      	onChange={(evt, { value }) => this.updateField("school", value)}
+				      	onChange={(evt, { value }) => this.updateField("school_id", value)}
 				      />
 				    </Form.Field>
 

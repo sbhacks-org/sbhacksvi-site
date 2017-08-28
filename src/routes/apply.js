@@ -16,6 +16,7 @@ router.post("/", isLoggedIn, formPostUpload.middleware(), (req, res, next) => {
 		return res.json({ success: true, application });
 	})
 	.catch((err) => {
+		console.log(err);
 		let errors = {};
 		err.errors.forEach((validationError) => errors[validationError.path] = validationError.message);
 		return next(errors);
