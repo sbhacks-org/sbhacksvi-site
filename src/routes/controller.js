@@ -9,6 +9,8 @@ aws.config.update({
 });
 
 const path = require("path");
+const { ValidationError, DatabaseError } = require("sequelize");
+
 const userRoutes = require(path.join(__dirname, "user"));
 const authRoutes = require(path.join(__dirname, "auth"));
 const applyRoutes = require(path.join(__dirname, "apply"));
@@ -17,6 +19,12 @@ const liveRoutes = require(path.join(__dirname, "live"));
 const subscriberRoutes = require(path.join(__dirname, "subscriber"));
 
 const { authSuccessUserState } = require("../lib/auth");
+
+function convertValidationError(err, res) {
+	let errors = {};
+	err.errors.forEach((validationError) => errors[validationError.path] = validationError.message);
+	return errors;
+}
 
 module.exports = (app) => {
 
@@ -48,15 +56,15 @@ module.exports = (app) => {
 	app.use("/", userRoutes);
 	app.use("/live", liveRoutes);
 
-	// Somewhat Error handling for development purposes
-	app.use((req, res) => {
-		console.log("Invalid URL processed: ", req.url);
-		res.status(404).render("404", {url: req.url});
-	});
-
-	app.use((err, req, res, next) => {
-		console.log("Entered universal error handler");
+	app.use("*", (err, req, res, next) => {
 		console.log(err);
-		res.send("Something went wrong page.");
+		if(err instanceof ValidationError) {
+			err = convertValidationError(err, res);
+		}
+		if(err instanceof DatabaseError) {
+			res.json({ success: false, globalMessage: "Something went wrong internally." });
+		}
+		if(err instanceof Error) err = err.message; 
+		return res.json({ success: false, errors: err });
 	});
 };
