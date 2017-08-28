@@ -25,35 +25,33 @@ class LoginForm extends React.Component {
 		return (
 			<div>
 				<Form size="large" action="/login" method="POST" onSubmit={this.handleSubmit} loading={loading}>
-					<Segment>
-						<Form.Field>
-							<label>Email</label>
-							<Form.Input
-								fluid
-								icon="at"
-								iconPosition="left"
-								placeholder="Email Address"
-								name="email"
-								type="email"
-								value={email}
-								onChange={(el) => this.setState({ email: el.target.value })}
-				            />
-						</Form.Field>
-						<Form.Field>
-							<label>Password</label>
-							<Form.Input
-								fluid
-								icon="lock"
-								iconPosition="left"
-								placeholder="Password"
-								name="password"
-								type="password"
-								value={password}
-								onChange={(el) => this.setState({ password: el.target.value })}
-				            />
-						</Form.Field>
-						<Button color='blue' fluid size='large'>Login</Button>
-					</Segment>
+					<Form.Field required>
+						<label>Email</label>
+						<Form.Input
+							fluid
+							icon="at"
+							iconPosition="left"
+							placeholder="Email Address"
+							name="email"
+							type="email"
+							value={email}
+							onChange={(el) => this.setState({ email: el.target.value })}
+			            />
+					</Form.Field>
+					<Form.Field required>
+						<label>Password</label>
+						<Form.Input
+							fluid
+							icon="lock"
+							iconPosition="left"
+							placeholder="Password"
+							name="password"
+							type="password"
+							value={password}
+							onChange={(el) => this.setState({ password: el.target.value })}
+			            />
+					</Form.Field>
+					<Button color='blue' fluid size='large'>Login</Button>
 				</Form>
 			</div>
 		);

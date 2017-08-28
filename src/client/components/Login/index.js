@@ -49,6 +49,7 @@ class Login extends React.Component {
 		return (
 			<div>
 				<Banner onDismiss={this.onDismiss} errors={errors} />
+				<h1>Log In</h1>
 				<LoginForm
 					handleSubmit={this.handleSubmit}
 					loading={loading}
