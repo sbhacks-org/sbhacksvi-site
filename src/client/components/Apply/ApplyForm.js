@@ -14,21 +14,20 @@ class Application extends React.Component {
 
 		this.state = {
 			fields: {
-				school_id: null,
-				level_of_study: null,
-				graduation_year: null,
-				github: null,
-				linkedin: null,
-				major: null,
-				gender: null,
-				phone_number: null,
-				shirt_size: null,
-				transportation: null,
-				resume: null
-			},
-			errors: {}
+				school_id: "",
+				level_of_study: "",
+				graduation_year: "",
+				github: "",
+				linkedin: "",
+				major: "",
+				gender: "",
+				phone_number: "",
+				shirt_size: "",
+				transportation: "",
+				resume: ""
+			}
 		}
-		this.submitApplication = this.submitApplication.bind(this);
+		this.submitApplication = () => this.props.submitApplication(this.state.fields);
 	}
 
 	updateField(field_name, field_value) {
@@ -38,43 +37,8 @@ class Application extends React.Component {
 		});
 	}
 
-	submitApplication() {
-		const { fields } = this.state;
-		const xhttp = new XMLHttpRequest();
-
-		this.setState({ loading: true });
-
-		xhttp.addEventListener("load", () => {
-			let response = JSON.parse(xhttp.responseText);
-			if(response.success) {
-				this.props.history.push("/profile");
-			} else {
-				this.setState({ errors: response.errors, loading: false });
-			}
-		});
-
-		xhttp.open("POST", "/apply");
-
-		var formData = new FormData();
-		
-		Object.keys(fields).forEach((field_name) => {
-			fields[field_name] ? formData.append(field_name, fields[field_name]) : null
-		});
-
-		xhttp.send(formData)
-	}
-
 	render() {
-		const { loading, errors } = this.state;
-		const { isAuthenticated } = this.props;
-		
-		if(!isAuthenticated) {
-			return <Redirect to={{
-							pathname: "/login",
-							state: { referrer: location.pathname }
-						}}
-					/>;
-		}
+		const { loading, errors } = this.props;
 
 		return (
 			<Form id="login-form" onSubmit={this.submitApplication} loading={loading}>
@@ -88,6 +52,7 @@ class Application extends React.Component {
 				      	options={school_opts}
 				      	onChange={(evt, { value }) => this.updateField("school_id", value)}
 				      />
+				      { Boolean(errors.school_id) ? <Label basic color='red' pointing>{errors.school_id}</Label> : null }
 				    </Form.Field>
 
 				    <Form.Field width={5}>
@@ -102,6 +67,7 @@ class Application extends React.Component {
 				      	]}
 						onChange={(evt, { value }) => this.updateField("level_of_study", value)}
 				      />
+				      { Boolean(errors.level_of_study) ? <Label basic color='red' pointing>{errors.level_of_study}</Label> : null }
 				    </Form.Field>
 
 				    <Form.Field width={5}>
@@ -110,14 +76,15 @@ class Application extends React.Component {
 				      	placeholder="year"
 				      	selection
 				      	options={[
-				      		{ key: "2021", value: "2021", text: "2021" },
-				      		{ key: "2020", value: "2020", text: "2020" },
-				      		{ key: "2019", value: "2019", text: "2019" },
-				      		{ key: "2018", value: "2018", text: "2018" },
-				      		{ key: "2017", value: "2017", text: "2016" }
+				      		{ key: "2021", value: 2021, text: "2021" },
+				      		{ key: "2020", value: 2020, text: "2020" },
+				      		{ key: "2019", value: 2019, text: "2019" },
+				      		{ key: "2018", value: 2018, text: "2018" },
+				      		{ key: "2017", value: 2017, text: "2016" }
 				      	]}
 				      	onChange={(evt, { value }) => this.updateField("graduation_year", value)}
 				      />
+				      { Boolean(errors.graduation_year) ? <Label basic color='red' pointing>{errors.graduation_year}</Label> : null }
 				    </Form.Field>
 				</Form.Group>
 
@@ -131,6 +98,7 @@ class Application extends React.Component {
 				    		placeholder="github username"
 				    		onChange={(evt, { value }) => this.updateField("github", value)}
 				    	/>
+				    	{ Boolean(errors.github) ? <Label basic color='red' pointing>{errors.github}</Label> : null }
 				    </Form.Field>
 
 				    <Form.Field>
@@ -142,6 +110,7 @@ class Application extends React.Component {
 				    		placeholder="linkedin username"
 				    		onChange={(evt, { value }) => this.updateField("linkedin", value)}
 				    	/>
+				    	{ Boolean(errors.linkedin) ? <Label basic color='red' pointing>{errors.linkedin}</Label> : null }
 				    </Form.Field>
 
 				    <Form.Field>
@@ -151,6 +120,7 @@ class Application extends React.Component {
 				    		placeholder="e.g. Computer Science"
 				    		onChange={(evt, { value }) => this.updateField("major", value)}
 				    	/>
+				    	{ Boolean(errors.major) ? <Label basic color='red' pointing>{errors.major}</Label> : null }
 				    </Form.Field>
 				</Form.Group>
 
@@ -167,6 +137,7 @@ class Application extends React.Component {
 				      	]}
 				      	onChange={(evt, { value }) => this.updateField("gender", value)}
 				      />
+				      { Boolean(errors.gender) ? <Label basic color='red' pointing>{errors.gender}</Label> : null }
 				    </Form.Field>
 
 				    <Form.Field width={7}>
@@ -176,6 +147,7 @@ class Application extends React.Component {
 				    		placeholder="Don't worry we won't call you unless it's an emergency"
 				    		onChange={(evt, { value }) => this.updateField("phone_number", value)}
 				    	/>
+				    	{ Boolean(errors.phone_number) ? <Label basic color='red' pointing>{errors.phone_number}</Label> : null }
 				    </Form.Field>
 				</Form.Group>
 				<Form.Group widths="equal">
@@ -192,6 +164,7 @@ class Application extends React.Component {
 				      	]}
 				      	onChange={(evt, { value }) => this.updateField("shirt_size", value)}
 				      />
+				      { Boolean(errors.shirt_size) ? <Label basic color='red' pointing>{errors.shirt_size}</Label> : null }
 				    </Form.Field>
 
 				    <Form.Field>
@@ -207,6 +180,7 @@ class Application extends React.Component {
 				      	onChange={(evt, { value }) => this.updateField("transportation", value)}
 				      />
 				    </Form.Field>
+				    { Boolean(errors.transportation) ? <Label basic color='red' pointing>{errors.transportation}</Label> : null }
 				</Form.Group>
 
 				<Form.Field error={Boolean(errors.resume)}>

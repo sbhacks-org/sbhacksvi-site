@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { bindActionCreators } from "redux";
 
 import ProfileForm from "./ProfileForm";
@@ -21,8 +21,8 @@ const mapDispatchToProps = (dispatch) => {
 	return bindActionCreators({ updateSuccess }, dispatch);
 }
 
-function sendXHR(xhr_endpoint, fields, originalApplication) {
-	this.open("POST", xhr_endpoint);
+function sendUpdateXHR(fields, originalApplication) {
+	this.open("POST", "/profile/update");
 
 	var formData = new FormData();
 	
@@ -56,7 +56,6 @@ class Profile extends React.Component {
 	}
 
 	
-
 	updateApplication(fields) {
 		const xhttp = new XMLHttpRequest();
 		const { applicationFields: originalApplication } = this.props;
@@ -68,7 +67,7 @@ class Profile extends React.Component {
 			this.finishUpdate(response, fields);
 		});
 
-		sendXHR.call(xhttp, "/profile/update", fields, originalApplication);
+		sendUpdateXHR.call(xhttp, fields, originalApplication);
 	}
 
 	render() {
@@ -85,7 +84,7 @@ class Profile extends React.Component {
 
 		if(!applicationFields) {
 			return (
-				<div>You have not yet applied</div>
+				<div>You have not yet applied. Click <Link to="/apply">here</Link> to apply</div>
 			);
 		}
 

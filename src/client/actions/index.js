@@ -14,3 +14,5 @@ export const updateSuccess = (applicationFields) => {
 		applicationFields
 	}
 };
+
+export const submitSuccess = updateSuccess;

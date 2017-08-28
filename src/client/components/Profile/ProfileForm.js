@@ -5,7 +5,7 @@ import FileInput from "./presenters/FileInput";
 import UpdateApplicationButton from "./presenters/UpdateApplicationButton";
 
 const school_opts = [
-	{ key: "UC Santa Barbara", value: "6", text: "UC Santa Barbara" }
+	{ key: "UC Santa Barbara", value: 6, text: "UC Santa Barbara" }
 ]
 
 class ProfileForm extends React.Component {
@@ -26,7 +26,7 @@ class ProfileForm extends React.Component {
 		return (
 			<Form id="login-form" onSubmit={this.updateApplication} loading={loading}>
 				<Form.Group>
-				    <Form.Field width={6} error={Boolean(errors["school"])}>
+				    <Form.Field width={6} error={Boolean(errors["school_id"])}>
 				      <label>School</label>
 				      <Dropdown
 				      	placeholder="What school do you currently attend?"
@@ -60,11 +60,11 @@ class ProfileForm extends React.Component {
 				      	placeholder="year"
 				      	selection
 				      	options={[
-				      		{ key: "2017", value: "2017", text: "2016" },
-							{ key: "2018", value: "2018", text: "2018" },
-							{ key: "2019", value: "2019", text: "2019" },
-							{ key: "2020", value: "2020", text: "2020" },
-				      		{ key: "2021", value: "2021", text: "2021" }
+				      		{ key: "2017", value: 2017, text: "2016" },
+							{ key: "2018", value: 2018, text: "2018" },
+							{ key: "2019", value: 2019, text: "2019" },
+							{ key: "2020", value: 2020, text: "2020" },
+				      		{ key: "2021", value: 2021, text: "2021" }
 				      	]}
 				      	onChange={(evt, { value }) => this.updateField("graduation_year", value)}
 				      	value={this.state.graduation_year}
