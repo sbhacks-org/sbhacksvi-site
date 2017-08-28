@@ -13,28 +13,23 @@ class Application extends React.Component {
 		super();
 
 		this.state = {
-			fields: {
-				school_id: "",
-				level_of_study: "",
-				graduation_year: "",
-				github: "",
-				linkedin: "",
-				major: "",
-				gender: "",
-				phone_number: "",
-				shirt_size: "",
-				transportation: "",
-				resume: ""
-			}
+			school_id: "",
+			level_of_study: "",
+			graduation_year: "",
+			github: "",
+			linkedin: "",
+			major: "",
+			gender: "",
+			phone_number: "",
+			shirt_size: "",
+			transportation: "",
+			resume: ""
 		}
-		this.submitApplication = () => this.props.submitApplication(this.state.fields);
+		this.submitApplication = () => this.props.submitApplication(this.state);
 	}
 
 	updateField(field_name, field_value) {
-		const { fields } = this.state;
-		this.setState({
-			fields: { ...fields, [field_name]: field_value }
-		});
+		this.setState({	[field_name]: field_value });
 	}
 
 	render() {
