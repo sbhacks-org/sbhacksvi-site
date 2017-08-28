@@ -4,9 +4,9 @@ const populateWithApplicationFields = (application) => {
 	}
 
 	return {
-		school_id: application.school_id.toString() || "",
+		school_id: application.school_id || "",
 		level_of_study: application.level_of_study || "",
-		graduation_year: application.graduation_year.toString() || "",
+		graduation_year: application.graduation_year || "",
 		github: application.github || "",
 		linkedin: application.linkedin || "",
 		major: application.major || "",

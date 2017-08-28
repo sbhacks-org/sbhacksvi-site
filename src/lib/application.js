@@ -8,7 +8,7 @@ module.exports.saveApplication = (req) => {
 
 	return User.createApplication({
 		user_id: req.user.id,
-		school_id: parseInt(req.body.school_id),
+		school_id: req.body.school_id || undefined,
 		resume_url: req.files.resume.Location || null,
 		resume_key: req.files.resume.key || null,
 		transportation: req.body.transportation || null,

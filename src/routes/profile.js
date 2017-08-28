@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const efp = require("express-form-post");
 const passport = require("passport");
+const { DatabaseError } = require("sequelize");
 
 const { User, Application } = require("../models");
 const signupMail = require("../mailer/mail_signup_success");
@@ -21,10 +22,14 @@ router.post("/update", isLoggedIn, formPostUpdate.middleware(), (req, res, next)
 			content: "You can continue to update application until 12/1/17"
 		}});
 	})
+	.catch((err) => next(err));
 	
 });
 
 router.use("/update", (err, req, res, next) => {
+	if(err instanceof DatabaseError) {
+		console.log("Something went wrong");
+	}
 	throw err; // temporary
 });
 
