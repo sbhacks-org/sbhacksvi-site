@@ -69,9 +69,10 @@ module.exports.formPostUpload = efp({
 		cb();
 	},
 	filename: function(req, file, cb) {
+		console.log(file);
 		bcrypt.genSalt(10, function(err, salt) {
 			bcrypt.hash(Date.now().toString() + file.originalname, salt, (err, hash) => {
-				cb(hash.replace(/\//g, "_").substr(0,8) + Date.now() + "\/" + file.originalname);
+				cb(hash.replace(/\//g, "_").substr(0,8) + Date.now() + ".pdf");
 			});
 		});
 	},
