@@ -95,7 +95,8 @@ class Profile extends React.Component {
 				<h1>Application Status: Submitted</h1>
 				<Grid>
 					<Grid.Column width={3}>
-						<a target="_blank" href={applicationFields.resume_url}>View resume here</a>
+						<div><a onClick={this.props.logout}>Logout</a></div>
+						<div><a target="_blank" href={applicationFields.resume_url}>View resume here</a></div>
 					</Grid.Column>
 					<Grid.Column width={13}>
 						<ProfileForm
@@ -106,7 +107,6 @@ class Profile extends React.Component {
 						/>
 					</Grid.Column>
 				</Grid>
-				<Button fluid color="red" onClick={this.props.logout}>Logout</Button>
 			</div>
 		);
 	}

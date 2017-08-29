@@ -9,7 +9,7 @@ const LoginButton = ({ email, password }) => {
 		size: "large"
 	};
 	
-	if([email, password].includes("")) btnProps.disabled = true;
+	if([email, password].includes("") || password.length < 8) btnProps.disabled = true;
 	return <Button {...btnProps}>Log In</Button>
 };
 
