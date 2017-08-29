@@ -22,14 +22,12 @@ router.post("/login", (req, res, next) => {
 	})(req, res, next);
 });
 
-router.get("/logout", (req, res) => {
+router.post("/logout", (req, res) => {
 	if (req.isAuthenticated()) {
 		console.log("logging out");
 		req.logout();
-		return res.redirect("/");
-	} else {
-		return res.send("You aren't even logged in");
 	}
+	return res.json({ success: true });
 });
 
 router.post("/signup", (req, res, next) => {

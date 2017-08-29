@@ -2,12 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import { bindActionCreators } from "redux";
-import { Grid } from "semantic-ui-react";
+import { Grid, Button } from "semantic-ui-react";
 
 import ProfileForm from "./ProfileForm";
 import Banner from "./presenters/Banner";
 import { populateWithApplicationFields } from "./profile-helpers";
-import { updateSuccess } from "../../actions";
+import { updateSuccess, logout } from "../../actions";
 
 const mapStateToProps = (state) => {
 	const { isAuthenticated, applicationFields, info } = state.user;
@@ -19,7 +19,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-	return bindActionCreators({ updateSuccess }, dispatch);
+	return bindActionCreators({ updateSuccess, logout }, dispatch);
 }
 
 function sendUpdateXHR(fields, originalApplication) {
@@ -106,6 +106,7 @@ class Profile extends React.Component {
 						/>
 					</Grid.Column>
 				</Grid>
+				<Button fluid color="red" onClick={this.props.logout}>Logout</Button>
 			</div>
 		);
 	}

@@ -15,4 +15,20 @@ export const updateSuccess = (applicationFields) => {
 	}
 };
 
+export const logout = () => {
+	return function(dispatch) {
+		var xhttp = new XMLHttpRequest();
+
+		xhttp.addEventListener("load", () => {
+			let response = JSON.parse(xhttp.responseText);
+			dispatch({
+				type: actionTypes.LOG_OUT_SUCCESS
+			});
+		});
+
+		xhttp.open("POST", "/logout");
+		xhttp.send();
+	};
+};
+
 export const submitSuccess = updateSuccess;

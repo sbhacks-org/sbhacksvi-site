@@ -16,6 +16,9 @@ const userReducer = (state = initialState, action) => {
 			let { applicationFields } = action;
 			return { ...state, applicationFields };
 		}
+		case actionTypes.LOG_OUT_SUCCESS: {
+			return { isAuthenticated: false, applicationFields: null, info: null };
+		};
 		default:
 			return state;
 	}
