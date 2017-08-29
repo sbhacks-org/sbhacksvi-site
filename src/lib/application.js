@@ -1,5 +1,5 @@
 const efp = require("express-form-post");
-const bcrypt = require("bcryptjs");
+const hasha = require("hasha");
 
 const { School, User, Application } = require("../models");
 
@@ -42,7 +42,7 @@ module.exports.formPostUpdate = efp({
 	},
 	validateFile: function(file, cb) {
 		if(file.mimetype != "application/pdf") {
-			return cb(false);
+			return cb("File was not a pdf");
 		}
 		cb();
 	},
@@ -64,17 +64,13 @@ module.exports.formPostUpload = efp({
 			return skip();
 		}
 		if(file.mimetype != "application/pdf") {
-			return cb(JSON.stringify({ resume: "File must be a PDF" }));
+			return cb("File was not a pdf");
 		}
 		cb();
 	},
 	filename: function(req, file, cb) {
-		console.log(file);
-		bcrypt.genSalt(10, function(err, salt) {
-			bcrypt.hash(Date.now().toString() + file.originalname, salt, (err, hash) => {
-				cb(hash.replace(/\//g, "_").substr(0,8) + Date.now() + ".pdf");
-			});
-		});
+		let full_name = req.user.first_name + req.user.last_name;
+		cb(`${hasha(Date.now().toString())}/${full_name}.pdf`);
 	},
 	api: {
 		bucketName: process.env.S3_BUCKET_NAME,
