@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Form, Input, Button, Segment, Label } from "semantic-ui-react";
 
+import SignupButton from "./SignupButton";
+
 class SignupForm extends React.Component {
 	constructor(props) {
 		super(props);
@@ -72,7 +74,7 @@ class SignupForm extends React.Component {
 		            { Boolean(errors.email) ? <Label basic color='red' pointing>{errors.email}</Label> : null }
 				</Form.Field>
 				<Form.Field	error={Boolean(errors.password)} required>
-					<label>Password</label>
+					<label>Password (must be at least 8 characters long)</label>
 					<Input
 						fluid
 						icon="lock"
@@ -85,7 +87,7 @@ class SignupForm extends React.Component {
 		            />
 		            { Boolean(errors.password) ? <Label basic color='red' pointing>{errors.password}</Label> : null }
 				</Form.Field>
-				<Button color="blue" fluid size="large">Signup</Button>
+				<SignupButton {...this.state} />
 			</Form>
 		);
 	}

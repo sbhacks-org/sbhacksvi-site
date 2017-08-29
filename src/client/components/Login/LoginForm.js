@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Form, Input, Button, Segment, Label } from "semantic-ui-react";
 
+import LoginButton from "./LoginButton";
 
 class LoginForm extends React.Component {
 	constructor(props) {
@@ -53,7 +54,7 @@ class LoginForm extends React.Component {
 			            />
 			            { Boolean(errors.password) ? <Label basic color='red' pointing>{errors.password}</Label> : null }
 					</Form.Field>
-					<Button color='blue' fluid size='large'>Login</Button>
+					<LoginButton {...this.state} />
 				</Form>
 			</div>
 		);
