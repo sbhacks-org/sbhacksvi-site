@@ -8,4 +8,4 @@ let initialState = window.__PRELOADED_STATE__ || undefined;
 
 delete window.__PRELOADED_STATE__;
 
-module.exports = createStore(reducers, initialState, applyMiddleware(logger, thunk));
+module.exports = createStore(reducers, initialState, applyMiddleware(thunk, logger));
