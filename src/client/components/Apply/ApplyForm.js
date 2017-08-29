@@ -3,12 +3,13 @@ import { Redirect } from "react-router-dom";
 import { Form, Input, Button, Dropdown, Icon, Label, Message } from "semantic-ui-react";
 
 import FileInput from "./FileInput";
+import ApplyButton from "./ApplyButton";
 
 const school_opts = [
 	{ key: "UC Santa Barbara", value: 6, text: "UC Santa Barbara" }
 ]
 
-class Application extends React.Component {
+class ApplyForm extends React.Component {
 	constructor() {
 		super();
 
@@ -41,7 +42,7 @@ class Application extends React.Component {
 		return (
 			<Form id="login-form" onSubmit={this.submitApplication} loading={loading}>
 				<Form.Group>
-				    <Form.Field width={6} error={Boolean(errors["school_id"])}>
+				    <Form.Field width={6} error={Boolean(errors["school_id"])} required>
 				      <label>School</label>
 				      <Dropdown
 				      	placeholder="What school do you currently attend?"
@@ -181,21 +182,13 @@ class Application extends React.Component {
 				    { Boolean(errors.transportation) ? <Label basic color='red' pointing>{errors.transportation}</Label> : null }
 				</Form.Group>
 
-				<Form.Field error={Boolean(errors.resume)}>
-					<label>Upload Resume (PDF Only)</label>
-					<FileInput
-						type="file"
-						onChange={(evt) => this.updateField("resume", evt.target.files[0])}
-						accept="application/pdf"
-					/>
-					{ Boolean(errors.resume) ? <Label basic color='red' pointing>{errors.resume}</Label> : null }
-				</Form.Field>
+				<FileInput onChange={(evt) => this.updateField("resume", evt.target.files[0])} />
 
-			    <Button fluid color="blue">Submit</Button>
+			    <ApplyButton {...this.state} />
 
 			</Form>
 		);
 	}
 }
 
-export default Application;
+export default ApplyForm;
