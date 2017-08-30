@@ -54,7 +54,7 @@ class ApplyForm extends React.Component {
 				      { Boolean(errors.school_id) ? <Label basic color='red' pointing>{errors.school_id}</Label> : null }
 				    </Form.Field>
 
-				    <Form.Field width={5}>
+				    <Form.Field width={5} required>
 				      <label>Level of study</label>
 				      <Dropdown
 				      	placeholder="What is your level of study?"
@@ -69,7 +69,7 @@ class ApplyForm extends React.Component {
 				      { Boolean(errors.level_of_study) ? <Label basic color='red' pointing>{errors.level_of_study}</Label> : null }
 				    </Form.Field>
 
-				    <Form.Field width={5}>
+				    <Form.Field width={5} required>
 				      <label>Graduation Year</label>
 				      <Dropdown
 				      	placeholder="year"

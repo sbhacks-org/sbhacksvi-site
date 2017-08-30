@@ -11,7 +11,8 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     major: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false
     },
     resume_url: {
       type: DataTypes.STRING,
@@ -40,7 +41,8 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     level_of_study: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false
     },
     transportation: {
       type: DataTypes.STRING
@@ -60,7 +62,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     shirt_size: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING
     },
     rating: {
       type: DataTypes.INTEGER,
