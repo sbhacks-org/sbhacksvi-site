@@ -39,7 +39,7 @@ class ProfileForm extends React.Component {
 				      	placeholder="What school do you currently attend?"
 				      	selection
 				      	search
-				      	options={school_opts}
+				      	options={opts.school}
 				      	onChange={(evt, { value }) => this.updateField("school_id", value)}
 				      	value={this.state.school_id}
 				      />
@@ -51,11 +51,7 @@ class ProfileForm extends React.Component {
 				      <Dropdown
 				      	placeholder="What is your level of study?"
 				      	selection
-				      	options={[
-				      		{ key: "High School", value: "High School", text: "High School" },
-				      		{ key: "Undergraduate", value: "Undergraduate", text: "Undergraduate" },
-				      		{ key: "Graduate", value: "Graduate", text: "Graduate" }
-				      	]}
+				      	options={opts.level_of_study}
 						onChange={(evt, { value }) => this.updateField("level_of_study", value)}
 						value={this.state.level_of_study}
 				      />
@@ -66,13 +62,7 @@ class ProfileForm extends React.Component {
 				      <Dropdown
 				      	placeholder="year"
 				      	selection
-				      	options={[
-				      		{ key: "2017", value: 2017, text: "2016" },
-							{ key: "2018", value: 2018, text: "2018" },
-							{ key: "2019", value: 2019, text: "2019" },
-							{ key: "2020", value: 2020, text: "2020" },
-				      		{ key: "2021", value: 2021, text: "2021" }
-				      	]}
+				      	options={opts.graduation_year}
 				      	onChange={(evt, { value }) => this.updateField("graduation_year", value)}
 				      	value={this.state.graduation_year}
 				      />
@@ -121,11 +111,7 @@ class ProfileForm extends React.Component {
 				      <Dropdown
 				      	placeholder="gender"
 				      	selection
-				      	options={[
-				      		{ key: "Male", value: "Male", text: "Male" },
-				      		{ key: "Female", value: "Female", text: "Female" },
-				      		{ key: "Other", value: "Other", text: "Other" }
-				      	]}
+				      	options={opts.gender}
 				      	onChange={(evt, { value }) => this.updateField("gender", value)}
 				      	value={this.state.gender}
 				      />
@@ -147,12 +133,7 @@ class ProfileForm extends React.Component {
 				      <Dropdown
 				      	placeholder="These are unisex sizes"
 				      	selection
-				      	options={[
-				      		{ key: "S", value: "S", text: "Small" },
-				      		{ key: "M", value: "M", text: "Medium" },
-				      		{ key: "L", value: "L", text: "Large" },
-				      		{ key: "XL", value: "XL", text: "X-Large" }
-				      	]}
+				      	options={opts.shirt_size}
 				      	onChange={(evt, { value }) => this.updateField("shirt_size", value)}
 				      	value={this.state.shirt_size}
 				      />
@@ -163,11 +144,7 @@ class ProfileForm extends React.Component {
 				      <Dropdown
 				      	placeholder="Transportation"
 				      	selection
-				      	options={[
-				      		{ key: "1", value: "1", text: "I can provide my own means of transportation" },
-				      		{ key: "2", value: "2", text: "I would prefer to be provided bussing in California" },
-				      		{ key: "3", value: "3", text: "I require travel reimbursement (This may or may not be something we can provide)" },
-				      	]}
+				      	options={opts.transportation}
 				      	onChange={(evt, { value }) => this.updateField("transportation", value)}
 				      	value={this.state.transportation}
 				      />

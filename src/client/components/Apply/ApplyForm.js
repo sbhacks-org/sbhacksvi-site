@@ -41,44 +41,34 @@ class ApplyForm extends React.Component {
 			<Form id="login-form" onSubmit={this.submitApplication} loading={loading}>
 				<Form.Group>
 				    <Form.Field width={6} error={Boolean(errors["school_id"])} required>
-				      <label>School</label>
+				      <label>What school do you currently attend?</label>
 				      <Dropdown
-				      	placeholder="What school do you currently attend?"
+				      	placeholder="Choose a school"
 				      	selection
 				      	search
-				      	options={school_opts}
+				      	options={opts.school}
 				      	onChange={(evt, { value }) => this.updateField("school_id", value)}
 				      />
 				      { Boolean(errors.school_id) ? <Label basic color='red' pointing>{errors.school_id}</Label> : null }
 				    </Form.Field>
 
 				    <Form.Field width={5} required>
-				      <label>Level of study</label>
+				      <label>Which degree are you pursuing?</label>
 				      <Dropdown
-				      	placeholder="What is your level of study?"
+				      	placeholder="e.g. Bachelor's (Undergraduate)"
 				      	selection
-				      	options={[
-				      		{ key: "High School", value: "High School", text: "High School" },
-				      		{ key: "Undergraduate", value: "Undergraduate", text: "Undergraduate" },
-				      		{ key: "Graduate", value: "Graduate", text: "Graduate" }
-				      	]}
+				      	options={opts.level_of_study}
 						onChange={(evt, { value }) => this.updateField("level_of_study", value)}
 				      />
 				      { Boolean(errors.level_of_study) ? <Label basic color='red' pointing>{errors.level_of_study}</Label> : null }
 				    </Form.Field>
 
 				    <Form.Field width={5} required>
-				      <label>Graduation Year</label>
+				      <label>When do you graduate?</label>
 				      <Dropdown
-				      	placeholder="year"
+				      	placeholder="Choose your graduation year"
 				      	selection
-				      	options={[
-				      		{ key: "2021", value: 2021, text: "2021" },
-				      		{ key: "2020", value: 2020, text: "2020" },
-				      		{ key: "2019", value: 2019, text: "2019" },
-				      		{ key: "2018", value: 2018, text: "2018" },
-				      		{ key: "2017", value: 2017, text: "2016" }
-				      	]}
+				      	options={opts.graduation_year}
 				      	onChange={(evt, { value }) => this.updateField("graduation_year", value)}
 				      />
 				      { Boolean(errors.graduation_year) ? <Label basic color='red' pointing>{errors.graduation_year}</Label> : null }
@@ -117,10 +107,7 @@ class ApplyForm extends React.Component {
 				    		placeholder="Choose a major."
 				    		selection
 				    		search
-				    		options={[
-					      		{ key: "Computer Science", value: "Computer Science", text: "Computer Science" },
-					      		{ key: "Computer Engineering", value: "Computer Engineering", text: "Computer Engineering" }
-					      	]}
+				    		options={opts.major}
 				    		onChange={(evt, { value }) => this.updateField("major", value)}
 				    	/>
 				    	{ Boolean(errors.major) ? <Label basic color='red' pointing>{errors.major}</Label> : null }
@@ -133,11 +120,7 @@ class ApplyForm extends React.Component {
 				      <Dropdown
 				      	placeholder="gender"
 				      	selection
-				      	options={[
-				      		{ key: "Male", value: "Male", text: "Male" },
-				      		{ key: "Female", value: "Female", text: "Female" },
-				      		{ key: "Other", value: "Other", text: "Other" }
-				      	]}
+				      	options={opts.gender}
 				      	onChange={(evt, { value }) => this.updateField("gender", value)}
 				      />
 				      { Boolean(errors.gender) ? <Label basic color='red' pointing>{errors.gender}</Label> : null }
@@ -159,12 +142,7 @@ class ApplyForm extends React.Component {
 				      <Dropdown
 				      	placeholder="These are unisex sizes"
 				      	selection
-				      	options={[
-				      		{ key: "S", value: "S", text: "Small" },
-				      		{ key: "M", value: "M", text: "Medium" },
-				      		{ key: "L", value: "L", text: "Large" },
-				      		{ key: "XL", value: "XL", text: "X-Large" }
-				      	]}
+				      	options={opts.shirt_size}
 				      	onChange={(evt, { value }) => this.updateField("shirt_size", value)}
 				      />
 				      { Boolean(errors.shirt_size) ? <Label basic color='red' pointing>{errors.shirt_size}</Label> : null }
@@ -175,11 +153,7 @@ class ApplyForm extends React.Component {
 				      <Dropdown
 				      	placeholder="Transportation"
 				      	selection
-				      	options={[
-				      		{ key: "1", value: "1", text: "I can provide my own means of transportation" },
-				      		{ key: "2", value: "2", text: "I would prefer to be provided bussing in California" },
-				      		{ key: "3", value: "3", text: "I require travel reimbursement (This may or may not be something we can provide)" },
-				      	]}
+				      	options={opts.transportation}
 				      	onChange={(evt, { value }) => this.updateField("transportation", value)}
 				      />
 				    </Form.Field>
