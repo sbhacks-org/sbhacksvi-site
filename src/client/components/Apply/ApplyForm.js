@@ -48,6 +48,8 @@ class ApplyForm extends React.Component {
 				      	search
 				      	options={opts.school}
 				      	onChange={(evt, { value }) => this.updateField("school_id", value)}
+				      	allowAdditions
+				      	additionPosition="bottom"
 				      />
 				      { Boolean(errors.school_id) ? <Label basic color='red' pointing>{errors.school_id}</Label> : null }
 				    </Form.Field>

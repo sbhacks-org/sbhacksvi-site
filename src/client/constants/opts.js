@@ -1,3 +1,5 @@
+import schools from "./schools.json"
+
 export const level_of_study = ["Bachelor's (Undergraduate)", "Masters (Graduate)", "Doctorate", "Other"].map((level) => (
 	{ key: level, value: level, text: level }
 ));
@@ -6,7 +8,7 @@ export const graduation_year = [2017, 2018, 2019, 2020, 2021, 2022].map((year) =
 	{ key: year.toString(), value: year, text: year.toString() }
 ));
 
-export const school = [{ key: "UC Santa Barbara", value: 6, text: "UC Santa Barbara" }];
+export const school = schools.map(school => ({ key: school.name, value: school.id, text: school.name}));
 
 export const major = ["Computer Science", "Computer Engineering"].map((major) => (
 	{ key: major, value: major, text: major }
