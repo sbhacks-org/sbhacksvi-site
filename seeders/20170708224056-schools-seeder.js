@@ -18,7 +18,7 @@ module.exports = {
 
     return queryInterface.bulkDelete("schools", null, {})
     .then(() => {
-      let schools = JSON.parse(fs.readFileSync(path.join(__dirname, "../src/client/constants/schools.json")));
+      let schools = JSON.parse(fs.readFileSync(path.join(__dirname, "schools_symlink.json")));
 
       console.log(schools);
 
