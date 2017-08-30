@@ -33,16 +33,19 @@ class ProfileForm extends React.Component {
 		return (
 			<Form id="login-form" onSubmit={this.updateApplication} loading={loading}>
 				<Form.Group>
-				    <Form.Field width={6} error={Boolean(errors["school_id"])}>
-				      <label>School</label>
+				    <Form.Field width={6} error={Boolean(errors["school_id"])} required>
+				      <label>What school do you currently attend?</label>
 				      <Dropdown
-				      	placeholder="What school do you currently attend?"
+				      	placeholder="Choose a school"
 				      	selection
 				      	search
 				      	options={opts.school}
 				      	onChange={(evt, { value }) => this.updateField("school_id", value)}
+				      	allowAdditions
+				      	additionPosition="bottom"
 				      	value={this.state.school_id}
 				      />
+				      { Boolean(errors.school_id) ? <Label basic color='red' pointing>{errors.school_id}</Label> : null }
 				    </Form.Field>
 
 
@@ -94,14 +97,18 @@ class ProfileForm extends React.Component {
 				    	/>
 				    </Form.Field>
 
-				    <Form.Field>
-				    	<label>Major</label>
-				    	<Input
+				    <Form.Field required>
+				    	<label>What's your major?</label>
+				    	<Dropdown
 				    		fluid
-				    		placeholder="e.g. Computer Science"
+				    		placeholder="Choose a major."
+				    		selection
+				    		search
+				    		options={opts.major}
 				    		onChange={(evt, { value }) => this.updateField("major", value)}
 				    		value={this.state.major}
 				    	/>
+				    	{ Boolean(errors.major) ? <Label basic color='red' pointing>{errors.major}</Label> : null }
 				    </Form.Field>
 				</Form.Group>
 
