@@ -9,11 +9,9 @@ const { saveApplication, formPostUpload } = require("../lib/application");
 const populateWithApplicationFields = require("../lib/populateWithApplicationFields");
 
 router.post("/", isLoggedIn, formPostUpload.middleware(), (req, res, next) => {
-	if(!req.files.resume) return next({ resume: "You must upload a resume" });
-	if(!req.body.school_id) return next({ school_id: "You must specify a school" });
 	
 	console.log(req.body, req.files);
-	saveApplication(req)
+	saveApplication(req.user, req.files, req.body)
 	.then((application) => {
 		signupMail.send(req.user);
 		return res.json({ success: true, application: populateWithApplicationFields(application) });

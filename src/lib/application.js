@@ -3,25 +3,27 @@ const hasha = require("hasha");
 
 const { School, User, Application } = require("../models");
 
-module.exports.saveApplication = (req) => {
-	const User = req.user;
+module.exports.saveApplication = (user, files, fields) => {
+	const User = user;
 
-	console.log(req.body);
+	if(!files.resume) return Promise.reject({ resume: "You must upload a resume" });
+	if(!fields.school_id) return Promise.reject({ school_id: "You must specify a school" });
+
+	console.log(fields);
 
 	return User.createApplication({
-		user_id: req.user.id,
-		school_id: req.body.school_id,
-		resume_url: req.files.resume.Location,
-		resume_key: req.files.resume.key,
-		transportation: req.body.transportation,
-		graduation_year: req.body.graduation_year,
-		level_of_study: req.body.level_of_study,
-		github: req.body.github,
-		linkedin: req.body.linkedin,
-		major: req.body.major,
-		phone_number: req.body.phone_number,
-		shirt_size: req.body.shirt_size,
-		gender: req.body.gender
+		school_id: fields.school_id,
+		resume_url: files.resume.Location,
+		resume_key: files.resume.key,
+		transportation: fields.transportation,
+		graduation_year: fields.graduation_year,
+		level_of_study: fields.level_of_study,
+		github: fields.github,
+		linkedin: fields.linkedin,
+		major: fields.major,
+		phone_number: fields.phone_number,
+		shirt_size: fields.shirt_size,
+		gender: fields.gender
 	});
 };
 
