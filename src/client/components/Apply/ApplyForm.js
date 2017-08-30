@@ -5,9 +5,7 @@ import { Form, Input, Button, Dropdown, Icon, Label, Message } from "semantic-ui
 import FileInput from "./FileInput";
 import ApplyButton from "./ApplyButton";
 
-const school_opts = [
-	{ key: "UC Santa Barbara", value: 6, text: "UC Santa Barbara" }
-]
+import * as opts from "../../constants/opts";
 
 class ApplyForm extends React.Component {
 	constructor() {

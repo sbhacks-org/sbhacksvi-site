@@ -1,4 +1,3 @@
-import * as actionTypes from "../actionTypes";
 import { authSuccess } from "../actions";
 
 function getMissingFieldErrors(fields, required_fields) {

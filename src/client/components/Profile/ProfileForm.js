@@ -4,9 +4,7 @@ import { Form, Input, Dropdown, Icon } from "semantic-ui-react";
 import FileInput from "./presenters/FileInput";
 import UpdateApplicationButton from "./presenters/UpdateApplicationButton";
 
-const school_opts = [
-	{ key: "UC Santa Barbara", value: 6, text: "UC Santa Barbara" }
-]
+import * as opts from "../../constants/opts";
 
 class ProfileForm extends React.Component {
 	constructor(props) {
