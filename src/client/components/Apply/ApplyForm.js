@@ -112,11 +112,17 @@ class ApplyForm extends React.Component {
 				    	{ Boolean(errors.linkedin) ? <Label basic color='red' pointing>{errors.linkedin}</Label> : null }
 				    </Form.Field>
 
-				    <Form.Field>
-				    	<label>Major</label>
-				    	<Input
+				    <Form.Field required>
+				    	<label>What's your major?</label>
+				    	<Dropdown
 				    		fluid
-				    		placeholder="e.g. Computer Science"
+				    		placeholder="Choose a major."
+				    		selection
+				    		search
+				    		options={[
+					      		{ key: "Computer Science", value: "Computer Science", text: "Computer Science" },
+					      		{ key: "Computer Engineering", value: "Computer Engineering", text: "Computer Engineering" }
+					      	]}
 				    		onChange={(evt, { value }) => this.updateField("major", value)}
 				    	/>
 				    	{ Boolean(errors.major) ? <Label basic color='red' pointing>{errors.major}</Label> : null }
