@@ -3,28 +3,40 @@ const hasha = require("hasha");
 
 const { School, User, Application } = require("../models");
 
-module.exports.saveApplication = (user, files, fields) => {
-	const User = user;
-
-	if(!files.resume) return Promise.reject({ resume: "You must upload a resume" });
-	if(!fields.school_id) return Promise.reject({ school_id: "You must specify a school" });
-
-	console.log(fields);
-
-	return User.createApplication({
-		school_id: fields.school_id,
-		resume_url: files.resume.Location,
-		resume_key: files.resume.key,
-		transportation: fields.transportation,
-		graduation_year: fields.graduation_year,
-		level_of_study: fields.level_of_study,
-		github: fields.github,
-		linkedin: fields.linkedin,
-		major: fields.major,
-		phone_number: fields.phone_number,
-		shirt_size: fields.shirt_size,
-		gender: fields.gender
-	});
+module.exports.saveApplication = (user, files, fields) => {	
+	return new Promise((resolve, reject) => {
+		if(!files.resume) return reject({ resume: "You must upload a resume" });
+		if(!fields.school_id) return reject({ school_id: "You must specify a school" });
+		if(isNaN(fields.school_id)) {
+			console.log("Received school id that is not an int");
+			School.findOrCreate({
+				where: {
+					name: fields.school_id
+				}
+			}).spread((school, created) => {
+				resolve(school.id);
+			})
+			.catch((err) => console.log(err));
+		} else {
+			resolve(fields.school_id)
+		};
+	})
+	.then((school_id) => {
+		return user.createApplication({
+			school_id: school_id,
+			resume_url: files.resume.Location,
+			resume_key: files.resume.key,
+			transportation: fields.transportation,
+			graduation_year: fields.graduation_year,
+			level_of_study: fields.level_of_study,
+			github: fields.github,
+			linkedin: fields.linkedin,
+			major: fields.major,
+			phone_number: fields.phone_number,
+			shirt_size: fields.shirt_size,
+			gender: fields.gender
+		});
+	})		
 };
 
 module.exports.massageAttrsForUpdate = (attrs) => {
