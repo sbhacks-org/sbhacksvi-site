@@ -86,6 +86,7 @@ class ApplyForm extends React.Component {
 				    	opts={opts.major}
 				    	onChange={(evt, { value }) => this.updateField("major", value)}
 				    	value={this.state.major}
+				    	onAddItem={(evt, { value }) => opts.major.push(value)}
 				    />
 				</Form.Group>
 

@@ -6,15 +6,16 @@ const School = ({ error, options, onChange, value, onAddItem }) => {
 		<Form.Field width={6} error={Boolean(error)} required>
 			<label>What school do you currently attend?</label>
 			<Dropdown
+				fluid
 				placeholder="Choose a school"
 				selection
 				search
 				options={options}
 				onChange={onChange}
+				value={value}
 				allowAdditions
 				additionPosition="bottom"
 				onAddItem={onAddItem}
-				value={value}
 			/>
 			{ Boolean(error) ? <Label basic color='red' pointing>{error}</Label> : null }
 		</Form.Field>

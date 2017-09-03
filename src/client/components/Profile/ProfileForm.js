@@ -9,6 +9,16 @@ import * as opts from "../../constants/opts";
 
 import { fetchSchoolList, addToSchoolList } from "../../actions";
 
+function addCurrentMajorToList(currentMajor) {
+	let found = false;
+
+	opts.major.forEach(major => major.value === currentMajor ? found = true : null);
+
+	if(found === false) {
+		opts.major.push({ text: currentMajor, value: currentMajor, text: currentMajor });
+	}
+};
+
 class ProfileForm extends React.Component {
 	constructor(props) {
 		super(props);
@@ -32,6 +42,7 @@ class ProfileForm extends React.Component {
 	}
 
 	componentDidMount() {
+		addCurrentMajorToList(this.state.major);
 		this.props.fetchSchoolList();
 	}
 
@@ -83,6 +94,7 @@ class ProfileForm extends React.Component {
 				    	opts={opts.major}
 				    	onChange={(evt, { value }) => this.updateField("major", value)}
 				    	value={this.state.major}
+				    	onAddItem={(evt, { value }) => opts.major.push({ text: value, key: value, value })}
 				    />
 				</Form.Group>
 

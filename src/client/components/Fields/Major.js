@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Dropdown, Label } from "semantic-ui-react";
 
-const Major = ({ error, onChange, opts, value }) => {
+const Major = ({ error, onChange, opts, value, onAddItem }) => {
 	return (
 		<Form.Field error={Boolean(error)} required>
 	    	<label>What's your major?</label>
@@ -13,6 +13,10 @@ const Major = ({ error, onChange, opts, value }) => {
 	    		options={opts}
 	    		onChange={onChange}
 	    		value={value}
+	    		allowAdditions
+	    		additionPosition="bottom"
+	    		onAddItem={onAddItem}
+	    		additionLabel="Other: "
 	    	/>
 	    	{ Boolean(error) ? <Label basic color='red' pointing>{error}</Label> : null }
 	    </Form.Field>
