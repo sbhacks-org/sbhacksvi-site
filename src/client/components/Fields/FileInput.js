@@ -1,10 +1,10 @@
 import React from "react";
 import { Form } from "semantic-ui-react";
 
-const FileInput = ({ errors, onChange }) => {
+const FileInput = ({ errors, onChange, labelName }) => {
 	return (
 		<Form.Field error={Boolean(errors)}>
-			<label>Upload Resume (PDF Only)</label>
+			<label>{labelName}</label>
 			<div className="ui input">
 				<input
 					type="file"

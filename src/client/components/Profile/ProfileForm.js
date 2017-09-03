@@ -1,10 +1,13 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Form, Input, Dropdown, Icon } from "semantic-ui-react";
 
-import FileInput from "./presenters/FileInput";
 import UpdateApplicationButton from "./presenters/UpdateApplicationButton";
 
+import * as Fields from "../Fields";
 import * as opts from "../../constants/opts";
+
+import { fetchSchoolList, addToSchoolList } from "../../actions";
 
 class ProfileForm extends React.Component {
 	constructor(props) {
@@ -22,151 +25,102 @@ class ProfileForm extends React.Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		if(Object.keys(nextProps.errors) == 0) {
+		if(Object.keys(nextProps.errors).length === 0
+			&& nextProps.originalApplication !== this.props.originalApplication) {
 			this.setState({ ...nextProps.originalApplication, resume: undefined });
 		}
 	}
 
+	componentDidMount() {
+		this.props.fetchSchoolList();
+	}
+
 	render() {
-		const { errors, originalApplication, loading } = this.props;
+		const { errors, originalApplication, loading, school_opts, addToSchoolList } = this.props;
 		
 		return (
 			<Form id="login-form" onSubmit={this.updateApplication} loading={loading}>
 				<Form.Group>
-				    <Form.Field width={6} error={Boolean(errors["school_id"])} required>
-				      <label>What school do you currently attend?</label>
-				      <Dropdown
-				      	placeholder="Choose a school"
-				      	selection
-				      	search
-				      	options={opts.school}
-				      	onChange={(evt, { value }) => this.updateField("school_id", value)}
-				      	allowAdditions
-				      	additionPosition="bottom"
-				      	value={this.state.school_id}
-				      />
-				      { Boolean(errors.school_id) ? <Label basic color='red' pointing>{errors.school_id}</Label> : null }
-				    </Form.Field>
+				    <Fields.School
+				    	error={errors["school_id"]}
+				    	options={school_opts}
+				    	onChange={(evt, { value }) => this.updateField("school_id", value)}
+				    	value={this.state.school_id}
+				    	onAddItem={(evt, { value }) => addToSchoolList(value)}
+				    />
 
 
-				    <Form.Field width={5}>
-				      <label>Level of study</label>
-				      <Dropdown
-				      	placeholder="What is your level of study?"
-				      	selection
-				      	options={opts.level_of_study}
-						onChange={(evt, { value }) => this.updateField("level_of_study", value)}
-						value={this.state.level_of_study}
-				      />
-				    </Form.Field>
+				    <Fields.LevelOfStudy
+				    	error={errors["level_of_study"]}
+				    	options={opts.level_of_study}
+				    	onChange={(evt, { value }) => this.updateField("level_of_study", value)}
+				    	value={this.state.level_of_study}
+				    />
 
-				    <Form.Field width={5}>
-				      <label>Graduation Year</label>
-				      <Dropdown
-				      	placeholder="year"
-				      	selection
-				      	options={opts.graduation_year}
-				      	onChange={(evt, { value }) => this.updateField("graduation_year", value)}
-				      	value={this.state.graduation_year}
-				      />
-				    </Form.Field>
+				    <Fields.GraduationYear
+				    	error={errors["graduation_year"]}
+				    	options={opts.graduation_year}
+				    	onChange={(evt, { value }) => this.updateField("graduation_year", value)}
+				    	value={this.state.graduation_year}
+				    />
 				</Form.Group>
 
 			    <Form.Group widths="equal">
-				    <Form.Field>
-				    	<label>Github</label>
-				    	<Input
-				    		fluid
-				    		icon="at"
-				    		iconPosition="left"
-				    		placeholder="github username"
-				    		onChange={(evt, { value }) => this.updateField("github", value)}
-				    		value={this.state.github}
-				    	/>
-				    </Form.Field>
+				    <Fields.Github
+				    	error={errors["github"]}
+				    	onChange={(evt, { value }) => this.updateField("github", value)}
+				    	value={this.state.github}
+				    />
 
-				    <Form.Field>
-				    	<label>Linkedin</label>
-				    	<Input
-				    		fluid
-				    		icon="at"
-				    		iconPosition="left"
-				    		placeholder="linkedin username"
-				    		onChange={(evt, { value }) => this.updateField("linkedin", value)}
-				    		value={this.state.linkedin}
-				    	/>
-				    </Form.Field>
+				    <Fields.Linkedin
+				    	error={errors["linkedin"]}
+				    	onChange={(evt, { value }) => this.updateField("linkedin", value)}
+				    	value={this.state.linkedin}
+				    />
 
-				    <Form.Field required>
-				    	<label>What's your major?</label>
-				    	<Dropdown
-				    		fluid
-				    		placeholder="Choose a major."
-				    		selection
-				    		search
-				    		options={opts.major}
-				    		onChange={(evt, { value }) => this.updateField("major", value)}
-				    		value={this.state.major}
-				    	/>
-				    	{ Boolean(errors.major) ? <Label basic color='red' pointing>{errors.major}</Label> : null }
-				    </Form.Field>
+				    <Fields.Major
+				    	error={errors["major"]}
+				    	opts={opts.major}
+				    	onChange={(evt, { value }) => this.updateField("major", value)}
+				    	value={this.state.major}
+				    />
 				</Form.Group>
 
 			    <Form.Group>
-				    <Form.Field width={9}>
-				      <label>Gender</label>
-				      <Dropdown
-				      	placeholder="gender"
-				      	selection
-				      	options={opts.gender}
-				      	onChange={(evt, { value }) => this.updateField("gender", value)}
-				      	value={this.state.gender}
-				      />
-				    </Form.Field>
+				    <Fields.Gender
+				    	error={errors["gender"]}
+				    	opts={opts.gender}
+				    	onChange={(evt, { value }) => this.updateField("gender", value)}
+				    	value={this.state.gender}
+				    />
 
-				    <Form.Field width={7}>
-				    	<label>Phone Number</label>
-				    	<Input
-				    		fluid
-				    		placeholder="Don't worry we won't call you unless it's an emergency"
-				    		onChange={(evt, { value }) => this.updateField("phone_number", value)}
-				    		value={this.state.phone_number}
-				    	/>
-				    </Form.Field>
+				    <Fields.PhoneNumber
+				    	error={errors["phone_number"]}
+				    	onChange={(evt, { value }) => this.updateField("phone_number", value)}
+				    	value={this.state.phone_number}
+				    />
 				</Form.Group>
 				<Form.Group widths="equal">
-				    <Form.Field>
-				      <label>Shirt Size</label>
-				      <Dropdown
-				      	placeholder="These are unisex sizes"
-				      	selection
-				      	options={opts.shirt_size}
-				      	onChange={(evt, { value }) => this.updateField("shirt_size", value)}
-				      	value={this.state.shirt_size}
-				      />
-				    </Form.Field>
+				    <Fields.ShirtSize
+				    	error={errors["shirt_size"]}
+				    	opts={opts.shirt_size}
+				    	onChange={(evt, { value }) => this.updateField("shirt_size", value)}
+				    	value={this.state.shirt_size}
+				    />
 
-				    <Form.Field>
-				      <label>Transportation</label>
-				      <Dropdown
-				      	placeholder="Transportation"
-				      	selection
-				      	options={opts.transportation}
-				      	onChange={(evt, { value }) => this.updateField("transportation", value)}
-				      	value={this.state.transportation}
-				      />
-				    </Form.Field>
+				    <Fields.Transportation
+				    	error={errors["transportation"]}
+				    	opts={opts.transportation}
+				    	onChange={(evt, { value }) => this.updateField("transportation", value)}
+				    	value={this.state.transportation}
+				    />
 				</Form.Group>
 
-				<Form.Field>
-					<label>Upload Resume (PDF Only)</label>
-					<FileInput
-						type="file"
-						onChange={(evt) => this.updateField("resume", evt.target.files[0])}
-						accept="application/pdf"
-					/>
-					
-				</Form.Field>
+				<Fields.FileInput 
+					error={errors["resume"]}
+					labelName="Update Resume (PDF Only, 4 MB max)"
+					onChange={(evt) => this.updateField("resume", evt.target.files[0])}
+				/>
 
 				<UpdateApplicationButton
 					originalApplication={originalApplication}
@@ -178,4 +132,10 @@ class ProfileForm extends React.Component {
 	}
 }
 
-export default ProfileForm;
+const mapStateToProps = (state) => {
+	const { school_opts } = state.application;
+	return { school_opts };
+}
+
+
+export default connect(mapStateToProps, { fetchSchoolList, addToSchoolList })(ProfileForm);

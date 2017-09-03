@@ -1,9 +1,7 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { Form, Input, Button, Dropdown, Icon, Label, Message } from "semantic-ui-react";
 
-import FileInput from "./FileInput";
 import ApplyButton from "./ApplyButton";
 
 import * as Fields from "../Fields";
@@ -35,7 +33,6 @@ class ApplyForm extends React.Component {
 	}
 
 	updateField(field_name, field_value) {
-		console.log(`Update field called with field name: ${field_name} and field value ${field_value}`);
 		this.setState({	[field_name]: field_value });
 	}
 
@@ -56,17 +53,18 @@ class ApplyForm extends React.Component {
 				    	value={this.state.school_id}
 				    	onAddItem={(evt, { value }) => addToSchoolList(value)}
 				    />
-
-				    <Fields.LevelOfStudy
+ 					<Fields.LevelOfStudy
 				    	error={errors["level_of_study"]}
 				    	options={opts.level_of_study}
 				    	onChange={(evt, { value }) => this.updateField("level_of_study", value)}
+				    	value={this.state.level_of_study}
 				    />
 
 				    <Fields.GraduationYear
 				    	error={errors["graduation_year"]}
 				    	options={opts.graduation_year}
 				    	onChange={(evt, { value }) => this.updateField("graduation_year", value)}
+				    	value={this.state.graduation_year}
 				    />
 				</Form.Group>
 
@@ -74,17 +72,20 @@ class ApplyForm extends React.Component {
 				    <Fields.Github
 				    	error={errors["github"]}
 				    	onChange={(evt, { value }) => this.updateField("github", value)}
+				    	value={this.state.github}
 				    />
 
 				    <Fields.Linkedin
 				    	error={errors["linkedin"]}
 				    	onChange={(evt, { value }) => this.updateField("linkedin", value)}
+				    	value={this.state.linkedin}
 				    />
 
 				    <Fields.Major
 				    	error={errors["major"]}
 				    	opts={opts.major}
 				    	onChange={(evt, { value }) => this.updateField("major", value)}
+				    	value={this.state.major}
 				    />
 				</Form.Group>
 
@@ -93,11 +94,13 @@ class ApplyForm extends React.Component {
 				    	error={errors["gender"]}
 				    	opts={opts.gender}
 				    	onChange={(evt, { value }) => this.updateField("gender", value)}
+				    	value={this.state.gender}
 				    />
 
 				    <Fields.PhoneNumber
 				    	error={errors["phone_number"]}
 				    	onChange={(evt, { value }) => this.updateField("phone_number", value)}
+				    	value={this.state.phone_number}
 				    />
 				</Form.Group>
 				<Form.Group widths="equal">
@@ -105,16 +108,22 @@ class ApplyForm extends React.Component {
 				    	error={errors["shirt_size"]}
 				    	opts={opts.shirt_size}
 				    	onChange={(evt, { value }) => this.updateField("shirt_size", value)}
+				    	value={this.state.shirt_size}
 				    />
 
 				    <Fields.Transportation
 				    	error={errors["transportation"]}
 				    	opts={opts.transportation}
 				    	onChange={(evt, { value }) => this.updateField("transportation", value)}
+				    	value={this.state.transportation}
 				    />
 				</Form.Group>
 
-				<FileInput onChange={(evt) => this.updateField("resume", evt.target.files[0])} />
+				<Fields.FileInput
+					error={errors["resume"]}
+					labelName="Upload Resume (PDF Only, 4 MB max)"
+					onChange={(evt) => this.updateField("resume", evt.target.files[0])}
+				/>
 
 			    <ApplyButton {...this.state} />
 
