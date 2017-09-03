@@ -1,14 +1,14 @@
 import React from "react";
-import { Form, Dropdown } from "semantic-ui-react";
+import { Form, Dropdown, Label } from "semantic-ui-react";
 
-const GraduationYear = ({ error, onChange, opts, defaultValue }) => {
+const GraduationYear = ({ error, onChange, options, defaultValue }) => {
 	return (
 		<Form.Field width={5} error={Boolean(error)} required>
 			<label>When do you graduate?</label>
 			<Dropdown
 				placeholder="Choose your graduation year"
 				selection
-				options={opts}
+				options={options}
 				onChange={onChange}
 				defaultValue={defaultValue}
 			/>

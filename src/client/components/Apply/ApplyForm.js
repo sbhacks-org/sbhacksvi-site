@@ -51,7 +51,7 @@ class ApplyForm extends React.Component {
 				<Form.Group>
 				    <Fields.School
 				    	error={errors["school_id"]}
-				    	opts={school_opts}
+				    	options={school_opts}
 				    	onChange={(evt, { value }) => this.updateField("school_id", value)}
 				    	value={this.state.school_id}
 				    	onAddItem={(evt, { value }) => addToSchoolList(value)}
@@ -59,13 +59,13 @@ class ApplyForm extends React.Component {
 
 				    <Fields.LevelOfStudy
 				    	error={errors["level_of_study"]}
-				    	opts={opts.level_of_study}
+				    	options={opts.level_of_study}
 				    	onChange={(evt, { value }) => this.updateField("level_of_study", value)}
 				    />
 
 				    <Fields.GraduationYear
 				    	error={errors["graduation_year"]}
-				    	opts={opts.graduation_year}
+				    	options={opts.graduation_year}
 				    	onChange={(evt, { value }) => this.updateField("graduation_year", value)}
 				    />
 				</Form.Group>

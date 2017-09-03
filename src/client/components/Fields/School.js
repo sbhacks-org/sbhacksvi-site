@@ -1,7 +1,7 @@
 import React from "react";
-import { Form, Dropdown } from "semantic-ui-react";
+import { Form, Dropdown, Label } from "semantic-ui-react";
 
-const School = ({ error, opts, onChange, value, onAddItem }) => {
+const School = ({ error, options, onChange, value, onAddItem }) => {
 	return (
 		<Form.Field width={6} error={Boolean(error)} required>
 			<label>What school do you currently attend?</label>
@@ -9,7 +9,7 @@ const School = ({ error, opts, onChange, value, onAddItem }) => {
 				placeholder="Choose a school"
 				selection
 				search
-				options={opts}
+				options={options}
 				onChange={onChange}
 				allowAdditions
 				additionPosition="bottom"

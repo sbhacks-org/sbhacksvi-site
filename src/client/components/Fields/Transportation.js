@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Dropdown } from "semantic-ui-react";
+import { Form, Dropdown, Label } from "semantic-ui-react";
 
 const Transportation = ({ error, opts, onChange, defaultValue }) => {
 	return (

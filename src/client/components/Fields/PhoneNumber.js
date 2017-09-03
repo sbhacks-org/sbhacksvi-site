@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input } from "semantic-ui-react";
+import { Form, Input, Label } from "semantic-ui-react";
 
 const PhoneNumber = ({ error, onChange, defaultValue }) => {
 	return (
