@@ -8,9 +8,9 @@ module.exports = {
 
     return queryInterface.bulkDelete("schools", null, {})
     .then(() => {
-      let schools = JSON.parse(fs.readFileSync(path.join(__dirname, "schools.json")));
+      let school_names = JSON.parse(fs.readFileSync(path.join(__dirname, "school_names.json")));
 
-      console.log(schools);
+      let schools = school_names.map(school_name => ({ name: school_name }))
 
       return queryInterface.bulkInsert("schools", schools);
     });
