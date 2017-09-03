@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Input, Label } from "semantic-ui-react";
 
-const Linkedin = ({ error, onChange, defaultValue }) => {
+const Linkedin = ({ error, onChange, value }) => {
 	return (
 		<Form.Field error={Boolean(error)}>
 	    	<label>Linkedin</label>
@@ -11,7 +11,7 @@ const Linkedin = ({ error, onChange, defaultValue }) => {
 	    		iconPosition="left"
 	    		placeholder="linkedin username"
 	    		onChange={onChange}
-	    		defaultValue={defaultValue}
+	    		value={value}
 	    	/>
 	    	{ Boolean(error) ? <Label basic color='red' pointing>{error}</Label> : null }
 	    </Form.Field>

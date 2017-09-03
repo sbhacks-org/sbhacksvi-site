@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Input, Label } from "semantic-ui-react";
 
-const PhoneNumber = ({ error, onChange, defaultValue }) => {
+const PhoneNumber = ({ error, onChange, value }) => {
 	return (
 		<Form.Field width={7} error={Boolean(error)}>
 	    	<label>Phone Number</label>
@@ -9,7 +9,7 @@ const PhoneNumber = ({ error, onChange, defaultValue }) => {
 	    		fluid
 	    		placeholder="Don't worry we won't call you unless it's an emergency"
 	    		onChange={onChange}
-	    		defaultValue={defaultValue}
+	    		value={value}
 	    	/>
 	    	{ Boolean(error) ? <Label basic color='red' pointing>{error}</Label> : null }
 	    </Form.Field>

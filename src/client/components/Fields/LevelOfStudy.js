@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Dropdown, Label } from "semantic-ui-react";
 
-const LevelOfStudy = ({ error, onChange, options, defaultValue }) => {
+const LevelOfStudy = ({ error, onChange, options, value }) => {
 	return (
 		<Form.Field width={5} required error={Boolean(error)}>
 			<label>Which degree are you pursuing?</label>
@@ -10,7 +10,7 @@ const LevelOfStudy = ({ error, onChange, options, defaultValue }) => {
 				selection
 				options={options}
 				onChange={onChange}
-				defaultValue={defaultValue}
+				value={value}
 			/>
 			{ Boolean(error) ? <Label basic color='red' pointing>{error}</Label> : null }
 		</Form.Field>

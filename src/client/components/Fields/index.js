@@ -8,6 +8,19 @@ import Gender from "./Gender";
 import PhoneNumber from "./PhoneNumber";
 import ShirtSize from "./ShirtSize";
 import Transportation from "./Transportation";
+import FileInput from "./FileInput";
 
 
-export { School, LevelOfStudy, GraduationYear, Github, Linkedin, Major, Gender, PhoneNumber, ShirtSize, Transportation };
+export {
+	School,
+	LevelOfStudy,
+	GraduationYear,
+	Github,
+	Linkedin,
+	Major,
+	Gender,
+	PhoneNumber,
+	ShirtSize,
+	Transportation,
+	FileInput
+};

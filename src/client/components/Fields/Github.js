@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Input, Label } from "semantic-ui-react";
 
-const Github = ({ error, onChange, defaultValue }) => {
+const Github = ({ error, onChange, value }) => {
 	return (
 		<Form.Field error={Boolean(error)}>
 			<label>Github</label>
@@ -11,7 +11,7 @@ const Github = ({ error, onChange, defaultValue }) => {
 				iconPosition="left"
 				placeholder="github username"
 				onChange={onChange}
-				defaultValue={defaultValue}
+				value={value}
 	    	/>		
 			{ Boolean(error) ? <Label basic color='red' pointing>{error}</Label> : null }
 		</Form.Field>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Dropdown, Label } from "semantic-ui-react";
 
-const Transportation = ({ error, opts, onChange, defaultValue }) => {
+const Transportation = ({ error, opts, onChange, value }) => {
 	return (
 		<Form.Field error={Boolean(error)}>
 			<label>Transportation</label>
@@ -10,7 +10,7 @@ const Transportation = ({ error, opts, onChange, defaultValue }) => {
 				selection
 				options={opts}
 				onChange={onChange}
-				defaultValue={defaultValue}
+				value={value}
 			/>
 			{ Boolean(error) ? <Label basic color='red' pointing>{error}</Label> : null }
 		</Form.Field>		
