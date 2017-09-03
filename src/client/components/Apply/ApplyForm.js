@@ -123,6 +123,7 @@ class ApplyForm extends React.Component {
 					error={errors["resume"]}
 					labelName="Upload Resume (PDF Only, 4 MB max)"
 					onChange={(evt) => this.updateField("resume", evt.target.files[0])}
+					required
 				/>
 
 			    <ApplyButton {...this.state} />

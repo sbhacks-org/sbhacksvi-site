@@ -1,9 +1,9 @@
 import React from "react";
 import { Form } from "semantic-ui-react";
 
-const FileInput = ({ errors, onChange, labelName }) => {
+const FileInput = ({ errors, onChange, labelName, required = false }) => {
 	return (
-		<Form.Field error={Boolean(errors)}>
+		<Form.Field error={Boolean(errors)} required={required}>
 			<label>{labelName}</label>
 			<div className="ui input">
 				<input
