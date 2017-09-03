@@ -35,11 +35,6 @@ class ApplyForm extends React.Component {
 		this.setState({	[field_name]: field_value });
 	}
 
-	handleAddition(school_name) {
-		opts.school.push({ text: school_name, value: school_name })
-	}
-
-
 	render() {
 		const { loading, errors, school_opts } = this.props;
 
@@ -51,7 +46,7 @@ class ApplyForm extends React.Component {
 				    	opts={school_opts}
 				    	onChange={(evt, { value }) => this.updateField("school_id", value)}
 				    	value={this.state.school_id}
-				    	onAddItem={(evt, { value }) => this.handleAddition(value)}
+				    	onAddItem={(evt, { value }) => this.props.addToSchoolList(value)}
 				    />
 
 				    <Fields.LevelOfStudy

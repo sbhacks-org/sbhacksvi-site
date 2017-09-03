@@ -52,4 +52,11 @@ export const fetchSchoolList = () => {
 	}
 };
 
+export const addToSchoolList = (school) => {
+	return {
+		type: actionTypes.ADD_TO_SCHOOL_LIST,
+		payload: school
+	};
+}
+
 export const submitSuccess = updateSuccess;

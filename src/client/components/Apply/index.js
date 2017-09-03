@@ -3,7 +3,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-import { submitSuccess, fetchSchoolList } from "../../actions";
+import { submitSuccess, fetchSchoolList, addToSchoolList } from "../../actions";
 import ApplyForm from "./ApplyForm";
 
 const mapStateToProps = (state) => {
@@ -17,7 +17,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-	return bindActionCreators({ submitSuccess, fetchSchoolList }, dispatch);
+	return bindActionCreators({ submitSuccess, fetchSchoolList, addToSchoolList }, dispatch);
 };
 
 function sendApplyXHR(fields) {
@@ -93,6 +93,7 @@ class Apply extends React.Component {
 					loading={this.state.loading}
 					errors={this.state.errors}
 					school_opts={school_opts}
+					addToSchoolList={this.props.addToSchoolList}
 				/>
 			</div>
 		);
