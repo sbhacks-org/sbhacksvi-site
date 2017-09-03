@@ -5,7 +5,7 @@ import { Redirect, Link } from "react-router-dom";
 import { Button } from "semantic-ui-react";
 
 import { authSuccess } from "../../actions";
-import { createHandleSubmit } from "../auth-form-helper";
+import { createHandleSubmit } from "../authFormHelper";
 import LoginForm from "./LoginForm";
 import Banner from "./Banner";
 
