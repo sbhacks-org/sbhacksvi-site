@@ -44,7 +44,7 @@ export const fetchSchoolList = () => {
 			let response = JSON.parse(xhttp.responseText);
 			dispatch({
 				type: actionTypes.FETCH_SCHOOL_LIST_SUCCESS,
-				payload: response.map((school) => ({ key: school.name, id: school.id, text: school.name }))
+				payload: response.map((school) => ({ key: school.name, value: school.id, text: school.name }))
 			})
 		});
 		xhttp.open("GET", "/api/schools");
