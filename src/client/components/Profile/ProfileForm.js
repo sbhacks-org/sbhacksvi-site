@@ -45,10 +45,9 @@ class ProfileForm extends React.Component {
 				<Form.Group>
 				    <Fields.School
 				    	error={errors["school_id"]}
-				    	options={school_opts}
+				    	options={getListForAdditionDropdown(this.state.school_id, school_opts)}
 				    	onChange={(evt, { value }) => this.updateField("school_id", value)}
 				    	value={this.state.school_id}
-				    	onAddItem={(evt, { value }) => addToSchoolList(value)}
 				    />
 
 
