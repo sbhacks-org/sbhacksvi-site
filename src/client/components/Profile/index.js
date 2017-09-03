@@ -1,11 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { Grid, Button } from "semantic-ui-react";
 
 import ProfileForm from "./ProfileForm";
+
 import Banner from "./presenters/Banner";
+import HasNotAppliedView from "./presenters/HasNotAppliedView";
+
 import { populateWithApplicationFields } from "./profile-helpers";
 import { updateSuccess, logout } from "../../actions";
 
@@ -85,7 +88,9 @@ class Profile extends React.Component {
 
 		if(!applicationFields) {
 			return (
-				<div>You have not yet applied. Click <Link to="/apply">here</Link> to apply</div>
+				<HasNotAppliedView
+					info={info}
+				/>
 			);
 		}
 
