@@ -5,20 +5,10 @@ const path = require("path");
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.bulkInsert('Person', [{
-        name: 'John Doe',
-        isBetaMember: false
-      }], {});
-    */
 
     return queryInterface.bulkDelete("schools", null, {})
     .then(() => {
-      let schools = JSON.parse(fs.readFileSync(path.join(__dirname, "schools_symlink.json")));
+      let schools = JSON.parse(fs.readFileSync(path.join(__dirname, "schools.json")));
 
       console.log(schools);
 
