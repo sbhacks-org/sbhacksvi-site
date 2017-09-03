@@ -31,4 +31,32 @@ export const logout = () => {
 	};
 };
 
+export const fetchSchoolList = () => {
+	return function(dispatch, getState) {
+		const { school_opts } = getState().application;
+
+		if(school_opts.length > 0) {
+			return;
+		}
+		var xhttp = new XMLHttpRequest();
+
+		xhttp.addEventListener("load", () => {
+			let response = JSON.parse(xhttp.responseText);
+			dispatch({
+				type: actionTypes.FETCH_SCHOOL_LIST_SUCCESS,
+				payload: response.map((school) => ({ key: school.name, value: school.id, text: school.name }))
+			})
+		});
+		xhttp.open("GET", "/api/schools");
+		xhttp.send();
+	}
+};
+
+export const addToSchoolList = (school) => {
+	return {
+		type: actionTypes.ADD_TO_SCHOOL_LIST,
+		payload: school
+	};
+}
+
 export const submitSuccess = updateSuccess;

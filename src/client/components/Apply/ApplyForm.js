@@ -1,5 +1,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 import { Form, Input, Button, Dropdown, Icon, Label, Message } from "semantic-ui-react";
 
 import FileInput from "./FileInput";
@@ -7,6 +8,8 @@ import ApplyButton from "./ApplyButton";
 
 import * as Fields from "../Fields";
 import * as opts from "../../constants/opts";
+
+import { fetchSchoolList, addToSchoolList } from "../../actions";
 
 class ApplyForm extends React.Component {
 	constructor() {
@@ -32,26 +35,26 @@ class ApplyForm extends React.Component {
 	}
 
 	updateField(field_name, field_value) {
+		console.log(`Update field called with field name: ${field_name} and field value ${field_value}`);
 		this.setState({	[field_name]: field_value });
 	}
 
-	handleAddition(school_name) {
-		opts.school.push({ text: school_name, value: school_name })
+	componentDidMount() {
+		this.props.fetchSchoolList();
 	}
 
-
 	render() {
-		const { loading, errors } = this.props;
+		const { loading, errors, school_opts, addToSchoolList } = this.props;
 
 		return (
 			<Form id="login-form" onSubmit={this.submitApplication} loading={loading}>
 				<Form.Group>
 				    <Fields.School
 				    	error={errors["school_id"]}
-				    	opts={opts.school}
+				    	opts={school_opts}
 				    	onChange={(evt, { value }) => this.updateField("school_id", value)}
 				    	value={this.state.school_id}
-				    	onAddItem={(evt, { value }) => this.handleAddition(value)}
+				    	onAddItem={(evt, { value }) => addToSchoolList(value)}
 				    />
 
 				    <Fields.LevelOfStudy
@@ -120,4 +123,9 @@ class ApplyForm extends React.Component {
 	}
 }
 
-export default ApplyForm;
+const mapStateToProps = (state) => {
+	const { school_opts } = state.application;
+	return { school_opts };
+}
+
+export default connect(mapStateToProps, { fetchSchoolList, addToSchoolList })(ApplyForm);
