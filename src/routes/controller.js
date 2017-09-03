@@ -17,6 +17,7 @@ const applyRoutes = require(path.join(__dirname, "apply"));
 const applicationRoutes = require(path.join(__dirname, "profile"));
 const liveRoutes = require(path.join(__dirname, "live"));
 const subscriberRoutes = require(path.join(__dirname, "subscriber"));
+const apiRoutes = require(path.join(__dirname, "api"));
 
 const { authSuccessUserState } = require("../lib/auth");
 
@@ -41,6 +42,13 @@ module.exports = (app) => {
 		res.render("landingpage");
 	});
 
+	app.use("/", authRoutes);
+	app.use("/apply", applyRoutes);
+	app.use("/profile", applicationRoutes);
+	app.use("/", userRoutes);
+	app.use("/live", liveRoutes);
+	app.use("/api", apiRoutes);
+
 	// React SPA for everything but the landing page
 	app.get("*", (req, res) => {
 		if(req.isAuthenticated()) {
@@ -49,12 +57,6 @@ module.exports = (app) => {
 		}
 		res.render("index");
 	});
-
-	app.use("/", authRoutes);
-	app.use("/apply", applyRoutes);
-	app.use("/profile", applicationRoutes);
-	app.use("/", userRoutes);
-	app.use("/live", liveRoutes);
 
 	app.use("*", (err, req, res, next) => {
 		if(err instanceof ValidationError) return res.json({ success: false, errors: convertValidationError(err) })

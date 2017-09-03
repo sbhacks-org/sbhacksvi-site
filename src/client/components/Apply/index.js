@@ -3,19 +3,21 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-import { submitSuccess } from "../../actions";
+import { submitSuccess, fetchSchoolList } from "../../actions";
 import ApplyForm from "./ApplyForm";
 
 const mapStateToProps = (state) => {
 	const { isAuthenticated, applicationFields } = state.user;
+	const { school_opts } = state.application;
 	return {
 		isAuthenticated,
-		applicationFields
+		applicationFields,
+		school_opts
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
-	return bindActionCreators({ submitSuccess }, dispatch);
+	return bindActionCreators({ submitSuccess, fetchSchoolList }, dispatch);
 };
 
 function sendApplyXHR(fields) {
@@ -64,8 +66,12 @@ class Apply extends React.Component {
 		sendApplyXHR.call(xhttp, fields);
 	}
 
+	componentDidMount() {
+		this.props.fetchSchoolList();
+	}
+
 	render() {
-		const { isAuthenticated, applicationFields } = this.props;
+		const { isAuthenticated, applicationFields, school_opts } = this.props;
 		
 		if(!isAuthenticated) {
 			return <Redirect to={{
@@ -86,6 +92,7 @@ class Apply extends React.Component {
 					submitApplication={this.submitApplication}
 					loading={this.state.loading}
 					errors={this.state.errors}
+					school_opts={school_opts}
 				/>
 			</div>
 		);

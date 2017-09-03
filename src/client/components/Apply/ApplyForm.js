@@ -41,14 +41,14 @@ class ApplyForm extends React.Component {
 
 
 	render() {
-		const { loading, errors } = this.props;
+		const { loading, errors, school_opts } = this.props;
 
 		return (
 			<Form id="login-form" onSubmit={this.submitApplication} loading={loading}>
 				<Form.Group>
 				    <Fields.School
 				    	error={errors["school_id"]}
-				    	opts={opts.school}
+				    	opts={school_opts}
 				    	onChange={(evt, { value }) => this.updateField("school_id", value)}
 				    	value={this.state.school_id}
 				    	onAddItem={(evt, { value }) => this.handleAddition(value)}
