@@ -3,22 +3,26 @@ const hasha = require("hasha");
 
 const { School } = require("../models");
 
+const resolveWithSchoolId = (school_id, resolve) => {
+	if(isNaN(school_id)) {
+		School.findOrCreate({
+			where: {
+				name: school_id
+			}
+		}).spread((school, created) => {
+			resolve(school.id);
+		})
+		.catch((err) => { throw err; });
+	} else {
+		resolve(school_id);
+	}
+}
+
 module.exports.saveApplication = (user, files, fields) => {	
 	return new Promise((resolve, reject) => {
 		if(!files.resume) return reject({ resume: "You must upload a resume" });
 		if(!fields.school_id) return reject({ school_id: "You must specify a school" });
-		if(isNaN(fields.school_id)) {
-			School.findOrCreate({
-				where: {
-					name: fields.school_id
-				}
-			}).spread((school, created) => {
-				resolve(school.id);
-			})
-			.catch((err) => { throw err; });
-		} else {
-			resolve(fields.school_id);
-		}
+		resolveWithSchoolId(fields.school_id, resolve);
 	})
 	.then((school_id) => {
 		return user.createApplication({
@@ -40,10 +44,15 @@ module.exports.saveApplication = (user, files, fields) => {
 };
 
 module.exports.massageAttrsForUpdate = (attrs) => {
-	let newAttrs = Object.assign({}, attrs);
-	let forbiddenAttrs = ["user_id", "resume_key", "resume_url", "id", "rsvp", "checked_in", "createdAt", "updatedAt"];
-	forbiddenAttrs.forEach((forbiddenAttr) => delete newAttrs[forbiddenAttr]);
-	return newAttrs;
+	return new Promise((resolve, reject) => {
+		resolveWithSchoolId(attrs["school_id"], resolve);
+	})
+	.then(school_id => {
+		let newAttrs = Object.assign({}, attrs, { school_id });
+		let forbiddenAttrs = ["user_id", "resume_key", "resume_url", "id", "rsvp", "checked_in", "createdAt", "updatedAt"];
+		forbiddenAttrs.forEach((forbiddenAttr) => delete newAttrs[forbiddenAttr]);
+		return newAttrs;
+	});
 };
 
 module.exports.formPostUpdate = efp({
