@@ -1,4 +1,4 @@
-const populateWithApplicationFields = require("./populateWithApplicationFields");
+const { populateWithApplicationFields } = require("./application");
 
 module.exports.authSuccessUserState = (user, application) => {
 	let user_info = {

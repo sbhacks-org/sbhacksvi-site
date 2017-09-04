@@ -5,8 +5,7 @@ const passport = require("passport");
 const { User, Application } = require("../models");
 const signupMail = require("../mailer/mail_signup_success");
 const isLoggedIn = require("../lib/isLoggedIn");
-const { saveApplication, formPostUpload } = require("../lib/application");
-const populateWithApplicationFields = require("../lib/populateWithApplicationFields");
+const { saveApplication, formPostUpload, populateWithApplicationFields } = require("../lib/application");
 
 router.post("/", isLoggedIn, formPostUpload.middleware(), (req, res, next) => {
 	
