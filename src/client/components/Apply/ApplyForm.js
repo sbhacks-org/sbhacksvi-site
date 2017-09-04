@@ -31,6 +31,18 @@ class ApplyForm extends React.Component {
 			evt.preventDefault();
 			this.props.submitApplication(this.state);
 		};
+
+		this.updateSchool = (evt, { value }) => this.updateField("school_id", value);
+		this.updateLevelOfStudy = (evt, { value }) => this.updateField("level_of_study", value);
+		this.updateGraduationYear = (evt, { value }) => this.updateField("graduation_year", value);
+		this.updateGithub = (evt, { value }) => this.updateField("github", value);
+		this.updateLinkedin = (evt, { value }) => this.updateField("linkedin", value);
+		this.updateMajor = (evt, { value }) => this.updateField("major", value);
+		this.updateGender = (evt, { value }) => this.updateField("gender", value);
+		this.updatePhoneNumber = (evt, { value }) => this.updateField("phone_number", value);
+		this.updateShirtSize = (evt, { value }) => this.updateField("shirt_size", value);
+		this.updateTransportation = (evt, { value }) => this.updateField("transportation", value);
+		this.updateResume = (evt) => this.updateField("resume", evt.target.files[0]);
 	}
 
 	updateField(field_name, field_value) {
@@ -50,20 +62,20 @@ class ApplyForm extends React.Component {
 				    <Fields.School
 				    	error={errors["school_id"]}
 				    	options={getListForAdditionDropdown(school_opts, this.state.school_id)}
-				    	onChange={(evt, { value }) => this.updateField("school_id", value)}
+				    	onChange={this.updateSchool}
 				    	value={this.state.school_id}
 				    />
  					<Fields.LevelOfStudy
 				    	error={errors["level_of_study"]}
 				    	options={opts.level_of_study}
-				    	onChange={(evt, { value }) => this.updateField("level_of_study", value)}
+				    	onChange={this.updateLevelOfStudy}
 				    	value={this.state.level_of_study}
 				    />
 
 				    <Fields.GraduationYear
 				    	error={errors["graduation_year"]}
 				    	options={opts.graduation_year}
-				    	onChange={(evt, { value }) => this.updateField("graduation_year", value)}
+				    	onChange={this.updateGraduationYear}
 				    	value={this.state.graduation_year}
 				    />
 				</Form.Group>
@@ -71,20 +83,20 @@ class ApplyForm extends React.Component {
 			    <Form.Group widths="equal">
 				    <Fields.Github
 				    	error={errors["github"]}
-				    	onChange={(evt, { value }) => this.updateField("github", value)}
+				    	onChange={this.updateGithub}
 				    	value={this.state.github}
 				    />
 
 				    <Fields.Linkedin
 				    	error={errors["linkedin"]}
-				    	onChange={(evt, { value }) => this.updateField("linkedin", value)}
+				    	onChange={this.updateLinkedin}
 				    	value={this.state.linkedin}
 				    />
 
 				    <Fields.Major
 				    	error={errors["major"]}
 				    	opts={getListForAdditionDropdown(opts.major, this.state.major)}
-				    	onChange={(evt, { value }) => this.updateField("major", value)}
+				    	onChange={this.updateMajor}
 				    	value={this.state.major}
 				    />
 				</Form.Group>
@@ -93,13 +105,13 @@ class ApplyForm extends React.Component {
 				    <Fields.Gender
 				    	error={errors["gender"]}
 				    	opts={opts.gender}
-				    	onChange={(evt, { value }) => this.updateField("gender", value)}
+				    	onChange={this.updateGender}
 				    	value={this.state.gender}
 				    />
 
 				    <Fields.PhoneNumber
 				    	error={errors["phone_number"]}
-				    	onChange={(evt, { value }) => this.updateField("phone_number", value)}
+				    	onChange={this.updatePhoneNumber}
 				    	value={this.state.phone_number}
 				    />
 				</Form.Group>
@@ -107,14 +119,14 @@ class ApplyForm extends React.Component {
 				    <Fields.ShirtSize
 				    	error={errors["shirt_size"]}
 				    	opts={opts.shirt_size}
-				    	onChange={(evt, { value }) => this.updateField("shirt_size", value)}
+				    	onChange={this.updateShirtSize}
 				    	value={this.state.shirt_size}
 				    />
 
 				    <Fields.Transportation
 				    	error={errors["transportation"]}
 				    	opts={opts.transportation}
-				    	onChange={(evt, { value }) => this.updateField("transportation", value)}
+				    	onChange={this.updateTransportation}
 				    	value={this.state.transportation}
 				    />
 				</Form.Group>
@@ -122,7 +134,7 @@ class ApplyForm extends React.Component {
 				<Fields.FileInput
 					error={errors["resume"]}
 					labelName="Upload Resume (PDF Only, 4 MB max)"
-					onChange={(evt) => this.updateField("resume", evt.target.files[0])}
+					onChange={this.updateResume}
 					required
 				/>
 
