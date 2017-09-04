@@ -11,7 +11,7 @@ const ApplyButton = (fields) => {
 		size: "large"
 	};
 	
-	if(isValidBasedOnTextFields(fields) || invalidResume(fields.resume)) btnProps.disabled = true;
+	if(!isValidBasedOnTextFields(fields) || invalidResume(fields.resume)) btnProps.disabled = true;
 
 	return <Button {...btnProps}>Submit Application</Button>
 };
