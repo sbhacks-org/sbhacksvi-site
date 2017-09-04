@@ -65,13 +65,9 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    rating: {
-      type: DataTypes.INTEGER,
-      validate: {
-        isNumeric: true,
-        min: 0,
-        max: 6
-      }
+    dietary_restrictions: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
     checked_in: {
       type: DataTypes.BOOLEAN

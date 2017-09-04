@@ -25,6 +25,7 @@ class ApplyForm extends React.Component {
 			phone_number: "",
 			shirt_size: "",
 			transportation: "",
+			dietary_restrictions: [],
 			resume: ""
 		}
 		this.submitApplication = (evt) => {
@@ -42,6 +43,7 @@ class ApplyForm extends React.Component {
 		this.updatePhoneNumber = (evt, { value }) => this.updateField("phone_number", value);
 		this.updateShirtSize = (evt, { value }) => this.updateField("shirt_size", value);
 		this.updateTransportation = (evt, { value }) => this.updateField("transportation", value);
+		this.updateDietaryRestrictions = (evt, { value }) => this.updateField("dietary_restrictions", value);
 		this.updateResume = (evt) => this.updateField("resume", evt.target.files[0]);
 	}
 
@@ -123,7 +125,17 @@ class ApplyForm extends React.Component {
 				    	value={this.state.shirt_size}
 				    />
 
-				    <Fields.Transportation
+				    <Fields.DietaryRestrictions
+				    	error={errors["dietary_restrictions"]}
+				    	opts={opts.dietary_restrictions}
+				    	onChange={this.updateDietaryRestrictions}
+				    	value={this.state.dietary_restrictions}
+				    />
+
+				</Form.Group>
+
+				<Form.Group widths="equal">
+					<Fields.Transportation
 				    	error={errors["transportation"]}
 				    	opts={opts.transportation}
 				    	onChange={this.updateTransportation}

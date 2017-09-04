@@ -33,7 +33,8 @@ module.exports.saveApplication = (user, files, fields) => {
 			major: fields.major,
 			phone_number: fields.phone_number,
 			shirt_size: fields.shirt_size,
-			gender: fields.gender
+			gender: fields.gender,
+			dietary_restrictions: fields.dietary_restrictions
 		});
 	})		
 };
@@ -93,3 +94,23 @@ module.exports.formPostUpload = efp({
 	}
 });
 
+module.exports.populateWithApplicationFields = (application) => {
+	if(!application) {
+		return undefined;
+	}
+
+	return {
+		school_id: application.school_id || "",
+		level_of_study: application.level_of_study || "",
+		graduation_year: application.graduation_year || "",
+		github: application.github || "",
+		linkedin: application.linkedin || "",
+		major: application.major || "",
+		gender: application.gender || "",
+		phone_number: application.phone_number || "",
+		shirt_size: application.shirt_size || "",
+		transportation: application.transportation || "",
+		dietary_restrictions: application.dietary_restrictions.split(",") || [],
+		resume_url: application.resume_url
+	}
+};

@@ -8,8 +8,8 @@ import Gender from "./Gender";
 import PhoneNumber from "./PhoneNumber";
 import ShirtSize from "./ShirtSize";
 import Transportation from "./Transportation";
+import DietaryRestrictions from "./DietaryRestrictions";
 import FileInput from "./FileInput";
-
 
 export {
 	School,
@@ -22,5 +22,6 @@ export {
 	PhoneNumber,
 	ShirtSize,
 	Transportation,
+	DietaryRestrictions,
 	FileInput
 };

@@ -14,17 +14,22 @@ export const shirt_size = [
 	{ key: "S", value: "S", text: "Small" },
 	{ key: "M", value: "M", text: "Medium" },
 	{ key: "L", value: "L", text: "Large" },
-	{ key: "XL", value: "XL", text: "X-Large" }
+	{ key: "XL", value: "XL", text: "X-Large" },
+	{ key: "XXL", value: "XXL", text: "XX-Large" }
 ];
 
-export const gender = [
-	{ key: "Male", value: "Male", text: "Male" },
-	{ key: "Female", value: "Female", text: "Female" },
-	{ key: "Other", value: "Other", text: "Other" }
-];
+export const gender = ["Male", "Female", "Other"].map(gender => (
+	{ key: gender, value: gender, text: gender }
+));
 
 export const transportation = [
 	{ key: "1", value: "1", text: "I can provide my own means of transportation." },
 	{ key: "2", value: "2", text: "I will take the buses provided by SB Hacks (Only select schools in California)" },
 	{ key: "3", value: "3", text: "I require travel reimbursement to attend." },
 ];
+
+export const dietary_restrictions = [
+	"None", "Vegetarian", "Vegan"
+].map(dietary_restriction => (
+	{ key: dietary_restriction, value: dietary_restriction, text: dietary_restriction }
+));
