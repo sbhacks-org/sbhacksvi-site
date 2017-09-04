@@ -38,7 +38,7 @@ router.post("/signup", (req, res, next) => {
 		if (!user) return next(new Error(info.message));
 		req.logIn(user, (err) => {
 			if (err) return next(err);
-			return res.json({ isAuthenticated: true });
+			return res.json(authSuccessUserState(user));
 		});
 	})(req, res, next);
 });

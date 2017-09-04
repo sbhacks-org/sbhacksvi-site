@@ -10,7 +10,7 @@ const SignupButton = ({ first_name, last_name, email, password }) => {
 	};
 	
 	if([first_name, last_name, email, password].includes("") || password.length < 8) btnProps.disabled = true;
-	return <Button {...btnProps}>Log In</Button>
+	return <Button {...btnProps}>Sign Up</Button>
 };
 
 export default SignupButton;
