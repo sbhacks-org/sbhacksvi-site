@@ -1,4 +1,12 @@
 @media only screen and (max-width: 860px) {
+  #logo {
+    img {
+      width: 50%;
+    }
+    h1 {
+      font-size: 6em;
+    }
+  }
   button {
     font-size: 16px;
     margin-bottom: 1px;
@@ -41,14 +49,14 @@
       }
     }
   }
-  .logo {
-    font-size: 6em;
+  #logo h1 {
+    font-size: 5em;
   }
 }
 
 @media all and (max-width: 530px) {
-  .logo {
-    font-size: 5em;
+  #logo h1 {
+    font-size: 4em;
   }
   #date {
     font-size: 2em;
@@ -65,8 +73,8 @@
 }
 
 @media all and (max-width: 430px) {
-  .logo {
-    font-size: 4em;
+  #logo h1 {
+    font-size: 3em;
   }
 
   #date {
@@ -90,8 +98,8 @@
 }
 
 @media all and (max-width: 350px) {
-  .logo {
-    font-size: 3.5em;
+  #logo h1 {
+    font-size: 3em;
   }
 
   #date {

@@ -25,18 +25,19 @@ body {
 }
 
 #initialpage {
-  margin: 150px 0;
+  margin-top: 50px;
+  margin-bottom: 150px;
   width: 100%;
 }
 
-.logo-img {
-  width: 25%;
-  margin: 20px
-}
-
-.logo {
-  font-size: 7em;
-  margin-top: 0;
+#logo {
+  img {
+    width: 20%;
+  }
+  h1 {
+    font-size: 6em;
+    margin-top: 10px;
+  }
 }
 
 #date {
