@@ -7,7 +7,7 @@ let school_query = (include_sql) => {
 		LEFT JOIN applications ON schools.id = applications.school_id
 		GROUP BY schools.id
 		ORDER BY ${include_sql} application_count DESC
-		LIMIT 5;`;
+		LIMIT 25;`;
 }
 
 router.get("/schools", (req, res) => {

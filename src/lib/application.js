@@ -8,7 +8,6 @@ module.exports.saveApplication = (user, files, fields) => {
 		if(!files.resume) return reject({ resume: "You must upload a resume" });
 		if(!fields.school_id) return reject({ school_id: "You must specify a school" });
 		if(isNaN(fields.school_id)) {
-			console.log("Received school id that is not an int");
 			School.findOrCreate({
 				where: {
 					name: fields.school_id
@@ -16,7 +15,7 @@ module.exports.saveApplication = (user, files, fields) => {
 			}).spread((school, created) => {
 				resolve(school.id);
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => { throw err; });
 		} else {
 			resolve(fields.school_id)
 		};

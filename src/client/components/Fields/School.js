@@ -7,6 +7,7 @@ const School = ({ error, options, onChange, value }) => {
 			<label>What school do you currently attend?</label>
 			<Dropdown
 				fluid
+				basic
 				placeholder="Choose a school"
 				selection
 				search
@@ -16,6 +17,7 @@ const School = ({ error, options, onChange, value }) => {
 				allowAdditions
 				additionPosition="bottom"
 				additionLabel="Other: "
+				noResultsMessage="Loading school list...."
 			/>
 			{ Boolean(error) ? <Label basic color='red' pointing>{error}</Label> : null }
 		</Form.Field>
