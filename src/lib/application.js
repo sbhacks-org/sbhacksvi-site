@@ -41,7 +41,7 @@ module.exports.saveApplication = (user, files, fields) => {
 
 module.exports.massageAttrsForUpdate = (attrs) => {
 	let newAttrs = Object.assign({}, attrs);
-	let forbiddenAttrs = ["user_id", "resume_key", "resume_url", "id", "rating", "checked_in", "createdAt", "updatedAt"]
+	let forbiddenAttrs = ["user_id", "resume_key", "resume_url", "id", "rsvp", "checked_in", "createdAt", "updatedAt"]
 	forbiddenAttrs.forEach((forbiddenAttr) => delete newAttrs[forbiddenAttr]);
 	return newAttrs;
 };

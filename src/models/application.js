@@ -73,6 +73,9 @@ module.exports = function(sequelize, DataTypes) {
     checked_in: {
       type: DataTypes.BOOLEAN
     },
+    rsvp: {
+      type: DataTypes.BOOLEAN,
+    },
     accepted: {
       type: DataTypes.BOOLEAN
     }
