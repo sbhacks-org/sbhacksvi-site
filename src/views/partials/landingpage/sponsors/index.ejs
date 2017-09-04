@@ -1,0 +1,43 @@
+<%
+	let gold_sponsors = [
+		{ name: "logmein", link: "https://secure.logmein.com/home/en" },
+		{ name: "arthrex", link: "https://www.arthrex.com/" }
+	];
+	let silver_sponsors = [
+		{ name: "invoca", link: "https://www.invoca.com" },
+		{ name: "appfolio", link: "https://www.appfolio.com" },
+		{ name: "fastspring", link: "https://fastspring.com/" },
+		{ name: "hgdata", link: "https://www.hgdata.com" },
+		{ name: "toyon", link: "http://toyon.com/" }
+	];
+	let bronze_sponsors = [
+		{ name: "montecito", link: "https://montecito.bank/" }
+	];
+%>
+
+<div id="sponsor-container">
+	<h1>Sponsors</h1>
+	<p>This event would not be possible without the help of our sponsors. Here is our current lineup for SB Hacks IV!</p>
+
+	<div id="sponsors">
+		<div id="gold-sponsor-container" class="tier-container">
+			<% gold_sponsors.forEach(sponsor => { %>
+				<% let { name, link } = sponsor; %>
+				<%- include("sponsor", { name, link, tier: "gold"}) %>
+			<% }) %>
+		</div>
+
+		<div id="silver-sponsor-container" class="tier-container">
+			<% silver_sponsors.forEach(sponsor => { %>
+				<% let { name, link } = sponsor; %>
+				<%- include("sponsor", { name, link, tier: "silver" }) %>
+			<% }) %>
+		</div>
+
+		<div id="bronze-sponsor-container" class="tier-container">
+			<% bronze_sponsors.forEach(sponsor => { %>
+				<% let { name, link } = sponsor; %>
+				<%- include("sponsor", { name, link, tier: "bronze" }) %>
+			<% }) %>
+		</div>
+</div>

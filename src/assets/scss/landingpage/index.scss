@@ -7,6 +7,7 @@ $gray: #bbbbbb;
 
 @import 'button';
 @import 'modal';
+@import 'sponsors';
 
 html, body {
   background-color: #414288;
@@ -23,11 +24,9 @@ body {
   display: table;
 }
 
-#container {
-  display: table-cell;
-  vertical-align: middle;
-  padding: 2.5% 0;
-  position: relative;
+#initialpage {
+  margin: 150px 0;
+  width: 100%;
 }
 
 .logo-img {
