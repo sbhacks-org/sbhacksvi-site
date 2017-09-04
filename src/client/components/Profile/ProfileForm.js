@@ -45,7 +45,7 @@ class ProfileForm extends React.Component {
 				<Form.Group>
 				    <Fields.School
 				    	error={errors["school_id"]}
-				    	options={getListForAdditionDropdown(this.state.school_id, school_opts)}
+				    	options={getListForAdditionDropdown(school_opts, this.state.school_id)}
 				    	onChange={(evt, { value }) => this.updateField("school_id", value)}
 				    	value={this.state.school_id}
 				    />
@@ -81,7 +81,7 @@ class ProfileForm extends React.Component {
 
 				    <Fields.Major
 				    	error={errors["major"]}
-				    	opts={getListForAdditionDropdown(this.state.major, opts.major)}
+				    	opts={getListForAdditionDropdown(opts.major, this.state.major)}
 				    	onChange={(evt, { value }) => this.updateField("major", value)}
 				    	value={this.state.major}
 				    />

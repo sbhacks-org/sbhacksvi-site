@@ -8,6 +8,7 @@ import * as Fields from "../Fields";
 import * as opts from "../../constants/opts";
 
 import { fetchSchoolList, addToSchoolList } from "../../actions";
+import { getListForAdditionDropdown } from "../additionDropdownHelper";
 
 class ApplyForm extends React.Component {
 	constructor() {
@@ -48,10 +49,9 @@ class ApplyForm extends React.Component {
 				<Form.Group>
 				    <Fields.School
 				    	error={errors["school_id"]}
-				    	options={school_opts}
+				    	options={getListForAdditionDropdown(school_opts, this.state.school_id)}
 				    	onChange={(evt, { value }) => this.updateField("school_id", value)}
 				    	value={this.state.school_id}
-				    	onAddItem={(evt, { value }) => addToSchoolList(value)}
 				    />
  					<Fields.LevelOfStudy
 				    	error={errors["level_of_study"]}
@@ -83,10 +83,9 @@ class ApplyForm extends React.Component {
 
 				    <Fields.Major
 				    	error={errors["major"]}
-				    	opts={opts.major}
+				    	opts={getListForAdditionDropdown(opts.major, this.state.major)}
 				    	onChange={(evt, { value }) => this.updateField("major", value)}
 				    	value={this.state.major}
-				    	onAddItem={(evt, { value }) => opts.major.push(value)}
 				    />
 				</Form.Group>
 

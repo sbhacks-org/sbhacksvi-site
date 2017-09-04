@@ -33,11 +33,14 @@ export const logout = () => {
 
 export const fetchSchoolList = () => {
 	return function(dispatch, getState) {
-		const { school_opts } = getState().application;
+		let state = getState();
 
-		if(school_opts.length > 0) {
-			return;
-		}
+		const { application: { school_opts }, user: { applicationFields } } = state;
+
+		if(school_opts.length > 0) return;
+
+		let include_school_id = applicationFields ? applicationFields.school_id : undefined;
+
 		var xhttp = new XMLHttpRequest();
 
 		xhttp.addEventListener("load", () => {
@@ -47,7 +50,7 @@ export const fetchSchoolList = () => {
 				payload: response.map((school) => ({ key: school.name, value: school.id, text: school.name }))
 			})
 		});
-		xhttp.open("GET", "/api/schools");
+		xhttp.open("GET", "/api/schools?include=" + include_school_id);
 		xhttp.send();
 	}
 };
