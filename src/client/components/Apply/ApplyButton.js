@@ -1,13 +1,9 @@
 import React from "react";
 
 import { Button } from "semantic-ui-react";
+import { isValidBasedOnTextFields, invalidResume  } from "../validApplication";
 
-function invalidResume(resume) {
-	return !resume || resume.size > 4194304 || resume.type !== "application/pdf";
-}
-
-const ApplyButton = ({ school_id, level_of_study, graduation_year, major, resume, shirt_size }) => {
-	let required_fields = [school_id, level_of_study, graduation_year, major, shirt_size];
+const ApplyButton = (fields) => {
 
 	let btnProps = {
 		color: "blue",
@@ -15,7 +11,8 @@ const ApplyButton = ({ school_id, level_of_study, graduation_year, major, resume
 		size: "large"
 	};
 	
-	if(required_fields.includes("") || invalidResume(resume)) btnProps.disabled = true;
+	if(isValidBasedOnTextFields(fields) || invalidResume(fields.resume)) btnProps.disabled = true;
+
 	return <Button {...btnProps}>Submit Application</Button>
 };
 
