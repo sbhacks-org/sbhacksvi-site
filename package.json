@@ -13,7 +13,7 @@
     "react-build": "webpack --progress --config webpack.config.js",
     "react-build:dev": "webpack --watch --progress --config webpack.config.js",
     "react-build:production": "webpack -p --progress --config webpack.config.js",
-    "css-build": "node-sass ./src/static/css/scss/application.scss ./src/static/css/application.css",
+    "css-build": "node-sass ./src/static/css/scss/registrant/registrant.scss ./src/static/css/registrant.css",
     "landing-build": "node-sass ./src/static/css/scss/landingpage/landingpage.scss ./src/static/css/landingpage.css",
     "landing-build:dev": "node-sass --watch ./src/static/css/scss/landingpage/landingpage.scss ./src/static/css/landingpage.css",
     "live-build": "node-sass ./src/static/css/scss/livepage/livepage.scss ./src/static/css/livepage.css",

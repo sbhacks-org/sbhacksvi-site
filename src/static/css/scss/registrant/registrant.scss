@@ -1,0 +1,15 @@
+a:hover {
+	cursor: pointer;
+}
+#root label {
+	color: #98DFAF;
+}
+#root {
+	min-height: 100%;
+	padding: 5%;
+	background-color: #414288;
+	color: #98DFAF;
+}
+#root .loading.form:before {
+	background-color: rgba(65, 66, 136, 0.8);
+}

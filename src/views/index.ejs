@@ -2,37 +2,20 @@
 <html>
 <head>
   <title>SB Hacks IV</title>
-  <link
-    rel="stylesheet"
-    href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"
-  />
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  	a:hover {
-  		cursor: pointer;
-  	}
-    #root label {
-      color: #98DFAF;
-    }
-    #root {
-      min-height: 100%;
-      padding: 5%;
-      background-color: #414288;
-      color: #98DFAF;
-    }
-    #root .loading.form:before {
-      background-color: rgba(65, 66, 136, 0.8);
-    }
-
-  </style>
+  <link
+  rel="stylesheet"
+  href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"
+  />
+  <link rel="stylesheet" href="/css/registrant.css" />
 </head>
 <body>
   <div id="root"></div>
 </body>
 <script type="text/javascript">
-	<% if(locals.preloadedState) { %>
-		window.__PRELOADED_STATE__ = <%- JSON.stringify(preloadedState) %>;
-	<% } %>
+  <% if(locals.preloadedState) { %>
+    window.__PRELOADED_STATE__ = <%- JSON.stringify(preloadedState) %>;
+  <% } %>
 </script>
 <script type="text/javascript" src="/js/bundle.js"></script>
 </html>
