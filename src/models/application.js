@@ -62,7 +62,8 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     shirt_size: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false
     },
     rating: {
       type: DataTypes.INTEGER,

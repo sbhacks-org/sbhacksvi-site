@@ -3,7 +3,7 @@ import { Form, Dropdown, Label } from "semantic-ui-react";
 
 const ShirtSize = ({ error, onChange, opts, value }) => {
 	return (
-		<Form.Field error={Boolean(error)}>
+		<Form.Field error={Boolean(error)} required>
 			<label>Shirt Size</label>
 			<Dropdown
 				placeholder="These are unisex sizes"
