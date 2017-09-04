@@ -37,7 +37,7 @@ export const fetchSchoolList = () => {
 
 		const { application: { school_opts }, user: { applicationFields } } = state;
 
-		if(school_opts.length > 0) return;
+		if(school_opts.length > 0 && !applicationFields) return;
 
 		let include_school_id = applicationFields ? applicationFields.school_id : undefined;
 
@@ -47,7 +47,9 @@ export const fetchSchoolList = () => {
 			let response = JSON.parse(xhttp.responseText);
 			dispatch({
 				type: actionTypes.FETCH_SCHOOL_LIST_SUCCESS,
-				payload: response.map((school) => ({ key: school.name, value: school.id, text: school.name }))
+				payload: response.map((school) => (
+					{ key: school.name, value: school.id, text: school.name }
+				))
 			})
 		});
 		xhttp.open("GET", "/api/schools?include=" + include_school_id);
