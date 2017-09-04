@@ -1,8 +1,5 @@
 const router = require("express").Router();
 const passport = require("passport");
-const efp = require("express-form-post");
-const isLoggedIn = require("../lib/isLoggedIn");
-const { User } = require("../models");
 const { authSuccessUserState } = require("../lib/auth");
 
 router.post("/login", (req, res, next) => {
@@ -17,7 +14,7 @@ router.post("/login", (req, res, next) => {
 			.then((application) => {
 				let { dataValues: user } = req.user;
 				res.json(authSuccessUserState(user, application));
-			})
+			});
 		});
 	})(req, res, next);
 });

@@ -1,7 +1,7 @@
 const efp = require("express-form-post");
 const hasha = require("hasha");
 
-const { School, User, Application } = require("../models");
+const { School } = require("../models");
 
 module.exports.saveApplication = (user, files, fields) => {	
 	return new Promise((resolve, reject) => {
@@ -17,8 +17,8 @@ module.exports.saveApplication = (user, files, fields) => {
 			})
 			.catch((err) => { throw err; });
 		} else {
-			resolve(fields.school_id)
-		};
+			resolve(fields.school_id);
+		}
 	})
 	.then((school_id) => {
 		return user.createApplication({
@@ -36,12 +36,12 @@ module.exports.saveApplication = (user, files, fields) => {
 			gender: fields.gender,
 			dietary_restrictions: fields.dietary_restrictions
 		});
-	})		
+	});		
 };
 
 module.exports.massageAttrsForUpdate = (attrs) => {
 	let newAttrs = Object.assign({}, attrs);
-	let forbiddenAttrs = ["user_id", "resume_key", "resume_url", "id", "rsvp", "checked_in", "createdAt", "updatedAt"]
+	let forbiddenAttrs = ["user_id", "resume_key", "resume_url", "id", "rsvp", "checked_in", "createdAt", "updatedAt"];
 	forbiddenAttrs.forEach((forbiddenAttr) => delete newAttrs[forbiddenAttr]);
 	return newAttrs;
 };
@@ -112,5 +112,5 @@ module.exports.populateWithApplicationFields = (application) => {
 		transportation: application.transportation || "",
 		dietary_restrictions: application.dietary_restrictions.split(",") || [],
 		resume_url: application.resume_url
-	}
+	};
 };

@@ -17,7 +17,7 @@ module.exports.send = (user) => {
 			subject: "SB Hacks IV Application Submitted",
 			text: content[0],
 			html: content[1]
-		}
+		};
 
 		transporter.sendMail(message, (err, info) => {
 			if(err) throw err;	
@@ -26,4 +26,4 @@ module.exports.send = (user) => {
 			transporter.close();
 		});
 	});
-}
+};

@@ -16,7 +16,7 @@ Subscriber.findAll({})
 				subject: "SB Hacks IV Applications are OPEN!!",
 				text: content[0],
 				html: content[1]
-			}
+			};
 
 			transporter.sendMail(message, (err, info) => {
 				if(err) console.log(err);	

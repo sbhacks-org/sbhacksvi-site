@@ -12,7 +12,7 @@ export const updateSuccess = (applicationFields) => {
 	return {
 		type: actionTypes.UPDATE_SUCCESS,
 		applicationFields
-	}
+	};
 };
 
 export const logout = () => {
@@ -20,7 +20,6 @@ export const logout = () => {
 		var xhttp = new XMLHttpRequest();
 
 		xhttp.addEventListener("load", () => {
-			let response = JSON.parse(xhttp.responseText);
 			dispatch({
 				type: actionTypes.LOG_OUT_SUCCESS
 			});
@@ -50,11 +49,11 @@ export const fetchSchoolList = () => {
 				payload: response.map((school) => (
 					{ key: school.name, value: school.id, text: school.name }
 				))
-			})
+			});
 		});
 		xhttp.open("GET", "/api/schools?include=" + include_school_id);
 		xhttp.send();
-	}
+	};
 };
 
 export const addToSchoolList = (school) => {
@@ -62,6 +61,6 @@ export const addToSchoolList = (school) => {
 		type: actionTypes.ADD_TO_SCHOOL_LIST,
 		payload: school
 	};
-}
+};
 
 export const submitSuccess = updateSuccess;

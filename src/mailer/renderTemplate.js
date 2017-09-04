@@ -2,12 +2,12 @@ const fs = require("fs");
 const path = require("path");
 const ejs = require("ejs");
 
-module.exports = renderTemplate = (filename, locals = {}) => {
-	return new Promise((res, rej) => {
+module.exports = (filename, locals = {}) => {
+	return new Promise((resolve, reject) => {
 		fs.readFile(path.join(__dirname, "templates", filename), "utf-8", (err, data) => {
-			if(err) rej(err);
-			output = ejs.render(data, locals);
-			res(output);
+			if(err) reject(err);
+			let output = ejs.render(data, locals);
+			resolve(output);
 		});
 	});
-}
+};

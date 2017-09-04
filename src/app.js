@@ -1,13 +1,13 @@
 const express = require("express"),
-path = require("path"),
-session = require("express-session"),
-flash = require("connect-flash"),
-MongoStore = require("connect-mongo")(session),
-bodyParser = require("body-parser"),
-logger = require("morgan"),
-helmet = require("helmet"),
-favicon = require("serve-favicon"),
-passport = require("passport");
+	path = require("path"),
+	session = require("express-session"),
+	flash = require("connect-flash"),
+	MongoStore = require("connect-mongo")(session),
+	bodyParser = require("body-parser"),
+	logger = require("morgan"),
+	helmet = require("helmet"),
+	favicon = require("serve-favicon"),
+	passport = require("passport");
 
 const app = express();
 
