@@ -58,12 +58,10 @@ module.exports = (app) => {
 		res.render("index");
 	});
 
-	app.use("*", (err, req, res) => {
+	app.use("*", (err, req, res, next) => {
 		if(err instanceof ValidationError) {
 			return res.json({ success: false, errors: convertValidationError(err) });
 		}
-
-		console.log(err);
 
 		if(err instanceof Error || err instanceof DatabaseError) {
 			return res.json({
