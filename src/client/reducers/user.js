@@ -17,6 +17,10 @@ const userReducer = (state = initialState, action) => {
 		delete applicationFields["school_id"]; // small hack to get the school list addition working somewhat
 		return { ...state, applicationFields };
 	}
+	case actionTypes.APPLY_SUCCESS: {
+		let { applicationFields } = action;
+		return { ...state, applicationFields };
+	}
 	case actionTypes.LOG_OUT_SUCCESS: {
 		return { isAuthenticated: false, applicationFields: null, info: null };
 	}

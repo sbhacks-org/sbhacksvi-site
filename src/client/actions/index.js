@@ -15,6 +15,13 @@ export const updateSuccess = (applicationFields) => {
 	};
 };
 
+export const submitSuccess = (applicationFields) => {
+	return {
+		type: actionTypes.APPLY_SUCCESS,
+		applicationFields
+	};
+};
+
 export const logout = () => {
 	return function(dispatch) {
 		var xhttp = new XMLHttpRequest();
@@ -62,5 +69,3 @@ export const addToSchoolList = (school) => {
 		payload: school
 	};
 };
-
-export const submitSuccess = updateSuccess;

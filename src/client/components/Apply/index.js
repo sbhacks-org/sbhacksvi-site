@@ -41,11 +41,11 @@ class Apply extends React.Component {
 		this.submitApplication = this.submitApplication.bind(this);
 	}
 
-	startUpdate() {
+	startApply() {
 		this.setState({ loading: true });
 	}
 
-	finishUpdate(response) {
+	finishApply(response) {
 		this.setState({ errors: response.errors || {}, loading: false });
 		if(response.success) this.props.submitSuccess(response.application);
 	}
@@ -54,11 +54,11 @@ class Apply extends React.Component {
 	submitApplication(fields) {
 		const xhttp = new XMLHttpRequest();
 
-		this.startUpdate();
+		this.startApply();
 
 		xhttp.addEventListener("load", () => {
 			let response = JSON.parse(xhttp.responseText);
-			this.finishUpdate(response);
+			this.finishApply(response);
 		});
 
 		sendApplyXHR.call(xhttp, fields);
