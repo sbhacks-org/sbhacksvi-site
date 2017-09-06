@@ -6,7 +6,24 @@ export const graduation_year = [2017, 2018, 2019, 2020, 2021, 2022].map((year) =
 	{ key: year.toString(), value: year, text: year.toString() }
 ));
 
-export const major = ["Computer Science", "Computer Engineering"].map((major) => (
+const major_names = [
+	"Computer Science",
+	"Computer Engineering",
+	"Electrical Engineering",
+	"Software Engineering",
+	"Mechanical Engineering",
+	"Mathematics",
+	"Physics",
+	"Cognitive Science",
+	"Applied Mathematics",
+	"Electrical Engineering and Computer Science",
+	"Statistics",
+	"Chemical Engineering",
+	"Economics",
+	"Bioengineering"
+];
+
+export const major = major_names.map((major) => (
 	{ key: major, value: major, text: major }
 ));
 
