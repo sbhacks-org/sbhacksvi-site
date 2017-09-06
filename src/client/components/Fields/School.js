@@ -13,11 +13,11 @@ class School extends React.Component {
 		const { error, options, onChange, value } = this.props;
 		return (
 			<Form.Field width={6} error={Boolean(error)} required>
-				<label>What school do you currently attend?</label>
+				<label>Which school do you currently attend?</label>
 				<Dropdown
 					fluid
 					basic
-					placeholder="Choose a school"
+					placeholder="Start typing to search for the school!"
 					selection
 					search
 					options={options}
