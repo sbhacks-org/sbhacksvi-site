@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { sequelize } = require("../models");
+const { School, sequelize } = require("../models");
 
 let school_query = (include_sql) => {
 	return `SELECT schools.*, COUNT(applications.id) as application_count
@@ -7,8 +7,8 @@ let school_query = (include_sql) => {
 		LEFT JOIN applications ON schools.id = applications.school_id
 		GROUP BY schools.id
 		ORDER BY ${include_sql} application_count DESC
-		LIMIT 25;`;
-};
+		LIMIT 200;`;
+}
 
 router.get("/schools", (req, res) => {
 	let { include } = req.query;
