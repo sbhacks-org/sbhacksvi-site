@@ -4,6 +4,7 @@ const hasha = require("hasha");
 const { School } = require("../models");
 
 const resolveWithSchoolId = (school_id, resolve) => {
+	if(!school_id) return resolve(school_id);
 	if(isNaN(school_id)) {
 		School.findOrCreate({
 			where: {
@@ -28,7 +29,7 @@ module.exports.saveApplication = (user, files, fields) => {
 		return user.createApplication({
 			school_id: school_id,
 			resume_url: files.resume.Location,
-			resume_key: files.resume.key,
+			resume_key: files.resume.Key,
 			transportation: fields.transportation,
 			graduation_year: fields.graduation_year,
 			level_of_study: fields.level_of_study,
@@ -44,20 +45,35 @@ module.exports.saveApplication = (user, files, fields) => {
 };
 
 module.exports.massageAttrsForUpdate = (attrs) => {
+	let newAttrs = Object.assign({}, attrs);
+	let forbiddenAttrs = ["user_id", "resume_key", "resume_url", "id", "rsvp", "checked_in", "createdAt", "updatedAt"];
+	forbiddenAttrs.forEach((forbiddenAttr) => delete newAttrs[forbiddenAttr]);
+	
 	return new Promise((resolve, reject) => {
 		resolveWithSchoolId(attrs["school_id"], resolve);
 	})
 	.then(school_id => {
-		let newAttrs = Object.assign({}, attrs, { school_id });
-		let forbiddenAttrs = ["user_id", "resume_key", "resume_url", "id", "rsvp", "checked_in", "createdAt", "updatedAt"];
-		forbiddenAttrs.forEach((forbiddenAttr) => delete newAttrs[forbiddenAttr]);
+		if(school_id) newAttrs["school_id"] = school_id;
 		return newAttrs;
 	});
 };
 
+let efpValidateFile = (file, cb, skip) => {
+	if(file.fieldname != "resume") {
+		return skip();
+	}
+	if(file.mimetype != "application/pdf") {
+		return cb({ resume: "You must upload a PDF" });
+	}
+	cb();
+}
+
 module.exports.formPostUpdate = efp({
 	store: "aws-s3",
-	maxfileSize: 4194304,
+	maxfileSize: {
+		msg: { resume: "File size too big" },
+		size: 4194304
+	},
 	promise: true,
 	filename: function(req, file, cb) {
 		req.user.getApplication()
@@ -65,12 +81,7 @@ module.exports.formPostUpdate = efp({
 			cb(application.resume_key);
 		});
 	},
-	validateFile: function(file, cb) {
-		if(file.mimetype != "application/pdf") {
-			return cb("File was not a pdf");
-		}
-		cb();
-	},
+	validateFile: efpValidateFile,
 	api: {
 		bucketName: process.env.S3_BUCKET_NAME,
 		ACL: "public-read"
@@ -79,20 +90,12 @@ module.exports.formPostUpdate = efp({
 
 module.exports.formPostUpload = efp({
 	store: "aws-s3",
-	maxfileSize: 4194304,
 	promise: true,
-	validateBody: function(body, cb) {
-		cb();
+	maxfileSize: {
+		msg: { resume: "File size too big" },
+		size: 4194304
 	},
-	validateFile: function(file, cb, skip) {
-		if(file.fieldname != "resume") {
-			return skip();
-		}
-		if(file.mimetype != "application/pdf") {
-			return cb("File was not a pdf");
-		}
-		cb();
-	},
+	validateFile: efpValidateFile,
 	filename: function(req, file, cb) {
 		let full_name = req.user.first_name + req.user.last_name;
 		cb(`${hasha(Date.now().toString())}/${full_name}.pdf`);
