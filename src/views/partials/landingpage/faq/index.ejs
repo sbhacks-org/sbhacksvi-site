@@ -1,0 +1,54 @@
+<%
+	let qa_blocks = [
+		{
+			question: "What is a hackathon?",
+			answer: "Hackathons are often described as a hybrid between a career fair and a science fair. A creative community of programmers - from novices to experienced - come together for 36 hours to make amazing projects. The projects are then judged by tech professionals from the industry and from academia."
+		},
+		{
+			question: "When will SB Hacks take place?",
+			answer: "SB Hacks IV will begin on Friday, January 19, 2018, and will conclude on Sunday, January 21, 2018. A more detailed schedule will be released closer to the actual date of the event."
+		},
+		{
+			question: "Who can attend?",
+			answer: "SB Hacks is accepting college students, graduate / PhD students, and high school students who are 18 or older."
+		},
+		{
+			question: "How much does it cost to attend?",
+			answer: "Admission to the event, food, and swag will all be FREE. We'll be providing busses to select schools in California."
+		},
+		{
+			question: "When will acceptances come out?",
+			answer: "Acceptances went out in early January, if you have questions about your registration <a href='mailto:ucsbhacks@gmail.com'>email us</a>"
+		},
+		{
+			question: "What should I bring?",
+			answer: "Bring your laptop, overnight gear, a water bottle, and a photo ID. MLH will be providing a hardware lab."
+		},
+		{
+			question: "What can I win?",
+			answer: "Our prizes and their accompanying page is in the works and will be up shortly before the event!"
+		},
+		{
+			question: "Can I have a team?",
+			answer: "You can compete with up to 4 teammates. If you don't have a team, don't worry about it! We will match you up with compatible teammates at the event."
+		},
+		{
+			question: "What should I bring?",
+			answer: "Bring your laptop, overnight gear, a water bottle, and a photo ID. MLH will be providing a hardware lab."
+		},
+		{
+			question: "More Questions?",
+			answer: "Feel free to email us with any questions at <a href='mailto:ucsbhacks@gmail.com'>ucsbhacks@gmail.com</a>"
+		}
+	];
+%>
+
+<div id="faq">
+	<h1 class="header">FAQ</h1>
+	<% qa_blocks.forEach((qa_block) => { %>
+		<div class="faq-item">
+			<h1><%- qa_block.question %></h1>
+			<p><%- qa_block.answer %></p>
+		</div>
+	<% }) %>
+</div>

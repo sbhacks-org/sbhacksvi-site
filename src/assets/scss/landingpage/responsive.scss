@@ -18,11 +18,29 @@
 }
 
 @media all and (max-width: 660px) {
-  #sponsor-container {
-    padding: 0 20px;
-    h1 {
+  h1.header {
       font-size: 4em;
+  }
+  body {
+    padding: 0 20px;
+  }
+
+  #faq {
+    .faq-item {
+      width: 100%;
+      padding: 0;
+      margin: 2em 0;
+      display: block;
+      h1 {
+        font-size: 1.2em;
+      }
+      p {
+        font-size: 0.9em;
+      }
     }
+  }
+
+  #sponsor-container {
     p {
       font-size: 1em;
     }
