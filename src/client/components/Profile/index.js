@@ -6,7 +6,7 @@ import { Grid, Button } from "semantic-ui-react";
 
 import ProfileForm from "./ProfileForm";
 
-import Banner from "./presenters/Banner";
+import Banner from "../Banner";
 import HasNotAppliedView from "./presenters/HasNotAppliedView";
 
 import { populateWithApplicationFields } from "./profile-helpers";
@@ -55,8 +55,8 @@ class Profile extends React.Component {
 	}
 
 	finishUpdate(response) {
-		if(response.success) this.props.updateSuccess(response.application);
 		this.setState({ errors: response.errors || {}, loading: false, message: response.message });
+		if(response.success) this.props.updateSuccess(response.application);
 	}
 
 	

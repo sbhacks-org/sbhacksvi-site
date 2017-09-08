@@ -3,6 +3,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
+import Banner from "../Banner";
 import { submitSuccess } from "../../actions";
 import ApplyForm from "./ApplyForm";
 
@@ -36,7 +37,8 @@ class Apply extends React.Component {
 
 		this.state = {
 			loading: false,
-			errors: {}
+			errors: {},
+			message: ""
 		}
 		this.submitApplication = this.submitApplication.bind(this);
 	}
@@ -46,7 +48,7 @@ class Apply extends React.Component {
 	}
 
 	finishApply(response) {
-		this.setState({ errors: response.errors || {}, loading: false });
+		this.setState({ errors: response.errors || {}, loading: false, message: response.message });
 		if(response.success) this.props.submitSuccess(response.application);
 	}
 
@@ -81,6 +83,7 @@ class Apply extends React.Component {
 
 		return (
 			<div>
+				<Banner message={this.state.message} onDismiss={() => this.setState({ message: "" })}/>
 				<h1>SB Hacks IV Application</h1>
 				<ApplyForm
 					submitApplication={this.submitApplication}
