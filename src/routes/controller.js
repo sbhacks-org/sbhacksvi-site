@@ -31,16 +31,18 @@ module.exports = (app) => {
 
 	// Merely just for current deployment
 	app.use("/subscribe", subscriberRoutes);
-	if(process.env.NODE_ENV == "production") {
+	if(process.env.NODE_ENV === "production") {
 		app.use((req, res) => {
 			// Universal catcher; Disable other routes for now
 			res.render("landingpage");
 		});
 	}
 
-	app.get("/",(req, res) => {
-		res.render("landingpage");
-	});
+	if(app.get("env") === "development") {
+		app.get("/",(req, res) => {
+			res.render("landingpage");
+		});
+	}
 
 	app.use("/", authRoutes);
 	app.use("/apply", applyRoutes);
