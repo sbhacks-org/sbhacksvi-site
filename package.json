@@ -4,20 +4,18 @@
   "description": "The SB Hacks IV Website, which enables students to apply for our 36 hour hackathon hosted in Winter 2018",
   "main": "app/server.js",
   "scripts": {
+    "postinstall": "bash ./bin/postinstall.sh",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node bin/server.js",
     "start:dev": "nodemon bin/server.js",
     "seed": "sequelize db:seed:all",
-    "build": "npm run css-build && npm run landing-build && npm run live-build",
-    "build:dev": "node-sass --watch ./src/static/css/scss/application.scss ./src/static/css/application.css",
+    "build": "npm run css-landing-build && npm run css-registrant-build",
     "react-build": "webpack --progress --config webpack.config.js",
     "react-build:dev": "webpack --watch --progress --config webpack.config.js",
     "react-build:production": "webpack -p --progress --config webpack.config.js",
-    "css-build": "node-sass ./src/assets/scss/registrant/index.scss ./src/static/css/registrant.css",
-    "landing-build": "node-sass ./src/assets/scss/landingpage/index.scss ./src/static/css/landingpage.css",
-    "landing-build:dev": "node-sass --watch ./src/assets/scss/landingpage/index.scss ./src/static/css/landingpage.css",
-    "live-build": "node-sass ./src/assets/scss/livepage/index.scss ./src/static/css/livepage.css",
-    "live-build:dev": "node-sass --watch ./src/assets/scss/livepage/index.scss ./src/static/css/livepage.css",
+    "css-registrant-build": "node-sass --watch ./src/assets/scss/registrant/index.scss ./src/static/css/registrant.css",
+    "css-landing-build": "node-sass ./src/assets/scss/landingpage/index.scss ./src/static/css/landingpage.css",
+    "css-landing-build:dev": "node-sass --watch ./src/assets/scss/landingpage/index.scss ./src/static/css/landingpage.css",
     "db:migrate": "sequelize db:migrate"
   },
   "repository": {
@@ -54,9 +52,7 @@
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.2.1",
     "sequelize-cli": "^2.8.0",
-    "serve-favicon": "^2.4.2"
-  },
-  "devDependencies": {
+    "serve-favicon": "^2.4.2",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
@@ -76,6 +72,9 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "semantic-ui-react": "^0.71.5",
-    "webpack": "^2.5.1"
+    "webpack": "^2.7.0"
+  },
+  "engines": {
+    "node": "8.2.1"
   }
 }
