@@ -11,14 +11,24 @@ const express = require("express"),
 
 const app = express();
 
-app.use(helmet());
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+
+app.use(helmet());
 app.use(favicon(path.join(__dirname, "static/images", "favicon.ico")));
 app.use(express.static(path.join(__dirname, "static")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(logger("dev"));
+app.use((req, res, next) => {
+	if(app.get("env") === "production") {
+		if (req.headers["x-forwarded-proto"] != "https") {
+			return res.redirect('https://' + req.headers["host"] + req.originalUrl);
+		}
+	}
+	next();
+});
+
 
 let SessionStore = process.env.NODE_ENV == "production" ? (
 	new MongoStore({

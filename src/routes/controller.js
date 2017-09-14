@@ -31,7 +31,7 @@ module.exports = (app) => {
 
 	// Merely just for current deployment
 	app.use("/subscribe", subscriberRoutes);
-	if(process.env.NODE_ENV === "production") {
+	if(app.get("env") === "production") {
 		app.use((req, res) => {
 			// Universal catcher; Disable other routes for now
 			res.render("landingpage");
