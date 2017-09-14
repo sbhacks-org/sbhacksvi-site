@@ -8,3 +8,5 @@ bundle.js
 db/
 index.html
 src/static/css/*.css
+*.key
+*.crt
