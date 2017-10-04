@@ -32,7 +32,7 @@ export const logout = () => {
 			});
 		});
 
-		xhttp.open("POST", "/logout");
+		xhttp.open("DELETE", "/logout");
 		xhttp.send();
 	};
 };
