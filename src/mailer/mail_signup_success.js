@@ -3,12 +3,8 @@ const transporter = require("./transporter");
 const renderTemplate = require("./renderTemplate");
 
 module.exports.send = (user) => {
-	let renderText = renderTemplate("signup_success.txt.ejs", {
-		name: user.first_name
-	});
-	let renderHTML = renderTemplate("signup_success.ejs", {
-		name: user.first_name
-	});
+	let renderText = renderTemplate("signup_success.txt.ejs", user);
+	let renderHTML = renderTemplate("signup_success.ejs", user);
 
 	Promise.all([renderText, renderHTML])
 	.then((content) => {
