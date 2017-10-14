@@ -1,7 +1,11 @@
 #!/usr/bin/env node
-const transporter = require("./transporter");
-const renderTemplate = require("./renderTemplate");
-const { Subscriber } = require("../models");
+
+const mail_path = "../src/mailer";
+
+const path = require("path");
+const transporter = require(path.join(mail_path, "transporter"));
+const renderTemplate = require(path.join(mail_path, "renderTemplate"));
+const { Subscriber } = require("../src/models");
 
 Subscriber.findAll({})
 .then((subscribers) => {
