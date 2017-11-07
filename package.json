@@ -13,7 +13,8 @@
     "react-build": "webpack --progress --config webpack.config.js",
     "react-build:dev": "webpack --watch --progress --config webpack.config.js",
     "react-build:production": "webpack -p --progress --config webpack.config.js",
-    "css-registrant-build": "node-sass --watch ./src/assets/scss/registrant/index.scss ./src/static/css/registrant.css",
+    "css-registrant-build": "node-sass ./src/assets/scss/registrant/index.scss ./src/static/css/registrant.css",
+    "css-registrant-build:dev": "node-sass --watch ./src/assets/scss/registrant/index.scss ./src/static/css/registrant.css",
     "css-landing-build": "node-sass ./src/assets/scss/landingpage/index.scss ./src/static/css/landingpage.css",
     "css-landing-build:dev": "node-sass --watch ./src/assets/scss/landingpage/index.scss ./src/static/css/landingpage.css",
     "db:migrate": "sequelize db:migrate"
