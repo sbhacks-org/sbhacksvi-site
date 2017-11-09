@@ -2,6 +2,8 @@ $l-blue: #33ccff;
 $d-green: #5FB49C;
 $l-green: #98DFAF;
 $gray: #bbbbbb;
+$secondary-yellow: #dcdda2;
+$primary-yellow: #ffcf35;
 
 @import url('https://rsms.me/interface/interface.css');
 
@@ -23,12 +25,23 @@ body {
 #initialpage {
   background: #71c8f1;
   background: linear-gradient(#673695, #71c8f1);
-  padding-top: 50px;
-  padding-bottom: 150px;
   width: 100%;
+  height: 105vh;
+  #bg-img {
+    height: 100%;
+    background-image: url("/images/bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+.grass-divider {
+  width: 100%;
+  margin-top: -5px;
 }
 
 #logo {
+  padding-top: 50px;
   img {
     width: 20%;
   }
@@ -43,11 +56,13 @@ body {
 }
 
 h1 {
+  font-family: 'Bungee', cursive;
   font-size: 2em;
   color: white;
 }
 
 h1.header {
+  margin: 0;
   font-size: 5em;
 }
 
