@@ -72,10 +72,11 @@ p {
 }
 
 a {
+  color: #4183c4;
   display: inline-block;
   text-decoration: underline;
   &:hover {
-    // color: $d-green;
+    color: #1e70bf;
   }
 }
 
