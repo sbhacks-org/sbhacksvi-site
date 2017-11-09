@@ -11,7 +11,6 @@ $gray: #bbbbbb;
 @import 'faq';
 
 html, body {
-  background-color: #414288;
   margin: 0;
   text-align: center;
   font-family: Interface, sans-serif;
@@ -20,22 +19,19 @@ html, body {
 
 body {
   display: table;
-  padding: 0 50px;
 }
 
 #initialpage {
-  margin-top: 50px;
-  margin-bottom: 150px;
+  background: #71c8f1;
+  background: linear-gradient(#673695, #71c8f1);
+  padding-top: 50px;
+  padding-bottom: 150px;
   width: 100%;
 }
 
 #logo {
   img {
     width: 20%;
-  }
-  h1 {
-    font-size: 6em;
-    margin-top: 10px;
   }
 }
 
@@ -49,7 +45,7 @@ body {
 
 h1 {
   font-size: 2em;
-  color: $l-green;
+  color: white;
 }
 
 h1.header {
@@ -62,11 +58,10 @@ p {
 }
 
 a {
-  color: $l-green;
   display: inline-block;
   text-decoration: underline;
   &:hover {
-    color: $d-green;
+    // color: $d-green;
   }
 }
 
