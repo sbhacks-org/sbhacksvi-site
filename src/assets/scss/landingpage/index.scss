@@ -10,16 +10,14 @@ $primary-yellow: #ffcf35;
 @import 'button';
 @import 'sponsors';
 @import 'faq';
+@import 'intro';
 
 html, body {
   margin: 0;
   text-align: center;
   font-family: Interface, sans-serif;
   font-weight: 400;
-}
-
-body {
-  display: table;
+  color: white;
 }
 
 #initialpage {
@@ -37,7 +35,7 @@ body {
 
 .grass-divider {
   width: 100%;
-  margin-top: -5px;
+  margin-top: -25px;
 }
 
 #logo {
@@ -58,17 +56,11 @@ body {
 h1 {
   font-family: 'Bungee', cursive;
   font-size: 2em;
-  color: white;
 }
 
 h1.header {
   margin: 0;
   font-size: 5em;
-}
-
-p {
-  font-size: 1.25em;
-  color: white;
 }
 
 a {
