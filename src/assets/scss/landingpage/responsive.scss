@@ -1,10 +1,27 @@
 @media only screen and (max-width: 860px) {
+  #sponsor-container {
+    #wreaths {
+      img {
+        width: 25%;
+      }
+      margin-top: -30px;
+    }
+  }
+  #intro {
+    #left {
+      display: none;
+    }
+    #right {
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2.5em;
+    }
+  }
   #logo {
     img {
-      width: 50%;
-    }
-    h1 {
-      font-size: 6em;
+      width: 30%;
     }
   }
   button {
@@ -18,18 +35,23 @@
 }
 
 @media all and (max-width: 660px) {
+  #intro {
+    h4 {
+      font-size: 0.7em;
+    }
+  }
   h1.header {
       font-size: 4em;
   }
-  body {
-    padding: 0 20px;
+  .grass-divider {
+    margin-top: -20px;
   }
 
   #faq {
+    padding: 25px;
     .faq-item {
       width: 100%;
-      padding: 0;
-      margin: 2em 0;
+      padding: 2em 0;
       display: block;
       h1 {
         font-size: 1.2em;
@@ -41,17 +63,24 @@
   }
 
   #sponsor-container {
+    #wreaths {
+      img {
+        width: 30%;
+      }
+      margin-top: -20px;
+    }
     p {
       font-size: 1em;
     }
     .tier-container {
-      margin: 30px 0;
+      padding: 30px 0;
     }
     #gold-sponsor-container {
       .sponsor {
-        width: 80%;
-        padding: 0 10%;
-        margin: 20px 0;
+        display: block;
+        width: 60%;
+        padding: 0 20%;
+        margin: 10px 0;
       }
     }
     #silver-sponsor-container {
@@ -67,14 +96,13 @@
       }
     }
   }
-  #logo h1 {
-    font-size: 5em;
-  }
 }
 
 @media all and (max-width: 530px) {
-  #logo h1 {
-    font-size: 4em;
+  #logo {
+    img {
+      width: 35%;
+    }
   }
   #date {
     font-size: 2em;
@@ -85,27 +113,24 @@
     padding: 1em 1.75em;
   }
 
-  #initialpage > p {
-    font-size: 1.2em;
-  }
 }
 
 @media all and (max-width: 430px) {
-  #logo h1 {
-    font-size: 3em;
+  .grass-divider {
+    margin-top: -15px;
   }
-
+  #logo {
+    img {
+      width: 40%;
+    }
+  }
   #date {
-    font-size: 1.5em;
+    font-size: 1.7em;
   }
 
   .btn {
     font-size: 1em;
     padding: 1em 1.75em;
-  }
-
-  #initialpage > p {
-    font-size: 1em;
   }
 }
 
@@ -116,9 +141,6 @@
 }
 
 @media all and (max-width: 350px) {
-  #logo h1 {
-    font-size: 3em;
-  }
 
   #date {
     font-size: 1.5em;
@@ -127,9 +149,5 @@
   .btn {
     font-size: 1em;
     padding: 0.75em 1.5em;
-  }
-
-  #initialpage > p {
-    font-size: 1em;
   }
 }
