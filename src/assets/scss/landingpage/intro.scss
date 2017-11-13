@@ -1,11 +1,6 @@
 #intro {
-	background-color: #e8e8e8;
-	color: black;
 	text-align: left;
-	padding: 0 5%;
-	padding-top: 30px;
 	h1 {
-		margin: 0;
 		font-size: 3.5vw;
 	}
 
@@ -13,13 +8,14 @@
 		margin-bottom: 30px;
 		.value {
 			display: inline-block;
-			width: 15%;
-			margin-right: 25%;
+			width: 20%;
+			margin-right: 15%;
 			text-align: center;
 			img {
 				width: 100%;
 			}
 			h4 {
+				color: black;
 				font-family: bungee, 'cursive';
 				text-transform: uppercase;
 				margin: 5px 0;
@@ -40,8 +36,7 @@
 	#memory {
 		text-align: center;
 		img {
-			width: 50%;
-			float: right;
+			width: 100%;
 		}
 	}
 
@@ -51,19 +46,11 @@
 	}
 
 	#left {
-		width: 30%;
-		margin-right: 3%;
-		img {
-			display: block;
-			width: 30%;
-			transform: rotate(7deg);
-		}
-		img:nth-child(3) {
-			transform: rotate(-7deg);
-		}
+		width: 50%;
+		margin: 5%;
 	}
 
 	#right {
-		width: 66%;
+		width: 40%;
 	}
 }

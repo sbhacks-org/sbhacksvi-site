@@ -16,20 +16,17 @@ $primary-yellow: #ffcf35;
 
 html, body {
   margin: 0;
-  text-align: center;
-  font-family: Interface, sans-serif;
-  font-weight: 400;
-  min-width: 430px;
+  background: linear-gradient(#673695, #549cbe);
   color: white;
-}
-
-.grass-divider {
-  width: 100%;
-  margin-top: -25px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  min-width: 330px;
 }
 
 h1 {
-  font-family: 'Bungee', cursive;
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-weight: bold;
   font-size: 2em;
 }
 
@@ -43,7 +40,7 @@ a {
   display: inline-block;
   text-decoration: underline;
   &:hover {
-    color: #e1e1e1;
+    opacity: 0.5;
   }
 }
 

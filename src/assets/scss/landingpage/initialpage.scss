@@ -1,16 +1,16 @@
 #initialpage-bg-color {
-  background: #71c8f1;
-  background: linear-gradient(#673695, #71c8f1);
+  background: linear-gradient(#549cbe, #673695);
   width: 100%;
   #initialpage {
     display: table;
-    height: 105vh;
+    height: 110vh;
     min-height: 600px;
     width: 100%;
     background-image: url("/images/bg.svg");
     background-repeat: no-repeat;
     background-size: cover;
     #initialpage-content {
+      color: white;
       display: table-cell;
       vertical-align: middle;
       -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
