@@ -19,9 +19,15 @@
       font-size: 2.5em;
     }
   }
-  #logo {
-    img {
-      width: 30%;
+  #initialpage-bg-color {
+    #initialpage {
+      #initialpage-content {
+        #logo {
+          img {
+            width: 30%;
+          }
+        }
+      }
     }
   }
   button {
@@ -99,35 +105,58 @@
 }
 
 @media all and (max-width: 530px) {
-  #logo {
-    img {
-      width: 35%;
+  #intro {
+    h1 {
+      font-size: 2em;
     }
   }
-  #date {
-    font-size: 2em;
+  #initialpage-bg-color {
+    #initialpage {
+      #initialpage-content {
+        #logo {
+          img {
+            width: 40%;
+          }
+        }
+        #date {
+          font-size: 2em;
+        }
+      }
+    }
   }
-
   .btn {
     font-size: 1em;
     padding: 1em 1.75em;
   }
 
+  #intro {
+    #values {
+      .value {
+        width: 20%;
+        margin-right: 15%;
+      }
+    }
+  }
 }
 
 @media all and (max-width: 430px) {
   .grass-divider {
     margin-top: -15px;
   }
-  #logo {
-    img {
-      width: 40%;
+  #initialpage-bg-color {
+    #initialpage {
+      #initialpage-content {
+        #logo {
+          img {
+            width: 50%;
+          }
+        }
+        #date {
+          font-size: 1.7em;
+        }
+      }
     }
   }
-  #date {
-    font-size: 1.7em;
-  }
-
   .btn {
     font-size: 1em;
     padding: 1em 1.75em;
@@ -136,10 +165,15 @@
 
 @media all and (max-width: 350px) {
 
-  #date {
-    font-size: 1.5em;
+  #initialpage-bg-color {
+    #initialpage {
+      #initialpage-content {
+        #date {
+          font-size: 1.5em;
+        }
+      }
+    }
   }
-
   .btn {
     font-size: 1em;
     padding: 0.75em 1.5em;
