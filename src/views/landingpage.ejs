@@ -18,15 +18,24 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<meta name="robots" content="index, follow,">
 		<link rel="canonical" href="http://sbhacks.com">
+
+		<link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
 		<title>SB Hacks IV</title>
 	</head>
 <body>
 	<%- include("partials/landingpage/initialpage") %>
+	<div class="grass-divider">
+		<img src="/images/grass.svg" />
+	</div>
+	<%- include("partials/landingpage/intro") %>
+	<div class="grass-divider">
+		<img src="/images/grass.svg" />
+	</div>
 	<%- include("partials/landingpage/faq/index") %>
+	<div class="grass-divider">
+		<img src="/images/grass.svg" />
+	</div>
 	<%- include("partials/landingpage/sponsors/index") %>
+	<%- include("partials/landingpage/social") %>
 </body>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"
-		  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-		  crossorigin="anonymous"></script>
-<script type="text/javascript" src="/js/modal.js"></script>
 </html>

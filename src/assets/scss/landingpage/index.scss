@@ -2,71 +2,48 @@ $l-blue: #33ccff;
 $d-green: #5FB49C;
 $l-green: #98DFAF;
 $gray: #bbbbbb;
+$secondary-yellow: #dcdda2;
+$primary-yellow: #ffcf35;
 
 @import url('https://rsms.me/interface/interface.css');
 
+@import 'initialpage';
 @import 'button';
-@import 'modal';
 @import 'sponsors';
 @import 'faq';
+@import 'intro';
+@import 'social';
 
 html, body {
-  background-color: #414288;
   margin: 0;
   text-align: center;
   font-family: Interface, sans-serif;
   font-weight: 400;
-}
-
-body {
-  display: table;
-  padding: 0 50px;
-}
-
-#initialpage {
-  margin-top: 50px;
-  margin-bottom: 150px;
-  width: 100%;
-}
-
-#logo {
-  img {
-    width: 20%;
-  }
-  h1 {
-    font-size: 6em;
-    margin-top: 10px;
-  }
-}
-
-#date {
-  font-size: 2.5em;
-}
-
-.row {
-  margin: 35px 0 60px 0;
-}
-
-h1 {
-  font-size: 2em;
-  color: $l-green;
-}
-
-h1.header {
-  font-size: 5em;
-}
-
-p {
-  font-size: 1.25em;
+  min-width: 430px;
   color: white;
 }
 
+.grass-divider {
+  width: 100%;
+  margin-top: -25px;
+}
+
+h1 {
+  font-family: 'Bungee', cursive;
+  font-size: 2em;
+}
+
+h1.header {
+  margin: 0;
+  font-size: 5vw;
+}
+
 a {
-  color: $l-green;
+  color: white;
   display: inline-block;
   text-decoration: underline;
   &:hover {
-    color: $d-green;
+    color: #e1e1e1;
   }
 }
 

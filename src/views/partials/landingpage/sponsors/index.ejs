@@ -17,9 +17,11 @@
 %>
 
 <div id="sponsor-container">
-	<h1 class="header">Sponsors</h1>
-	<p>This event would not be possible without the help of our sponsors. Here is our current lineup for SB Hacks IV!</p>
-
+	<h1 class="header">Powered By</h1>
+	<div id="wreaths">
+		<img src="/images/left-wreath.svg" />
+		<img src="/images/right-wreath.svg" />
+	</div>
 	<div id="sponsors">
 		<div id="gold-sponsor-container" class="tier-container">
 			<% gold_sponsors.forEach(sponsor => { %>
@@ -41,4 +43,5 @@
 				<%- include("sponsor", { name, link, tier: "bronze" }) %>
 			<% }) %>
 		</div>
+	</div>
 </div>

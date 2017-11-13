@@ -1,0 +1,13 @@
+#social {
+	display: block;
+	padding: 10px;
+	background-color: #ffcf35;
+	img {
+		width: 25px;
+		margin: 0 10px;
+		&:hover {
+			opacity: 0.7;
+			cursor: pointer;
+		}
+	}
+}

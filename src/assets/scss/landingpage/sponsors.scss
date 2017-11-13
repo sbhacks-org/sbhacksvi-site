@@ -1,4 +1,13 @@
 #sponsor-container {
+	background-color: #ffcf35;
+
+	#wreaths {
+		margin-top: -50px;
+		img {
+			width: 20%;
+			margin: 0 5%;
+		}
+	}
 	.sponsor {
 		display: inline-block;
 		img {
@@ -12,7 +21,7 @@
 	}
 	.tier-container {
 		text-align: center;
-		margin: 50px 0;
+		padding: 50px 0;
 	}
 	#gold-sponsor-container {
 		.sponsor {
@@ -32,5 +41,4 @@
 			margin: 1.5%;
 		}
 	}
-	margin-bottom: 50px;
 }
