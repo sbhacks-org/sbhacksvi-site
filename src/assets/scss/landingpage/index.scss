@@ -16,17 +16,12 @@ $primary-yellow: #ffcf35;
 
 html, body {
   margin: 0;
-  background: linear-gradient(#673695, #71c8f1);
+  background: linear-gradient(#673695, #549cbe);
   color: white;
   text-align: center;
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   min-width: 330px;
-}
-
-.grass-divider {
-  width: 100%;
-  margin-top: -20px;
 }
 
 h1 {
@@ -41,7 +36,7 @@ h1.header {
 }
 
 a {
-  color: rgb(70, 70, 70);
+  color: white;
   display: inline-block;
   text-decoration: underline;
   &:hover {

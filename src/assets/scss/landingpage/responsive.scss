@@ -1,5 +1,6 @@
 @media only screen and (max-width: 860px) {
   #sponsor-container {
+    padding: 0 5%;
     #wreaths {
       img {
         width: 25%;
@@ -9,10 +10,17 @@
   }
   #intro {
     #left {
-      display: none;
+      width: 90%;
+      margin: 0 5%;
     }
     #right {
       width: 100%;
+      #memory {
+        img  {
+          width: 60%;
+          float: right;
+        }
+      }
     }
 
     h1 {
@@ -69,6 +77,7 @@
   }
 
   #sponsor-container {
+    padding: 0;
     #wreaths {
       img {
         width: 30%;
