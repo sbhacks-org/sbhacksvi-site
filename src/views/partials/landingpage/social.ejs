@@ -1,0 +1,16 @@
+<%
+	let socials = [
+		{ type: "email", url: "mailto:ucsbhacks@gmail.com" },
+		{ type: "facebook", url: "https://facebook.com/ucsbhacks" },
+		{ type: "instagram", url: "https://instagram.com/sbhacks" },
+		{ type: "twitter", url: "https://twitter.com/sb_hacks" }
+	];
+%>
+
+<div id="social">
+<% socials.forEach(social => { %>
+	<a target="_blank" href="<%- social.url %>">
+		<img src="/images/social/<%- social.type %>.png" />
+	</a>
+<% }) %>
+</div>
