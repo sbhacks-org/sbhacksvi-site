@@ -16,12 +16,12 @@ $primary-yellow: #ffcf35;
 
 html, body {
   margin: 0;
-  background-color: #e8e8e8;
-  color: rgb(25, 25, 25);
+  background: linear-gradient(#673695, #71c8f1);
+  color: white;
   text-align: center;
-  font-family: Interface, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 400;
-  min-width: 430px;
+  min-width: 330px;
 }
 
 .grass-divider {
@@ -30,7 +30,8 @@ html, body {
 }
 
 h1 {
-  font-family: 'Bungee', cursive;
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-weight: bold;
   font-size: 2em;
 }
 
