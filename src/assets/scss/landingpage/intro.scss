@@ -6,7 +6,7 @@
 	padding-top: 30px;
 	h1 {
 		margin: 0;
-		font-size: 3.5em;
+		font-size: 3.5vw;
 	}
 
 	#values {
@@ -24,9 +24,9 @@
 				text-transform: uppercase;
 				margin: 5px 0;
 			}
-		}
-		.no-margin {
-			margin: 0;
+			&.no-margin {
+				margin: 0;
+			}
 		}
 	}
 
@@ -51,7 +51,8 @@
 	}
 
 	#left {
-		width: 33%;
+		width: 30%;
+		margin-right: 3%;
 		img {
 			display: block;
 			width: 30%;
