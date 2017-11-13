@@ -16,11 +16,12 @@ $primary-yellow: #ffcf35;
 
 html, body {
   margin: 0;
+  background-color: #e8e8e8;
+  color: rgb(25, 25, 25);
   text-align: center;
   font-family: Interface, sans-serif;
   font-weight: 400;
   min-width: 430px;
-  color: white;
 }
 
 .grass-divider {
@@ -39,11 +40,11 @@ h1.header {
 }
 
 a {
-  color: white;
+  color: rgb(70, 70, 70);
   display: inline-block;
   text-decoration: underline;
   &:hover {
-    color: #e1e1e1;
+    opacity: 0.5;
   }
 }
 
