@@ -29,8 +29,6 @@ function convertValidationError(err) {
 
 module.exports = (app) => {
 
-	// Merely just for current deployment
-	app.use("/subscribe", subscriberRoutes);
 	if(app.get("env") === "production") {
 		app.use((req, res) => {
 			// Universal catcher; Disable other routes for now

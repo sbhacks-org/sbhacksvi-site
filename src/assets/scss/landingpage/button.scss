@@ -47,18 +47,20 @@
 }
 
 .draw-border {
-	@include btn-border-drawing(#58afd1, #ffe593, 4px, bottom, right);
+	@include btn-border-drawing(#ffcf35, #673695, 4px, bottom, right);
 }
 
 //=== Button styling, semi-ignore
 .btn {
+	font-family: 'Bungee', cursive;
 	background: none;
+	color: white;
 	border: none;
 	cursor: pointer;
 	line-height: 1.5;
-	font-size: 1.2rem;
+	font-size: 1.5rem;
 	font-weight: 700;
-	padding: 1em 2em;
+	padding: 0.5em 1em;
 	letter-spacing: 0.05rem;
 	margin: 0 15px;
 	&:focus { outline: 2px dotted #55d7dc; }

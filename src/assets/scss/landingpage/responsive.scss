@@ -1,10 +1,33 @@
 @media only screen and (max-width: 860px) {
-  #logo {
-    img {
-      width: 50%;
+  #sponsor-container {
+    #wreaths {
+      img {
+        width: 25%;
+      }
+      margin-top: -30px;
     }
+  }
+  #intro {
+    #left {
+      display: none;
+    }
+    #right {
+      width: 100%;
+    }
+
     h1 {
-      font-size: 6em;
+      font-size: 2.5em;
+    }
+  }
+  #initialpage-bg-color {
+    #initialpage {
+      #initialpage-content {
+        #logo {
+          img {
+            width: 30%;
+          }
+        }
+      }
     }
   }
   button {
@@ -12,24 +35,29 @@
     margin-bottom: 1px;
   }
   h1 {
-    font-size: 1.8em;
+    font-size: 1.6em;
   }
 
 }
 
 @media all and (max-width: 660px) {
-  h1.header {
-      font-size: 4em;
+  #intro {
+    h4 {
+      font-size: 0.7em;
+    }
   }
-  body {
-    padding: 0 20px;
+  h1.header {
+      font-size: 3.5em;
+  }
+  .grass-divider {
+    margin-top: -20px;
   }
 
   #faq {
+    padding: 25px;
     .faq-item {
       width: 100%;
-      padding: 0;
-      margin: 2em 0;
+      padding: 2em 0;
       display: block;
       h1 {
         font-size: 1.2em;
@@ -41,17 +69,24 @@
   }
 
   #sponsor-container {
+    #wreaths {
+      img {
+        width: 30%;
+      }
+      margin-top: -20px;
+    }
     p {
       font-size: 1em;
     }
     .tier-container {
-      margin: 30px 0;
+      padding: 30px 0;
     }
     #gold-sponsor-container {
       .sponsor {
-        width: 80%;
-        padding: 0 10%;
-        margin: 20px 0;
+        display: block;
+        width: 60%;
+        padding: 0 20%;
+        margin: 10px 0;
       }
     }
     #silver-sponsor-container {
@@ -67,69 +102,80 @@
       }
     }
   }
-  #logo h1 {
-    font-size: 5em;
-  }
 }
 
 @media all and (max-width: 530px) {
-  #logo h1 {
-    font-size: 4em;
+  #intro {
+    h1 {
+      font-size: 2em;
+    }
   }
-  #date {
-    font-size: 2em;
+  #initialpage-bg-color {
+    #initialpage {
+      #initialpage-content {
+        #logo {
+          img {
+            width: 40%;
+          }
+        }
+        #date {
+          font-size: 2em;
+        }
+      }
+    }
   }
-
   .btn {
     font-size: 1em;
     padding: 1em 1.75em;
   }
 
-  #initialpage > p {
-    font-size: 1.2em;
+  #intro {
+    #values {
+      .value {
+        width: 20%;
+        margin-right: 15%;
+      }
+    }
   }
 }
 
 @media all and (max-width: 430px) {
-  #logo h1 {
-    font-size: 3em;
+  .grass-divider {
+    margin-top: -15px;
   }
-
-  #date {
-    font-size: 1.5em;
+  #initialpage-bg-color {
+    #initialpage {
+      #initialpage-content {
+        #logo {
+          img {
+            width: 50%;
+          }
+        }
+        #date {
+          font-size: 1.7em;
+        }
+      }
+    }
   }
-
   .btn {
     font-size: 1em;
     padding: 1em 1.75em;
   }
-
-  #initialpage > p {
-    font-size: 1em;
-  }
-}
-
-@media all and (max-width: 412px) {
-  #modal button {
-    margin-top: 10px;
-  }
 }
 
 @media all and (max-width: 350px) {
-  #logo h1 {
-    font-size: 3em;
-  }
 
-  #date {
-    font-size: 1.5em;
+  #initialpage-bg-color {
+    #initialpage {
+      #initialpage-content {
+        #date {
+          font-size: 1.5em;
+        }
+      }
+    }
   }
-
   .btn {
     font-size: 1em;
     padding: 0.75em 1.5em;
-  }
-
-  #initialpage > p {
-    font-size: 1em;
   }
 }
