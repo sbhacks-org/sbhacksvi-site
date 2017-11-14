@@ -97,7 +97,7 @@ class Profile extends React.Component {
 		return (
 			<div>
 				<Banner message={this.state.message} onDismiss={() => this.setState({ message: "" })}/>
-				<h1>Application Status: Submitted</h1>
+				<h1>Application Status: <strong>Submitted</strong></h1>
 				<Grid>
 					<Grid.Column>
 						<ProfileForm
