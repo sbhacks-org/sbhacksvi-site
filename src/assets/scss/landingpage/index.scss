@@ -16,18 +16,17 @@ $primary-yellow: #ffcf35;
 
 html, body {
   margin: 0;
-  background: linear-gradient(#549cbe, #673695);
   color: white;
   text-align: center;
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
-  min-width: 330px;
+  min-width: 250px;
 }
 
 h1 {
   font-family: 'Ubuntu Condensed', sans-serif;
   font-weight: bold;
-  font-size: 2em;
+  font-size: 2vw;
 }
 
 h1.header {
@@ -42,6 +41,10 @@ a {
   &:hover {
     opacity: 0.5;
   }
+}
+
+#content-container {
+  background: linear-gradient(#5597bb, #673695);
 }
 
 @import 'responsive';
