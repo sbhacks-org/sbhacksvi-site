@@ -61,9 +61,6 @@
   h1.header {
       font-size: 3.5em;
   }
-  .grass-divider {
-    margin-top: -20px;
-  }
 
   #faq {
     padding: 25px;
@@ -86,7 +83,7 @@
       img {
         width: 30%;
       }
-      margin-top: -20px;
+      margin-top: 0;
     }
     p {
       font-size: 1em;
@@ -175,9 +172,6 @@
 }
 
 @media all and (max-width: 430px) {
-  .grass-divider {
-    margin-top: -15px;
-  }
   #initialpage-bg-color {
     #initialpage {
       #initialpage-content {
