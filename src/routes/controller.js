@@ -29,7 +29,7 @@ function convertValidationError(err) {
 
 module.exports = (app) => {
 
-	if(app.get("env") === "production") {
+	if(app.get("env") === "production" && !process.env["apps_released"]) {
 		app.use((req, res) => {
 			// Universal catcher; Disable other routes for now
 			res.render("landingpage");
