@@ -32,7 +32,7 @@
       #initialpage-content {
         #logo {
           #logo-img {
-            width: 30%;
+            width: 35%;
           }
           #star-swirl {
             width: 40%;
@@ -216,5 +216,14 @@
   .btn {
     font-size: 1em;
     padding: 0.75em 1.5em;
+  }
+}
+
+@media screen and (orientation:portrait) {
+  #initialpage-bg-color {
+    #initialpage {
+      height: auto;
+      padding: 5% 0;
+    }
   }
 }
