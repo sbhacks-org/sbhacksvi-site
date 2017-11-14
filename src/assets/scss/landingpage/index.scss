@@ -35,12 +35,7 @@ h1.header {
 }
 
 a {
-  color: white;
   display: inline-block;
-  text-decoration: underline;
-  &:hover {
-    opacity: 0.5;
-  }
 }
 
 #content-container {
@@ -50,6 +45,13 @@ a {
   background: -o-linear-gradient(#5597bb, #673695);
   background: -moz-linear-gradient(#5597bb, #673695);
   padding-top: 10%;
+  a {
+    color: white;
+    text-decoration: underline;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
 }
 
 @import 'responsive';
