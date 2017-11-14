@@ -1,4 +1,4 @@
-@media only screen and (max-width: 860px) {
+@media only screen and (max-width: 860px), (orientation:portrait) {
   #sponsor-container {
     padding: 0 5%;
     #wreaths {
@@ -52,7 +52,7 @@
 
 }
 
-@media all and (max-width: 660px) {
+@media all and (max-width: 660px), (orientation:portrait) {
   #intro {
     h4 {
       font-size: 0.7em;
