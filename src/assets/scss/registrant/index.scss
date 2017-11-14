@@ -12,14 +12,12 @@ body {
 	height: 100%;
 }
 
-#registration {
-	a {
+#apply-link {
+	color: white;
+	text-decoration: underline;
+	&:hover {
 		color: white;
-		text-decoration: underline;
-		&:hover {
-			color: white;
-			opacity: 0.6;
-		}
+		opacity: 0.6;
 	}
 }
 
