@@ -2,14 +2,56 @@ a:hover {
 	cursor: pointer;
 }
 #root label {
-	color: #98DFAF;
+	color: white;
 }
+
+body {
+	background-color: #5c70ac;
+	color: rgb(240, 240, 240);
+	padding: 0 10%;
+	height: 100%;
+}
+
 #root {
-	min-height: 100%;
-	padding: 5%;
-	background-color: #414288;
-	color: #98DFAF;
+	padding-bottom: 10%;
 }
+
+#registration {
+	padding: 30px 0;
+}
+
 #root .loading.form:before {
-	background-color: rgba(65, 66, 136, 0.8);
+	background-color: rgba(92, 112, 172, 0.8);
 }
+
+.ui.button {
+	margin-bottom: 10px;
+}
+
+#header {
+	height: 200px;
+	padding-top: 20px;
+	text-align: center;
+	position: relative;
+	#logo {
+		display: inline-block;
+		height: 100%;
+		img {
+			height: 100%;
+		}
+	}
+	#logout-btn {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		button {
+			margin: 0;
+		}
+	}
+}
+
+h1 {
+	font-size: 3vw;
+}
+
+@import 'responsive';

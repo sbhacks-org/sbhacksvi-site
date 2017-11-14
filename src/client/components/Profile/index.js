@@ -10,7 +10,7 @@ import Banner from "../Banner";
 import HasNotAppliedView from "./presenters/HasNotAppliedView";
 
 import { populateWithApplicationFields } from "./profile-helpers";
-import { updateSuccess, logout } from "../../actions";
+import { updateSuccess } from "../../actions";
 
 const mapStateToProps = (state) => {
 	const { isAuthenticated, applicationFields, info } = state.user;
@@ -22,7 +22,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-	return bindActionCreators({ updateSuccess, logout }, dispatch);
+	return bindActionCreators({ updateSuccess }, dispatch);
 }
 
 function sendUpdateXHR(fields, originalApplication) {
@@ -99,11 +99,7 @@ class Profile extends React.Component {
 				<Banner message={this.state.message} onDismiss={() => this.setState({ message: "" })}/>
 				<h1>Application Status: Submitted</h1>
 				<Grid>
-					<Grid.Column width={3}>
-						<div><a onClick={this.props.logout}>Logout</a></div>
-						<div><a target="_blank" href={applicationFields.resume_url}>View resume here</a></div>
-					</Grid.Column>
-					<Grid.Column width={13}>
+					<Grid.Column>
 						<ProfileForm
 							originalApplication={applicationFields}
 							errors={errors}
