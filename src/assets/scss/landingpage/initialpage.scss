@@ -6,7 +6,7 @@
     height: 110vh;
     min-height: 600px;
     width: 100%;
-    background-image: url("/images/bg.svg");
+    background-image: url("/images/bg.png");
     background-repeat: no-repeat;
     background-size: cover;
     #initialpage-content {
@@ -19,8 +19,15 @@
          -o-animation: fadein 2s; /* Opera < 12.1 */
             animation: fadein 2s;
       #logo {
-        img {
+        #logo-img {
           width: 20%;
+          position: relative;
+          z-index: 1;
+        }
+        #star-swirl {
+          position: absolute;
+          width: 30%;
+          left: 35%;
         }
       }
       #date {
