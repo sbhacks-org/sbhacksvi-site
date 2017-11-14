@@ -1,0 +1,24 @@
+@media only screen and (max-width: 860px) {
+	#header {
+		height: 150px;
+	}
+}
+
+
+@media only screen and (max-width: 660px) {
+	h1 {
+		font-size: 1.6em;
+	}
+	body {
+		padding: 0 5%;
+	}
+	#header {
+		height: 100px;
+	}
+}
+
+@media all and (max-width: 430px) {
+	#logout-btn {
+		display: none;
+	}
+}
