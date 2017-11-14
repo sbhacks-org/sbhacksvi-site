@@ -59,6 +59,7 @@ module.exports = (app) => {
 	});
 
 	app.use("*", (err, req, res, next) => {
+		console.log(err);
 		if(err instanceof ValidationError) {
 			return res.json({ success: false, errors: convertValidationError(err) });
 		}
