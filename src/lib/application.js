@@ -122,7 +122,7 @@ module.exports.populateWithApplicationFields = (application) => {
 		phone_number: application.phone_number || "",
 		shirt_size: application.shirt_size || "",
 		transportation: application.transportation || "",
-		dietary_restrictions: application.dietary_restrictions.split(",") || [],
+		dietary_restrictions: application.dietary_restrictions ? application.dietary_restrictions.split(",") : [],
 		resume_url: application.resume_url
 	};
 };
