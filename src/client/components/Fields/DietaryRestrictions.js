@@ -3,8 +3,8 @@ import { Form, Dropdown, Label } from "semantic-ui-react";
 
 const DietaryRestrictions = ({ onChange, error, opts, value }) => {
 	return (
-		<Form.Field error={Boolean(error)} required>
-			<label>Do you have any dietary restrictions?</label>
+		<Form.Field error={Boolean(error)}>
+			<label>Please inform us of any dietary restrictions</label>
 			<Dropdown
 				placeholder="This will help us with ordering food for the event."
 				selection

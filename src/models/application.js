@@ -67,8 +67,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     dietary_restrictions: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.STRING
     },
     checked_in: {
       type: DataTypes.BOOLEAN

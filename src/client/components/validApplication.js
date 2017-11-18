@@ -12,7 +12,7 @@ export const isValidBasedOnTextFields = (fields) => {
 		fields.transportation
 	];
 
-	if(required_fields.includes("") || fields.dietary_restrictions.length === 0) {
+	if(required_fields.includes("")) {
 		return false;
 	}
 	return true;
