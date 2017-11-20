@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Form, Input, Button, Dropdown, Icon, Label, Message } from "semantic-ui-react";
+import { Form, Input, Button, Dropdown, Icon, Label, Message, Checkbox } from "semantic-ui-react";
 
 import ApplyButton from "./ApplyButton";
 
@@ -26,7 +26,8 @@ class ApplyForm extends React.Component {
 			shirt_size: "",
 			transportation: "",
 			dietary_restrictions: [],
-			resume: ""
+			resume: "",
+			mlh: false
 		}
 		this.submitApplication = (evt) => {
 			evt.preventDefault();
@@ -45,6 +46,7 @@ class ApplyForm extends React.Component {
 		this.updateTransportation = (evt, { value }) => this.updateField("transportation", value);
 		this.updateDietaryRestrictions = (evt, { value }) => this.updateField("dietary_restrictions", value);
 		this.updateResume = (evt) => this.updateField("resume", evt.target.files[0]);
+		this.updateMlh = (evt) => this.updateField("mlh", !this.state.mlh);
 	}
 
 	updateField(field_name, field_value) {
@@ -148,6 +150,16 @@ class ApplyForm extends React.Component {
 					labelName="Upload Resume (PDF Only, 4 MB max)"
 					onChange={this.updateResume}
 					required
+				/>
+
+				<Checkbox
+					label={
+						<label>
+							I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>
+						</label>
+					}
+					checked={this.state.mlh}
+					onChange={this.updateMlh}
 				/>
 
 			    <ApplyButton {...this.state} />

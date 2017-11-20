@@ -11,7 +11,9 @@ const ApplyButton = (fields) => {
 		size: "large"
 	};
 	
-	if(!isValidBasedOnTextFields(fields) || invalidResume(fields.resume)) btnProps.disabled = true;
+	let mlhChecked = fields.mlh;
+
+	if(!mlhChecked || !isValidBasedOnTextFields(fields) || invalidResume(fields.resume)) btnProps.disabled = true;
 
 	return <Button {...btnProps}>Submit Application</Button>
 };
