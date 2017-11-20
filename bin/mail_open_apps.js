@@ -1,35 +1,43 @@
 #!/usr/bin/env node
+require("dotenv").config();
 
 const mail_path = "../src/mailer";
 
 const path = require("path");
-const transporter = require(path.join(mail_path, "transporter"));
+const sgMail = require("@sendgrid/mail");
 const renderTemplate = require(path.join(mail_path, "renderTemplate"));
 const { Subscriber } = require("../src/models");
 
 let renderText = renderTemplate("open_apps.txt.ejs");
 let renderHTML = renderTemplate("open_apps.ejs");
 
+sgMail.setApiKey(process.env.SENDGRID_KEY);
+
 Promise.all([renderText, renderHTML])
 .then((content) => {
 	Subscriber.findAll({})
 	.then((subscribers) => {
+		let subscriberPromises = [];
 		subscribers.forEach((subscriber) => {
-			// if(subscriber.notified == true) return;
-			
-			const message = {
-				to: subscriber.email,
-				subject: "SB Hacks IV Applications are OPEN!!",
-				text: content[0],
-				html: content[1]
-			};
+			if(subscriber.notified == true) return;
+			subscriberPromises.push(new Promise((res, rej) => {
+				const message = {
+					to: subscriber.email,
+					from: "ucsbhacks@gmail.com",
+					subject: "SB Hacks IV Applications are OPEN!!",
+					text: content[0],
+					html: content[1]
+				};
 
-			transporter.sendMail(message, (err, info) => {
-				if(err) console.log(err);	
-				console.log(info);
-				subscriber.update({ notified: true }).then(() => transporter.close());
-			});
+				sgMail.send(message)
+				.then(info => {
+					subscriber.update({ notified: true }).then(res);
+				});
+			}));
 		});
+
+
+		Promise.all(subscriberPromises).then(process.exit);
 	})
 	.catch((err) => {
 		throw err;
