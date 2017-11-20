@@ -12,6 +12,16 @@ body {
 	height: 100%;
 }
 
+a {
+	color: white;
+	text-decoration: underline;
+	&:hover {
+		opacity: 0.5;
+		color: rgb(245, 245, 245);
+		text-decoration: underline;
+	}
+}
+
 #apply-link {
 	color: white;
 	text-decoration: underline;
@@ -35,6 +45,11 @@ body {
 
 .ui.button {
 	margin-bottom: 10px;
+}
+
+.ui.checkbox {
+	display: block;
+	margin-bottom: 15px;
 }
 
 #header {
