@@ -9,7 +9,7 @@ const SignupButton = ({ first_name, last_name, email, password }) => {
 		size: "large"
 	};
 	
-	if([first_name, last_name, email, password].includes("") || password.length < 8) btnProps.disabled = true;
+	if([first_name, last_name, email, password].includes("")) btnProps.disabled = true;
 	return <Button {...btnProps}>Sign Up</Button>
 };
 

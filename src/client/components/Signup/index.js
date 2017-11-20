@@ -17,13 +17,19 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+	const passwordLength = (fields) => {
+		let errors = {};
+		if(fields.password.length < 8) errors["password"] = "password must be at least 8 characters long";
+		return errors;
+	};
+
 	return {
 		handleSubmit: createHandleSubmit(dispatch, "/signup", [
 			{ name: "email", label: "Email" },
 			{ name: "password", label: "Password" },
 			{ name: "last_name", label: "Last name" },
 			{ name: "first_name", label: "First name" }
-		])
+		], passwordLength)
 	};
 }
 
