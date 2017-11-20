@@ -21,11 +21,13 @@ function startSubmit() {
 	this.setState({ loading: true });
 }
 
-export function createHandleSubmit(dispatch, xhr_endpoint, required_fields) {
+export function createHandleSubmit(dispatch, xhr_endpoint, required_fields, getFieldErrors = () => ({})) {
 	return function(fields) {
-
-		let missingFieldErrors = getMissingFieldErrors(fields, required_fields);
-		if(Object.keys(missingFieldErrors).length > 0) return this.setState({ errors: missingFieldErrors });
+		let fetchedErrors = [getMissingFieldErrors(fields, required_fields), getFieldErrors(fields)];
+		for(let index in fetchedErrors) {
+			let fieldErrors = fetchedErrors[index];
+			if(Object.keys(fieldErrors).length > 0) return this.setState({ errors: fieldErrors });
+		};
 
 		startSubmit.call(this);
 
