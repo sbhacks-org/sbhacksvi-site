@@ -45,7 +45,7 @@ class ApplyForm extends React.Component {
 		this.updateShirtSize = (evt, { value }) => this.updateField("shirt_size", value);
 		this.updateTransportation = (evt, { value }) => this.updateField("transportation", value);
 		this.updateDietaryRestrictions = (evt, { value }) => this.updateField("dietary_restrictions", value);
-		this.updateResume = (evt) => this.updateField("resume", evt.target.files[0]);
+		this.updateResume = (status) => this.updateField("resume", status);
 		this.updateMlh = (evt) => this.updateField("mlh", !this.state.mlh);
 	}
 
@@ -148,7 +148,7 @@ class ApplyForm extends React.Component {
 				<Fields.FileInput
 					error={errors["resume"]}
 					labelName="Upload Resume (PDF Only, 4 MB max)"
-					onChange={this.updateResume}
+					onUpload={this.updateResume}
 					required
 				/>
 

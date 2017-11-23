@@ -1,0 +1,21 @@
+#uploader {
+	background-color: #FF593D;
+	&:hover {
+		background-color: #FF6950;
+	}
+	&.success {
+		background-color: #21ba45;
+		&:hover {
+			background-color: #29ce50;
+		}
+	}
+	&.failure {
+		background-color: #ba2b20;
+		&:hover {
+			background-color: #e03d31;
+		}
+	}
+	span {
+		margin-left: 5px;
+	}
+}
