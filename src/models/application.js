@@ -14,19 +14,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    resume_url: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isUrl: true
-      }
-    },
-    resume_key: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
     graduation_year: {
       type: DataTypes.INTEGER,
       validate: {

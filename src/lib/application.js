@@ -4,7 +4,6 @@ const hasha = require("hasha");
 const { School } = require("../models");
 
 const resolveWithSchoolId = (school_id, resolve) => {
-	if(!school_id) return resolve(school_id);
 	if(isNaN(school_id)) {
 		School.findOrCreate({
 			where: {
@@ -19,17 +18,14 @@ const resolveWithSchoolId = (school_id, resolve) => {
 	}
 }
 
-module.exports.saveApplication = (user, files, fields) => {	
-	return new Promise((resolve, reject) => {
-		if(!files.resume) return reject({ resume: "You must upload a resume" });
+module.exports.saveApplication = (user, fields) => {
+	return new Promise((resolve, reject) => { 
 		if(!fields.school_id) return reject({ school_id: "You must specify a school" });
 		resolveWithSchoolId(fields.school_id, resolve);
 	})
 	.then((school_id) => {
 		return user.createApplication({
 			school_id: school_id,
-			resume_url: files.resume.Location,
-			resume_key: files.resume.Key,
 			transportation: fields.transportation,
 			graduation_year: fields.graduation_year,
 			level_of_study: fields.level_of_study,

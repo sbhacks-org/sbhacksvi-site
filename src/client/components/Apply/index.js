@@ -22,13 +22,22 @@ const mapDispatchToProps = (dispatch) => {
 function sendApplyXHR(fields) {
 	this.open("POST", "/apply");
 
-	var formData = new FormData();
+	var formData = {};
 	
 	Object.keys(fields).forEach((field_name) => {
-		fields[field_name] ? formData.append(field_name, fields[field_name]) : null;
+		if(fields[field_name]) {
+			let field_val = fields[field_name];
+			if(Array.isArray(field_val)) {
+				field_val = field_val.join(",");
+				if(!field_val) return;
+			}
+			formData[field_name] = field_val;
+		}
 	});
 
-	this.send(formData);
+	this.setRequestHeader("Content-Type", "application/json");
+
+	this.send(JSON.stringify(formData));
 }
 
 class Apply extends React.Component {
