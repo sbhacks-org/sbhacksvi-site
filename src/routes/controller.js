@@ -15,7 +15,6 @@ const authRoutes = require(path.join(__dirname, "auth"));
 const applyRoutes = require(path.join(__dirname, "apply"));
 const applicationRoutes = require(path.join(__dirname, "profile"));
 const liveRoutes = require(path.join(__dirname, "live"));
-const subscriberRoutes = require(path.join(__dirname, "subscriber"));
 const apiRoutes = require(path.join(__dirname, "api"));
 
 const { authSuccessUserState } = require("../lib/auth");
@@ -67,7 +66,7 @@ module.exports = (app) => {
 				message: {
 					type: "failure",
 					header: "Something went wrong internally.",
-					content: "Please contact us at ucsbhacks@gmail.com"
+					content: "Please contact us at team@sbhacks.com"
 				}
 			});
 		} 
