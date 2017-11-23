@@ -23,7 +23,7 @@ Promise.all([renderText, renderHTML])
 			subscriberPromises.push(new Promise((res, rej) => {
 				const message = {
 					to: subscriber.email,
-					from: "ucsbhacks@gmail.com",
+					from: "SB Hacks <team@sbhacks.com>",
 					subject: "SB Hacks IV Applications are OPEN!!",
 					text: content[0],
 					html: content[1]
