@@ -19,3 +19,9 @@
 		margin-left: 5px;
 	}
 }
+
+a.disabled {
+	pointer-events: none;
+	cursor: default;
+	opacity: 0.5;
+}	

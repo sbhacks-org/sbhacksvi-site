@@ -99,17 +99,20 @@ class FileInput extends React.Component {
 						accept="application/pdf"
 						style={{ display: "none" }}
 					/>
-					<Button
-						className="teal"
-						disabled={(!this.props.applicationSubmitted && !this.state.status == "success") || !user_id}
+					
+					<a
+						target="_blank"
+						href={`https://sbhacks.s3.amazonaws.com/${user_id}.pdf`}
+						className={(!this.props.applicationSubmitted && this.state.status !== "success") || !user_id ? "disabled" : "test"}
 					>
-						<a
-							target="_blank"
-							href={`https://sbhacks.s3.amazonaws.com/${user_id}.pdf`}
+						<Button
+							className="teal"
+							type="button"
 						>
-							View Resume
-						</a>
-					</Button>
+						View Resume
+						</Button>
+					</a>
+					
 				</div>
 				{ Boolean(error) ? <Label basic color='red' pointing>{error}</Label> : null }
 			</Form.Field>
