@@ -24,7 +24,7 @@ const Header = ({ logout, isAuthenticated }) => {
 			</a>
 			{isAuthenticated ?
 				<a id="logout-btn" onClick={logout}>
-					<Button color="teal" fluid size="large">Logout</Button>
+					<Button color="teal" size="large">Logout</Button>
 				</a>
 			: null}
 		</div>
