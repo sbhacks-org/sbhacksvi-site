@@ -32,7 +32,6 @@ class ProfileForm extends React.Component {
 		this.updateShirtSize = (evt, { value }) => this.updateField("shirt_size", value);
 		this.updateTransportation = (evt, { value }) => this.updateField("transportation", value);
 		this.updateDietaryRestrictions = (evt, { value }) => this.updateField("dietary_restrictions", value);
-		this.updateResume = (evt) => this.updateField("resume", evt.target.files[0]);
 	}
 
 	updateField(field_name, field_value) {
@@ -143,7 +142,7 @@ class ProfileForm extends React.Component {
 				<Fields.FileInput 
 					error={errors["resume"]}
 					labelName="Update Resume (PDF Only, 4 MB max)"
-					onChange={this.updateResume}
+					applicationSubmitted
 				/>
 
 				<UpdateApplicationButton
