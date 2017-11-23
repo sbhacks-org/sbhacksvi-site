@@ -20,15 +20,6 @@ app.use(express.static(path.join(__dirname, "static"), { maxAge: 60 * 60 * 1000 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(logger("dev"));
-app.use((req, res, next) => {
-	if(app.get("env") === "production") {
-		if (req.headers["x-forwarded-proto"] != "https") {
-			return res.redirect('https://' + req.headers["host"] + req.originalUrl);
-		}
-	}
-	next();
-});
-
 
 let SessionStore = process.env.NODE_ENV == "production" ? (
 	new MongoStore({
