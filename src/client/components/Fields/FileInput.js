@@ -101,7 +101,7 @@ class FileInput extends React.Component {
 					/>
 					<Button
 						className="teal"
-						disabled={ this.state.status == "success" && user_id ? false : true }
+						disabled={(!this.props.applicationSubmitted && !this.state.status == "success") || !user_id}
 					>
 						<a
 							target="_blank"
