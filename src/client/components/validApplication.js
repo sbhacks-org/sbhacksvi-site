@@ -1,5 +1,5 @@
 export const invalidResume = (resume) => {
-	return !resume || resume.size > 4194304 || resume.type !== "application/pdf";
+	return resume !== "success";
 }
 
 export const isValidBasedOnTextFields = (fields) => {
