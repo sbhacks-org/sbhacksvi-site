@@ -2,7 +2,6 @@ const router = require("express").Router();
 
 const isLoggedIn = require("../lib/isLoggedIn");
 const {
-	formPostUpdate,
 	massageAttrsForUpdate,
 	populateWithApplicationFields
 } = require("../lib/application");

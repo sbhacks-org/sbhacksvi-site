@@ -4,7 +4,7 @@ const s3 = new aws.S3();
 
 const signupMail = require("../mailer/mail_signup_success");
 const isLoggedIn = require("../lib/isLoggedIn");
-const { saveApplication, formPostUpload, populateWithApplicationFields } = require("../lib/application");
+const { saveApplication, populateWithApplicationFields } = require("../lib/application");
 
 router.post("/", isLoggedIn, (req, res, next) => {
 	saveApplication(req.user, req.body)
