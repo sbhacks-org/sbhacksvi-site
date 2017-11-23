@@ -11,7 +11,6 @@ aws.config.update({
 const path = require("path");
 const { ValidationError, DatabaseError } = require("sequelize");
 
-const userRoutes = require(path.join(__dirname, "user"));
 const authRoutes = require(path.join(__dirname, "auth"));
 const applyRoutes = require(path.join(__dirname, "apply"));
 const applicationRoutes = require(path.join(__dirname, "profile"));
@@ -45,7 +44,6 @@ module.exports = (app) => {
 	app.use("/", authRoutes);
 	app.use("/apply", applyRoutes);
 	app.use("/profile", applicationRoutes);
-	app.use("/", userRoutes);
 	app.use("/live", liveRoutes);
 	app.use("/api", apiRoutes);
 
