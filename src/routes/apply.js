@@ -13,6 +13,7 @@ router.post("/", isLoggedIn, (req, res, next) => {
 		return res.json({ success: true, application: populateWithApplicationFields(application) });
 	})
 	.catch((err) => {
+		res.status(400);
 		return next(err);
 	});
 });
