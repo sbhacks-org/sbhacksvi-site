@@ -33,7 +33,7 @@ class FileInput extends React.Component {
 		this.setState({
 			status,
 			loading: false
-		}, () => { this.props.onUpload(this.state.status) });
+		}, () => { if(this.props.onUpload) this.props.onUpload(this.state.status) });
 	};
 
 	uploadToS3 = (evt) => {

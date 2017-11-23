@@ -7,7 +7,7 @@ const {
 	populateWithApplicationFields
 } = require("../lib/application");
 
-router.post("/update", isLoggedIn, formPostUpdate.middleware(), (req, res, next) => {
+router.post("/update", isLoggedIn, (req, res, next) => {
 	const { Application } = req.user;
 
 	massageAttrsForUpdate(req.body)
@@ -20,7 +20,7 @@ router.post("/update", isLoggedIn, formPostUpdate.middleware(), (req, res, next)
 				message: {
 					type: "success",
 					header: "Successfully updated your application",
-					content: "You can continue to update application until 12/1/17"
+					content: "You can continue to update application until 1/1/17"
 				}
 			});
 		})
