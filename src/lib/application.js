@@ -1,4 +1,3 @@
-const efp = require("express-form-post");
 const hasha = require("hasha");
 
 const { School } = require("../models");
@@ -53,54 +52,6 @@ module.exports.massageAttrsForUpdate = (attrs) => {
 		return newAttrs;
 	});
 };
-
-let efpValidateFile = (file, cb, skip) => {
-	if(file.fieldname != "resume") {
-		return skip();
-	}
-	if(file.mimetype != "application/pdf") {
-		return cb({ resume: "You must upload a PDF" });
-	}
-	cb();
-}
-
-module.exports.formPostUpdate = efp({
-	store: "aws-s3",
-	maxfileSize: {
-		msg: { resume: "File size too big" },
-		size: 4194304
-	},
-	promise: true,
-	filename: function(req, file, cb) {
-		req.user.getApplication()
-		.then((application) => {
-			cb(application.resume_key);
-		});
-	},
-	validateFile: efpValidateFile,
-	api: {
-		bucketName: process.env.S3_BUCKET_NAME,
-		ACL: "public-read"
-	}
-});
-
-module.exports.formPostUpload = efp({
-	store: "aws-s3",
-	promise: true,
-	maxfileSize: {
-		msg: { resume: "File size too big" },
-		size: 4194304
-	},
-	validateFile: efpValidateFile,
-	filename: function(req, file, cb) {
-		let full_name = req.user.first_name + req.user.last_name;
-		cb(`${hasha(Date.now().toString())}/${full_name}.pdf`);
-	},
-	api: {
-		bucketName: process.env.S3_BUCKET_NAME,
-		ACL: "public-read"
-	}
-});
 
 module.exports.populateWithApplicationFields = (application) => {
 	if(!application) {
