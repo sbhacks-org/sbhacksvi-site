@@ -102,7 +102,7 @@ class FileInput extends React.Component {
 					
 					<a
 						target="_blank"
-						href={`https://sbhacks.s3.amazonaws.com/${user_id}.pdf`}
+						href={`https://${process.env.S3_BUCKET_NAME}.s3.amazonaws.com/${user_id}.pdf`}
 						className={(!this.props.applicationSubmitted && this.state.status !== "success") || !user_id ? "disabled" : "test"}
 					>
 						<Button
