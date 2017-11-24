@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import Banner from "../Banner";
+import { sendApplicationXHR } from "../applicationHelper";
 import { submitSuccess } from "../../actions";
 import ApplyForm from "./ApplyForm";
 
@@ -18,27 +19,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return bindActionCreators({ submitSuccess }, dispatch);
 };
-
-function sendApplyXHR(fields) {
-	this.open("POST", "/apply");
-
-	var formData = {};
-	
-	Object.keys(fields).forEach((field_name) => {
-		if(fields[field_name]) {
-			let field_val = fields[field_name];
-			if(Array.isArray(field_val)) {
-				field_val = field_val.join(",");
-				if(!field_val) return;
-			}
-			formData[field_name] = field_val;
-		}
-	});
-
-	this.setRequestHeader("Content-Type", "application/json");
-
-	this.send(JSON.stringify(formData));
-}
 
 class Apply extends React.Component {
 	constructor(props) {
@@ -72,7 +52,7 @@ class Apply extends React.Component {
 			this.finishApply(response);
 		});
 
-		sendApplyXHR.call(xhttp, fields);
+		sendApplicationXHR.call(xhttp, fields, "/apply");
 	}
 
 	render() {

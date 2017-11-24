@@ -9,7 +9,7 @@ import ProfileForm from "./ProfileForm";
 import Banner from "../Banner";
 import HasNotAppliedView from "./presenters/HasNotAppliedView";
 
-import { populateWithApplicationFields } from "./profile-helpers";
+import { sendApplicationXHR } from "../applicationHelper";
 import { updateSuccess } from "../../actions";
 
 const mapStateToProps = (state) => {
@@ -23,27 +23,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return bindActionCreators({ updateSuccess }, dispatch);
-}
-
-function sendUpdateXHR(fields, originalApplication) {
-	this.open("POST", "/profile/update");
-
-	var formData = {};
-	
-	Object.keys(fields).forEach((field_name) => {
-		if(fields[field_name]) {
-			let field_val = fields[field_name];
-			if(Array.isArray(field_val)) {
-				field_val = field_val.join(",");
-				if(!field_val) return;
-			}
-			formData[field_name] = field_val;
-		}
-	});
-
-	this.setRequestHeader("Content-Type", "application/json");
-
-	this.send(JSON.stringify(formData));
 }
 
 class Profile extends React.Component {
@@ -71,7 +50,6 @@ class Profile extends React.Component {
 	
 	updateApplication(fields) {
 		const xhttp = new XMLHttpRequest();
-		const { applicationFields: originalApplication } = this.props;
 
 		this.startUpdate();
 
@@ -80,7 +58,7 @@ class Profile extends React.Component {
 			this.finishUpdate(response);
 		});
 
-		sendUpdateXHR.call(xhttp, fields, originalApplication);
+		sendApplicationXHR.call(xhttp, fields, "/profile/update");
 	}
 
 	render() {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "semantic-ui-react";
 
-import { isValidBasedOnTextFields } from "../../validApplication";
+import { isValidBasedOnTextFields } from "../../applicationHelper";
 
 const UpdateApplicationButton = ({ originalApplication, fields}) => {
 	if(isValidBasedOnTextFields(fields) && JSON.stringify(originalApplication) !== JSON.stringify(fields)) {
