@@ -28,8 +28,8 @@ router.get("/sign-s3", isLoggedIn, (req, res, next) => {
 		ACL: "public-read"
 	};
 
-	s3.getSignedUrl("putObject", {}, (err, data) => {
-		if(err) { res.status(400); return next(err); }
+	s3.getSignedUrl("putObject", s3Params, (err, data) => {
+		if(err) { res.status(400); next(err); }
 		res.end(data);
 	});
 });
