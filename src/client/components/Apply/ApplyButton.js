@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Button } from "semantic-ui-react";
-import { isValidBasedOnTextFields, invalidResume  } from "../validApplication";
+import { isValidBasedOnTextFields, invalidResume  } from "../applicationHelper";
 
 const ApplyButton = (fields) => {
 
