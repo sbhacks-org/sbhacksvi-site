@@ -63,6 +63,7 @@ class FileInput extends React.Component {
 						this.uploadFinish("failure");
 					}
 				});
+				xhttp.addEventListener("error", () => this.uploadFinish("failure"));
 				xhttp.send(resume);
 			})
 			.catch((err) => {
