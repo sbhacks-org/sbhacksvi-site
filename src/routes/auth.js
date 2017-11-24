@@ -20,19 +20,18 @@ router.post("/login", (req, res, next) => {
 });
 
 router.delete("/logout", (req, res) => {
-	if (req.isAuthenticated()) {
-		console.log("logging out");
-		req.logout();
-	}
+	if (req.isAuthenticated()) req.logout();
 	return res.json({ success: true });
 });
 
 router.post("/signup", (req, res, next) => {
 	passport.authenticate("signup", (err, user, info) => {
 		if(err) {
+			res.status(400);
 			return next(err);
 		}
-		if (!user) return next(new Error(info.message));
+		if (!user) { res.status(403); return next(new Error(info.message)); }
+
 		req.logIn(user, (err) => {
 			if (err) return next(err);
 			return res.json(authSuccessUserState(user));
