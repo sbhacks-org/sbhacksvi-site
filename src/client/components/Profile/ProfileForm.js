@@ -51,7 +51,8 @@ class ProfileForm extends React.Component {
 	componentWillReceiveProps(nextProps) {
 		if(Object.keys(nextProps.errors).length === 0
 			&& nextProps.originalApplication !== this.props.originalApplication) {
-			this.setState({ ...nextProps.originalApplication, resume: undefined });
+			this.setState({ ...nextProps.originalApplication });
+			this.props.fetchSchoolList();
 		}
 	}
 
