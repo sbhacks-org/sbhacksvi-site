@@ -34,7 +34,17 @@ class ApplyForm extends React.Component {
 			this.props.submitApplication(this.state);
 		};
 
-		this.updateSchool = (evt, { value }) => this.updateField("school_id", value);
+		this.updateSchool = (evt, { value }) => {
+			let found = false;
+
+			this.props.school_opts.forEach(opt => opt.value === value ? found = true : null);
+
+			if(found === false) {
+				this.props.addToSchoolList(value);
+			}
+			
+			this.updateField("school_id", value);
+		}
 		this.updateLevelOfStudy = (evt, { value }) => this.updateField("level_of_study", value);
 		this.updateGraduationYear = (evt, { value }) => this.updateField("graduation_year", value);
 		this.updateGithub = (evt, { value }) => this.updateField("github", value);
@@ -58,14 +68,14 @@ class ApplyForm extends React.Component {
 	}
 
 	render() {
-		const { loading, errors, school_opts, addToSchoolList } = this.props;
+		const { loading, errors, school_opts } = this.props;
 
 		return (
 			<Form id="login-form" onSubmit={this.submitApplication} loading={loading}>
 				<Form.Group>
 				    <Fields.School
 				    	error={errors["school_id"]}
-				    	options={getListForAdditionDropdown(school_opts, this.state.school_id)}
+				    	options={school_opts}
 				    	onChange={this.updateSchool}
 				    	value={this.state.school_id}
 				    />
