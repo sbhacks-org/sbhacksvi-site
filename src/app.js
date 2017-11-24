@@ -32,7 +32,10 @@ app.use(session({
 	secret: process.env.SESSION_SECRET,
 	resave: false,
 	saveUninitialized: false,
-	store: SessionStore
+	store: SessionStore,
+	cookie: {
+		expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 60)
+	}
 }));
 app.use(flash());
 
