@@ -8,7 +8,6 @@ import * as Fields from "../Fields";
 import * as opts from "../../constants/opts";
 
 import { fetchSchoolList, addToSchoolList } from "../../actions";
-import { getListForAdditionDropdown } from "../additionDropdownHelper";
 
 class ApplyForm extends React.Component {
 	constructor() {
@@ -109,7 +108,7 @@ class ApplyForm extends React.Component {
 
 				    <Fields.Major
 				    	error={errors["major"]}
-				    	opts={getListForAdditionDropdown(opts.major, this.state.major)}
+				    	initialOpts={opts.major}
 				    	onChange={this.updateMajor}
 				    	value={this.state.major}
 				    />
