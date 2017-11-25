@@ -11,9 +11,10 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-				is: {
-					args: ["^[a-z]+$","i"],
-					msg: "First name may only consist of letters"
+				not: {
+					args: ["^[0-9]+$","i"],
+					msg: "first name may not consist of numbers"
+				},
 				}
 			}
 		},
@@ -21,9 +22,10 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-				is:  {
-					args: ["^[a-z]+$","i"],
-					msg: "Last name may only consist of letters"
+				not:  {
+					args: ["^[0-9]+$","i"],
+					msg: "last name may not consist of numbers"
+				},
 				}
 			}
 		},
