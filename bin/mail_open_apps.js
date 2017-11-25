@@ -17,27 +17,16 @@ Promise.all([renderText, renderHTML])
 .then((content) => {
 	Subscriber.findAll({})
 	.then((subscribers) => {
-		let subscriberPromises = [];
-		subscribers.forEach((subscriber) => {
-			if(subscriber.notified == true) return;
-			subscriberPromises.push(new Promise((res, rej) => {
-				const message = {
-					to: subscriber.email,
-					from: "SB Hacks <team@sbhacks.com>",
-					subject: "SB Hacks IV Applications are OPEN!!",
-					text: content[0],
-					html: content[1]
-				};
+		const message = {
+			to: subscribers.map(subscriber => subscriber.email),
+			from: "SB Hacks <team@sbhacks.com>",
+			subject: "SB Hacks IV Applications are OPEN!!",
+			text: content[0],
+			html: content[1]
+		};
 
-				sgMail.send(message)
-				.then(info => {
-					subscriber.update({ notified: true }).then(res);
-				});
-			}));
-		});
-
-
-		Promise.all(subscriberPromises).then(process.exit);
+		sgMail.sendMultiple(message)
+		.then(process.exit);
 	})
 	.catch((err) => {
 		throw err;
