@@ -15,6 +15,9 @@ module.exports = function(sequelize, DataTypes) {
 					args: ["^[0-9]+$","i"],
 					msg: "first name may not consist of numbers"
 				},
+				len: {
+					args: [1, 100],
+					msg: "first name may not exceed 100 characters in length"
 				}
 			}
 		},
@@ -26,6 +29,9 @@ module.exports = function(sequelize, DataTypes) {
 					args: ["^[0-9]+$","i"],
 					msg: "last name may not consist of numbers"
 				},
+				len: {
+					args: [1, 100],
+					msg: "last name may not exceed 100 characters in length"
 				}
 			}
 		},
