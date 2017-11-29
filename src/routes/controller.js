@@ -46,6 +46,10 @@ module.exports = (app) => {
 	app.use("/live", liveRoutes);
 	app.use("/api", apiRoutes);
 
+	app.get("/volunteers", (req, res) => {
+		res.redirect("https://docs.google.com/forms/d/e/1FAIpQLScB37DuLFbGOG-VO87IxeVhuHgc_awYTLGmiaQSB1VE7kYEEw/viewform")
+	});
+
 	// React SPA for everything but the landing page
 	app.get("*", (req, res) => {
 		if(req.isAuthenticated()) {
