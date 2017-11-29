@@ -15,7 +15,7 @@ let school_query = (include_sql) => {
 
 router.get("/schools", (req, res) => {
 	let { include } = req.query;
-	let include_sql = isNaN(include) ? "" : `schools.id = ${include} DESC,`;
+	let include_sql = isNaN(include) ? "" : `schools.id = ${parseInt(include)} DESC,`;
 
 	schoolQueryCache.get(include_sql, (err, schools) => {
 		if(schools) return res.json(schools);
