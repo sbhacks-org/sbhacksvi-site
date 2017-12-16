@@ -36,9 +36,8 @@ router.post("/reset-password", (req, res, next) => {
 	.then((user) => {
 		if(!user) {
 			res.json({
-				success: false,
 				message: {
-					type: "success",
+					type: "failure",
 					header: "Invalid Email",
 					content: "No such user with that email exists."
 				}
@@ -52,7 +51,6 @@ router.post("/reset-password", (req, res, next) => {
 				passwordResetMail.send(user);
 
 				res.json({
-					success: true,
 					message: {
 						type: "success",
 						header: "Token Sent",
@@ -67,16 +65,15 @@ router.post("/reset-password", (req, res, next) => {
 
 router.post("/reset-password/:token_id", (req, res, next) => {
 	if(!req.body.password || req.body.password.length < 8) {
-		return res.status(400).json({ password: "must be at least 8 characters long" });
+		return res.status(400).json({ errors: { password: "must be at least 8 characters long" } });
 	}
 
 	User.findOne({ where: { passwordResetToken: req.params.token_id } })
 	.then((user) => {
 		if(!user || user.passwordResetTokenExpires < new Date()) {
 			res.json({
-				success: false,
 				message: {
-					type: "success",
+					type: "failure",
 					header: "Invalid Reset Token",
 					content: "Your token may have expired, please try again."
 				}
@@ -91,7 +88,6 @@ router.post("/reset-password/:token_id", (req, res, next) => {
 					})
 					.then((user) => {
 						res.json({
-							success: true,
 							message: {
 								type: "success",
 								header: "Successfully updated password",
