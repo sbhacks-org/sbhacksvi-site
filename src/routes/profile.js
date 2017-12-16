@@ -46,7 +46,7 @@ router.post("/reset-password", (req, res, next) => {
 		} else {
 			user.updateAttributes({
 				passwordResetToken: crypto.randomBytes(20).toString("hex"),
-				passwordResetTokenExpires: Date.now() + 1000 * 30
+				passwordResetTokenExpires: Date.now() + 1000 * 60 * 60 * 4
 			})
 			.then((user) => {
 				passwordResetMail.send(user);
