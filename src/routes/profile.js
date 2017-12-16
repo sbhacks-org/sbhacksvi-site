@@ -1,4 +1,5 @@
 const crypto = require("crypto");
+const bcrypt = require("bcryptjs");
 const router = require("express").Router();
 
 const { User } = require("../models");
@@ -54,6 +55,47 @@ router.post("/reset-password", (req, res, next) => {
 						header: "Token Sent",
 						content: "A reset link has been sent to your email"
 					}
+				});
+			});
+		}		
+	})
+	.catch(next);
+});
+
+router.post("/reset-password/:token_id", (req, res, next) => {
+	if(!req.body.password || req.body.password.length < 8) {
+		return res.status(400).json({ password: "must be at least 8 characters long" });
+	}
+
+	User.findOne({ where: { passwordResetToken: req.params.token_id } })
+	.then((user) => {
+		if(!user || user.passwordResetTokenExpires < new Date()) {
+			res.json({
+				success: false,
+				message: {
+					type: "success",
+					header: "Invalid Reset Token",
+					content: "Your token may have expired, please try again."
+				}
+			});
+		} else {
+			bcrypt.genSalt(10, (err, salt) => {
+				bcrypt.hash(req.body.password, salt, (err, password_digest) => {
+					user.updateAttributes({
+						password: password_digest,
+						passwordResetToken: null,
+						passwordResetTokenExpires: null
+					})
+					.then((user) => {
+						res.json({
+							success: true,
+							message: {
+								type: "success",
+								header: "Successfully updated password",
+								content: "You should be able to log in with your new credentials."
+							}
+						});
+					});
 				});
 			});
 		}		
