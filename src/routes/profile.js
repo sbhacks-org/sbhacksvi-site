@@ -63,12 +63,12 @@ router.post("/reset-password", (req, res, next) => {
 	.catch(next);
 });
 
-router.post("/reset-password/:token_id", (req, res, next) => {
+router.post("/reset-password/:token", (req, res, next) => {
 	if(!req.body.password || req.body.password.length < 8) {
 		return res.status(400).json({ errors: { password: "must be at least 8 characters long" } });
 	}
 
-	User.findOne({ where: { passwordResetToken: req.params.token_id } })
+	User.findOne({ where: { passwordResetToken: req.params.token } })
 	.then((user) => {
 		if(!user || user.passwordResetTokenExpires < new Date()) {
 			res.json({
