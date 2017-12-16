@@ -10,7 +10,7 @@ const ResetPasswordButton = ({ email }) => {
 	};
 	
 	if([email].includes("")) btnProps.disabled = true;
-	return <Button {...btnProps}>Log In</Button>
+	return <Button {...btnProps}>Send Reset Link</Button>
 };
 
 export default ResetPasswordButton;

@@ -23,7 +23,7 @@ ReactDOM.render(
 						<Route path="/login" component={Login} />
 						<Route path="/apply" component={Apply} />
 						<Route exact path="/profile" component={Profile} />
-						<Route path="/profile/reset-password" component={ResetPassword} />
+						<Route path="/profile/reset-password/:token?" component={ResetPassword} />
 					</Switch>
 				</BrowserRouter>
 			</div>
