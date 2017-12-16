@@ -5,11 +5,12 @@ import { Provider } from "react-redux";
 
 import store from "./store";
 
-import Signup from "./components/Signup";
-import Login from "./components/Login";
-import Profile from "./components/Profile";
 import Apply from "./components/Apply";
 import Header from "./components/Header";
+import Login from "./components/Login";
+import Profile from "./components/Profile";
+import ResetPassword from "./components/ResetPassword";
+import Signup from "./components/Signup";
 
 ReactDOM.render(
 	<Provider store={store}>
@@ -21,7 +22,8 @@ ReactDOM.render(
 						<Route path="/signup" component={Signup} />
 						<Route path="/login" component={Login} />
 						<Route path="/apply" component={Apply} />
-						<Route path="/profile" component={Profile} />
+						<Route exact path="/profile" component={Profile} />
+						<Route path="/profile/reset-password/:token?" component={ResetPassword} />
 					</Switch>
 				</BrowserRouter>
 			</div>

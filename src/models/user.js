@@ -50,6 +50,14 @@ module.exports = function(sequelize, DataTypes) {
 		password: {
 			type: DataTypes.STRING,
 			allowNull: false
+		},
+		passwordResetToken: {
+			type: DataTypes.STRING(40),
+			allowNull: true
+	    },
+		passwordResetTokenExpires: {
+			type: DataTypes.DATE,
+			allowNull: true
 		}
 	}, {
 		tableName: "users"

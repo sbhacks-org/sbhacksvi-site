@@ -9,8 +9,15 @@ module.exports = {
       Example:
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
-    queryInterface.addColumn('subscribers', 'notified' ,{
-      type: Sequelize.BOOLEAN,
+
+    queryInterface.addColumn('users', 'passwordResetToken' ,{
+      type: Sequelize.STRING(40),
+      allowNull: true
+    })
+    .catch(() => {});
+
+    queryInterface.addColumn('users', 'passwordResetTokenExpires' ,{
+      type: Sequelize.DATE,
       allowNull: true
     })
     .catch(() => {});
@@ -24,6 +31,7 @@ module.exports = {
       Example:
       return queryInterface.dropTable('users');
     */
-    queryInterface.removeColumn('subscribers', 'notified');
+    queryInterface.removeColumn('users', 'passwordResetToken');
+    queryInterface.removeColumn('users', 'passwordResetTokenExpires');
   }
 };
