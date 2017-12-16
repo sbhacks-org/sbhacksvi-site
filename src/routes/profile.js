@@ -2,6 +2,7 @@ const crypto = require("crypto");
 const bcrypt = require("bcryptjs");
 const router = require("express").Router();
 
+const passwordResetMail = require("../mailer/mail_password_reset");
 const { User } = require("../models");
 const isLoggedIn = require("../lib/isLoggedIn");
 const {
@@ -45,9 +46,11 @@ router.post("/reset-password", (req, res, next) => {
 		} else {
 			user.updateAttributes({
 				passwordResetToken: crypto.randomBytes(20).toString("hex"),
-				passwordResetTokenExpires: Date.now() + 60 * 60 * 1000
+				passwordResetTokenExpires: Date.now() + 1000 * 30
 			})
 			.then((user) => {
+				passwordResetMail.send(user);
+
 				res.json({
 					success: true,
 					message: {
