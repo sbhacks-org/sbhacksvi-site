@@ -65,6 +65,12 @@ class Login extends React.Component {
 					errors={errors}
 				/>
 				<Link to="/signup"><Button color="teal" fluid size="large">I don't have an account yet.</Button></Link>
+				<div style={{
+					display: "block",
+					margin: "0 auto",
+					textAlign: "center",
+					fontStyle: "italic"
+				}}><Link to="/profile/reset-password">I forgot my password!</Link></div>
 			</div>
 		)
 	}
