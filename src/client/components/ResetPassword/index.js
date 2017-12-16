@@ -8,10 +8,9 @@ import ResetPasswordForm from "./ResetPasswordForm";
 import ChangePasswordForm from "./ChangePasswordForm";
 
 const mapStateToProps = (state) => {
-	const { isAuthenticated, applicationFields } = state.user;
+	const { isAuthenticated } = state.user;
 	return {
-		isAuthenticated,
-		applicationFields
+		isAuthenticated
 	};
 };
 
@@ -83,6 +82,9 @@ class ResetPassword extends React.Component {
 
 	render() {
 		const { loading, email, errors } = this.state;
+		const { isAuthenticated } = this.props;
+
+		if(isAuthenticated) return <Redirect to="/profile"/>;
 
 		if(this.state.passwordChanged) {
 			return (
