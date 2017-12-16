@@ -36,6 +36,7 @@ router.post("/reset-password", (req, res, next) => {
 	.then((user) => {
 		if(!user) {
 			res.json({
+				success: false,
 				message: {
 					type: "failure",
 					header: "Invalid Email",
@@ -51,6 +52,7 @@ router.post("/reset-password", (req, res, next) => {
 				passwordResetMail.send(user);
 
 				res.json({
+					success: true,
 					message: {
 						type: "success",
 						header: "Token Sent",
@@ -72,6 +74,7 @@ router.post("/reset-password/:token", (req, res, next) => {
 	.then((user) => {
 		if(!user || user.passwordResetTokenExpires < new Date()) {
 			res.json({
+				success: false,
 				message: {
 					type: "failure",
 					header: "Invalid Reset Token",
@@ -88,6 +91,7 @@ router.post("/reset-password/:token", (req, res, next) => {
 					})
 					.then((user) => {
 						res.json({
+							success: true,
 							message: {
 								type: "success",
 								header: "Successfully updated password",

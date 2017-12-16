@@ -12,7 +12,7 @@ class ResetPasswordForm extends React.Component {
 
 		this.handleSubmit = (evt) => {
 			evt.preventDefault();
-			this.props.onSubmit(this.state.email);
+			this.props.onSubmit(this.state.email, () => this.setState({ email: "" }));
 		};
 	}
 
