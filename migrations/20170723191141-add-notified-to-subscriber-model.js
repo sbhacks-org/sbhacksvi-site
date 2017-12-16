@@ -13,6 +13,7 @@ module.exports = {
       type: Sequelize.BOOLEAN,
       allowNull: true
     })
+    .catch(() => {});
   },
 
   down: function (queryInterface, Sequelize) {
