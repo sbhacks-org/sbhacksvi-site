@@ -23,6 +23,7 @@ class ResetPassword extends React.Component {
 			loading: false,
 			errors: {},
 			message: "",
+			passwordChanged: false
 		}
 		this.sendResetRequest = this.sendResetRequest.bind(this);
 	}
@@ -36,7 +37,7 @@ class ResetPassword extends React.Component {
 	}
 
 
-	sendResetRequest(email) {
+	sendResetRequest(email, successCB) {
 		const xhttp = new XMLHttpRequest();
 
 		this.startXHR();
@@ -45,6 +46,7 @@ class ResetPassword extends React.Component {
 
 		xhttp.addEventListener("load", () => {
 			let response = JSON.parse(xhttp.responseText);
+			if(response.success) successCB();
 			this.finishXHR(response);
 		});
 
@@ -62,7 +64,16 @@ class ResetPassword extends React.Component {
 
 		xhttp.addEventListener("load", () => {
 			let response = JSON.parse(xhttp.responseText);
-			this.finishXHR(response);
+			if(response.success) {
+				this.setState({
+					passwordChanged: true,
+					errors: response.errors || {},
+					loading: false,
+					message: response.message
+				});
+			} else {
+				this.finishXHR(response);
+			}
 		});
 
 		xhttp.setRequestHeader("Content-Type", "application/json");
@@ -72,6 +83,15 @@ class ResetPassword extends React.Component {
 
 	render() {
 		const { loading, email, errors } = this.state;
+
+		if(this.state.passwordChanged) {
+			return (
+				<Redirect to={{
+					pathname: "/login",
+					state: { message: this.state.message }
+				}} />
+			);
+		}
 
 		if(this.props.match.params["token"]) {
 			let sendChangeRequest = (password) => {
@@ -85,6 +105,7 @@ class ResetPassword extends React.Component {
 						onSubmit={sendChangeRequest}
 						errors={this.state.errors}
 						loading={this.state.loading}
+						passwordChanged={this.state.passwordChanged}
 					/>
 				</div>
 			);

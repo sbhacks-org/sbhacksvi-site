@@ -8,6 +8,7 @@ import { authSuccess } from "../../actions";
 import { createHandleSubmit } from "../authFormHelper";
 import LoginForm from "./LoginForm";
 import Banner from "./Banner";
+import GlobalBanner from "../Banner";
 
 const mapStateToProps = (state, ownProps) => {
 	const { isAuthenticated } = state.user;
@@ -31,8 +32,13 @@ class Login extends React.Component {
 
 		this.state = {
 			loading: false,
-			errors: {}
+			errors: {},
+			message: ""
 		}
+
+		let { location } = this.props;
+
+		if(location.state && location.state.message) this.state.message = location.state.message;
 
 		this.handleSubmit = this.props.handleSubmit.bind(this);
 	}
@@ -42,16 +48,16 @@ class Login extends React.Component {
 		this.setState({ errors: {} })
 	}
 
-
 	render() {
 		const { isAuthenticated, location } = this.props;
 		const { errors, loading } = this.state;
 
-		if(isAuthenticated) return <Redirect to={ location.state ? location.state.referrer : "/profile" } />;
+		if(isAuthenticated) return <Redirect to={ location.state && location.state.referrer ? location.state.referrer : "/profile" } />;
 
 
 		return (
 			<div>
+				<GlobalBanner message={this.state.message} onDismiss={() => this.setState({ message: "" })}/>
 				<h1>Log In</h1>
 				<LoginForm
 					handleSubmit={this.handleSubmit}
