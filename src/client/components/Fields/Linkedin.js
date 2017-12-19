@@ -10,6 +10,7 @@ const Linkedin = ({ error, onChange, value }) => {
 	    		icon="at"
 	    		iconPosition="left"
 	    		placeholder="linkedin username"
+	    		name="linkedin"
 	    		onChange={onChange}
 	    		value={value}
 	    	/>

@@ -10,6 +10,7 @@ const Github = ({ error, onChange, value }) => {
 				icon="at"
 				iconPosition="left"
 				placeholder="github username"
+				name="github"
 				onChange={onChange}
 				value={value}
 	    	/>		

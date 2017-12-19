@@ -8,6 +8,7 @@ const PhoneNumber = ({ error, onChange, value }) => {
 	    	<Input
 	    		fluid
 	    		placeholder="Don't worry we won't call you unless it's an emergency"
+	    		name="phone_number"
 	    		onChange={onChange}
 	    		value={value}
 	    	/>
