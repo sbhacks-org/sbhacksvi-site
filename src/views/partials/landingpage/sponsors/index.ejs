@@ -1,9 +1,11 @@
 <%
+	let plat_sponsors = [
+		{ name: "as", link: "https://www.as.ucsb.edu/" }
+	];
 	let gold_sponsors = [
 		{ name: "logmein", link: "https://secure.logmein.com/home/en" },
 		{ name: "arthrex", link: "https://www.arthrex.com/" },
-		{ name: "firebase", link: "https://firebase.google.com/" },
-		{ name: "as", link: "https://www.as.ucsb.edu/" }
+		{ name: "firebase", link: "https://firebase.google.com/" }
 	];
 	let silver_sponsors = [
 		{ name: "invoca", link: "https://www.invoca.com" },
@@ -36,6 +38,12 @@
 		<img src="/images/right-wreath.svg" />
 	</div>
 	<div id="sponsors">
+		<div id="plat-sponsor-container" class="tier-container">
+			<% plat_sponsors.forEach(sponsor => { %>
+				<% let { name, link } = sponsor; %>
+				<%- include("sponsor", { name, link, tier: "plat"}) %>
+			<% }) %>
+		</div>
 		<div id="gold-sponsor-container" class="tier-container">
 			<% gold_sponsors.forEach(sponsor => { %>
 				<% let { name, link } = sponsor; %>
