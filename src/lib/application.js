@@ -70,6 +70,8 @@ module.exports.populateWithApplicationFields = (application) => {
 		shirt_size: application.shirt_size || "",
 		transportation: application.transportation || "",
 		dietary_restrictions: application.dietary_restrictions ? application.dietary_restrictions.split(",") : [],
-		resume_url: application.resume_url
+		resume_url: application.resume_url,
+		accepted: application.accepted,
+		rsvp: application.rsvp
 	};
 };

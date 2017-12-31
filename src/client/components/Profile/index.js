@@ -8,6 +8,7 @@ import ProfileForm from "./ProfileForm";
 
 import Banner from "../Banner";
 import HasNotAppliedView from "./presenters/HasNotAppliedView";
+import ApplicationResultView from "./presenters/ApplicationResultView";
 
 import { sendApplicationXHR } from "../applicationHelper";
 import { updateSuccess } from "../../actions";
@@ -71,6 +72,15 @@ class Profile extends React.Component {
 							state: { referrer: location.pathname }
 						}}
 					/>;
+		}
+
+		if(process.env["apps_released"] !== "true") {
+			return (
+				<ApplicationResultView
+					user={info}
+					application={applicationFields}
+				/>
+			);
 		}
 
 		if(!applicationFields) {

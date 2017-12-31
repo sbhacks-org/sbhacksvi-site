@@ -22,7 +22,8 @@ module.exports = {
 		new webpack.DefinePlugin({
 			"process.env": {
 				"NODE_ENV": JSON.stringify(process.env.NODE_ENV),
-				"S3_BUCKET_NAME": JSON.stringify(process.env.S3_BUCKET_NAME)
+				"S3_BUCKET_NAME": JSON.stringify(process.env.S3_BUCKET_NAME),
+				"apps_released": JSON.stringify(process.env.apps_released)
 			}
 		})
 	],
