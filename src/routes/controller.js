@@ -26,14 +26,6 @@ function convertValidationError(err) {
 }
 
 module.exports = (app) => {
-
-	if(app.get("env") === "production" && !process.env["apps_released"]) {
-		app.use((req, res) => {
-			// Universal catcher; Disable other routes for now
-			res.render("landingpage");
-		});
-	}
-
 	if(app.get("env") === "development") {
 		app.get("/",(req, res) => {
 			res.render("landingpage");
@@ -41,7 +33,9 @@ module.exports = (app) => {
 	}
 
 	app.use("/", authRoutes);
-	app.use("/apply", applyRoutes);
+	if(process.env["apps_released"] === "true") {
+		app.use("/apply", applyRoutes);
+	}
 	app.use("/profile", applicationRoutes);
 	app.use("/live", liveRoutes);
 	app.use("/api", apiRoutes);

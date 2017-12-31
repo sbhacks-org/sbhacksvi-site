@@ -74,20 +74,20 @@ class Profile extends React.Component {
 					/>;
 		}
 
+		if(!applicationFields) {
+			return (
+				<HasNotAppliedView
+					info={info}
+				/>
+			);
+		}
+
 		if(process.env["apps_released"] !== "true") {
 			return (
 				<ApplicationResultView
 					user={info}
 					application={applicationFields}
 					rsvpAction={this.props.rsvp}
-				/>
-			);
-		}
-
-		if(!applicationFields) {
-			return (
-				<HasNotAppliedView
-					info={info}
 				/>
 			);
 		}

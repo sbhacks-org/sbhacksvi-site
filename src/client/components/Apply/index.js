@@ -70,6 +70,8 @@ class Apply extends React.Component {
 			return <Redirect to="/profile" />;
 		}
 
+		if(process.env["apps_released"] !== "true") { window.location.href = "/" };
+		
 		return (
 			<div>
 				<Banner message={this.state.message} onDismiss={() => this.setState({ message: "" })}/>
