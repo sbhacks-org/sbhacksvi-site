@@ -18,11 +18,14 @@ const ApplicationResultView = ({ user, application, rsvpAction }) => {
 				}
 			</div>
 		);
-	};
+	}
 
 	return (
 		<div>
-			<h1>{JSON.stringify(application, null, '\t')}</h1>
+			<h1>Application Status: <strong>In Review</strong></h1>
+			<div className="body">
+				<p className="body-text">Hello! We are currently reviewing your application. If you don't see an update by January 3rd, please email us at <a href="mailto:team@sbhacks.com">team@sbhacks.com</a></p>
+			</div>
 		</div>
 	);
 }
