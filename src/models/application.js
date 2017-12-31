@@ -64,6 +64,9 @@ module.exports = function(sequelize, DataTypes) {
     },
     accepted: {
       type: DataTypes.BOOLEAN
+    },
+    rating: {
+      type: DataTypes.INTEGER
     }
   }, {
     tableName: "applications"
