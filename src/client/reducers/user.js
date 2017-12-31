@@ -20,6 +20,9 @@ const userReducer = (state = initialState, action) => {
 	case actionTypes.LOG_OUT_SUCCESS: {
 		return { isAuthenticated: false, applicationFields: null, info: null };
 	}
+	case actionTypes.RSVP: {
+		return { ...state, applicationFields: { ...state.applicationFields, ...action.payload } }
+	}
 	default:
 		return state;
 	}

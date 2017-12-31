@@ -11,7 +11,7 @@ import HasNotAppliedView from "./presenters/HasNotAppliedView";
 import ApplicationResultView from "./presenters/ApplicationResultView";
 
 import { sendApplicationXHR } from "../applicationHelper";
-import { updateSuccess } from "../../actions";
+import { updateSuccess, rsvp } from "../../actions";
 
 const mapStateToProps = (state) => {
 	const { isAuthenticated, applicationFields, info } = state.user;
@@ -23,7 +23,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-	return bindActionCreators({ updateSuccess }, dispatch);
+	return bindActionCreators({ updateSuccess, rsvp }, dispatch);
 }
 
 class Profile extends React.Component {
@@ -79,6 +79,7 @@ class Profile extends React.Component {
 				<ApplicationResultView
 					user={info}
 					application={applicationFields}
+					rsvpAction={this.props.rsvp}
 				/>
 			);
 		}
