@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "semantic-ui-react";
 
-const ApplicationResultView = ({ user, application }) => {
+const ApplicationResultView = ({ user, application, rsvpAction }) => {
 	if(application.accepted) {
 		return (
 			<div>
@@ -14,7 +14,7 @@ const ApplicationResultView = ({ user, application }) => {
 				{
 					application.rsvp ?
 						<p>Your <strong>RSVP</strong> has been noted. We look forward to seeing you at SB Hacks!</p> :
-						<Button fluid color="teal">RSVP</Button>
+						<Button fluid color="teal" onClick={rsvpAction}>RSVP</Button>
 				}
 			</div>
 		);

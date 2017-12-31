@@ -10,6 +10,20 @@ const {
 	populateWithApplicationFields
 } = require("../lib/application");
 
+router.post("/rsvp", isLoggedIn, (req, res, next) => {
+	const { Application } = req.user;
+	if(Application.accepted) {
+		Application.updateAttributes({ rsvp: true })
+		.then((application) => {
+			let { rsvp } = application;
+			res.json({ rsvp });
+		})
+		.catch((err) => next(err));
+	} else {
+		res.status(400).json({ message: "You are not permitted to do this" });
+	};
+});
+
 router.post("/update", isLoggedIn, (req, res, next) => {
 	const { Application } = req.user;
 

@@ -69,3 +69,25 @@ export const addToSchoolList = (school) => {
 		payload: school
 	};
 };
+
+export const rsvp = () => {
+	return function(dispatch, getState) {
+		let state = getState();
+		const { user: { applicationFields } } = state;
+
+		if(applicationFields.rsvp) return;
+
+		var xhttp = new XMLHttpRequest();
+
+		xhttp.addEventListener("load", () => {
+			let response = JSON.parse(xhttp.responseText);
+			dispatch({
+				type: actionTypes.RSVP,
+				payload: response
+			})
+		});
+
+		xhttp.open("POST", "/profile/rsvp");
+		xhttp.send();
+	};
+};
