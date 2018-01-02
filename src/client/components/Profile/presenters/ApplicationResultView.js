@@ -9,7 +9,7 @@ const ApplicationResultView = ({ user, application, rsvpAction }) => {
 				<div className="body">
 					<p className="body-text">We are thrilled to invite you to SB Hacks IV! We were impressed by your application and can't wait for you to create something extraordinary at UC Santa Barbara this January 19-21.</p>
 					<p className="body-text">Information about buses and travel reimbursement will be emailed out to you soon.</p>
-					<p className="body-text">We received an overwhelming 2100+ applications this year for our limited 500 spots. To confirm your registration and save your spot, take a minute to RSVP no later than Friday, January 12th, 11:59 PM.</p>
+					<p className="body-text">We received an overwhelming 2,100+ applications this year for our limited 500 spots. To confirm your registration and save your spot, take a minute to <strong>RSVP</strong> no later than <strong>Friday, January 12th, 11:59 PM</strong>.</p>
 				</div>
 				{
 					application.rsvp ?
