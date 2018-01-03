@@ -44,6 +44,10 @@ module.exports = (app) => {
 		res.redirect("https://docs.google.com/forms/d/e/1FAIpQLScB37DuLFbGOG-VO87IxeVhuHgc_awYTLGmiaQSB1VE7kYEEw/viewform")
 	});
 
+	if(process.env["SLACK_JOIN_URL"]) {
+		app.get("/join-slack", (req, res) => res.redirect(process.env["SLACK_JOIN_URL"]));
+	}
+
 	// React SPA for everything but the landing page
 	app.get("*", (req, res) => {
 		if(req.isAuthenticated()) {
