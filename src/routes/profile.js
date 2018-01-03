@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const router = require("express").Router();
 
 const passwordResetMail = require("../mailer/mail_password_reset");
+const rsvpMail = require("../mailer/mail_rsvp");
 const { User } = require("../models");
 const isLoggedIn = require("../lib/isLoggedIn");
 const {
@@ -16,6 +17,7 @@ router.post("/rsvp", isLoggedIn, (req, res, next) => {
 		Application.updateAttributes({ rsvp: true })
 		.then((application) => {
 			let { rsvp } = application;
+			rsvpMail.send(req.user);
 			res.json({ rsvp });
 		})
 		.catch((err) => next(err));
