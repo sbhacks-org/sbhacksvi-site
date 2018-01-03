@@ -18,6 +18,15 @@ const ApplicationResultView = ({ user, application, rsvpAction }) => {
 				}
 			</div>
 		);
+	} else if(application.accepted == false) {
+		return (
+			<div>
+				<h1>Hey, {user.first_name}</h1>
+				<div className="body">
+					<p className="body-text">Unfortunately, we are unable to offer you admission to SB Hacks IV. We had an overwhelming 2,100+ applications this year for our limited 500 spots. We encourage you to apply next year. Best of luck!</p>
+				</div>
+			</div>
+		);
 	}
 
 	return (
