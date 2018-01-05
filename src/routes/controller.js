@@ -48,6 +48,10 @@ module.exports = (app) => {
 		app.get("/join-slack", (req, res) => res.redirect(process.env["SLACK_JOIN_URL"]));
 	}
 
+	if(process.env["BUS_SCHEDULE"]) {
+		app.get("/buses", (req, res) => res.redirect(process.env["BUS_SCHEDULE"]));
+	}
+
 	// React SPA for everything but the landing page
 	app.get("*", (req, res) => {
 		if(req.isAuthenticated()) {
