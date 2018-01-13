@@ -44,6 +44,10 @@ module.exports = (app) => {
 		res.redirect("https://docs.google.com/forms/d/e/1FAIpQLScB37DuLFbGOG-VO87IxeVhuHgc_awYTLGmiaQSB1VE7kYEEw/viewform")
 	});
 
+	if(process.env["WORKSHOP_LINK"]) {
+		app.get("/workshop", (req, res) => res.redirect(process.env["WORKSHOP_LINK"]));
+	}
+
 	if(process.env["SLACK_JOIN_URL"]) {
 		app.get("/join-slack", (req, res) => res.redirect(process.env["SLACK_JOIN_URL"]));
 	}
