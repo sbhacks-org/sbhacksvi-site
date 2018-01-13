@@ -2,7 +2,7 @@
 
 This is the website for SB Hacks IV (Jan 2018).
 
-Built with Node.js (Express), React.js (Redux), Postgres, MongoDB (session store), express-form-post (file upload)
+Built with Node.js (Express), React.js (Redux), Postgres, and MongoDB (session store)
 
 Needs a .env file!! (Ask me for one)
 
@@ -15,6 +15,6 @@ Needs a .env file!! (Ask me for one)
   * In order to setup the Database
     * Install PSQL (If it isn't already installed)
     * In PSQL CLI:
-      * `CREATE USER 'sbhacksiv' WITH PASSWORD '1234'`
-      * `CREATE DATABASE 'sbhacksiv_development'`
+      * `CREATE USER sbhacksiv WITH PASSWORD '1234'`
+      * `CREATE DATABASE sbhacksiv_development`
   * Type npm start to start the server
