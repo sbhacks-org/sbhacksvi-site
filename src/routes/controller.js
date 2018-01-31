@@ -32,6 +32,8 @@ module.exports = (app) => {
 		});
 	}
 
+	if(process.env.only_landing) app.use((req, res) => res.redirect("/"));
+
 	app.use("/", authRoutes);
 	if(process.env["apps_released"] === "true") {
 		app.use("/apply", applyRoutes);
