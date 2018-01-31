@@ -40,21 +40,14 @@ module.exports = (app) => {
 	app.use("/live", liveRoutes);
 	app.use("/api", apiRoutes);
 
-	app.get("/volunteers", (req, res) => {
-		res.redirect("https://docs.google.com/forms/d/e/1FAIpQLScB37DuLFbGOG-VO87IxeVhuHgc_awYTLGmiaQSB1VE7kYEEw/viewform")
-	});
+	let proc_links = [
+		{ proc_env_key: "BUS_SCHEDULE", link: "/buses" },
+		{ proc_env_key: "SLACK_JOIN_URL", link: "/slack" },
+		{ proc_env_key: "WORKSHOP_LINK", link: "/workshop" },
+		{ proc_env_key: "VOLUNTEER_LINK", link: "/volunteers" }
+	];
 
-	if(process.env["WORKSHOP_LINK"]) {
-		app.get("/workshop", (req, res) => res.redirect(process.env["WORKSHOP_LINK"]));
-	}
-
-	if(process.env["SLACK_JOIN_URL"]) {
-		app.get("/join-slack", (req, res) => res.redirect(process.env["SLACK_JOIN_URL"]));
-	}
-
-	if(process.env["BUS_SCHEDULE"]) {
-		app.get("/buses", (req, res) => res.redirect(process.env["BUS_SCHEDULE"]));
-	}
+	proc_links.forEach(({ proc_env_key, link }) => app.get(link, (req, res) => res.redirect(process.env[proc_env_key])));
 
 	// React SPA for everything but the landing page
 	app.get("*", (req, res) => {
