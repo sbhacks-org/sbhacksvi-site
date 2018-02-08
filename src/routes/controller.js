@@ -46,7 +46,8 @@ module.exports = (app) => {
 		{ proc_env_key: "BUS_SCHEDULE", link: "/buses" },
 		{ proc_env_key: "SLACK_JOIN_URL", link: "/slack" },
 		{ proc_env_key: "WORKSHOP_LINK", link: "/workshop" },
-		{ proc_env_key: "VOLUNTEER_LINK", link: "/volunteers" }
+		{ proc_env_key: "VOLUNTEER_LINK", link: "/volunteers" },
+		{ proc_env_key: "ORGANIZER_APPLY_LINK", link: "/organizers" }
 	];
 
 	proc_links.forEach(({ proc_env_key, link }) => app.get(link, (req, res) => res.redirect(process.env[proc_env_key])));
