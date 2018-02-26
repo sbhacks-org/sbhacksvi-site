@@ -32,16 +32,6 @@ module.exports = (app) => {
 		});
 	}
 
-	if(process.env.only_landing) app.use((req, res) => res.redirect("/"));
-
-	app.use("/", authRoutes);
-	if(process.env["apps_released"] === "true") {
-		app.use("/apply", applyRoutes);
-	}
-	app.use("/profile", applicationRoutes);
-	app.use("/live", liveRoutes);
-	app.use("/api", apiRoutes);
-
 	let proc_links = [
 		{ proc_env_key: "BUS_SCHEDULE", link: "/buses" },
 		{ proc_env_key: "SLACK_JOIN_URL", link: "/slack" },
@@ -51,6 +41,16 @@ module.exports = (app) => {
 	];
 
 	proc_links.forEach(({ proc_env_key, link }) => app.get(link, (req, res) => res.redirect(process.env[proc_env_key])));
+
+	if(process.env.only_landing) app.use((req, res) => res.redirect("/"));
+
+	app.use("/", authRoutes);
+	if(process.env["apps_released"] === "true") {
+		app.use("/apply", applyRoutes);
+	}
+	app.use("/profile", applicationRoutes);
+	app.use("/live", liveRoutes);
+	app.use("/api", apiRoutes);
 
 	// React SPA for everything but the landing page
 	app.get("*", (req, res) => {
