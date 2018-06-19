@@ -24,7 +24,7 @@ passport.use("login", new LocalStrategy({
 }, (email, password, done) => {
 	User.findOne({
 		where: {
-			email: email
+			email: email.toLowerCase()
 		}
 	}).then((user) => {
 		if (!user) return done(null, false, { email: "No such user with that email exists" });
@@ -51,7 +51,7 @@ passport.use("signup", new LocalStrategy({
 			User.create({
 				first_name,
 				last_name,
-				email,
+				email: email.toLowerCase(),
 				password: password_digest
 			}).then((user) => {
 				return done(null, user);
