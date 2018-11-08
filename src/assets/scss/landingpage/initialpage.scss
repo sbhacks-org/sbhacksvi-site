@@ -8,12 +8,14 @@
   width: 100%;
   #initialpage {
     display: table;
-    height: 110vh;
+    height: 100vh;
     min-height: 300px;
     width: 100%;
     background-image: url("/images/bg.png");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position-y: 50%;
+
     #initialpage-content {
       color: white;
       display: table-cell;
@@ -25,7 +27,7 @@
             animation: fadein 2s;
       #logo {
         #logo-img {
-          width: 20%;
+          width: 30%;
           position: relative;
           z-index: 1;
         }
