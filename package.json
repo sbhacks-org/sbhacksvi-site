@@ -1,7 +1,7 @@
 {
-  "name": "sbhacksiv",
+  "name": "sbhacksv",
   "version": "1.0.0",
-  "description": "The SB Hacks IV Website, which enables students to apply for our 36 hour hackathon hosted in Winter 2018",
+  "description": "The SB Hacks V Website, which enables students to apply for our 36 hour hackathon hosted in Winter 2018",
   "main": "app/server.js",
   "scripts": {
     "postinstall": "bash ./bin/postinstall.sh",
@@ -27,9 +27,9 @@
   "author": "Danny Cho",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dannycho7/sbhacksiv/issues"
+    "url": "https://github.com/dannycho7/SB_Hacks_V/issues"
   },
-  "homepage": "https://github.com/dannycho7/sbhacksiv#readme",
+  "homepage": "https://github.com/dannycho7/SB_Hacks_V#readme",
   "dependencies": {
     "@sendgrid/mail": "^6.1.4",
     "aws-sdk": "^2.288.0",

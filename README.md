@@ -1,6 +1,6 @@
 # SB Hacks IV
 
-This is the website for SB Hacks IV (Jan 2018).
+This is the website for SB Hacks V (Jan 2019).
 
 Built with Node.js (Express), React.js (Redux), Postgres, and MongoDB (session store)
 
