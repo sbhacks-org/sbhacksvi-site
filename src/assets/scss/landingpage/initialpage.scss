@@ -1,9 +1,9 @@
 #initialpage-bg-color {
   background: #6e39a0;
-  background: linear-gradient(#6e39a0, #549cbe);
-  background: -webkit-linear-gradient(#6e39a0, #549cbe);
-  background: -o-linear-gradient(#6e39a0, #549cbe);
-  background: -moz-linear-gradient(#6e39a0, #549cbe);
+  background: linear-gradient(#191919, #333333);
+  background: -webkit-linear-gradient(#191919, #333333);
+  background: -o-linear-gradient(#191919, #333333);
+  background: -moz-linear-gradient(#191919, #333333);
 
   width: 100%;
   #initialpage {
@@ -11,23 +11,35 @@
     height: 100vh;
     min-height: 300px;
     width: 100%;
-    background-image: url("/images/bg.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position-y: 50%;
 
     #initialpage-content {
       color: white;
-      display: table-cell;
-      vertical-align: middle;
+      height: inherit;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
        -moz-animation: fadein 2s; /* Firefox < 16 */
         -ms-animation: fadein 2s; /* Internet Explorer */
          -o-animation: fadein 2s; /* Opera < 12.1 */
             animation: fadein 2s;
-      #logo {
+
+      h1
+      {
+        font-family: 'Ubuntu Condensed', sans-serif;
+        font-weight: bold;
+        font-size: 4vw;
+        margin: 10px;
+      }     
+      h2
+      {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 2.5vw;
+        margin: 10px;
+      } 
+      .logo {
         #logo-img {
-          width: 30%;
+          width: 55%;
           position: relative;
           z-index: 1;
         }
@@ -37,6 +49,19 @@
           left: 35%;
         }
       }
+
+      .left, .right {
+        vertical-align: top;
+        display: inline-block;      }
+
+      .left {
+        width: 35%;
+      }
+
+      .right {
+        width: 35%;
+      }
+
       #date {
         font-size: 4vw;
       }
