@@ -26,22 +26,31 @@
 
       h1
       {
-        font-family: 'Ubuntu Condensed', sans-serif;
+        font-family: 'Poppins', sans-serif;
         font-weight: bold;
         font-size: 4vw;
-        margin: 10px;
+        margin-top: -70px;
+        margin-bottom: -15px;
       }     
       h2
       {
-        font-family: 'Open Sans', sans-serif;
+        font-family: 'Roboto Condensed', sans-serif;
         font-size: 2.5vw;
-        margin: 10px;
       } 
+
+
       .logo {
         #logo-img {
-          width: 55%;
+          width: 100%;
           position: relative;
           z-index: 1;
+        }
+        .graphic
+        {
+          margin-left: -15vh;
+          position: relative;
+          z-index: 1;
+          width: 90%;
         }
         #star-swirl {
           position: absolute;
@@ -55,11 +64,11 @@
         display: inline-block;      }
 
       .left {
-        width: 35%;
+        width: 45%;
       }
 
       .right {
-        width: 35%;
+        width: 40%;
       }
 
       #date {
