@@ -15,8 +15,8 @@
 				width: 100%;
 			}
 			h4 {
-				color: black;
-				font-family: bungee, 'cursive';
+				color: white;
+				font-family: 'Ubuntu Mono', monospace;
 				text-transform: uppercase;
 				margin: 5px 0;
 			}
@@ -24,6 +24,17 @@
 				margin: 0;
 			}
 		}
+	}
+
+	.video
+	{
+		border: 1px white dashed;
+		padding: 15px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
 	}
 
 	#summary {
@@ -38,19 +49,23 @@
 		img {
 			width: 100%;
 		}
+		position: relative;
+		padding-bottom: 56.25%;
+		padding-top: 30px;
+		height: 0;
 	}
 
 	#left, #right {
-		vertical-align: top;
+		vertical-align: middle;
 		display: inline-block;
 	}
 
 	#left {
-		width: 50%;
+		width: 40%;
 		margin: 5%;
 	}
 
 	#right {
-		width: 40%;
+		width: 45%;
 	}
 }
