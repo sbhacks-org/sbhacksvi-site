@@ -10,8 +10,8 @@
   }
   #intro {
     #left {
-      width: 90%;
-      margin: 0 5%;
+      width: 100%;
+      margin: 0px 0px;
     }
     #right {
       width: 100%;
@@ -59,20 +59,22 @@
     }
   }
   h1.header {
-      font-size: 3.5em;
+    font-size: 5em;
+    margin: 40px 0px 15px 0px;
   }
 
   #faq {
-    padding: 25px;
+    padding: 0px;
     .faq-item {
-      width: 100%;
-      padding: 2em 0;
+      width: inherit;
+      height: 9vh;
+      margin: 0px;
       display: block;
       h1 {
-        font-size: 1.2em;
+        font-size: 3.2em;
       }
       p {
-        font-size: 0.9em;
+        font-size: 2em;
       }
     }
   }
@@ -86,7 +88,7 @@
       margin-top: 0;
     }
     p {
-      font-size: 1em;
+      font-size: 2.5em;
     }
     #plat-sponsor-container {
       .sponsor {
@@ -157,10 +159,10 @@
   }
   #intro {
     h1 {
-      font-size: 2em;
+      font-size: 5em;
     }
     h4 {
-      font-size: 0.6em;
+      font-size: 2em;
     }
   }
   .btn {
@@ -223,8 +225,55 @@
 @media screen and (orientation:portrait) {
   #initialpage-bg-color {
     #initialpage {
-      height: auto;
-      padding: 5% 0;
+      #initialpage-content
+      {
+        flex-direction: column;
+        h1
+        {
+          font-size: 5.5vw;
+          margin: 10px;
+        }
+        h2
+        {
+          font-size: 4vw;
+          margin: 10px;
+        }
+        .left
+        {
+          width: 65%;
+        }
+        .right
+        {
+          width: 70%;
+        }
+        .logo
+        {
+          .graphic
+          {
+            margin-left: 0px;
+          }
+        }
+      }
+    }
+  }
+  #content-container
+  {
+    padding: 10% 25px;
+  }
+  #intro
+  {
+    .video
+    {
+      width: 70%;
+      height: 70%;
+      margin: 10%;
+    }
+    #summary
+    {
+      p
+      {
+        font-size: 2.2em;
+      }
     }
   }
 }
