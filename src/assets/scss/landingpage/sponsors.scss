@@ -9,6 +9,7 @@
 	}
 	.sponsor {
 		display: inline-block;
+		opacity: 1;
 		img {
 			width: 100%;
 			vertical-align: middle;
@@ -20,7 +21,7 @@
 			width: 50%;
 		}
 		&:hover {
-			opacity: 0.6;
+			opacity: 0.7;
 			cursor: pointer;
 		}
 	}
