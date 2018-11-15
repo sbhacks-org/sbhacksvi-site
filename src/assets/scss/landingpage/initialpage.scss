@@ -1,9 +1,11 @@
 #initialpage-bg-color {
-  background: #6e39a0;
+  background: #191919;
+  /*
   background: linear-gradient(#191919, #333333);
   background: -webkit-linear-gradient(#191919, #333333);
   background: -o-linear-gradient(#191919, #333333);
   background: -moz-linear-gradient(#191919, #333333);
+  */
 
   width: 100%;
   #initialpage {
@@ -23,6 +25,25 @@
         -ms-animation: fadein 2s; /* Internet Explorer */
          -o-animation: fadein 2s; /* Opera < 12.1 */
             animation: fadein 2s;
+
+      button
+      {
+        background: transparent;
+        color: white;
+        font-family: 'Lekton', sans-serif;
+        font-size: 20px;
+        padding: 10px 50px;
+        &:hover
+        {
+          background: white;
+          color: #191919;
+        }
+      }
+
+      a
+      {
+        outline: none;
+      }
 
       h1
       {
