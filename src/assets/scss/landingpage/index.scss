@@ -37,11 +37,13 @@ a {
 }
 
 #content-container { 
-  background: #549cbe;
-  background: linear-gradient(#333333, #737373);
-  background: -webkit-linear-gradient(#333333, #737373);
-  background: -o-linear-gradient(#333333, #737373);
-  background: -moz-linear-gradient(#333333, #737373);
+  background: #191919;
+  /*
+  background: linear-gradient(#191919, #333333);
+  background: -webkit-linear-gradient(#191919, #333333);
+  background: -o-linear-gradient(#191919, #333333);
+  background: -moz-linear-gradient(#191919, #333333);
+  */
   padding-top: 10%;
   a {
     color: white;
