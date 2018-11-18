@@ -54,7 +54,7 @@ const Status = ({application}) => {
 	{
 		return (
 			<Container textAlign='center'>
-				<Message style = {pending}>
+				<Message className="status_msg" style = {pending}>
 			    	<Message.Header>Pending</Message.Header>
 		  		</Message>
 		  	</Container>
