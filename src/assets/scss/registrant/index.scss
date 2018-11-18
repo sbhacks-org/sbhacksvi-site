@@ -6,15 +6,17 @@ a:hover {
 }
 
 body {
-	background-color: #5c70ac;
-	color: rgb(240, 240, 240);
+	background-color: #191919;
+	font-family: 'Didact Gothic', sans-serif;
+	color: white;
 	padding: 0 10%;
 	height: 100%;
 }
 
+
 a {
-	color: white;
 	text-decoration: underline;
+	color: #6da5d0;
 	&:hover {
 		opacity: 0.5;
 		color: rgb(245, 245, 245);
@@ -22,14 +24,15 @@ a {
 	}
 }
 
+
 #apply-link {
+	text-decoration: none;
 	color: white;
-	text-decoration: underline;
 	&:hover {
-		color: white;
-		opacity: 0.6;
+		opacity: 1;
 	}
 }
+
 
 #root {
 	padding-bottom: 10%;
@@ -40,7 +43,7 @@ a {
 }
 
 #root .loading.form:before {
-	background-color: rgba(92, 112, 172, 0.8);
+	background-color: rgba(25, 25, 25, 0.8);
 }
 
 .ui.button {
@@ -55,6 +58,30 @@ a {
 .ui.label {
 	text-decoration: none;
 }
+
+.ui
+{
+	.message
+	{
+		background-color: #f5f5f5;
+		color: #191919;
+	}
+	.message
+	{
+		font-size: 1.8em;
+		padding: 10px;
+		.header
+		{
+			font-family: 'Didact Gothic', sans-serif;
+	    	font-weight: 200;
+		}
+	}
+}
+
+.ui[class*="center aligned"].container {
+    margin: 10px;
+}
+
 
 #header {
 	height: 200px;
@@ -80,10 +107,17 @@ a {
 
 h1 {
 	font-size: 3vw;
-	color: white;
+	font-family: 'Didact Gothic', sans-serif;
+	font-weight: 200;
 	strong {
 		border-bottom: 4px solid white;
 	}
+}
+h2
+{
+	font-family: 'Didact Gothic', sans-serif;
+	margin: 10px;
+	font-weight: 50;
 }
 
 .body-text {
@@ -93,6 +127,25 @@ h1 {
 .body {
 	margin: 30px 0;
 }
+
+.hello
+{
+	color: white;
+}
+
+
+.dash
+{
+	border: 1px #7b7b7b solid;
+    padding: 25px;
+}
+
+/*
+.status
+{
+	text-align: center;
+}
+*/
 
 @import 'fileupload';
 @import 'responsive';

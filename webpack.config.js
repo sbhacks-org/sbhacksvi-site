@@ -23,7 +23,8 @@ module.exports = {
 			"process.env": {
 				"NODE_ENV": JSON.stringify(process.env.NODE_ENV),
 				"S3_BUCKET_NAME": JSON.stringify(process.env.S3_BUCKET_NAME),
-				"apps_released": JSON.stringify(process.env.apps_released)
+				"apps_released": JSON.stringify(process.env.apps_released),
+				"decisions_released": JSON.stringify(process.env.decisions_released)
 			}
 		})
 	],
