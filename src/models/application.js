@@ -67,6 +67,9 @@ module.exports = function(sequelize, DataTypes) {
     },
     rating: {
       type: DataTypes.INTEGER
+    },
+    essay_answer: {
+      type: DataTypes.TEXT,
     }
   }, {
     tableName: "applications"
