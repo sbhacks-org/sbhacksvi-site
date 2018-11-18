@@ -34,7 +34,8 @@ module.exports.saveApplication = (user, fields) => {
 			phone_number: fields.phone_number,
 			shirt_size: fields.shirt_size,
 			gender: fields.gender,
-			dietary_restrictions: fields.dietary_restrictions
+			dietary_restrictions: fields.dietary_restrictions,
+			essay_answer: fields.essay_answer
 		});
 	});		
 };
