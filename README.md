@@ -17,4 +17,5 @@ Needs a .env file!! (Ask me for one)
     * In PSQL CLI:
       * `CREATE USER sbhacksv WITH PASSWORD '1234'`
       * `CREATE DATABASE sbhacksv_development`
-  * Type npm start to start the server
+  * Type `num run seed` to load the initial schools in the database
+  * Type `npm start` to start the server
