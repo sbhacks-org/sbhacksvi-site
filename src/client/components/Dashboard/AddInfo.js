@@ -37,7 +37,7 @@ const AddInfo = ({info, application}) => {
 		return (
 			<div>
 				<div className="body">
-					<p className="body-text">You have not yet applied. Click <Link to="/apply" id="apply-link">here</Link> to start your application.</p>
+					<p className="body-text">You have not yet applied. Applications are due December 20th.</p>
 					<Container textAlign='center'>
 						<Link to="/apply" id="apply-link"><Button color="blue">Start Application</Button></Link>
 					</Container>
