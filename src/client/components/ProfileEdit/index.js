@@ -6,10 +6,8 @@ import { Grid, Button } from "semantic-ui-react";
 
 import ProfileForm from "./ProfileForm";
 
-import Banner from "../Banner";
 import HasNotAppliedView from "./presenters/HasNotAppliedView";
 import ApplicationResultView from "./presenters/ApplicationResultView";
-import Dashboard from "./presenters/Dashboard";
 
 import { sendApplicationXHR } from "../applicationHelper";
 import { updateSuccess, rsvp } from "../../actions";
@@ -34,7 +32,7 @@ class Profile extends React.Component {
 		this.state = {
 			errors: {},
 			loading: false,
-			message: ""
+			message: null
 		}
 
 		this.updateApplication = this.updateApplication.bind(this);
@@ -64,46 +62,27 @@ class Profile extends React.Component {
 	}
 
 	render() {
-		const { errors, loading } = this.state;
+		const { errors, loading, message } = this.state;
 		const { isAuthenticated, applicationFields, info } = this.props;
 
-		if(!isAuthenticated) {
+		if(!isAuthenticated || !applicationFields || process.env["apps_released"] !== "true") {
 			return <Redirect to={{
 							pathname: "/login",
 							state: { referrer: location.pathname }
 						}}
 					/>;
 		}
-		return (
-			<Dashboard 
-				info={info}
-				application={applicationFields}
-			/>
-		);
 
-		/*
-		if(!applicationFields) {
-			return (
-				<HasNotAppliedView
-					info={info}
-				/>
-			);
-		}
-
-		if(process.env["apps_released"] !== "true") {
-			return (
-				<ApplicationResultView
-					user={info}
-					application={applicationFields}
-					rsvpAction={this.props.rsvp}
-				/>
-			);
+		if (message) {
+			return <Redirect to={{
+							pathname: "/dashboard",
+							state: { message }
+						}}
+					/>;
 		}
 
 		return (
 			<div>
-				<Banner message={this.state.message} onDismiss={() => this.setState({ message: "" })}/>
-				<h1>Application Status: <strong>Submitted</strong></h1>
 				<Grid>
 					<Grid.Column>
 						<ProfileForm
@@ -116,7 +95,6 @@ class Profile extends React.Component {
 				</Grid>
 			</div>
 		);
-		*/
 	}
 }
 

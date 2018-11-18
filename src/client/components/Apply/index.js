@@ -67,7 +67,7 @@ class Apply extends React.Component {
 		}
 
 		if(applicationFields) {
-			return <Redirect to="/profile" />;
+			return <Redirect to="/dashboard" />;
 		}
 
 		if(process.env["apps_released"] !== "true") { window.location.href = "/" };
@@ -75,7 +75,7 @@ class Apply extends React.Component {
 		return (
 			<div>
 				<Banner message={this.state.message} onDismiss={() => this.setState({ message: "" })}/>
-				<h1>SB Hacks IV Application</h1>
+				<h1>SB Hacks V Application</h1>
 				<ApplyForm
 					submitApplication={this.submitApplication}
 					loading={this.state.loading}
