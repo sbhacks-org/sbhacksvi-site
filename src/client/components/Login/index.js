@@ -52,7 +52,7 @@ class Login extends React.Component {
 		const { isAuthenticated, location } = this.props;
 		const { errors, loading } = this.state;
 
-		if(isAuthenticated) return <Redirect to={ location.state && location.state.referrer ? location.state.referrer : "/profile" } />;
+		if(isAuthenticated) return <Redirect to={ location.state && location.state.referrer ? location.state.referrer : "/dashboard" } />;
 
 
 		return (
