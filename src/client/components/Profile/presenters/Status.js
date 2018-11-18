@@ -1,7 +1,20 @@
 import React from "react";
 import { Container, Message } from 'semantic-ui-react';
 
+const notAccepted = {
+	backgroundColor: '#c74c49',
+	color: 'white'
+};
 
+const accepted = {
+	backgroundColor: '#49c76a',
+	color: 'white'
+}
+
+const pending = {
+	backgroundColor: '#644fb6',
+	color: 'white'
+}
 
 const Status = ({application}) => {
 	if (!application)
@@ -20,7 +33,7 @@ const Status = ({application}) => {
 		{
 			return (
 				<Container textAlign='center'>
-					<Message>
+					<Message style = {accepted}>
 				    	<Message.Header>Accepted</Message.Header>
 			  		</Message>
 		  		</Container>
@@ -30,7 +43,7 @@ const Status = ({application}) => {
 		{
 			return (
 				<Container textAlign='center'>
-					<Message>
+					<Message style = {notAccepted}>
 				    	<Message.Header>Not Accepted</Message.Header>
 			  		</Message>
 			  	</Container>
@@ -41,7 +54,7 @@ const Status = ({application}) => {
 	{
 		return (
 			<Container textAlign='center'>
-				<Message>
+				<Message style = {pending}>
 			    	<Message.Header>Pending</Message.Header>
 		  		</Message>
 		  	</Container>

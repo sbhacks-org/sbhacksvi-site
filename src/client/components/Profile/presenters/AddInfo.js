@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "semantic-ui-react";
+import { Button, Container } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 const AddInfo = ({info, application}) => {
@@ -25,7 +25,9 @@ const AddInfo = ({info, application}) => {
 					<div className="body">
 						<p className="body-text">We are currently reviewing your application. If you don't see an update by January 4th, please email us at <a href="mailto:team@sbhacks.com">team@sbhacks.com</a></p>
 					</div>
-					<Link to="/edit" id="apply-link"><Button color="teal">Edit Application</Button></Link>
+					<Container textAlign='center'>
+						<Link to="/edit" id="apply-link"><Button color="blue">Edit Application</Button></Link>
+					</Container>
 				</div>
 			);			
 		}
@@ -36,7 +38,9 @@ const AddInfo = ({info, application}) => {
 			<div>
 				<div className="body">
 					<p className="body-text">You have not yet applied. Click <Link to="/apply" id="apply-link">here</Link> to start your application.</p>
-					<Link to="/apply" id="apply-link"><Button color="teal">Start Application</Button></Link>
+					<Container textAlign='center'>
+						<Link to="/apply" id="apply-link"><Button color="blue">Start Application</Button></Link>
+					</Container>
 				</div>
 
 			</div>

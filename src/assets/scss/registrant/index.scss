@@ -16,6 +16,7 @@ body {
 
 a {
 	text-decoration: underline;
+	color: #6da5d0;
 	&:hover {
 		opacity: 0.5;
 		color: rgb(245, 245, 245);
@@ -42,7 +43,7 @@ a {
 }
 
 #root .loading.form:before {
-	background-color: rgba(92, 112, 172, 0.8);
+	background-color: rgba(25, 25, 25, 0.8);
 }
 
 .ui.button {
