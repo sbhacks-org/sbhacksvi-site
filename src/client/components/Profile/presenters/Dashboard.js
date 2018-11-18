@@ -7,21 +7,18 @@ import { Link } from "react-router-dom";
 const Dashboard = ({info, application}) => {
 	return (
 		<div className = "dash">
-			
-				<div className>
-					<div className = "status">
-						<Container textAlign='center'>
-							<h1>Your Status:</h1>
-						</Container>
-						<Status application={application}/>
-					</div>
-					<Divider />
-					<h1 className = "hello">Hello {info.first_name},</h1>
-					<AddInfo
-						info = {info}
-						application={application}
-					/>
-				</div>
+			<div className = "status">
+				<Container textAlign='center'>
+					<h1>Your Status:</h1>
+				</Container>
+				<Status application={application}/>
+			</div>
+			<Divider />
+			<h1 className = "hello">Hello {info.first_name},</h1>
+			<AddInfo
+				info = {info}
+				application={application}
+			/>
 		</div>
 	);
 };
