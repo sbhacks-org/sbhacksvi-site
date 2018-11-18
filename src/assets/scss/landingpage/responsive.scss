@@ -64,10 +64,10 @@
   }
 
   #faq {
-    padding: 0px;
+    padding: 0;
     .faq-item {
       width: inherit;
-      height: 9vh;
+      height: auto;
       margin: 0px;
       display: block;
       h1 {
