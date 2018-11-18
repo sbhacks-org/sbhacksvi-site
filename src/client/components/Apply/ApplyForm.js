@@ -25,6 +25,7 @@ class ApplyForm extends React.Component {
 			shirt_size: "",
 			transportation: "",
 			dietary_restrictions: [],
+			essay_answer: "",
 			resume: "",
 			mlh: false
 		}
@@ -54,6 +55,7 @@ class ApplyForm extends React.Component {
 		this.updateShirtSize = (evt, { value }) => this.updateField("shirt_size", value);
 		this.updateTransportation = (evt, { value }) => this.updateField("transportation", value);
 		this.updateDietaryRestrictions = (evt, { value }) => this.updateField("dietary_restrictions", value);
+		this.updateAdditionalDetails = (evt, { value }) => this.updateField("essay_answer", value);
 		this.updateResume = (status) => this.updateField("resume", status);
 		this.updateMlh = (evt) => this.updateField("mlh", !this.state.mlh);
 	}
@@ -153,6 +155,14 @@ class ApplyForm extends React.Component {
 				    	value={this.state.transportation}
 				    />
 				</Form.Group>
+
+				<Form.TextArea
+					label='Tell us about a project you are proud of (Optional, up to 1000 characters)'
+					placeholder='Tell us more about you...'
+					onChange={this.updateAdditionalDetails}
+					maxLength={1000}
+					rows={5}
+				/>
 
 				<Fields.FileInput
 					error={errors["resume"]}
