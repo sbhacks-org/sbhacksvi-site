@@ -9,6 +9,7 @@ import ProfileForm from "./ProfileForm";
 import Banner from "../Banner";
 import HasNotAppliedView from "./presenters/HasNotAppliedView";
 import ApplicationResultView from "./presenters/ApplicationResultView";
+import Dashboard from "./presenters/Dashboard";
 
 import { sendApplicationXHR } from "../applicationHelper";
 import { updateSuccess, rsvp } from "../../actions";
@@ -73,7 +74,14 @@ class Profile extends React.Component {
 						}}
 					/>;
 		}
+		return (
+			<Dashboard 
+				info={info}
+				application={applicationFields}
+			/>
+		);
 
+		/*
 		if(!applicationFields) {
 			return (
 				<HasNotAppliedView
@@ -108,6 +116,7 @@ class Profile extends React.Component {
 				</Grid>
 			</div>
 		);
+		*/
 	}
 }
 
