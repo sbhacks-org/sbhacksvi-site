@@ -160,6 +160,7 @@ class ApplyForm extends React.Component {
 					label='Tell us about a project you are proud of (Optional, up to 1000 characters)'
 					placeholder='Tell us more about you...'
 					onChange={this.updateAdditionalDetails}
+					value={this.state.essay_answer}
 					maxLength={1000}
 					rows={5}
 				/>

@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch) => {
 	return bindActionCreators({ updateSuccess, rsvp }, dispatch);
 }
 
-class Profile extends React.Component {
+class ProfileEdit extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -58,7 +58,7 @@ class Profile extends React.Component {
 			this.finishUpdate(response);
 		});
 
-		sendApplicationXHR.call(xhttp, fields, "/profile/update");
+		sendApplicationXHR.call(xhttp, fields, "/profile/edit");
 	}
 
 	render() {
@@ -98,4 +98,4 @@ class Profile extends React.Component {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileEdit);
