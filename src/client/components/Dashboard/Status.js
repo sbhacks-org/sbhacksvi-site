@@ -21,7 +21,7 @@ const Status = ({application}) => {
 	{
 		return (
 			<Container textAlign='center'>
-				<Message>
+				<Message className="status_msg">
 				    <Message.Header>Incomplete</Message.Header>
 			  	</Message>
 			</Container>
@@ -33,7 +33,7 @@ const Status = ({application}) => {
 		{
 			return (
 				<Container textAlign='center'>
-					<Message style = {accepted}>
+					<Message className="status_msg" style = {accepted}>
 				    	<Message.Header>Accepted</Message.Header>
 			  		</Message>
 		  		</Container>
@@ -43,7 +43,7 @@ const Status = ({application}) => {
 		{
 			return (
 				<Container textAlign='center'>
-					<Message style = {notAccepted}>
+					<Message className="status_msg" style = {notAccepted}>
 				    	<Message.Header>Not Accepted</Message.Header>
 			  		</Message>
 			  	</Container>
@@ -54,7 +54,7 @@ const Status = ({application}) => {
 	{
 		return (
 			<Container textAlign='center'>
-				<Message style = {pending}>
+				<Message className="status_msg" style = {pending}>
 			    	<Message.Header>Pending</Message.Header>
 		  		</Message>
 		  	</Container>

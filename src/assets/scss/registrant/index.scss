@@ -61,20 +61,17 @@ a {
 
 .ui
 {
-	.message
+	.message.status_msg
 	{
 		background-color: #f5f5f5;
 		color: #191919;
-	}
-	.message
-	{
 		font-size: 1.8em;
 		padding: 10px;
 		.header
 		{
 			font-family: 'Didact Gothic', sans-serif;
 	    	font-weight: 200;
-		}
+		}	
 	}
 }
 
