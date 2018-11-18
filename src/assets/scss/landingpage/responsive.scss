@@ -34,16 +34,12 @@
           #logo-img {
             width: 35%;
           }
-          #star-swirl {
-            width: 40%;
-            left: 30%;
-          }
         }
       }
     }
   }
-  button {
-    font-size: 16px;
+  .btn {
+    font-size: 14px;
     margin-bottom: 1px;
   }
   h1 {
@@ -125,13 +121,6 @@
           #logo-img {
             width: 40%;
           }
-          #star-swirl {
-            width: 50%;
-            left: 25%;
-          }
-        }
-        #date {
-          font-size: 2em;
         }
       }
     }
@@ -146,13 +135,6 @@
           #logo-img {
             width: 50%;
           }
-          #star-swirl {
-            width: 60%;
-            left: 20%;
-          }
-        }
-        #date {
-          font-size: 2em;
         }
       }
     }
@@ -164,10 +146,6 @@
     h4 {
       font-size: 2em;
     }
-  }
-  .btn {
-    font-size: 1em;
-    padding: 1em 1.75em;
   }
 
   #intro {
@@ -189,15 +167,8 @@
             width: 50%;
           }
         }
-        #date {
-          font-size: 1.7em;
-        }
       }
     }
-  }
-  .btn {
-    font-size: 1em;
-    padding: 1em 1.75em;
   }
 }
 
@@ -206,19 +177,6 @@
     h4 {
       font-size: 0.5em;
     }
-  }
-  #initialpage-bg-color {
-    #initialpage {
-      #initialpage-content {
-        #date {
-          font-size: 1.5em;
-        }
-      }
-    }
-  }
-  .btn {
-    font-size: 1em;
-    padding: 0.75em 1.5em;
   }
 }
 

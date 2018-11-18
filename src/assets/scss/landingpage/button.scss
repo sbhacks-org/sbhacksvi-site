@@ -1,6 +1,6 @@
 //=== Drawing effect
 
-@mixin btn-border-drawing($color: #ccc, $hover: black, $width: 2px, $vertical: top, $horizontal: left, $duration: 0.25s) {
+@mixin btn-border-drawing($color: #ccc, $hover: black, $width: 2px, $vertical: top, $horizontal: left, $duration: 0.125s) {
 	box-shadow: inset 0 0 0 $width $color;
 	color: $color;
 	transition: color $duration $duration/3;
@@ -47,12 +47,12 @@
 }
 
 .draw-border {
-	@include btn-border-drawing(#ffcf35, #673695, 4px, bottom, right);
+	@include btn-border-drawing(white, #3d8ced, 3px, bottom, right);
 }
 
 //=== Button styling, semi-ignore
 .btn {
-	font-family: 'Bungee', cursive;
+    font-family: 'Lekton', sans-serif;
 	background: none;
 	color: white;
 	border: none;
