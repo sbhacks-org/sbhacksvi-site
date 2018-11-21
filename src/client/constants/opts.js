@@ -46,7 +46,7 @@ export const transportation = [
 ];
 
 export const dietary_restrictions = [
-	"Vegetarian", "Vegan", "Paleo", "Lactose Intolerant"
+	"Vegetarian", "Vegan", "Paleo", "Lactose Intolerant", "None"
 ].map(dietary_restriction => (
 	{ key: dietary_restriction, value: dietary_restriction, text: dietary_restriction }
 ));
