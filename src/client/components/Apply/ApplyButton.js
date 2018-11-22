@@ -11,7 +11,7 @@ const ApplyButton = (fields) => {
 		size: "large"
 	};
 	
-	let mlhChecked = fields.mlh;
+	let mlhChecked = fields.mlh && fields.share_mlh;
 
 	if(!mlhChecked || !isValidBasedOnTextFields(fields) || invalidResume(fields.resume)) btnProps.disabled = true;
 
