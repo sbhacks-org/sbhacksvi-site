@@ -27,7 +27,8 @@ class ApplyForm extends React.Component {
 			dietary_restrictions: [],
 			essay_answer: "",
 			resume: "",
-			mlh: false
+			mlh: false,
+			share_mlh: false
 		}
 		this.submitApplication = (evt) => {
 			evt.preventDefault();
@@ -58,6 +59,7 @@ class ApplyForm extends React.Component {
 		this.updateAdditionalDetails = (evt, { value }) => this.updateField("essay_answer", value);
 		this.updateResume = (status) => this.updateField("resume", status);
 		this.updateMlh = (evt) => this.updateField("mlh", !this.state.mlh);
+		this.updateShareMlh = (evt) => this.updateField("share_mlh", !this.state.share_mlh);
 	}
 
 	updateField(field_name, field_value) {
@@ -175,11 +177,21 @@ class ApplyForm extends React.Component {
 				<Checkbox
 					label={
 						<label>
-							I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>
+							<i>I agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a></i>
 						</label>
 					}
 					checked={this.state.mlh}
 					onChange={this.updateMlh}
+				/>
+
+				<Checkbox
+					label={
+						<label>
+							<i>I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the MLH Privacy Policy. I further I agree to the terms of both the MLH Contest Terms and Conditions and the MLH Privacy Policy.</i>
+						</label>
+					}
+					checked={this.state.share_mlh}
+					onChange={this.updateShareMlh}
 				/>
 
 			    <ApplyButton {...this.state} />
