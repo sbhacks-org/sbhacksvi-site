@@ -34,7 +34,7 @@ Promise.all([renderText, renderHTML])
 				const message = {
 					to: emails,
 					from: "SB Hacks <team@sbhacks.com>",
-					subject: "SB Hacks IV Applications are closing soon",
+					subject: "SB Hacks V Applications are closing soon",
 					text: content[0],
 					html: content[1]
 				};
