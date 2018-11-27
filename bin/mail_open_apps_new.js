@@ -13,12 +13,40 @@ let renderHTML = renderTemplate("open_apps.ejs");
 
 sgMail.setApiKey(process.env.SENDGRID_KEY);
 
+const mongoose = require('mongoose');
+const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/test';
+console.log(uri);
+mongoose.connect(uri, (err) => {
+	if (err) throw err;
+});
+
+const Schema = mongoose.Schema;
+
+var Email = mongoose.model('Email', new Schema({
+		email: 
+		{
+			type: String,
+			unique: true
+		}
+	})
+);
+
+function getEmails()
+{
+	return new Promise((resolve, reject) => {
+		Email.find({}, (err, emails) => {
+			if (err) reject(err);
+			resolve(emails);
+		});
+	});
+}
+
 Promise.all([renderText, renderHTML])
 .then((content) => {
-	Subscriber.findAll({})
-	.then((subscribers) => {
+	getEmails()
+	.then((emails) => {
 		const message = {
-			to: subscribers.map(subscriber => subscriber.email),
+			to: emails.map(email => email.email),
 			from: "SB Hacks <team@sbhacks.com>",
 			subject: "SB Hacks V Applications are OPEN!!",
 			text: content[0],

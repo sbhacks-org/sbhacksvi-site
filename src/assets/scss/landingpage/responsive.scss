@@ -144,6 +144,40 @@
   }
 }
 
+
+@media screen and (orientation:landscape) {
+  p {
+    font-size: 1.5em;
+  }
+  #content-container
+  {
+    padding: 10% 4%;
+    #intro {
+      h1 {
+        font-size: 5vw;
+      }
+      h4 {
+        font-size: 2vw;
+      }
+    }
+    #faq {
+      padding: 50px 0px;
+      .faq-item {        
+        width: 42%;
+        height: 10em;        
+        display: inline-block;
+        margin: 10px;
+        h1 {
+          font-size: 1.8em;
+        }
+        p {
+          font-size: 1.2em;
+        }
+      }
+    }
+  }
+}
+
 @media screen and (orientation:portrait) {
   #initialpage-bg-color {
     #initialpage {
@@ -193,6 +227,11 @@
   #content-container
   {
     padding: 10% 25px;
+    #faq {
+      .faq-item {
+        margin: 15px 0px;
+      }
+    }
   }
   #intro
   {
