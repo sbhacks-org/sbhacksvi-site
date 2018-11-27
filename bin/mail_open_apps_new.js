@@ -15,6 +15,7 @@ sgMail.setApiKey(process.env.SENDGRID_KEY);
 
 const mongoose = require('mongoose');
 const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/test';
+console.log(uri);
 mongoose.connect(uri, (err) => {
 	if (err) throw err;
 });
