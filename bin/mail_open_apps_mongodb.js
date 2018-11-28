@@ -52,7 +52,7 @@ Promise.all([renderText, renderHTML])
 			text: content[0],
 			html: content[1]
 		};
-
+		//console.log(emails);
 		sgMail.sendMultiple(message)
 		.then(process.exit);
 	})
