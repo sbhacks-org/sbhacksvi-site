@@ -24,9 +24,9 @@ Promise.all([renderText, renderHTML])
 			text: content[0],
 			html: content[1]
 		};
-		console.log(message);
-		//sgMail.sendMultiple(message)
-		//.then(process.exit);
+		//console.log(message);
+		sgMail.sendMultiple(message)
+		.then(process.exit);
 	})
 	.catch((err) => {
 		throw err;
