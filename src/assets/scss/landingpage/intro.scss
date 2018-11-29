@@ -1,25 +1,26 @@
 #intro {
 	text-align: left;
 	h1 {
-		font-size: 3.5vw;
+		font-size: 5vw;
 	}
-
+	h4 {
+		color: white;
+		font-family: 'Ubuntu Mono', monospace;
+		text-transform: uppercase;
+		margin: 5px 0;
+		font-size: 1.2vw;
+	}
 	#values {
 		margin-bottom: 30px;
 		.value {
-			display: inline-block;
+			display: inline-grid;
 			width: 20%;
 			margin-right: 15%;
 			text-align: center;
 			img {
 				width: 100%;
 			}
-			h4 {
-				color: white;
-				font-family: 'Ubuntu Mono', monospace;
-				text-transform: uppercase;
-				margin: 5px 0;
-			}
+			
 			&.no-margin {
 				margin: 0;
 			}
