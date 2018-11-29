@@ -8,7 +8,7 @@
   }
 }
 
-@media only screen and (max-width: 860px), (orientation:portrait) {
+@media only screen and (max-width: 860px) and (orientation:portrait) {
   #sponsor-container {
     padding: 0 5%;
     #wreaths {
@@ -18,23 +18,22 @@
       margin-top: -30px;
     }
   }
-  #intro {
-    #left {
-      width: 100%;
-      margin: 0px 0px;
-    }
-    #right {
-      width: 100%;
-      #memory {
-        img  {
-          width: 60%;
-          float: right;
+  #content-container
+  {
+    #intro {
+      #left {
+        width: 100%;
+        margin: 0px 0px;
+      }
+      #right {
+        width: 100%;
+        #memory {
+          img  {
+            width: 60%;
+            float: right;
+          }
         }
       }
-    }
-
-    h1 {
-      font-size: 2.5em;
     }
   }
 
@@ -48,7 +47,7 @@
 
 }
 
-@media all and (max-width: 660px), (orientation:portrait) {
+@media only screen and (max-width: 660px) and (orientation:portrait) {
   #intro {
     h4 {
       font-size: 0.7em;
@@ -145,34 +144,47 @@
 }
 
 
-@media screen and (orientation:landscape) {
+@media only screen and (max-width: 860px) and (orientation:landscape) {
   p {
     font-size: 1.5em;
   }
   #content-container
   {
     padding: 10% 4%;
-    #intro {
-      h1 {
-        font-size: 5vw;
-      }
-      h4 {
-        font-size: 2vw;
+  }
+  #intro {
+    h1 {
+      font-size: 5vw;
+    }
+    h4 {
+      font-size: 2vw;
+    }
+    #left {
+      width: 100%;
+      margin: 0px 0px;
+    }
+    #right {
+      width: 100%;
+      #memory {
+        img  {
+          width: 60%;
+          float: right;
+        }
       }
     }
-    #faq {
-      padding: 50px 0px;
-      .faq-item {        
-        width: 42%;
-        height: 10em;        
-        display: inline-block;
-        margin: 10px;
-        h1 {
-          font-size: 1.8em;
-        }
-        p {
-          font-size: 1.2em;
-        }
+  }
+  #faq {
+    padding: 50px 0px;
+    .faq-item {        
+      width: 42%;
+      height: 10em;        
+      display: inline-block;
+      margin: 10px;
+      h1 {
+        font-size: 1.8em;
+      }
+      p {
+        font-size: 1.2em;
       }
     }
   }
@@ -232,20 +244,20 @@
         margin: 15px 0px;
       }
     }
-  }
-  #intro
-  {
-    .video
+    #intro
     {
-      width: 70%;
-      height: 70%;
-      margin: 10%;
-    }
-    #summary
-    {
-      p
+      .video
       {
-        font-size: 2.2em;
+        width: 70%;
+        height: 70%;
+        margin: 10%;
+      }
+      #summary
+      {
+        p
+        {
+          font-size: 2.2em;
+        }
       }
     }
   }
