@@ -15,7 +15,7 @@ const ApplyButton = (fields) => {
 
 	if(!mlhChecked || !isValidBasedOnTextFields(fields) || invalidResume(fields.resume)) btnProps.disabled = true;
 
-	return <Button {...btnProps}>Submit Application</Button>
+	return <Button {...btnProps}>Save Application</Button>
 };
 
 export default ApplyButton;
