@@ -15,7 +15,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 app.use(helmet());
-app.use(favicon(path.join(__dirname, "static/images", "favicon.png")));
+app.use(favicon(path.join(__dirname, "static/images", "favicon.jpg")));
 app.use(express.static(path.join(__dirname, "static"), { maxAge: 60 * 60 * 1000 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
