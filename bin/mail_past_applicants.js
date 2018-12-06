@@ -29,12 +29,22 @@ Promise.all([renderText, renderHTML])
 
 	let emails = Array.from(new Set(sbhacks3_emails.concat(sbhacks4_emails)));
 
-	console.log(emails);
+	email_data = fs.readFileSync("./sbh5_applied_12_5_18.json", "utf-8");
+	let sbhacks5_emails = JSON.parse(email_data)["values"].map((user) => user[0]);
+	let difference = emails.filter(x => !sbhacks5_emails.includes(x));
 
-	rl.question(`Sending out ${emails.length} email(s). Would you like to continue? (y/n): `, (answer) => {
+	var halfIndex = Math.ceil(difference.length / 2)
+	console.log(halfIndex);
+
+	var leftArr = difference.splice(0, halfIndex);
+	let rightArr = difference.splice(halfIndex, difference.length);
+
+	console.log(leftArr);
+
+	rl.question(`Sending out ${leftArr.length} email(s). Would you like to continue? (y/n): `, (answer) => {
 		if(answer == "y") {
 			const message = {
-				to: emails,
+				to: leftArr,
 				from: "SB Hacks <team@sbhacks.com>",
 				subject: "SB Hacks V Applications are open!",
 				text: content[0],
