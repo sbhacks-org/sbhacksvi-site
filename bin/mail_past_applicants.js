@@ -37,14 +37,14 @@ Promise.all([renderText, renderHTML])
 	console.log(halfIndex);
 
 	var leftArr = difference.splice(0, halfIndex);
-	let rightArr = difference.splice(halfIndex, difference.length);
+	var rightArr = difference;
 
-	console.log(leftArr);
+	console.log(rightArr);
 
-	rl.question(`Sending out ${leftArr.length} email(s). Would you like to continue? (y/n): `, (answer) => {
+	rl.question(`Sending out ${rightArr.length} email(s). Would you like to continue? (y/n): `, (answer) => {
 		if(answer == "y") {
 			const message = {
-				to: leftArr,
+				to: rightArr,
 				from: "SB Hacks <team@sbhacks.com>",
 				subject: "SB Hacks V Applications are open!",
 				text: content[0],
