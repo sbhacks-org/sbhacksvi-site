@@ -28,13 +28,15 @@ Promise.all([renderText, renderHTML])
 	sequelize.query(no_app_user_query, { type: sequelize.QueryTypes.SELECT })
 	.then((users) => {
 		let emails = users.map((user) => user.email);
+
+		console.log(emails);
 		
 		rl.question(`Sending out ${emails.length} email(s). Would you like to continue? (y/n): `, (answer) => {
 			if(answer == "y") {
 				const message = {
 					to: emails,
 					from: "SB Hacks <team@sbhacks.com>",
-					subject: "SB Hacks V Applications are open!",
+					subject: "SB Hacks V Applications are closing soon!",
 					text: content[0],
 					html: content[1]
 				};
