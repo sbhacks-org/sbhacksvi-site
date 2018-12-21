@@ -66,11 +66,7 @@ class ProfileEdit extends React.Component {
 		const { isAuthenticated, applicationFields, info } = this.props;
 
 		if(!isAuthenticated || !applicationFields || process.env["apps_released"] !== "true") {
-			return <Redirect to={{
-							pathname: "/login",
-							state: { referrer: location.pathname }
-						}}
-					/>;
+			return <Redirect to="/login" />;
 		}
 
 		if (message) {
