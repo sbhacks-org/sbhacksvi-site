@@ -64,7 +64,14 @@ class Login extends React.Component {
 					loading={loading}
 					errors={errors}
 				/>
-				<Link to="/signup"><Button color="teal" fluid size="large">I don't have an account yet.</Button></Link>
+				{
+					process.env["apps_released"] === "true" ?
+					(
+						<Link to="/signup">
+							<Button color="teal" fluid size="large">I don't have an account yet.</Button>
+						</Link>
+					) : null
+				}
 				<div style={{
 					display: "block",
 					margin: "0 auto",
