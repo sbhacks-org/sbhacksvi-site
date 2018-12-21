@@ -25,9 +25,14 @@ const AddInfo = ({info, application}) => {
 					<div className="body">
 						<p className="body-text">We are currently reviewing your application. If you don't see an update by January 4th, please email us at <a href="mailto:team@sbhacks.com">team@sbhacks.com</a></p>
 					</div>
-					<Container textAlign='center'>
-						<Link to="/edit" id="apply-link"><Button color="blue">Edit Application</Button></Link>
-					</Container>
+					{
+						process.env["apps_released"] === "true" ?
+						(
+							<Container textAlign='center'>
+								<Link to="/edit" id="apply-link"><Button color="blue">Edit Application</Button></Link>
+							</Container>
+						) : null
+					}
 				</div>
 			);			
 		}
