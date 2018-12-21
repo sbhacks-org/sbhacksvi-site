@@ -48,7 +48,9 @@ class Signup extends React.Component {
 		const { loading, errors } = this.state;
 		const { isAuthenticated, location } = this.props
 
-		if(isAuthenticated) return <Redirect to={ location.state ? location.state.referrer : "/dashboard"} />;
+		if (isAuthenticated) return <Redirect to={ location.state ? location.state.referrer : "/dashboard"} />;
+
+		if(process.env["apps_released"] !== "true") { window.location.href = "/" };
 
 		return (
 			<div>
