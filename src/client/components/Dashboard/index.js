@@ -8,6 +8,8 @@ import Banner from "../Banner";
 import AddInfo from "./AddInfo";
 import Status from "./Status";
 
+import { rsvp } from "../../actions";
+
 const mapStateToProps = (state) => {
 	const { isAuthenticated, applicationFields, info } = state.user;
 	return {
@@ -15,6 +17,10 @@ const mapStateToProps = (state) => {
 		applicationFields,
 		info
 	}
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return bindActionCreators({ rsvp }, dispatch);
 }
 
 class Dashboard extends React.Component {
@@ -54,6 +60,7 @@ class Dashboard extends React.Component {
 				<AddInfo
 					info = {info}
 					application={applicationFields}
+					rsvpAction = {this.props.rsvp}
 				/>
 			</div>
 		);
@@ -61,4 +68,4 @@ class Dashboard extends React.Component {
 	}
 }
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
