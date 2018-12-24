@@ -31,7 +31,7 @@ const AddInfo = ({info, application, rsvpAction, cancelRsvpAction}) => {
 					<div className="body">
 						<p className="body-text">Congratulations, {info.first_name}! We are thrilled to invite you to SB Hacks V! We were impressed by your application and can't wait for you to create something extraordinary at UC Santa Barbara this January 11-13.</p>
 						<p className="body-text">Information about buses and travel reimbursement will be emailed out to you soon.</p>
-						<p className="body-text">We received an overwhelming 1,700+ applications this year for our limited 500 spots. To confirm your registration and save your spot, take a minute to <strong>RSVP</strong> no later than <strong>Friday, January 4th, 11:59 PM</strong>. If you will not be attending, please let us know as well so your spot can be given to a waitlisted hacker.</p>
+						<p className="body-text">We received an overwhelming 1,700+ applications this year for our limited 450 spots. To confirm your registration and save your spot, take a minute to <strong>RSVP</strong> no later than <strong>Friday, January 4th, 11:59 PM</strong>. If you will not be attending, please let us know as well so your spot can be given to a waitlisted hacker.</p>
 						{ rsvpDiv }
 					</div>
 				);
@@ -40,7 +40,7 @@ const AddInfo = ({info, application, rsvpAction, cancelRsvpAction}) => {
 			{
 				return (
 					<div className="body">
-						<p className="body-text">Unfortunately, we are unable to offer you admission to SB Hacks V. We had an overwhelming 1,700+ applications this year for our limited 500 spots. We encourage you to apply next year. Best of luck!</p>
+						<p className="body-text">Unfortunately, we are unable to offer you admission to SB Hacks V. We had an overwhelming 1,700+ applications this year for our limited 450 spots. We encourage you to apply next year. Best of luck!</p>
 					</div>
 				);
 			}
