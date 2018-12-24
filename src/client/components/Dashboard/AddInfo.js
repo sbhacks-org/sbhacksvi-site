@@ -35,7 +35,7 @@ const AddInfo = ({info, application, rsvpAction}) => {
 			{
 				return (
 					<div className="body">
-						<p className="body-text">We had an overwhelming 1,700+ applications this year for our limited 500 spots, so we can't guarantee you a spot just yet. We'll send you an email within the next 2-3 weeks for an update regarding your status if spots open up!</p>
+						<p className="body-text">We are currently reviewing your application. If you don't see an update by January 4th, please email us at <a href="mailto:team@sbhacks.com">team@sbhacks.com</a></p>
 					</div>
 				);
 			}

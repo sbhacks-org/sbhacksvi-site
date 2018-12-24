@@ -11,11 +11,6 @@ const accepted = {
 	color: 'white'
 }
 
-const waitlisted = {
-	backgroundColor: '#A48AF5',
-	color: 'white'
-}
-
 const pending = {
 	backgroundColor: '#644fb6',
 	color: 'white'
@@ -58,8 +53,8 @@ const Status = ({application}) => {
 		{
 			return (
 				<Container textAlign='center'>
-					<Message className="status_msg" style = {waitlisted}>
-				    	<Message.Header>Waitlisted</Message.Header>
+					<Message className="status_msg" style = {pending}>
+				    	<Message.Header>Pending</Message.Header>
 			  		</Message>
 			  	</Container>
 			);
