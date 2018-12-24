@@ -23,6 +23,9 @@ const userReducer = (state = initialState, action) => {
 	case actionTypes.RSVP: {
 		return { ...state, applicationFields: { ...state.applicationFields, ...action.payload } }
 	}
+	case actionTypes.CANCEL_RSVP: {
+		return { ...state, applicationFields: { ...state.applicationFields, ...action.payload } }
+	}
 	default:
 		return state;
 	}
