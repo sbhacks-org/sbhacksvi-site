@@ -13,7 +13,7 @@ module.exports.send = (user) => {
 		const message = {
 			to: user.email,
 			from: "SB Hacks <team@sbhacks.com>",
-			subject: "SB Hacks V Event Logistics Part 1",
+			subject: "Important Information for SB Hacks V",
 			text: content[0],
 			html: content[1]
 		};
