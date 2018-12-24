@@ -8,20 +8,37 @@ const AddInfo = ({info, application, rsvpAction}) => {
 	{
 		if (process.env["decisions_released"] === "true")
 		{
-			return application.accepted ?
-				(<div className="body">
-					<p className="body-text">Congratulations, {info.first_name}! We are thrilled to invite you to SB Hacks V! We were impressed by your application and can't wait for you to create something extraordinary at UC Santa Barbara this January 11-13.</p>
-					<p className="body-text">Information about buses and travel reimbursement will be emailed out to you soon.</p>
-					<p className="body-text">We received an overwhelming 1,700+ applications this year for our limited 500 spots. To confirm your registration and save your spot, take a minute to <strong>RSVP</strong> no later than <strong>Friday, January 4th, 11:59 PM</strong>.</p>
-				{
-					application.rsvp ?
-						<p className="body-text">Your <strong>RSVP</strong> has been noted. We look forward to seeing you at SB Hacks!</p> :
-						<Button fluid color="teal" onClick={rsvpAction}>RSVP</Button>
-				}
-				</div>) : 
-				(<div className="body">
-					<p className="body-text">Unfortunately, we are unable to offer you admission to SB Hacks V. We had an overwhelming 1,700+ applications this year for our limited 500 spots. We encourage you to apply next year. Best of luck!</p>
-				</div>)
+			if (application.accepted===true)
+			{
+				return (
+					<div className="body">
+						<p className="body-text">Congratulations, {info.first_name}! We are thrilled to invite you to SB Hacks V! We were impressed by your application and can't wait for you to create something extraordinary at UC Santa Barbara this January 11-13.</p>
+						<p className="body-text">Information about buses and travel reimbursement will be emailed out to you soon.</p>
+						<p className="body-text">We received an overwhelming 1,700+ applications this year for our limited 500 spots. To confirm your registration and save your spot, take a minute to <strong>RSVP</strong> no later than <strong>Friday, January 4th, 11:59 PM</strong>.</p>
+						{
+							application.rsvp ?
+								<p className="body-text">Your <strong>RSVP</strong> has been noted. We look forward to seeing you at SB Hacks!</p> :
+								<Button fluid color="teal" onClick={rsvpAction}>RSVP</Button>
+						}
+					</div>
+				);
+			}
+			else if (application.accepted===false)
+			{
+				return (
+					<div className="body">
+						<p className="body-text">Unfortunately, we are unable to offer you admission to SB Hacks V. We had an overwhelming 1,700+ applications this year for our limited 500 spots. We encourage you to apply next year. Best of luck!</p>
+					</div>
+				);
+			}
+			else
+			{
+				return (
+					<div className="body">
+						<p className="body-text">We had an overwhelming 1,700+ applications this year for our limited 500 spots, so we can't guarantee you a spot just yet. We'll send you an email within the next 2-3 weeks for an update regarding your status if spots open up!</p>
+					</div>
+				);
+			}
 		}
 		else
 		{

@@ -11,6 +11,11 @@ const accepted = {
 	color: 'white'
 }
 
+const waitlisted = {
+	backgroundColor: '#A48AF5',
+	color: 'white'
+}
+
 const pending = {
 	backgroundColor: '#644fb6',
 	color: 'white'
@@ -29,7 +34,7 @@ const Status = ({application}) => {
 	}
 	if (process.env["decisions_released"] === "true")
 	{
-		if(application.accepted)
+		if(application.accepted===true)
 		{
 			return (
 				<Container textAlign='center'>
@@ -39,12 +44,22 @@ const Status = ({application}) => {
 		  		</Container>
 			);
 		}
-		else
+		else if (application.accepted===false)
 		{
 			return (
 				<Container textAlign='center'>
 					<Message className="status_msg" style = {notAccepted}>
 				    	<Message.Header>Not Accepted</Message.Header>
+			  		</Message>
+			  	</Container>
+			);
+		}
+		else
+		{
+			return (
+				<Container textAlign='center'>
+					<Message className="status_msg" style = {waitlisted}>
+				    	<Message.Header>Waitlisted</Message.Header>
 			  		</Message>
 			  	</Container>
 			);
