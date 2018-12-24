@@ -8,7 +8,7 @@ import Banner from "../Banner";
 import AddInfo from "./AddInfo";
 import Status from "./Status";
 
-import { rsvp } from "../../actions";
+import { cancelRsvp, rsvp } from "../../actions";
 
 const mapStateToProps = (state) => {
 	const { isAuthenticated, applicationFields, info } = state.user;
@@ -20,7 +20,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-	return bindActionCreators({ rsvp }, dispatch);
+	return bindActionCreators({ cancelRsvp, rsvp }, dispatch);
 }
 
 class Dashboard extends React.Component {
@@ -61,6 +61,7 @@ class Dashboard extends React.Component {
 					info = {info}
 					application={applicationFields}
 					rsvpAction = {this.props.rsvp}
+					cancelRsvpAction = {this.props.cancelRsvp}
 				/>
 			</div>
 		);

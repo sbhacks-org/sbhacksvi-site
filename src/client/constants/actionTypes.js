@@ -5,3 +5,4 @@ export const LOG_OUT_SUCCESS = "LOG_OUT_SUCCESS";
 export const FETCH_SCHOOL_LIST_SUCCESS = "FETCH_SCHOOL_LIST_SUCCESS";
 export const ADD_TO_SCHOOL_LIST = "ADD_TO_SCHOOL_LIST";
 export const RSVP = "RSVP";
+export const CANCEL_RSVP = "CANCEL_RSVP";

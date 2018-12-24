@@ -91,3 +91,25 @@ export const rsvp = () => {
 		xhttp.send();
 	};
 };
+
+export const cancelRsvp = () => {
+	return function(dispatch, getState) {
+		let state = getState();
+		const { user: { applicationFields } } = state;
+
+		if(applicationFields.rsvp) return;
+
+		var xhttp = new XMLHttpRequest();
+
+		xhttp.addEventListener("load", () => {
+			let response = JSON.parse(xhttp.responseText);
+			dispatch({
+				type: actionTypes.CANCEL_RSVP,
+				payload: response
+			})
+		});
+
+		xhttp.open("POST", "/profile/cancel-rsvp");
+		xhttp.send();
+	};
+}
