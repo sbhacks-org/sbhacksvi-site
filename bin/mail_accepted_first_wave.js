@@ -21,11 +21,6 @@ let rl = readline.createInterface({
 
 Promise.all([renderText, renderHTML])
 .then((content) => {
-	/*
-		First wave: 
-		- all 4s and 5s
-		- all 3s from UCSB, USC, UCLA, UCI, UCB, UCSD, Caltech, SLO
-	*/
 	let no_app_user_query = `
 		SELECT email FROM users
 		LEFT JOIN applications ON applications.user_id = users.id
