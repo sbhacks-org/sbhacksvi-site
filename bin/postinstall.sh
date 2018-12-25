@@ -8,10 +8,12 @@ if [ "$NODE_ENV" == "production" ]
 then
 	$NODE_SASS --output-style=compressed $SCSS_PATH/landingpage/index.scss $CSS_OUTPUT_PATH/landingpage.css;
 	$NODE_SASS --output-style=compressed $SCSS_PATH/registrant/index.scss $CSS_OUTPUT_PATH/registrant.css;
+	$NODE_SASS --output-style=compressed $SCSS_PATH/livepage/index.scss $CSS_OUTPUT_PATH/livepage.css;
 	node bin/compile_landingpage.js
 	npm run react-build:production;
 else
 	$NODE_SASS $SCSS_PATH/landingpage/index.scss $CSS_OUTPUT_PATH/landingpage.css;
 	$NODE_SASS $SCSS_PATH/registrant/index.scss $CSS_OUTPUT_PATH/registrant.css;
+	$NODE_SASS $SCSS_PATH/livepage/index.scss $CSS_OUTPUT_PATH/livepage.css;
 	npm run react-build;
 fi

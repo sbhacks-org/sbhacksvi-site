@@ -1,54 +1,40 @@
-$l-blue: #33ccff;
-$d-green: #5FB49C;
-$l-green: #98DFAF;
-$gray: #bbbbbb;
-
-@import url('https://fonts.googleapis.com/css?family=Raleway');
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
-
-body {
-  background-color: #414288;
-  padding: 0;
+html, body {
+  background: #191919;
   margin: 0;
+  color: white;
   text-align: center;
-  height: 100%;
-  width: 98%;
-  font-family: 'Raleway', sans-serif;
-  padding-left: 30px;
+  font-family: 'Didact Gothic', sans-serif;
+  font-weight: 400;
+  min-width: 250px;
+  font-size: 1.15vw;
 }
 
-* {
-  margin: 0;
-  padding: 0;
+h1 {
+  font-family: 'Lekton', sans-serif;
+  font-size: 5vw;
 }
 
- 
-nav {
-  margin: 50px;
+a {
+  display: inline-block;
 }
- 
+
 ul {
-   overflow: hidden;
+  overflow: hidden;
   list-style-type: none;
 }
- 
-li {
+
+ul#menu li {
+  display: inline;
   height: 25px;
   float: left;
   margin-right: 0px;
   border-right: 1px solid #aaa;
   padding: 0 20px;
 }
- 
-li:last-child {
-  border-right: none;
-}
- 
+
 li a {
   text-decoration: none;
-  color: #ccc;
-  font: 25px/1 Helvetica, Verdana, sans-serif;
-  text-transform: uppercase;
+  color: white;
  
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -56,105 +42,3 @@ li a {
   -ms-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
- 
-li a:hover {
-  color: #666;
-}
- 
-li.active a {
-  font-weight: bold;
-  color: #333;
-}
-
-
-h1 {
-  font-size: 2em;
-  color: $l-green;
-}
-
-.title {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 5em;
-  margin-top: 0;
-}
-
-.stitle {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 4em;
-  margin-top: 0;
-}
-
-p {
-  font-size: 1.25em;
-  color: #DEEFB7;
-}
-
-a {
-	color: white;
-	text-decoration: none;
-
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-
-	&:hover{
-		color: grey;
-		text-decoration: none;
-		.icon{
-				opacity: 0.3;
-		}
-	}
-	&:active{
-		color: white;
-		text-decoration: none;
-	}
-}
-
-#live-buttons{
-	a {
-		border: 2px solid white;
-		border-radius: 5px;
-		margin-left: 15px;
-		margin-right: 15px;
-		font-size: 25px;
-		&:hover{
-			border: 2px solid $d-green;
-			color: $l-green;
-		}
-	}
-}
-
-#project{
-	margin-left: 15%;
-	width: 70%;
-	border-top: 2px solid white;
-}
-
-#side-info{
-	border:2px solid white;
-	height: 324px;
-	p {
-
-
-
-	}
-}
-
-.icon{
-	width: 5%;
-
-	-webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-
-	&:hover{
-		opacity: 0.7;
-	}
-}
-
-
-@import 'responsive';
