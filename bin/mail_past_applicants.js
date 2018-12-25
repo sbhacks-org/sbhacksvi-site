@@ -33,7 +33,7 @@ Promise.all([renderText, renderHTML])
 	let sbhacks5_emails = JSON.parse(email_data)["values"].map((user) => user[0]);
 	let difference = emails.filter(x => !sbhacks5_emails.includes(x));
 
-	var halfIndex = Math.ceil(difference.length / 2)
+	var halfIndex = Math.ceil(difference.length / 2);
 	console.log(halfIndex);
 
 	var leftArr = difference.splice(0, halfIndex);

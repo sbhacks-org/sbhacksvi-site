@@ -13,8 +13,8 @@ let renderHTML = renderTemplate("open_apps.ejs");
 
 sgMail.setApiKey(process.env.SENDGRID_KEY);
 
-const mongoose = require('mongoose');
-const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/test';
+const mongoose = require("mongoose");
+const uri = process.env.MONGODB_URI || "mongodb://localhost:27017/test";
 console.log(uri);
 mongoose.connect(uri, (err) => {
 	if (err) throw err;
@@ -22,13 +22,13 @@ mongoose.connect(uri, (err) => {
 
 const Schema = mongoose.Schema;
 
-var Email = mongoose.model('Email', new Schema({
-		email: 
-		{
-			type: String,
-			unique: true
-		}
-	})
+var Email = mongoose.model("Email", new Schema({
+	email: 
+	{
+		type: String,
+		unique: true
+	}
+})
 );
 
 function getEmails()

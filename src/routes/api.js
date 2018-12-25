@@ -11,7 +11,7 @@ let school_query = (include_sql) => {
 		GROUP BY schools.id
 		ORDER BY ${include_sql} application_count DESC
 		LIMIT 200;`;
-}
+};
 
 router.get("/schools", (req, res) => {
 	let { include } = req.query;
@@ -24,7 +24,7 @@ router.get("/schools", (req, res) => {
 		.then((schools) => {
 			schoolQueryCache.set(include_sql, schools, () => res.json(schools));
 		});
-});
+	});
 	
 });
 
