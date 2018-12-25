@@ -2,6 +2,8 @@ import React from "react";
 import { Button, Container } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
+//comment for redeploy
+
 const AddInfo = ({info, application, rsvpAction, cancelRsvpAction}) => {
 
 	if (application)
