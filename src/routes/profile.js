@@ -23,7 +23,7 @@ router.post("/rsvp", isLoggedIn, (req, res, next) => {
 		.catch((err) => next(err));
 	} else {
 		res.status(400).json({ message: "You are not permitted to do this" });
-	};
+	}
 });
 
 router.post("/cancel-rsvp", isLoggedIn, (req, res, next) => {
@@ -37,7 +37,7 @@ router.post("/cancel-rsvp", isLoggedIn, (req, res, next) => {
 		.catch((err) => next(err));
 	} else {
 		res.status(400).json({ message: "You are not permitted to do this" });
-	};	
+	}	
 });
 
 router.post("/edit", isLoggedIn, (req, res, next) => {

@@ -50,4 +50,4 @@ Promise.all([renderText, renderHTML])
 	.catch((err) => {
 		throw err;
 	});
-})
+});

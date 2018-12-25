@@ -84,7 +84,7 @@ export const rsvp = () => {
 			dispatch({
 				type: actionTypes.RSVP,
 				payload: response
-			})
+			});
 		});
 
 		xhttp.open("POST", "/profile/rsvp");
@@ -106,10 +106,10 @@ export const cancelRsvp = () => {
 			dispatch({
 				type: actionTypes.CANCEL_RSVP,
 				payload: response
-			})
+			});
 		});
 
 		xhttp.open("POST", "/profile/cancel-rsvp");
 		xhttp.send();
 	};
-}
+};

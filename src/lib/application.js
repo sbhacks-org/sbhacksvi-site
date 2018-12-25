@@ -15,7 +15,7 @@ const resolveWithSchoolId = (school_id, resolve) => {
 	} else {
 		resolve(school_id);
 	}
-}
+};
 
 module.exports.saveApplication = (user, fields) => {
 	return new Promise((resolve, reject) => { 

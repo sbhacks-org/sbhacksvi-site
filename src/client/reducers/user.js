@@ -21,10 +21,10 @@ const userReducer = (state = initialState, action) => {
 		return { isAuthenticated: false, applicationFields: null, info: null };
 	}
 	case actionTypes.RSVP: {
-		return { ...state, applicationFields: { ...state.applicationFields, ...action.payload } }
+		return { ...state, applicationFields: { ...state.applicationFields, ...action.payload } };
 	}
 	case actionTypes.CANCEL_RSVP: {
-		return { ...state, applicationFields: { ...state.applicationFields, ...action.payload } }
+		return { ...state, applicationFields: { ...state.applicationFields, ...action.payload } };
 	}
 	default:
 		return state;
