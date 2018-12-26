@@ -6,12 +6,12 @@ html, body {
   font-family: 'Didact Gothic', sans-serif;
   font-weight: 400;
   min-width: 250px;
-  font-size: 1.15vw;
+  font-size: 1.5vw;
 }
 
 h1 {
   font-family: 'Lekton', sans-serif;
-  font-size: 5vw;
+  font-size: 3em;
 }
 
 a {
@@ -25,11 +25,22 @@ ul {
 
 ul#menu li {
   display: inline;
-  height: 25px;
+  height: 1.5em;
   float: left;
   margin-right: 0px;
   border-right: 1px solid #aaa;
   padding: 0 20px;
+}
+
+#twitter-row {
+  width: 33%;
+  height: 70%;
+  float: left;
+}
+
+.row {
+  padding: 5%;
+  clear: both;
 }
 
 li a {
@@ -42,3 +53,5 @@ li a {
   -ms-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
+
+@import 'responsive';
