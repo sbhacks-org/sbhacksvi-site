@@ -19,10 +19,12 @@
 	];
 %>
 
-
+<div class="row" id="challenge">
+	<h1 class="title" id="Challenges">< Challenges /></h1>
 	<% challenge_blocks.forEach((challenge_block) => { %>
 		<div class="challenge-item">
 			<h1><%- challenge_block.title %></h1>
 			<p><%- challenge_block.description %></p>
 		</div>
 	<% }) %>
+</div>
