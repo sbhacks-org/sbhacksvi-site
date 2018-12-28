@@ -28,6 +28,11 @@ ul {
   list-style-type: none;
 }
 
+#info {
+  text-align: left;
+  font-size: 1.5em;
+}
+
 ul#menu li {
   display: inline;
   height: 2em;
@@ -35,6 +40,18 @@ ul#menu li {
   margin-right: 0px;
   border-right: 1px solid #aaa;
   padding: 0 20px;
+
+  a {
+    font-size: 1.5em;
+    text-decoration: none;
+    color: white;
+ 
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
 }
 
 #twitter-row {
@@ -48,16 +65,8 @@ ul#menu li {
   clear: both;
 }
 
-li a {
-  font-size: 1.5em;
-  text-decoration: none;
-  color: white;
- 
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+img {
+  max-width: 100%;
 }
 
 #challenge {
