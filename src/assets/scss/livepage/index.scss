@@ -6,12 +6,17 @@ html, body {
   font-family: 'Didact Gothic', sans-serif;
   font-weight: 400;
   min-width: 250px;
-  font-size: 1.5vw;
+  font-size: 1.15vw;
 }
 
 h1 {
   font-family: 'Lekton', sans-serif;
   font-size: 3em;
+}
+
+h2 {
+  font-family: 'Lekton', sans-serif;
+  font-size: 2em;
 }
 
 a {
@@ -25,7 +30,7 @@ ul {
 
 ul#menu li {
   display: inline;
-  height: 1.5em;
+  height: 2em;
   float: left;
   margin-right: 0px;
   border-right: 1px solid #aaa;
@@ -44,6 +49,7 @@ ul#menu li {
 }
 
 li a {
+  font-size: 1.5em;
   text-decoration: none;
   color: white;
  
@@ -52,6 +58,33 @@ li a {
   -o-transition: all 0.5s ease;
   -ms-transition: all 0.5s ease;
   transition: all 0.5s ease;
+}
+
+#challenge {
+  padding: 200px 25px;
+}
+
+.challenge-item {
+  vertical-align: top;
+  display: inline-block;
+  width: 38%;
+  padding: 2%;
+  text-align: left;
+  padding: 2em 2%;
+  height: 7em;
+    border: 1px white dashed;
+    margin: 10px;
+  h1, p {
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 1.5em;
+    margin-bottom: 0.3em;
+  }
+  p {
+    font-size: 0.9em;
+  }
 }
 
 @import 'responsive';

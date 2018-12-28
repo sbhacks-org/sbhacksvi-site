@@ -1,0 +1,28 @@
+<%
+	let challenge_blocks = [
+		{
+			title: "Best Challenge",
+			description: "Make something good."
+		},
+		{
+			title: "Best Challenge",
+			description: "Make something good."
+		},
+		{
+			title: "Best Challenge",
+			description: "Make something good."
+		},
+		{
+			title: "Best Challenge",
+			description: "Make something good."
+		}
+	];
+%>
+
+
+	<% challenge_blocks.forEach((challenge_block) => { %>
+		<div class="challenge-item">
+			<h1><%- challenge_block.title %></h1>
+			<p><%- challenge_block.description %></p>
+		</div>
+	<% }) %>

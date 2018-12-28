@@ -1,26 +1,27 @@
 <html>
-	<head>
-		<link rel="stylesheet" type="text/css" href="/css/livepage.css" />
-		<link href="https://fonts.googleapis.com/css?family=Lekton" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
-  		<link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
+<head>
+	<link rel="stylesheet" type="text/css" href="/css/livepage.css" />
+	<link href="https://fonts.googleapis.com/css?family=Lekton" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
 
-		<title>SB Hacks V: Live</title>
-	</head>
-	<body>
-		<nav>
-		  <ul id="menu">
-		    <li><a href="http://sbhacks.com" style="color:#98DFAF;">SB Hacks IV</a></li>
-		    <li><a href="#Schedule">Schedule</a></li>
-		    <li><a href="#Map">Map</a></li>
-		    <li><a href="#Challenges">Challenges</a></li>
-		  </ul>
-		</nav>
-		<div class="row">
-			<h1 class="title">Live Page</h1>
-			<p> Welcome to SB Hacks Live Page, where you can obtain the newest information about this event!</p>
-			<p>Please log into our slack channel for help and other activities.</p>
-		</div>
+	<title>SB Hacks V: Live</title>
+</head>
+<body>
+	<nav>
+		<ul id="menu">
+			<li><a href="http://sbhacks.com" style="color:#98DFAF;">SB Hacks IV</a></li>
+			<li><a href="#Schedule">Schedule</a></li>
+			<li><a href="#Map">Map</a></li>
+			<li><a href="#Challenges">Challenges</a></li>
+		</ul>
+	</nav>
+	<div class="row">
+		<h1 class="title">SB Hacks V: Live!</h1>
+		<p> Welcome to SB Hacks Live Page, where you can obtain the newest information about this event!</p>
+		<p>Please log into our slack channel for help and other activities.</p>
+		<h2 id="countdown"></h2>
+	</div>
 		<!--
 		<div id="project" class="row">
 			<p class="stitle">Project Due On Sunday 10AM</p>
@@ -30,34 +31,34 @@
 			<br>
 		</div>
 	-->
-		<br>
-		<div class="row">
-			<h1 class="title">Updates/Important Info</h1>
-			<div id= "twitter-row">
-				<a class="twitter-timeline tw-align-center" data-height="100%" data-width="100%" data-theme="dark" href="https://twitter.com/SB_Hacks">Tweets by SB_Hacks</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-			</div>
-			<div id="side-info">				
-				<p>Slack: <a href="http://localhost:5000/live">SBHACKSIV_STUB.slack.com</a></p>
-				<p>Incidence Report: <a href="http://localhost:5000/live"> STUB bit.ly LINK HERE</a></p>
-				<p>
-					Wi-Fi SSID: <span style="color: white;">Edurom (UC students only)</span><br>
-					Password: <span style="color: white;">#Your password for your UC account</span>
-				</p>
-			</div>
+	<div class="row">
+		<h1 class="title">Updates/Important Info</h1>
+		<div id= "twitter-row">
+			<a class="twitter-timeline tw-align-center" data-height="100%" data-width="100%" data-theme="dark" href="https://twitter.com/SB_Hacks">Tweets by SB_Hacks</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 		</div>
-		<div class="row">
-			<h1 class="title" id="Schedule">Schedule</h1>
-			<img src="/images/schedule.png" alt="Schedule">
+		<div id="side-info">				
+			<p>Slack: <a href="sbhacks.com/slack">sbhacks.com/slack</a></p>
+			<p>Incidence Report: <a href="http://localhost:5000/live"> STUB bit.ly LINK HERE</a></p>
+			<p>
+				Wi-Fi SSID: <span style="color: white;">Edurom (UC students only)</span><br>
+				Password: <span style="color: white;">#Your password for your UC account</span>
+			</p>
 		</div>
-		<div class="row">
-			<h1 class="title" id="Map">Map</h1>
-			<iframe width="80%" height="450" frameborder="0" style="border:0" scrolling="no" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJcQL6_m0_6YAR9rR5ZjAzxVU&key=AIzaSyDAv2h8__EcJ19DzMw_UEEKY_81kMbPQ0o" allowfullscreen></iframe>
-		</div>
-		<div class="row">
-			<h1 class="title" id="Challenges">Challenges</h1>
-		</div>
-	</body>
-	<script src="/js/live/clock.js"></script>
+	</div>
+	<div class="row">
+		<h1 class="title" id="Schedule">Schedule</h1>
+		<img src="/images/schedule.png" alt="Schedule">
+	</div>
+	<div class="row">
+		<h1 class="title" id="Map">Map</h1>
+		<iframe width="80%" height="450" frameborder="0" style="border:0" scrolling="no" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJcQL6_m0_6YAR9rR5ZjAzxVU&key=AIzaSyDAv2h8__EcJ19DzMw_UEEKY_81kMbPQ0o" allowfullscreen></iframe>
+	</div>
+	<div class="row" id="challenge">
+		<h1 class="title" id="Challenges">Challenges</h1>
+		<%- include("partials/live/challenges") %>
+	</div>
+</body>
+<script src="/js/live/clock.js"></script>
 </html>
 
 
