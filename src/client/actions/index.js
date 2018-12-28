@@ -97,7 +97,7 @@ export const cancelRsvp = () => {
 		let state = getState();
 		const { user: { applicationFields } } = state;
 
-		if(!applicationFields.rsvp) return;
+		if(applicationFields.rsvp === false) return;
 
 		var xhttp = new XMLHttpRequest();
 
