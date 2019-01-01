@@ -28,18 +28,35 @@ ul {
   list-style-type: none;
 }
 
+#navbar {
+  text-align: center;
+  overflow: hidden;
+  background-color: #191919;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}
+
 #info {
   text-align: left;
   font-size: 1.5em;
 }
 
-ul#menu li {
-  display: inline;
-  height: 2em;
-  float: left;
-  margin-right: 0px;
-  border-right: 1px solid #aaa;
-  padding: 0 20px;
+ul#menu {
+  display: inline-block;
+  padding: 0;
+  li {
+    display: inline;
+    height: 2em;
+    float: left;
+    margin: 0px;
+    border-right: 1px solid #aaa;
+    padding: 0 20px;
+  }
+
+  li:last-child {
+    border-right: none;
+  }
 
   a {
     font-size: 1.5em;
@@ -51,6 +68,10 @@ ul#menu li {
     -o-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
     transition: all 0.5s ease;
+  }
+
+  a:hover {
+    color: #98DFAF;
   }
 }
 
