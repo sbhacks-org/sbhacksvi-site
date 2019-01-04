@@ -57,7 +57,7 @@ const AddInfo = ({info, application, rsvpAction, cancelRsvpAction}) => {
 			{
 				return (
 					<div className="body">
-						<p className="body-text">We are currently reviewing your application. If you don't see an update by January 4th, please email us at <a href="mailto:team@sbhacks.com">team@sbhacks.com</a></p>
+						<p className="body-text">You're currently on the waitlist. We'll let you know if spots open up! If you don't see an update by January 5th, please email us at <a href="mailto:team@sbhacks.com">team@sbhacks.com</a></p>
 					</div>
 				);
 			}
@@ -67,7 +67,7 @@ const AddInfo = ({info, application, rsvpAction, cancelRsvpAction}) => {
 			return (
 				<div>
 					<div className="body">
-						<p className="body-text">We are currently reviewing your application. If you don't see an update by January 4th, please email us at <a href="mailto:team@sbhacks.com">team@sbhacks.com</a></p>
+						<p className="body-text">We are currently reviewing your application. If you don't see an update by January 5th, please email us at <a href="mailto:team@sbhacks.com">team@sbhacks.com</a></p>
 					</div>
 					{
 						process.env["apps_released"] === "true" ?
