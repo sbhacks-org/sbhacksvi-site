@@ -57,7 +57,7 @@ const AddInfo = ({info, application, rsvpAction, cancelRsvpAction}) => {
 			{
 				return (
 					<div className="body">
-						<p className="body-text">Due to the overwhelming 2100+ applications we received this year, we are unfortunately unable to guarantee you a spot for SBHacks V. However, given that you're located fairly local, we would like for you to join us if a spot opens up. We'll be sending you an email soon on what you can do to be able to attend the event.</p>
+						<p className="body-text">Due to the overwhelming 2100+ applications we received this year, we are unfortunately unable to guarantee you a spot for SB Hacks V. However, given that you're nearby, we would like for you to join us if a spot opens up. We'll be sending you an email soon on what you can do to receive admission to SB Hacks V.</p>
 					</div>
 				);
 			}
