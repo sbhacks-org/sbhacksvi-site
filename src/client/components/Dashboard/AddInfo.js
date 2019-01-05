@@ -39,7 +39,7 @@ const AddInfo = ({info, application, rsvpAction, cancelRsvpAction}) => {
 					<div className="body">
 						<p className="body-text">Congratulations, {info.first_name}! We are thrilled to invite you to SB Hacks V! We were impressed by your application and can't wait for you to create something extraordinary at SB Hacks this January 11-13.</p>
 						<p className="body-text">Information about buses and travel reimbursement will be emailed out to you soon.</p>
-						<p className="body-text">We received an overwhelming 2,100+ applications this year and only 450 spots available. To confirm your registration and save your spot, take a minute to <strong>RSVP</strong> no later than <strong>Friday, January 4th, 11:59 PM</strong>. If you will not be attending, please let us know as well so we can open up more spots for others.</p>
+						<p className="body-text">We received an overwhelming 2,100+ applications this year and only 450 spots available. To confirm your registration and save your spot, take a minute to <strong>RSVP</strong> no later than <strong>Tuesday, January 8th, 11:59 PM</strong>. If you will not be attending, please let us know as well so we can open up more spots for others.</p>
 						<p className="body-text">If you decide to RSVP, head on over to our facebook event page at <a href="http://www.sbhacks.com/fb-event" target="_blank">http://www.sbhacks.com/fb-event</a> and click "Going"!</p>
 						{ rsvpDiv }
 					</div>
@@ -57,7 +57,7 @@ const AddInfo = ({info, application, rsvpAction, cancelRsvpAction}) => {
 			{
 				return (
 					<div className="body">
-						<p className="body-text">You're currently on the waitlist. We'll let you know if spots open up! If you don't see an update by January 5th, please email us at <a href="mailto:team@sbhacks.com">team@sbhacks.com</a></p>
+						<p className="body-text">Due to the overwhelming 2100+ applications we received this year, we are unfortunately unable to guarantee you a spot for SBHacks V. However, given that you're located fairly local, we would like for you to join us if a spot opens up. We'll be sending you an email soon on what you can do to be able to attend the event.</p>
 					</div>
 				);
 			}
