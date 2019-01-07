@@ -17,25 +17,27 @@
 			<li><a href="#Challenges">Challenges</a></li>
 		</ul>
 	</nav>
-	<div class="row">
-		<h1 class="title">SB Hacks V: Live!</h1>
-		<p> Welcome to SB Hacks Live Page, where you can obtain the newest information about this event!</p>
-		<p>Please log into our slack channel for help and other activities.</p>
-		<h2 id="countdown"></h2>
-	</div>
-		<!--
-		<div id="project" class="row">
-			<p class="stitle">Project Due On Sunday 10AM</p>
-			<p id="demo"></p>
-			<a href="https://sbhacksiii.devpost.com/" target="_blank"><img class="icon" src="./images/devpost.svg"> Submit Now!</a>
-			<br>
-			<br>
+	<div id="content-container">
+		<div class="row">
+			<h1 class="title">SB Hacks V: Live!</h1>
+			<p> Welcome to SB Hacks Live Page, where you can obtain the newest information about this event!</p>
+			<p>Please log into our slack channel for help and other activities.</p>
+			<h2 id="countdown"></h2>
 		</div>
-	-->	
-	<%- include("partials/live/updates") %>
-	<%- include("partials/live/schedule") %>
-	<%- include("partials/live/map") %>
-	<%- include("partials/live/challenges") %>
+			<!--
+			<div id="project" class="row">
+				<p class="stitle">Project Due On Sunday 10AM</p>
+				<p id="demo"></p>
+				<a href="https://sbhacksiii.devpost.com/" target="_blank"><img class="icon" src="./images/devpost.svg"> Submit Now!</a>
+				<br>
+				<br>
+			</div>
+		-->	
+		<%- include("partials/live/updates") %>
+		<%- include("partials/live/schedule") %>
+		<%- include("partials/live/map") %>
+		<%- include("partials/live/challenges") %>
+	</div>
 
 </body>
 <script src="/js/live/clock.js"></script>

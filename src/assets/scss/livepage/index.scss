@@ -40,7 +40,8 @@ ul {
 }
 
 #info {
-  text-align: left;
+  float: left;
+  text-align: center;
   font-size: 1.5em;
 }
 
@@ -77,10 +78,10 @@ ul#menu {
   }
 }
 
-#twitter-row {
-  width: 33%;
+#twitter {
+  width: 50%;
   height: 70%;
-  float: left;
+  float: right;
 }
 
 .row {
