@@ -16,7 +16,12 @@ h1 {
 
 h2 {
   font-family: 'Lekton', sans-serif;
-  font-size: 2em;
+  color: #98DFAF;
+  font-size: 2.5em;
+}
+
+h3 {
+  font-size: 1.5em;
 }
 
 a {
@@ -37,6 +42,10 @@ ul {
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
+}
+
+#content-container {
+  padding: 10% 4%
 }
 
 #info {
