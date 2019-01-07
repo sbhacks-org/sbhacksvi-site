@@ -1,6 +1,4 @@
 @media only screen and (max-width: 860px) {
-  #content-container
-  {
     #twitter {
       width: 100%;
       margin: 0px 0px;
@@ -9,39 +7,12 @@
       width: 100%;
       font-size: 2em;
     }
-  }
-
 }
 
-@media only screen and (max-width: 660px) and (orientation:portrait) {
+@media only screen and (max-width: 660px) {  
   #challenge {
-    padding: 0;
-    .challenge-item {
-      width: inherit;
-      height: auto;
-      margin: 0px;
-      display: block;
-      h1 {
-        font-size: 3.2em;
-      }
-      p {
-        font-size: 2em;
-      }
-    }
-  }
-}
-
-
-@media only screen and (max-width: 860px) and (orientation:landscape) {
-  
-  #content-container
-  {
-    padding: 10% 4%;
-  }
-  #challenge {
-    padding: 50px 0px;
     .challenge-item {        
-      width: 42%;
+      width: 76%;
       height: 10em;        
       display: inline-block;
       margin: 10px;
@@ -50,18 +21,6 @@
       }
       p {
         font-size: 1.2em;
-      }
-    }
-  }
-}
-
-@media screen and (orientation:portrait) {
-  #content-container
-  {
-    padding: 10% 25px;
-    #challenge {
-      .challenge-item {
-        margin: 15px 0px;
       }
     }
   }
