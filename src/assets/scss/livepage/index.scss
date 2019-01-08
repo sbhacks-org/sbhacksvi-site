@@ -98,8 +98,9 @@ ul#menu {
 }
 
 .row {
+  margin-top: 5%;
   padding: 5%;
-  clear: both;
+  overflow: auto;
 }
 
 img {
