@@ -53,6 +53,31 @@ ul {
   padding: 4%
 }
 
+#countdown {
+  margin-bottom: 0;
+}
+
+table {
+  margin: auto;
+  width: 60vw;
+  color: #98DFAF;
+  font-size: 2.5vw;
+  text-align: center;
+}
+
+table, td {
+  border: 1px white dashed;
+  border-collapse: collapse;
+}
+
+td {
+  width: 15vw;
+}
+
+#time {
+  font-size: 7vw;
+}
+
 #info {
   float: left;
   text-align: left;
