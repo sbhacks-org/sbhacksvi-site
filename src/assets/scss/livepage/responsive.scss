@@ -1,5 +1,28 @@
-@media all and (max-width: 992px) {
-	body {
-		padding-left: 20px;
-	}
+@media only screen and (max-width: 860px) {
+    #twitter {
+      width: 100%;
+      margin: 0px 0px;
+    }
+    #info {
+      width: 100%;
+      font-size: 2em;
+      text-align: center;
+    }
+}
+
+@media only screen and (max-width: 660px) {  
+  #Challenges {
+    .challenge-item {        
+      width: 76%;
+      height: 10em;        
+      display: inline-block;
+      margin: 10px;
+      h1 {
+        font-size: 1.8em;
+      }
+      p {
+        font-size: 1.2em;
+      }
+    }
+  }
 }
