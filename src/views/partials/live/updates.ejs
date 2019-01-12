@@ -1,0 +1,27 @@
+<%
+	let update_items = [
+		{
+			info: "Slack: <a href='https://sbhacks.com/slack' target='_blank'>sbhacks.com/slack</a>"
+		},
+		{
+			info: "Wi-Fi SSID: <span style='color: white;'>SBHacks</span><br>Password: <span style='color: white;'>sbhacks</span>"
+		},
+		{
+			info: "Submit Your Project Here: <a href='https://sbhacksv.devpost.com/' target='_blank'>sbhacksv.devpost.com</a>"
+		}
+	];
+%>
+
+
+<div class="row" id="Updates">
+	<h1 class="title" >< Updates/Important Info /></h1>
+	<div id="info">	
+			<% update_items.forEach((update_item) => { %>			
+				<p><%- update_item.info %></p>
+			<% }) %>
+	</div>
+	<div id= "twitter">
+		<a class="twitter-timeline tw-align-center" data-height="100%" data-width="100%" data-theme="dark" href="https://twitter.com/SB_Hacks">Tweets by SB_Hacks</a> 
+		<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</div>	
+</div>
