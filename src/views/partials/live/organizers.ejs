@@ -1,0 +1,115 @@
+<%
+	let organizer_profiles = [
+		{
+			name: "Danny Cho",
+			pic: "danny.cho.jpg",
+			link: "https://www.linkedin.com/in/dannycho7",
+			position: "President"
+		},
+		{
+			name: "Diane Phan",
+			pic: "diane.phan.jpg",
+			link: "https://www.linkedin.com/in/diane-phan",
+			position: "Marketing Team Lead"
+		},
+		{
+			name: "Chandler Forrest",
+			pic: "chandler.forrest.jpg",
+			link: "https://www.linkedin.com/in/chandler-forrest/",
+			position: "Sponsorships Team Lead"
+		},
+		{
+			name: "Valeria De Leon",
+			pic: "valeria.deleon.jpg",
+			link: "https://www.linkedin.com/in/valeria-deleon",
+			position: "Logistics Team Lead"
+		},
+		{
+			name: "Jennifer Lai",
+			pic: "jennifer.lai.jpg",
+			link: "https://www.linkedin.com/in/jennifer-lai-773b01132/",
+			position: "Developer"
+		},
+		{
+			name: "Andrew Zhang",
+			pic: "andrew.zhang.jpg",
+			link: "https://www.linkedin.com/in/andrewzhang21/",
+			position: "Developer"
+		},
+		{
+			name: "Esther Liu",
+			pic: "esther.liu.jpg",
+			link: "https://www.linkedin.com/in/e-liu/",
+			position: "Marketing Coordinator"
+		},
+		{
+			name: "Andrew Luo",
+			pic: "andrew.luo.jpg",
+			link: "https://www.linkedin.com/in/andrewlu0/",
+			position: "Designer"
+		},
+		{
+			name: "Tina Shi",
+			pic: "tina.shi.jpg",
+			link: "",
+			position: "Designer"
+		},
+		{
+			name: "Richa Wadaskar",
+			pic: "richa.wadaskar.jpg",
+			link: "https://www.linkedin.com/in/richa-wadaskar/",
+			position: "Sponsorships Coordinator"
+		},
+		{
+			name: "Erin Woo",
+			pic: "erin.woo.jpg",
+			link: "https://www.linkedin.com/in/erin-woo",
+			position: "Sponsorships Coordinator"
+		},		
+		{
+			name: "Crystal Eskander",
+			pic: "crystal.eskander.jpg",
+			link: "https://www.linkedin.com/in/crystal-eskander/",
+			position: "Logistics Coordinator"
+		},
+		{
+			name: "Cindy Zhao",
+			pic: "cindy.zhao.jpg",
+			link: "https://www.linkedin.com/in/cindyzhao8/",
+			position: "Logistics Coordinator"
+		},
+		{
+			name: "Shreya Shantharaj",
+			pic: "shreya.shantharaj.jpg",
+			link: "https://www.linkedin.com/in/shreya-shantharaj-10247a174/",
+			position: "Logistics Coordinator"
+		},
+		{
+			name: "Megh Shah",
+			pic: "megh.shah.jpg",
+			link: "https://www.linkedin.com/in/megh-shah/",
+			position: "Logistics Coordinator"
+		},
+		{
+			name: "Lekha Adari",
+			pic: "lekha.adari.jpg",
+			link: "https://www.linkedin.com/in/lekha-adari/",
+			position: "Logistics Coordinator"
+		}
+	];
+%>
+
+<div class="row" id="Organizers">
+	<h1 class="title" >< Meet the Organizers! /></h1>
+
+	<% organizer_profiles.forEach((profile_item) => { %>
+		<div class="profile">
+			<a href="<%- profile_item.link %>" target="_blank">			
+				<img class="orgpic"src="/images/organizers/<%- profile_item.pic %>" >
+			</a>
+			<h1 class="name"><%- profile_item.name %></h1>
+			<h1 class="linkedin"><%- profile_item.position %></h1>
+		</div>
+
+	<% }) %>
+</div>
