@@ -50,7 +50,7 @@ class Signup extends React.Component {
 
 		if (isAuthenticated) return <Redirect to={ location.state ? location.state.referrer : "/dashboard"} />;
 
-		if(process.env["apps_released"] !== "true") { window.location.href = "/" };
+		if(process.env["apps_released"] !== "true") { window.location.href = "/login" };
 
 		return (
 			<div>

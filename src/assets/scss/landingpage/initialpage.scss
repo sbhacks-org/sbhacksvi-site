@@ -1,110 +1,855 @@
-#initialpage-bg-color {
-  background: #191919;
-  /*
-  background: linear-gradient(#191919, #333333);
-  background: -webkit-linear-gradient(#191919, #333333);
-  background: -o-linear-gradient(#191919, #333333);
-  background: -moz-linear-gradient(#191919, #333333);
-  */
+// #initialpage-bg-color {
+//   background: #191919;
+//   /*
+//   background: linear-gradient(#191919, #333333);
+//   background: -webkit-linear-gradient(#191919, #333333);
+//   background: -o-linear-gradient(#191919, #333333);
+//   background: -moz-linear-gradient(#191919, #333333);
+//   */
 
+//   width: 100%;
+//   #initialpage {
+//     display: table;
+//     height: 100vh;
+//     min-height: 300px;
+//     width: 100%;
+
+//     #initialpage-content {
+//       color: white;
+//       height: inherit;
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//       -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+//        -moz-animation: fadein 2s; /* Firefox < 16 */
+//         -ms-animation: fadein 2s; /* Internet Explorer */
+//          -o-animation: fadein 2s; /* Opera < 12.1 */
+//             animation: fadein 2s;
+//       a
+//       {
+//         outline: none;
+//       }
+
+//       h1
+//       {
+//         font-family: 'nexabold', sans-serif;
+//         font-weight: bold;
+//         font-size: 3.5vw;
+//         margin: 25px;
+//       }     
+//       h2
+//       {
+//         font-family: 'nexalight', sans-serif;
+//         font-size: 2.5vw;
+//         margin: 25px;
+//       } 
+
+
+//       .logo {
+//         #logo-img {
+//           margin-top: 15px;
+//           width: 40%;
+//           position: relative;
+//           z-index: 1;
+//         }
+//         .graphic
+//         {
+//           margin-left: -15vh;
+//           position: relative;
+//           z-index: 1;
+//           width: 90%;
+//         }
+//       }
+
+//       .left, .right {
+//         vertical-align: top;
+//         display: inline-block;      }
+
+//       .left {
+//         width: 45%;
+//       }
+
+//       .right {
+//         width: 40%;
+//       }
+
+//       .row {
+//         margin: 35px 0 60px 0;
+//       }
+//     }
+//   }
+// }
+
+// @keyframes fadein {
+//     from { opacity: 0; }
+//     to   { opacity: 1; }
+// }
+
+// /* Firefox < 16 */
+// @-moz-keyframes fadein {
+//     from { opacity: 0; }
+//     to   { opacity: 1; }
+// }
+
+// /* Safari, Chrome and Opera > 12.1 */
+// @-webkit-keyframes fadein {
+//     from { opacity: 0; }
+//     to   { opacity: 1; }
+// }
+
+// /* Internet Explorer */
+// @-ms-keyframes fadein {
+//     from { opacity: 0; }
+//     to   { opacity: 1; }
+// }
+
+// /* Opera < 12.1 */
+// @-o-keyframes fadein {
+//     from { opacity: 0; }
+//     to   { opacity: 1; }
+// }
+
+body {
+  font-family: nexabold;
+  color: $fontColor;
+}
+
+#landing {
+  background-image: url("../webAssets/Asset 15.svg");
+  background-size: cover;
+  background-position: center;
   width: 100%;
-  #initialpage {
-    display: table;
-    height: 100vh;
-    min-height: 300px;
+  height: 100%;
+  position: flex;
+  //z-index: -2;
+  overflow: hidden;
+}
+
+#navBar, #navBar ul, #navBar ul li, #navBar ul li a {
+    z-index: 1;
+}
+
+#navBar {
+  background-image: url("../webAssets/Asset 16.svg");
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 60px;
+  display: flex;
+}
+
+#navBar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  width: 100%;
+}
+
+#navBar ul li {
+  display: inline;
+  float: right;
+}
+
+#navBar ul li a {
+  display: block;
+  text-align: center;
+  padding: 20.5px 16px;
+  color: #7498bc;
+  text-decoration-line: none;
+}
+
+#navBar ul li a:hover {
+  color: #43afed;
+  background-color: rgba(255, 255, 255, .05);
+}
+
+.active {
+  color: #43afed;
+}
+
+// #emailField {
+//     position: absolute;
+//     width: 40%;
+//     height: 10%;
+//     left: 30%;
+// /*    top: 30%;*/
+//     bottom: calc((100% - 230.69px) / 4)
+// }
+
+// #emailInput {
+//   background-color: transparent;
+//   color: #ffffff;
+//   border-width: 0;
+//   border: none;
+//   border-bottom: 2px solid rgba(255, 255, 255, .5);
+//   opacity: .5;
+//   width: 75%;
+//   position: relative;
+//   top: 80%;
+//     bottom: 0;
+//   left: 0;
+//   font-size: 15px;
+//   font-weight: lighter;
+//   font-style: normal;
+//   font-stretch: normal;
+//   line-height: normal;
+//   letter-spacing: 3px;
+//   padding-bottom: 5px;
+//     z-index: 1;
+// }
+
+#emailInput:focus {
+  border-bottom: 2px solid rgba(255, 255, 255, 1);
+}
+
+#emailInput, #bottle:focus {
+  outline: none;
+  opacity: 1;
+}
+
+#bottle:hover {
+  opacity: 1;
+}
+
+#bottle:active{
+  width: 21%;
+  right: .5%;
+    bottom: .5%;
+/*  top: 77.6%;*/
+}
+
+#bottle {
+  width: 22%;
+  position: absolute;
+    right: 0;
+    bottom: 0;
+/*  top: 77.5%;*/
+  cursor: pointer;
+  opacity: .5;
+    z-index: 1;
+}
+
+.alertContainer {
+    opacity: 0;
+    color: white;
+    position: relative;
+    text-align: center;
+    letter-spacing: 0px;
     width: 100%;
+    bottom: -70%;
+    margin-top: 20%;
+/*    visibility: hidden;*/
+    display: none;
+}
 
-    #initialpage-content {
-      color: white;
-      height: inherit;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-       -moz-animation: fadein 2s; /* Firefox < 16 */
-        -ms-animation: fadein 2s; /* Internet Explorer */
-         -o-animation: fadein 2s; /* Opera < 12.1 */
-            animation: fadein 2s;
-      a
-      {
-        outline: none;
-      }
+.closeMsgButton {
+    font-size: 30px;
+    position: absolute;
+    right: 4%;
+    top: 26%;
+}
 
-      h1
-      {
-        font-family: 'Lekton', sans-serif;
-        font-weight: bold;
-        font-size: 3.5vw;
-        margin: 25px;
-      }     
-      h2
-      {
-        font-family: 'Lekton', sans-serif;
-        font-size: 2.5vw;
-        margin: 25px;
-      } 
+.closeMsgButton:hover {
+    color: black;
+}
+
+.errorMsgHolder {
+    background-color: $errorColorRgba;
+}
+
+.successMsgHolder {
+    background-color: $successColorRgba;
+}
+
+.alertsHolder {
+    position: relative;
+}
+
+#otter {
+  width: 156px;
+  position: absolute;
+/*  right: 15%;*/
+    right: calc((100% - 156px) * .15);
+    bottom: 15%;
+}
+
+#centerLogo {
+  width: 185px;
+    height: 230.69px;
+  position: absolute;
+  left: calc((100% - 185px) / 2);
+  top: calc((100% - 230.69px) / 2);
+}
 
 
-      .logo {
-        #logo-img {
-          margin-top: 15px;
-          width: 40%;
-          position: relative;
-          z-index: 1;
-        }
-        .graphic
-        {
-          margin-left: -15vh;
-          position: relative;
-          z-index: 1;
-          width: 90%;
-        }
-      }
+.info-container {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: calc((100% - 230.69px) / 2 + 230.69px);
+    z-index: 100;
+}
 
-      .left, .right {
-        vertical-align: top;
-        display: inline-block;      }
+.info-container > h2{
+    margin: 2vh;
+}
 
-      .left {
-        width: 45%;
-      }
+a{
+    color: var(--linkColor);
+}
 
-      .right {
-        width: 40%;
-      }
 
-      .row {
-        margin: 35px 0 60px 0;
-      }
-    }
+.info-item {
+    position: relative;
+    letter-spacing: 3px;
+    font-size: 20px;
+}
+
+.sponsor-item {
+    font-size: 12px;
+    letter-spacing: 1px;
+    line-height: 3vh;
+}
+
+div#center {
+    position: relative;
+    width: 900px;
+    height: 300px;
+    top: calc(3% + 60px);
+    left: calc((100% - 900px) / 2);
+}
+
+img#waveGroup {
+  width: 100%;
+  position: absolute;
+  left: 3%;
+  top: 0;
+    opacity: .4;
+  display: none;
+}
+
+.lights {
+  opacity: .1;
+  animation: illuminate 7s infinite;
+  animation-timing-function: linear;
+}
+
+img#lights1 {
+  width: 49%;
+    width: 542px;
+  position: absolute;
+  left: 25%;
+  top: 17%;
+}
+
+img#lights2 {
+  width: 53%;
+    width: 586px;
+  position: absolute;
+  left: 14%;
+  top: 12%;
+  animation-delay: 2s;
+}
+
+img#spotLight {
+  width: 18%;
+    width: 199px;
+  position: absolute;
+  top: 19%;
+  left: 38%;
+    z-index: 1;
+}
+
+.waves {
+    position: absolute;
+  animation: harmonic 8s infinite;
+  animation-timing-function: linear;
+}
+
+img#wave4 {
+/*  width: 43%;*/
+    width: 510px;
+  left: 3%;
+  top: 8%;
+  animation-delay: 3s;
+}
+
+img#wave3 {
+/*  width: 64%;*/
+    width: 758px;
+  left: 18%;
+  top: 6%;
+  animation-delay: 1s;
+    z-index: -1;
+}
+
+img#wave2 {
+/*  width: 55%;*/
+  width: 652px;
+    left: 15%;
+  top: 16%;
+  animation-delay: 2s
+}
+
+img#wave1 {
+/*  width: 53%;*/
+    width: 628px;
+  left: 15%;
+  top: 0;
+}
+
+div#fish {
+  position: relative;
+  top: 40%;
+  animation: swim 20s infinite;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.fish {
+  position: absolute;
+  top: 48%;
+  animation: bounce 2s infinite;
+  animation-timing-function: linear;
+}
+
+img#fishGroup {
+  width: 100%;
+  position: absolute;
+  top: 48%;
+  opacity: 0;
+}
+
+img#fish1 {
+  width: 73%;
+  left: 11%;
+}
+
+img#fish2 {
+  width: 94%;
+  left: 6%;
+  animation-delay: .2s;
+}
+
+img#fish3 {
+  width: 95%;
+  animation-delay: .4s;
+}
+
+#left {
+  width: 30%;
+    height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+img#leftBiome {
+    position: absolute;
+    width: 100%;
+    bottom: -1%;
+    left: -8%;
+    display: none;
+}
+
+img#leftLand {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+img#darkKelp {
+    width: 40%;
+    position: absolute;
+    left: 0;
+    bottom: 22%;
+}
+
+img#greenKelp {
+    width: 60%;
+    position: absolute;
+    left: 0;
+    bottom: 20%;
+}
+
+img#blueKelp {
+    width: 68%;
+    position: absolute;
+    left: 0;
+    bottom: 8%;
+}
+
+#right {
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    right: 0;
+    bottom: 0;
+}
+
+img#rightBiome {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  right: -15%;
+}
+
+@keyframes illuminate {
+  0%, 100% {opacity: .1;}
+  50% {opacity: 1;}
+}
+
+@keyframes harmonic {
+  0%, 100% {transform: translateX(0);}
+  25% {transform: translateX(-3%);}
+  75% {transform: translateX(3%);}
+}
+
+@keyframes bounce {
+  0%, 50%, 100% {transform: translateY(0);}
+  25% {transform:translateY(-5px);}
+  75% {transform: translateY(-3px);}
+}
+
+@keyframes swim {
+  from {
+    transform: translateX(200%);
   }
+  to {transform: translateX(-100%);}
 }
 
-@keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+@media screen and (max-width: 600px) {
+    #info {
+        font-size: 15px;    
+    }
+
+    .alertContainer {
+        bottom: 0;
+        padding: 5px;
+        margin-top: 15px;
+    }
+    
+    #otter {
+        display: none;
+    }
+    
+    #emailField {
+        width: 60%;
+        left: 20%;
+        bottom: calc((100% - 300px) / 4.5);
+    }
+    
+    #emailInput {
+        position: relative;
+        width: 100%;
+        left: 0;
+    }
+    
+    #bottle {
+        position: relative;
+        width: 44%;
+        left: 31%;
+        top: 10px;
+    }
+    
+    #bottle:active {
+        width: 47%;
+        left: 27.5%;
+    }
+    
+    #left {
+        width: 50%;
+        left: -12%;
+    }
+    
+    img#darkKelp {
+        width: 45%;
+        bottom: 35%;
+        left: 10%;
+    }
+    
+    img#greenKelp {
+        width: 80%;
+    }
+    
+    #right {
+        width: 60%;
+        right: -15%;
+    }
 }
 
-/* Firefox < 16 */
-@-moz-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+/*iPhone 5/SE and Galaxy S5*/
+@media screen and (device-aspect-ratio: 40/71), (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) {
+    #centerLogo {
+        top: calc((100% - 400px) / 2);
+    }
+    .info-container {
+        top: calc((100% - 390px) / 2 + 230.69px);
+    }
+    #emailField {
+        bottom: calc((100% - 100px) / 4.5);
+    }
+    #emailInput {
+        font-size: 10px;
+    }
 }
 
-/* Safari, Chrome and Opera > 12.1 */
-@-webkit-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+/*iPhone 6/7/8 and Galaxy S8*/
+@media screen and (min-device-width : 375px) and (max-device-width : 667px), (min-width: 360px) and (max-width: 767px) {
+    #centerLogo {
+        top: calc((100% - 400px) / 2);
+    }
+    .info-container {
+        top: calc((100% - 390px) / 2 + 230.69px);
+    }
+    #emailField {
+        bottom: calc((100% - 50px) / 4.5);
+    }
+    #emailInput {
+        font-size: 12px;
+    }
 }
 
-/* Internet Explorer */
-@-ms-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+@media screen and (min-width: 600px) {
+    #info {
+        font-size: 15px;
+    }
+
+    .alertContainer {
+        bottom: 0;
+        padding: 5px;
+        margin-top: 15px;
+    }
+    
+    #otter {
+        width: 120px;
+        right: calc((100% - 156px) * .1);
+        bottom: 11%;
+    }
+    
+    #emailField {
+        width: 46%;
+        left: 27%;
+        bottom: calc((100% - 230.69px) / 5);
+    }
+    
+    #emailInput {
+        position: relative;
+        width: 100%;
+        left: 0;
+    }
+    
+    #bottle {
+        position: relative;
+        width: 40%;
+        left: 32%;
+        top: 10px;
+    }
+    
+    #bottle:active {
+        width: 39%;
+        left: 32.5%;
+    }
+    
+    #left {
+        width: 45%;
+        left: -8%;
+    }
+    
+    img#darkKelp {
+        width: 40%;
+        bottom: 35%;
+        left: 10%;
+    }
+    
+    img#greenKelp {
+        width: 70%;
+        left: 8%;
+    }
+    
+    #right {
+        width: 50%;
+        right: -8%;
+    }
 }
 
-/* Opera < 12.1 */
-@-o-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+@media screen and (min-width: 768px) {
+    #info {
+        font-size: 20px;
+    }
+
+    .alertContainer {
+        bottom: -70%;
+        padding: 10px 0;
+    }
+    
+    #emailField {
+        width: 44%;
+        left: 29.5%;
+        bottom: calc((100% - 230.69px) / 4);
+    }
+    
+    #emailInput {
+        width: calc(100% - 75px - 10px);
+        left: 0;
+    }
+    
+    #bottle {
+        width: 75px;
+        left: auto;
+        right: 0;
+        top: auto;
+        bottom: -17px;
+    }
+    
+    #bottle:active {
+        width: 73px;
+        left: auto;
+        right: 1px;
+        bottom: -16px;
+    }
+    
+    #left {
+        width: 35%;
+        left: 0;
+    }
+
+    img#darkKelp {
+        width: 50%;
+        left: 0;
+        bottom: 25%;
+    }
+
+    img#greenKelp {
+        width: 75%;
+        left: 0;
+        bottom: 20%;
+    }
+
+    #right {
+        width: 40%;
+        right: 0;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    #otter {
+        width: 156px;
+        right: calc((100% - 156px) * .13);
+    }
+    
+    #bottle {
+        width: 96px;
+        bottom: -20px;
+    }
+    
+    #bottle:active {
+        width: 94px;
+        bottom: -19px;
+    }
+    
+    #emailInput {
+        width: calc(100% - 96px - 25px);
+    }
+    
+    #left {
+        width: 28%;
+        left: 0;
+    }
+
+    #right {
+        width: 30%;
+        right: 0;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #otter {
+        right: calc((100% - 156px) * .15);
+    }
+    
+    #emailField {
+        width: 40%;
+        left: 32%;
+    }
+    
+    #bottle {
+        width: 116px;
+    }
+    
+    #bottle:active {
+        width: 114px;
+    }
+    
+    #emailInput {
+        width: calc(100% - 116px - 15px);
+    }
+    
+    div#center {
+        width: 80%;
+        height: 30vw;
+        left: 10%;
+    }
+
+    #centerLogo {
+        width: 13%;
+        max-height: 250px;
+        height: auto;
+        left: 44%;
+        top: calc((100% - (13vw * 1.25)) / 2);
+    }
+
+    #info {
+        top: calc((100% - (13vw * 1.25)) / 2 + (13vw * 1.25));
+    }
+    
+    img#lights1 {
+        width: 60%;
+        left: 25%;
+        top: 17%;
+    }
+
+    img#lights2 {
+        width: 65%;
+        left: 14%;
+        top: 12%;
+    }
+
+    img#spotLight {
+        width: 22%;
+        top: 19%;
+        left: 38%;
+    }
+
+    img#wave4 {
+      width: 57%;
+        left: 3%;
+        top: 8%;
+    }
+
+    img#wave3 {
+      width: 84%;
+        left: 18%;
+        top: 6%;
+    }
+
+    img#wave2 {
+      width: 72%;
+        left: 15%;
+        top: 16%;
+    }
+
+    img#wave1 {
+      width: 70%;
+        left: 15%;
+        top: 0;
+    }
+}
+
+@media screen and (max-height: 650px) {
+    #landing {
+        height: 650px;
+    }
 }
