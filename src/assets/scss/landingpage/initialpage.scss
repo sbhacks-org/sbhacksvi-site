@@ -108,7 +108,6 @@
 //     from { opacity: 0; }
 //     to   { opacity: 1; }
 // }
-
 body {
   font-family: nexabold;
   color: $fontColor;
@@ -199,71 +198,25 @@ body {
 //     z-index: 1;
 // }
 
-#emailInput:focus {
-  border-bottom: 2px solid rgba(255, 255, 255, 1);
-}
-
-#emailInput, #bottle:focus {
-  outline: none;
-  opacity: 1;
-}
-
-#bottle:hover {
-  opacity: 1;
-}
-
-#bottle:active{
-  width: 21%;
-  right: .5%;
-    bottom: .5%;
-/*  top: 77.6%;*/
-}
-
-#bottle {
-  width: 22%;
+#apply {
+  background: url("../webAssets/Asset 37.svg") no-repeat top left;
+  // background-repeat: no-repeat;
+  // height: 10%;
+  // width: auto;
+  // font-size: 2em;
   position: absolute;
-    right: 0;
-    bottom: 0;
-/*  top: 77.5%;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 138px;
+  height: 50px;
+  left: 41.5%;
+  bottom: calc((100% - 410px) / 4);
   cursor: pointer;
-  opacity: .5;
-    z-index: 1;
-}
-
-.alertContainer {
-    opacity: 0;
-    color: white;
-    position: relative;
-    text-align: center;
-    letter-spacing: 0px;
-    width: 100%;
-    bottom: -70%;
-    margin-top: 20%;
-/*    visibility: hidden;*/
-    display: none;
-}
-
-.closeMsgButton {
-    font-size: 30px;
-    position: absolute;
-    right: 4%;
-    top: 26%;
-}
-
-.closeMsgButton:hover {
-    color: black;
-}
-
-.errorMsgHolder {
-    background-color: $errorColorRgba;
-}
-
-.successMsgHolder {
-    background-color: $successColorRgba;
-}
-
-.alertsHolder {
-    position: relative;
+  padding: 2px 8px;
+  h2 {
+    margin: 0;
+  }
 }
 
 #otter {
