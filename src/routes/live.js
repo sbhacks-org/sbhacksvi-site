@@ -9,6 +9,7 @@ router.get("/",(req, res) => {
 	}
 	else
 	{
+		console.log("redirected here");
 		res.redirect("/");
 	}
 });

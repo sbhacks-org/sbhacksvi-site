@@ -59,6 +59,7 @@ class Apply extends React.Component {
 		const { isAuthenticated, applicationFields } = this.props;
 		
 		if(!isAuthenticated) {
+			console.log("routing to signup");
 			return <Redirect to={{
 							pathname: "/signup",
 							state: { referrer: location.pathname }
@@ -70,7 +71,7 @@ class Apply extends React.Component {
 			return <Redirect to="/dashboard" />;
 		}
 
-		if(process.env["apps_released"] !== "true") { window.location.href = "/" };
+		if(process.env["apps_released"] !== "true") { window.location.href = "/login" };
 		
 		return (
 			<div>

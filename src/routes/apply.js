@@ -7,6 +7,7 @@ const isLoggedIn = require("../lib/isLoggedIn");
 const { saveApplication, populateWithApplicationFields } = require("../lib/application");
 
 router.post("/", isLoggedIn, (req, res, next) => {
+	console.log("went into /apply");
 	saveApplication(req.user, req.body)
 	.then((application) => {
 		signupMail.send(req.user);

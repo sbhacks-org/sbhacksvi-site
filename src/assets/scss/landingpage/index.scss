@@ -5,6 +5,14 @@ $gray: #bbbbbb;
 $secondary-yellow: #dcdda2;
 $primary-yellow: #ffcf35;
 
+$successColor: #4CAF50;
+$errorColor: #f44336;
+$successColorRgba: rgba(76, 175, 80, .3);
+$errorColorRgba: rgba(244, 67, 54, .3);
+$fontColor: #7498bc;
+$linkColor: white;
+$bgColor: #0d2e59;
+
 @import 'initialpage';
 @import 'button';
 @import 'sponsors';
@@ -12,18 +20,35 @@ $primary-yellow: #ffcf35;
 @import 'intro';
 @import 'social';
 
+@font-face {
+    font-family: 'nexabold';
+    src: url('../fonts/nexabold-webfont.woff2') format('woff2'),
+         url('../fonts/nexabold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'nexalight';
+    src: url('../fonts/nexalight-webfont.woff2') format('woff2'),
+         url('../fonts/nexalight-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html, body {
   margin: 0;
-  color: white;
   text-align: center;
-  font-family: 'Didact Gothic', sans-serif;
+  font-family: 'nexalight', sans-serif;
+  color: $fontColor;
   font-weight: 400;
   min-width: 250px;
   font-size: 1.15vw;
 }
 
 h1 {
-  font-family: 'Lekton', sans-serif;
+  font-family: 'nexabold', sans-serif;
   font-size: 2vw;
 }
 
@@ -37,7 +62,7 @@ a {
 }
 
 #content-container { 
-  background: #191919;
+  background: $bgColor;
   /*
   background: linear-gradient(#191919, #333333);
   background: -webkit-linear-gradient(#191919, #333333);
