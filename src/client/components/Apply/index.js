@@ -45,6 +45,8 @@ class Apply extends React.Component {
 	submitApplication(fields) {
 		const xhttp = new XMLHttpRequest();
 
+		console.log('submitting: ', fields);
+
 		this.startApply();
 
 		xhttp.addEventListener("load", () => {

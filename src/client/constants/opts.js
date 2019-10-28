@@ -2,7 +2,7 @@ export const level_of_study = ["Bachelor's (Undergraduate)", "Masters (Graduate)
 	{ key: level, value: level, text: level }
 ));
 
-export const graduation_year = [2017, 2018, 2019, 2020, 2021, 2022].map((year) => (
+export const graduation_year = [2019, 2020, 2021, 2022, 2023, 2024].map((year) => (
 	{ key: year.toString(), value: year, text: year.toString() }
 ));
 

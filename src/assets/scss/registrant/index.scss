@@ -1,3 +1,5 @@
+$bgColor: #0d2e59;
+
 a:hover {
 	cursor: pointer;
 }
@@ -6,7 +8,7 @@ a:hover {
 }
 
 body {
-	background-color: #191919;
+	background-color: $bgColor;
 	font-family: 'Didact Gothic', sans-serif;
 	color: white;
 	padding: 0 10%;
