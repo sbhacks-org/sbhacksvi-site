@@ -6,7 +6,7 @@
 		},
 		{
 			question: "When will SB Hacks take place?",
-			answer: "SB Hacks V will take place on Friday, January 11, 2019, and conclude on Sunday, January 13, 2019."
+			answer: "SB Hacks V will take place on Friday, January 10, 2020, and conclude on Sunday, January 12, 2020."
 		},
 		{
 			question: "Who can attend?",
@@ -14,7 +14,7 @@
 		},
 		{
 			question: "Do you guys offer travel assistance?",
-			answer: "We are sending buses to UCI, USC, and UCLA. The bus schedule can be viewed <a href='/images/buses.jpg' target='_blank'>here</a>. Unfortunately, we are not offering travel reimbursements this year."
+			answer: "At the moment, we will not be offering travel reimbursements. The bus schedule is to be determined."
 		},
 		{
 			question: "When will acceptances come out?",
@@ -54,9 +54,9 @@
 <div id="faq">
 	<h1 class="header">FAQ</h1>
 	<% qa_blocks.forEach((qa_block) => { %>
-		<div class="long-bubble">
+		<div class="long-bubble collapsible">
 			<h1><%- qa_block.question %></h1>
-			<p class="none"><%- qa_block.answer %></p>
+			<p class="answer"><%- qa_block.answer %></p>
 		</div>
 	<% }) %>
 </div>

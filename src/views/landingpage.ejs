@@ -67,5 +67,24 @@
 		<%- include("partials/landingpage/sponsors/index") %>
 		<%- include("partials/landingpage/social") %>
 	</div>
+	<script>
+		var coll = document.getElementsByClassName("collapsible");
+		var i;
+
+		for (i = 0; i < coll.length; i++) {
+		  coll[i].addEventListener("click", function() {
+		  	// console.log("clieck");
+		    this.classList.toggle("active");
+		    // console.log(this.childNodes);
+		    var content = this.childNodes[3];
+		    // console.log(content);
+		    if (content.style.maxHeight){
+		      content.style.maxHeight = null;
+		    } else {
+		      content.style.maxHeight = content.scrollHeight + "px";
+		    }
+		  });
+		}
+	</script>
 </body>
 </html>
