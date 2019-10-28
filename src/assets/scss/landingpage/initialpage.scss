@@ -108,11 +108,6 @@
 //     from { opacity: 0; }
 //     to   { opacity: 1; }
 // }
-body {
-  font-family: nexabold;
-  color: $fontColor;
-}
-
 #landing {
   background-image: url("../webAssets/Asset 15.svg");
   background-size: cover;
@@ -168,7 +163,7 @@ body {
   width: 138px;
   height: 50px;
   left: calc((100% - 140px) / 2);
-  bottom: calc((100% - 550px) / 4);
+  bottom: calc((100% - 400px) / 4);
   cursor: pointer;
   padding: 2px 8px;
   z-index: 3;
@@ -190,7 +185,6 @@ body {
     height: 230.69px;
   position: absolute;
   left: calc((100% - 185px) / 2);
-  top: calc((100% - 230.69px) / 2);
 }
 
 
