@@ -30,7 +30,7 @@ module.exports = (app) => {
 	app.get("/",(req, res) => {
 		res.render("landingpage");
 	});
-	// }
+	
 
 	let proc_links = [
 		{ proc_env_key: "BUS_SCHEDULE", link: "/buses" },
