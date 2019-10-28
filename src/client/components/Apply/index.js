@@ -78,7 +78,7 @@ class Apply extends React.Component {
 		return (
 			<div>
 				<Banner message={this.state.message} onDismiss={() => this.setState({ message: "" })}/>
-				<h1>SB Hacks V Application</h1>
+				<h1>SB Hacks VI Application</h1>
 				<ApplyForm
 					submitApplication={this.submitApplication}
 					loading={this.state.loading}
