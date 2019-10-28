@@ -5,16 +5,29 @@
 .long-bubble {
   	background: url("../webAssets/Asset 35.svg") no-repeat;
   	vertical-align: top;
-	display: inline-block;
+	display: inline-table;
 	width: 38%;
-	height: 1%;
 	padding: 2%;
 	text-align: left;
-	padding: 2em 2%;
+	padding: 1.8em 2%;
 	margin: 10px;
 	h1 {
 		margin: -10 0;
 	}
+}
+
+.collapsible {
+  cursor: pointer;
+  &:hover {
+  }
+}
+
+.answer {
+  max-height: 0;
+  margin-top: 4vh;
+  display: block;
+  transition: max-height 0.2s ease-out;
+  overflow: hidden;
 }
 
 .faq-item {
