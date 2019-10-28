@@ -35,7 +35,8 @@ module.exports.saveApplication = (user, fields) => {
 			shirt_size: fields.shirt_size,
 			gender: fields.gender,
 			dietary_restrictions: fields.dietary_restrictions,
-			essay_answer: fields.essay_answer
+			essay_answer: fields.essay_answer,
+			essay_answer_2: fields.essay_answer_2
 		});
 	});		
 };
@@ -72,6 +73,7 @@ module.exports.populateWithApplicationFields = (application) => {
 		transportation: application.transportation || "",
 		dietary_restrictions: application.dietary_restrictions ? application.dietary_restrictions.split(",") : [],
 		essay_answer: application.essay_answer || "",
+		essay_answer_2: application.essay_answer_2 || "",
 		resume_url: application.resume_url,
 		accepted: application.accepted,
 		rsvp: application.rsvp

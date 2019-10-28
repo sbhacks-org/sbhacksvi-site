@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "sbhacksv",
-    "password": "1234",
-    "database": "sbhacksv_development",
+    "username": "postgres",
+    "password": null,
+    "database": "sbhacksvi_dev",
     "host": "localhost",
     "dialect": "postgres",
     "operatorsAliases": false

@@ -70,6 +70,9 @@ module.exports = function(sequelize, DataTypes) {
     },
     essay_answer: {
       type: DataTypes.TEXT,
+    },
+    essay_answer_2: {
+      type: DataTypes.TEXT,
     }
   }, {
     tableName: "applications"

@@ -41,6 +41,7 @@ class ProfileForm extends React.Component {
 		this.updateTransportation = (evt, { value }) => this.updateField("transportation", value);
 		this.updateDietaryRestrictions = (evt, { value }) => this.updateField("dietary_restrictions", value);
 		this.updateAdditionalDetails = (evt, { value }) => this.updateField("essay_answer", value);
+		this.updateAdditionalDetails2 = (evt, { value }) => this.updateField("essay_answer_2", value);
 	}
 
 	updateField(field_name, field_value) {
@@ -150,10 +151,19 @@ class ProfileForm extends React.Component {
 				</Form.Group>
 
 				<Form.TextArea
-					label='Tell us about a project you are proud of (Optional, up to 1000 characters)'
+					label='What is a project/experience that you are proud of? (Optional, up to 1000 characters)'
 					placeholder='Tell us more about you...'
 					onChange={this.updateAdditionalDetails}
 					value={this.state.essay_answer}
+					maxLength={1000}
+					rows={5}
+				/>
+
+				<Form.TextArea
+					label='If you had infinite money and time, what would you create? Why? (Optional, up to 1000 characters)'
+					placeholder='Tell us more about you...'
+					onChange={this.updateAdditionalDetails2}
+					value={this.state.essay_answer_2}
 					maxLength={1000}
 					rows={5}
 				/>
