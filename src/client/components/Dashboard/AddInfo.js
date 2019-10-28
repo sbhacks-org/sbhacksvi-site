@@ -139,7 +139,7 @@ const AddInfo = ({info, application, rsvpAction, cancelRsvpAction}) => {
 		return (
 			<div>
 				<div className="body">
-					<p className="body-text">You have not yet applied. Applications are due December 20th.</p>
+					<p className="body-text">You have not yet applied. Applications are due December 1st.</p>
 					<Container textAlign='center'>
 						<Link to="/apply" id="apply-link"><Button color="blue">Start Application</Button></Link>
 					</Container>
