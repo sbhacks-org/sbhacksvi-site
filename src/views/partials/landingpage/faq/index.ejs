@@ -52,11 +52,15 @@
 %>
 
 <div id="faq">
-	<h1 class="header">FAQ</h1>
-	<% qa_blocks.forEach((qa_block) => { %>
-		<div class="long-bubble collapsible">
-			<h1><%- qa_block.question %></h1>
-			<p class="answer"><%- qa_block.answer %></p>
-		</div>
-	<% }) %>
+	<div class="empty-circle circle small fixed" style="position: absolute;">
+	  	<h1>FAQ</h1>
+	</div>
+	<div class = "faq-block">
+		<% qa_blocks.forEach((qa_block) => { %>
+			<div class="long-bubble collapsible">
+				<h1><%- qa_block.question %></h1>
+				<p class="answer"><%- qa_block.answer %></p>
+			</div>
+		<% }) %>
+	</div>
 </div>

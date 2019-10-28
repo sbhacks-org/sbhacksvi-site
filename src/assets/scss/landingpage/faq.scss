@@ -1,18 +1,23 @@
+$bgColor: #0d2e59;
+
 #faq {
 	padding: 200px 25px;
 }
 
 .long-bubble {
   	background: url("../webAssets/Asset 35.svg") no-repeat;
+  	background-color: $bgColor;
   	vertical-align: top;
 	display: inline-table;
-	width: 38%;
+	width: 28%;
 	padding: 2%;
 	text-align: left;
-	padding: 1.8em 2%;
-	margin: 10px;
+	padding: 1em 2%;
+	margin: 5px 35px;
+	z-index: 90;
 	h1 {
-		margin: -10 0;
+		margin: 0;
+		font-size: 1em;
 	}
 }
 
@@ -22,33 +27,17 @@
   }
 }
 
-.answer {
-  max-height: 0;
-  margin-top: 4vh;
-  display: block;
-  transition: max-height 0.2s ease-out;
-  overflow: hidden;
+.faq-block {
+	margin-top: 140px;
+	position: relative;
+	z-index: 100;
 }
 
-.faq-item {
-	vertical-align: top;
-	display: inline-block;
-	width: 38%;
-	height: 1%;
-	text-align: left;
-	padding: 2em 2%;
-	height: 7em;
-    border: 1px white dashed;
-    margin: 10px;
-	h1, p {
-		margin: -10 0;
-	}
-
-	h1 {
-		font-size: 1.5em;
-		margin-bottom: 0.3em;
-	}
-	p {
-		font-size: 0.9em;
-	}
+.answer {
+  max-height: 0;
+  display: block;
+  margin-top: 25px;
+  font-size: 0.7em;
+  transition: max-height 0.2s ease-out;
+  overflow: hidden;
 }

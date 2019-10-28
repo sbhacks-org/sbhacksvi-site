@@ -1,0 +1,72 @@
+<%
+	let organizer_profiles = [
+		{
+			name: "Jennifer Lai",
+			pic: "jennifer.jpg",
+			link: "https://www.linkedin.com/in/jennifernlai/",
+			position: "Co-Director"
+		},
+		{
+			name: "Esther Liu",
+			pic: "esther.jpg",
+			link: "",
+			position: "Co-Director"
+		},
+		{
+			name: "Akshay Heda",
+			pic: "akshay.jpg",
+			link: "",
+			position: "Sponsorships and Logistics Coordinator"
+		},
+		{
+			name: "Tina Shi",
+			pic: "tina.jpg",
+			link: "",
+			position: "Design Lead"
+		},
+		{
+			name: "Crystal Eskander",
+			pic: "crystal.jpg",
+			link: "https://www.linkedin.com/in/crystal-eskander/",
+			position: "Logistics Lead"
+		},
+		{
+			name: "Andrew Zhang",
+			pic: "andrew.jpg",
+			link: "https://www.linkedin.com/in/andrewzhang21/",
+			position: "Sponsorships and Logistics Coordinator"
+		},
+		{
+			name: "Cindy Zhao",
+			pic: "cindy.jpg",
+			link: "https://www.linkedin.com/in/cindyzhao8/",
+			position: "Sponsorships and Logistics Coordinator"
+		},
+		{
+			name: "Jayleen Li",
+			pic: "jayleen.jpg",
+			link: "",
+			position: "Sponsorships and Logistics Coordinator"
+		}
+	];
+%>
+
+<div class = "team">
+	<div class="eight-circle circle small">
+	  	<h1>TEAM</h1>
+	  	<div class = "circle-content">
+		 	<p>Meet the organizing team that has been working night and day to put together the 6th annual SB Hacks! Click their bubble to check out their LinkedIn!</p>
+		</div>
+		<% organizer_profiles.forEach((profile_item) => { %>
+		  	<li>
+		  		<div class="round bg-overlay-pos grow">
+		  			<a href="<%- profile_item.link %>" target="_blank">
+		  				<img src="/images/organizers/<%- profile_item.pic %>">
+		  			</a>
+		  		</div>
+		  		<div class="bubble bubble-overlay ">
+		  		</div>
+		  	</li>
+		<% }) %>
+	</div>
+</div>
