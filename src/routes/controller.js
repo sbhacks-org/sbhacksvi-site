@@ -26,7 +26,6 @@ function convertValidationError(err) {
 }
 
 module.exports = (app) => {
-	// if(app.get("env") === "development") {
 	app.get("/",(req, res) => {
 		res.render("landingpage");
 	});
