@@ -1,3 +1,341 @@
+// BEG OF MAILING RESPONSIVE
+
+@media screen and (max-width: 600px) {
+    #info {
+        font-size: 15px;    
+    }
+
+    .alertContainer {
+        bottom: 0;
+        padding: 5px;
+        margin-top: 15px;
+    }
+    
+    #otter {
+        display: none;
+    }
+    
+    #emailField {
+        width: 60%;
+        left: 20%;
+        bottom: calc((100% - 300px) / 4.5);
+    }
+    
+    #emailInput {
+        position: relative;
+        width: 100%;
+        left: 0;
+    }
+    
+    #bottle {
+        position: relative;
+        width: 44%;
+        left: 31%;
+        top: 10px;
+    }
+    
+    #bottle:active {
+        width: 47%;
+        left: 27.5%;
+    }
+    
+    #left {
+        width: 50%;
+        left: -12%;
+    }
+    
+    img#darkKelp {
+        width: 45%;
+        bottom: 35%;
+        left: 10%;
+    }
+    
+    img#greenKelp {
+        width: 80%;
+    }
+    
+    #right {
+        width: 60%;
+        right: -15%;
+    }
+}
+
+/*iPhone 5/SE and Galaxy S5*/
+@media screen and (device-aspect-ratio: 40/71), (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) {
+    #centerLogo {
+        top: calc((100% - 400px) / 2);
+    }
+    .info-container {
+        top: calc((100% - 390px) / 2 + 230.69px);
+    }
+    #emailField {
+        bottom: calc((100% - 100px) / 4.5);
+    }
+    #emailInput {
+        font-size: 10px;
+    }
+}
+
+/*iPhone 6/7/8 and Galaxy S8*/
+@media screen and (min-device-width : 375px) and (max-device-width : 667px), (min-width: 360px) and (max-width: 767px) {
+    #centerLogo {
+        top: calc((100% - 400px) / 2);
+    }
+    .info-container {
+        top: calc((100% - 390px) / 2 + 230.69px);
+    }
+    #emailField {
+        bottom: calc((100% - 50px) / 4.5);
+    }
+    #emailInput {
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    #info {
+        font-size: 15px;
+    }
+
+    .alertContainer {
+        bottom: 0;
+        padding: 5px;
+        margin-top: 15px;
+    }
+    
+    #otter {
+        width: 120px;
+        right: calc((100% - 156px) * .1);
+        bottom: 11%;
+    }
+    
+    #emailField {
+        width: 46%;
+        left: 27%;
+        bottom: calc((100% - 230.69px) / 5);
+    }
+    
+    #emailInput {
+        position: relative;
+        width: 100%;
+        left: 0;
+    }
+    
+    #bottle {
+        position: relative;
+        width: 40%;
+        left: 32%;
+        top: 10px;
+    }
+    
+    #bottle:active {
+        width: 39%;
+        left: 32.5%;
+    }
+    
+    #left {
+        width: 45%;
+        left: -8%;
+    }
+    
+    img#darkKelp {
+        width: 40%;
+        bottom: 35%;
+        left: 10%;
+    }
+    
+    img#greenKelp {
+        width: 70%;
+        left: 8%;
+    }
+    
+    #right {
+        width: 50%;
+        right: -8%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #info {
+        font-size: 20px;
+    }
+
+    .alertContainer {
+        bottom: -70%;
+        padding: 10px 0;
+    }
+    
+    #emailField {
+        width: 44%;
+        left: 29.5%;
+        bottom: calc((100% - 230.69px) / 4);
+    }
+    
+    #emailInput {
+        width: calc(100% - 75px - 10px);
+        left: 0;
+    }
+    
+    #bottle {
+        width: 75px;
+        left: auto;
+        right: 0;
+        top: auto;
+        bottom: -17px;
+    }
+    
+    #bottle:active {
+        width: 73px;
+        left: auto;
+        right: 1px;
+        bottom: -16px;
+    }
+    
+    #left {
+        width: 35%;
+        left: 0;
+    }
+
+    img#darkKelp {
+        width: 50%;
+        left: 0;
+        bottom: 25%;
+    }
+
+    img#greenKelp {
+        width: 75%;
+        left: 0;
+        bottom: 20%;
+    }
+
+    #right {
+        width: 40%;
+        right: 0;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    #otter {
+        width: 156px;
+        right: calc((100% - 156px) * .13);
+    }
+    
+    #bottle {
+        width: 96px;
+        bottom: -20px;
+    }
+    
+    #bottle:active {
+        width: 94px;
+        bottom: -19px;
+    }
+    
+    #emailInput {
+        width: calc(100% - 96px - 25px);
+    }
+    
+    #left {
+        width: 28%;
+        left: 0;
+    }
+
+    #right {
+        width: 30%;
+        right: 0;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #otter {
+        right: calc((100% - 156px) * .15);
+    }
+    
+    #emailField {
+        width: 40%;
+        left: 32%;
+    }
+    
+    #bottle {
+        width: 116px;
+    }
+    
+    #bottle:active {
+        width: 114px;
+    }
+    
+    #emailInput {
+        width: calc(100% - 116px - 15px);
+    }
+    
+    div#center {
+        width: 80%;
+        height: 30vw;
+        left: 10%;
+    }
+
+    #centerLogo {
+        width: 13%;
+        max-height: 250px;
+        height: auto;
+        left: 44%;
+        top: calc((100% - (13vw * 1.25)) / 2);
+    }
+
+    #info {
+        top: calc((100% - (13vw * 1.25)) / 2 + (13vw * 1.25));
+    }
+    
+    img#lights1 {
+        width: 60%;
+        left: 25%;
+        top: 17%;
+    }
+
+    img#lights2 {
+        width: 65%;
+        left: 14%;
+        top: 12%;
+    }
+
+    img#spotLight {
+        width: 22%;
+        top: 19%;
+        left: 38%;
+    }
+
+    img#wave4 {
+      width: 57%;
+        left: 3%;
+        top: 8%;
+    }
+
+    img#wave3 {
+      width: 84%;
+        left: 18%;
+        top: 6%;
+    }
+
+    img#wave2 {
+      width: 72%;
+        left: 15%;
+        top: 16%;
+    }
+
+    img#wave1 {
+      width: 70%;
+        left: 15%;
+        top: 0;
+    }
+}
+
+@media screen and (max-height: 650px) {
+    #landing {
+        height: 650px;
+    }
+}
+
+// END OF MAILING RESPONSIVE
+
 @media only screen and (max-width: 860px) {
   #intro {
     .video {

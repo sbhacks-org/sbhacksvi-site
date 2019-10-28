@@ -64,6 +64,7 @@
 	--><div id="content-container">
 		<%- include("partials/landingpage/intro") %>
 		<%- include("partials/landingpage/faq/index") %>
+		<%- include("partials/landingpage/team") %>
 		<%- include("partials/landingpage/sponsors/index") %>
 		<%- include("partials/landingpage/social") %>
 	</div>
@@ -77,11 +78,20 @@
 		    this.classList.toggle("active");
 		    // console.log(this.childNodes);
 		    var content = this.childNodes[3];
+		    console.log(content.style.display);
+		  //   if (content.style.display == "none") {
+		  //   	console.log("setting block");
+				// content.style.display = "block";
+		  //   }
+		  //   else {
+		  //   	content.style.display = "none";
+		  //   }
 		    // console.log(content);
 		    if (content.style.maxHeight){
-		      content.style.maxHeight = null;
+		      	content.style.maxHeight = null;
 		    } else {
-		      content.style.maxHeight = content.scrollHeight + "px";
+				console.log("scrolling");
+		      	content.style.maxHeight = content.scrollHeight + "px";
 		    }
 		  });
 		}

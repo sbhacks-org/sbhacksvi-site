@@ -1,0 +1,12 @@
+.team {
+	width: 100vw;
+	height: 100vh;
+	a {
+		&:hover {
+			opacity: 1;
+		}
+	}
+	img {
+		opacity: 0.4;
+	}
+}

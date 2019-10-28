@@ -19,6 +19,7 @@ $bgColor: #0d2e59;
 @import 'faq';
 @import 'intro';
 @import 'social';
+@import 'team';
 
 @font-face {
     font-family: 'nexabold';
@@ -49,7 +50,7 @@ html, body {
 }
 
 h1 {
-  font-family: 'nexabold', sans-serif;
+  font-family: 'nexalight';
   font-size: 2vw;
 }
 
@@ -74,16 +75,16 @@ a {
   a {
     color: white;
     text-decoration: underline;
-    &:hover {
-      opacity: 0.5;
-    }
+    // &:hover {
+    //   opacity: 0.5;
+    // }
   }
 }
 
 .grow { transition: all .2s ease-in-out; }
 .grow:hover { transform: scale(1.05); }
 
-@mixin on-circle($item-count, $circle-size, $item-size) {
+@mixin on-circle($item-count, $circle-size, $item-size, $divisor) {
   position: relative;
   width:  $circle-size;
   height: $circle-size;
@@ -106,7 +107,7 @@ a {
       &:nth-of-type(#{$i}) {
         transform: 
           rotate($rot * 1deg) 
-          translate($circle-size / 1.4) 
+          translate($circle-size / $divisor) 
           rotate($rot * -1deg);
       }
 
@@ -115,13 +116,29 @@ a {
   }
 }
 
-.circle{
-  @include on-circle($item-count: 10, $circle-size: 65vh, $item-size: 6em); 
-  margin: auto;
-  border: 8px solid $fontColor;
-  border-radius: 50%;
+.ten-circle {
+  @include on-circle($item-count: 10, $circle-size: 65vh, $item-size: 6em, $divisor: 1.4); 
   width: 65vh;
   height: 65vh;
+}
+
+.eight-circle {
+  @include on-circle($item-count: 8, $circle-size: 65vh, $item-size: 6em, $divisor: 1.7); 
+  width: 50vh;
+  height: 50vh;
+}
+
+.empty-circle {
+  width: 100vh;
+  height: 100vh;
+  left: 25%;
+  pointer-events: none;
+}
+
+.circle{
+  margin: auto;
+  border: 4px solid $fontColor;
+  border-radius: 50%;
   z-index: 86;
   display: flex;
   flex-direction: column;
@@ -144,15 +161,15 @@ a {
     font-weight: 800;
     display: block;
     line-height: 1;
-    margin-top: 70px;
+    margin: 50px auto 0px auto;
     font-size: 4vw;
   }
   h2 {
     font-family: 'nexalight';
-    font-size: 2em;
+    font-size: 1.8em;
   }
   h3 {
-    margin-top: 25px;
+    margin-top: 15px;
     text-align: center;
     font-family:  Arial, sans-serif;
     font-weight: 700;
@@ -163,16 +180,32 @@ a {
   }
   .bubble {
     background: url("../webAssets/Asset 34.svg") no-repeat top left;
+  }
+  .round {
     height: 110px;
     width: 110px;
     p {
-      margin: 0px auto;
+      font-size: 0.7em;
+      margin: -10px auto;
       font-family: 'nexalight';
     }
     h2 {
-      margin: 2px auto;
+      margin: -10 auto 2px auto;
+    }
+    img { 
+      display: block; 
+      max-width: 100%; 
+      border-radius: 50%;
+      opacity: 1;
     }
   }
+}
+
+.bubble-overlay {
+  height: 110px;
+  width: 110px;
+  position: absolute;
+  pointer-events: none;
 }
 
 .bg-overlay-pos {
@@ -186,5 +219,4 @@ a {
 .none {
   display: none;
 }
-
 @import 'responsive';
