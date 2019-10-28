@@ -2,18 +2,33 @@
 	padding: 200px 25px;
 }
 
+.long-bubble {
+  	background: url("../webAssets/Asset 35.svg") no-repeat;
+  	vertical-align: top;
+	display: inline-block;
+	width: 38%;
+	height: 1%;
+	padding: 2%;
+	text-align: left;
+	padding: 2em 2%;
+	margin: 10px;
+	h1 {
+		margin: -10 0;
+	}
+}
+
 .faq-item {
 	vertical-align: top;
 	display: inline-block;
 	width: 38%;
-	padding: 2%;
+	height: 1%;
 	text-align: left;
 	padding: 2em 2%;
 	height: 7em;
     border: 1px white dashed;
     margin: 10px;
 	h1, p {
-		margin: 0;
+		margin: -10 0;
 	}
 
 	h1 {

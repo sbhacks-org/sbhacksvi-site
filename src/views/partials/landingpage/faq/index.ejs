@@ -52,11 +52,11 @@
 %>
 
 <div id="faq">
-	<h1 class="header">&lt; FAQ /&gt;</h1>
+	<h1 class="header">FAQ</h1>
 	<% qa_blocks.forEach((qa_block) => { %>
-		<div class="faq-item">
+		<div class="long-bubble">
 			<h1><%- qa_block.question %></h1>
-			<p><%- qa_block.answer %></p>
+			<p class="none"><%- qa_block.answer %></p>
 		</div>
 	<% }) %>
 </div>

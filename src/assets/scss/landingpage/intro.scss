@@ -1,72 +1,86 @@
 #intro {
-	text-align: left;
-	h1 {
-		font-size: 5vw;
-	}
-	h4 {
-		color: white;
-		font-family: 'Ubuntu Mono', monospace;
-		text-transform: uppercase;
-		margin: 5px 0;
-		font-size: 1.2vw;
-	}
-	#values {
-		margin-bottom: 30px;
-		.value {
-			display: inline-grid;
-			width: 20%;
-			margin-right: 15%;
-			text-align: center;
-			img {
-				width: 100%;
-			}
+	// text-align: left;
+	// h1 {
+	// 	font-size: 5vw;
+	// }
+	// h4 {
+	// 	color: white;
+	// 	font-family: 'Ubuntu Mono', monospace;
+	// 	text-transform: uppercase;
+	// 	margin: 5px 0;
+	// 	font-size: 1.2vw;
+	// }
+	// #values {
+	// 	margin-bottom: 30px;
+	// 	.value {
+	// 		display: inline-grid;
+	// 		width: 20%;
+	// 		margin-right: 15%;
+	// 		text-align: center;
+	// 		img {
+	// 			width: 100%;
+	// 		}
 			
-			&.no-margin {
-				margin: 0;
-			}
+	// 		&.no-margin {
+	// 			margin: 0;
+	// 		}
+	// 	}
+	// }
+
+	// .video
+	// {
+	// 	border: 1px white dashed;
+	// 	padding: 15px;
+	// 	position: absolute;
+	// 	top: 0;
+	// 	left: 0;
+	// 	width: 100%;
+	// 	height: 100%;
+	// }
+
+	// #summary {
+	// 	p {
+	// 		line-height: 200%;
+	// 		font-weight: 500;
+	// 	}
+	// }
+
+	// #memory {
+	// 	text-align: center;
+	// 	img {
+	// 		width: 100%;
+	// 	}
+	// 	position: relative;
+	// 	padding-bottom: 56.25%;
+	// 	padding-top: 30px;
+	// 	height: 0;
+	// }
+
+	// #leftIntro, #rightIntro {
+	// 	vertical-align: middle;
+	// 	display: inline-block;
+	// }
+
+	// #leftIntro {
+	// 	width: 40%;
+	// 	margin: 5%;
+	// }
+
+	// #rightIntro {
+	// 	width: 45%;
+	// }
+	.recap {
+		margin: 3vh auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		h2 {
+			width: 22vw;
+			font-size: 2vw;
 		}
-	}
-
-	.video
-	{
-		border: 1px white dashed;
-		padding: 15px;
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-	}
-
-	#summary {
-		p {
-			line-height: 200%;
-			font-weight: 500;
+		#recap-button {
+			height: 10vh;
 		}
-	}
-
-	#memory {
-		text-align: center;
-		img {
-			width: 100%;
-		}
-		position: relative;
-		padding-bottom: 56.25%;
-		padding-top: 30px;
-		height: 0;
-	}
-
-	#leftIntro, #rightIntro {
-		vertical-align: middle;
-		display: inline-block;
-	}
-
-	#leftIntro {
-		width: 40%;
-		margin: 5%;
-	}
-
-	#rightIntro {
-		width: 45%;
 	}
 }
