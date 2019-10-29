@@ -19,5 +19,6 @@ Needs a .env file!! (Ask me for one)
     * In PSQL CLI:
       * `CREATE DATABASE sbhacksvi_dev;`
   * Type `npm start` to start the server. Close server.
-  * Type `num run seed` to load the initial schools in the database
+  * Type `npm run seed` to load the initial schools in the database
   * Type `npm start` again to start the server.
+  * Ask Jennifer Lai for the .env file.
