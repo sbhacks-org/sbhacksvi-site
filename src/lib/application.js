@@ -34,6 +34,7 @@ module.exports.saveApplication = (user, fields) => {
 			phone_number: fields.phone_number,
 			shirt_size: fields.shirt_size,
 			gender: fields.gender,
+			ethnicity: fields.ethnicity,
 			dietary_restrictions: fields.dietary_restrictions,
 			essay_answer: fields.essay_answer,
 			essay_answer_2: fields.essay_answer_2
@@ -68,6 +69,7 @@ module.exports.populateWithApplicationFields = (application) => {
 		linkedin: application.linkedin || "",
 		major: application.major || "",
 		gender: application.gender || "",
+		ethnicity: application.ethnicity || "",
 		phone_number: application.phone_number || "",
 		shirt_size: application.shirt_size || "",
 		transportation: application.transportation || "",
