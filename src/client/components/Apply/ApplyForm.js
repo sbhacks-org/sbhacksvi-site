@@ -21,11 +21,12 @@ class ApplyForm extends React.Component {
 			linkedin: "",
 			major: "",
 			gender: "",
-			ethnicity: "",
+			ethnicity: [],
 			phone_number: "",
 			shirt_size: "",
 			transportation: "",
 			dietary_restrictions: [],
+			dietary_restrictions_add_opts: [],
 			essay_answer: "",
 			essay_answer_2: "",
 			resume: "",
@@ -64,6 +65,17 @@ class ApplyForm extends React.Component {
 		this.updateResume = (status) => this.updateField("resume", status);
 		this.updateMlh = (evt) => this.updateField("mlh", !this.state.mlh);
 		this.updateShareMlh = (evt) => this.updateField("share_mlh", !this.state.share_mlh);
+		this.handleAddition = (e, { value }) => {
+		    if (!opts.dietary_restrictions.some(diet => diet.value === value)) {
+				this.updateDietAddOptsField(value);
+			}
+		}
+	}
+
+	updateDietAddOptsField(field_value) {
+		this.setState((prevState) => ({
+	      "dietary_restrictions_add_opts": [{key: field_value, value: field_value, text: field_value}, ...prevState.dietary_restrictions_add_opts],
+	    }))
 	}
 
 	updateField(field_name, field_value) {
@@ -154,9 +166,10 @@ class ApplyForm extends React.Component {
 
 				    <Fields.DietaryRestrictions
 				    	error={errors["dietary_restrictions"]}
-				    	opts={opts.dietary_restrictions}
+				    	opts={opts.dietary_restrictions.concat(this.state.dietary_restrictions_add_opts)}
 				    	onChange={this.updateDietaryRestrictions}
 				    	value={this.state.dietary_restrictions}
+				    	onAddItem={this.handleAddition}
 				    />
 
 				</Form.Group>

@@ -69,7 +69,7 @@ module.exports.populateWithApplicationFields = (application) => {
 		linkedin: application.linkedin || "",
 		major: application.major || "",
 		gender: application.gender || "",
-		ethnicity: application.ethnicity || "",
+		ethnicity: application.ethnicity ? application.ethnicity.split(",") : [],
 		phone_number: application.phone_number || "",
 		shirt_size: application.shirt_size || "",
 		transportation: application.transportation || "",

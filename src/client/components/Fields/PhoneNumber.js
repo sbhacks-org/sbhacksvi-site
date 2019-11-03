@@ -7,7 +7,7 @@ const PhoneNumber = ({ error, onChange, value }) => {
 	    	<label>Phone Number</label>
 	    	<Input
 	    		fluid
-	    		placeholder="Don't worry we won't call you unless it's an emergency"
+	    		placeholder="We will only call in case of emergency"
 	    		name="phone_number"
 	    		onChange={onChange}
 	    		value={value}

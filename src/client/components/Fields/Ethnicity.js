@@ -6,6 +6,7 @@ const Ethnicity = ({ onChange, error, opts, value }) => {
 		<Form.Field width={12} error={Boolean(error)}>
 			<label>Ethnicity</label>
 			<Dropdown
+				fluid
 				placeholder="ethnicity"
 				multiple
 				selection
