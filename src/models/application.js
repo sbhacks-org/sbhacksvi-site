@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     ethnicity: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING
     },
     major: {
       type: DataTypes.STRING,
@@ -21,7 +21,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       validate: {
         min: {
-          args: 2016,
+          args: 2019,
           msg: "You must be a current student in order to apply"
         },
         max: {

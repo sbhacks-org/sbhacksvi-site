@@ -6,6 +6,7 @@ const Gender = ({ onChange, error, opts, value }) => {
 		<Form.Field width={4} error={Boolean(error)}>
 			<label>Gender</label>
 			<Dropdown
+				fluid
 				placeholder="gender"
 				selection
 				options={opts}

@@ -12,8 +12,16 @@ import { fetchSchoolList, addToSchoolList } from "../../actions";
 class ProfileForm extends React.Component {
 	constructor(props) {
 		super(props);
+		
+		this.extend = (o1, o2) => {
+		 	for (var key in o2) {
+		  		o1[key] = o2[key];
+		 	}
+		 	return o1;
+		}
 
-		this.state = props.originalApplication;
+		this.state = this.extend(props.originalApplication, {dietary_restrictions_add_opts: []});
+
 		this.updateApplication = (evt) => {
 			evt.preventDefault();
 			props.updateApplication(this.state);
@@ -30,6 +38,16 @@ class ProfileForm extends React.Component {
 
 			this.updateField("school_id", value);
 		}
+
+		this.updateDietOpts = () => {
+			const { dietary_restrictions } = this.state;
+			dietary_restrictions.forEach(opt => {
+				if (!opts.dietary_restrictions.some(diet => diet.value === opt)) {
+					this.updateDietAddOptsField(opt);
+				}
+			});
+		}
+
 		this.updateLevelOfStudy = (evt, { value }) => this.updateField("level_of_study", value);
 		this.updateGraduationYear = (evt, { value }) => this.updateField("graduation_year", value);
 		this.updateGithub = (evt, { value }) => this.updateField("github", value);
@@ -44,6 +62,17 @@ class ProfileForm extends React.Component {
 		this.updateAdditionalDetails = (evt, { value }) => this.updateField("essay_answer", value);
 		this.updateAdditionalDetails2 = (evt, { value }) => this.updateField("essay_answer_2", value);
 		this.updateResume = (status) => this.updateField("resume", status);
+		this.handleAddition = (e, { value }) => {
+		    if (!opts.dietary_restrictions.some(diet => diet.value === value)) {
+				this.updateDietAddOptsField(value);
+			}
+		}
+	}
+
+	updateDietAddOptsField(field_value) {
+		this.setState((prevState) => ({
+	      "dietary_restrictions_add_opts": [{key: field_value, value: field_value, text: field_value}, ...prevState.dietary_restrictions_add_opts],
+	    }))
 	}
 
 	updateField(field_name, field_value) {
@@ -60,6 +89,7 @@ class ProfileForm extends React.Component {
 
 	componentDidMount() {
 		this.props.fetchSchoolList();
+		this.updateDietOpts();
 	}
 
 	render() {
@@ -144,9 +174,10 @@ class ProfileForm extends React.Component {
 
 				    <Fields.DietaryRestrictions
 				    	error={errors["dietary_restrictions"]}
-				    	opts={opts.dietary_restrictions}
+				    	opts={opts.dietary_restrictions.concat(this.state.dietary_restrictions_add_opts)}
 				    	onChange={this.updateDietaryRestrictions}
 				    	value={this.state.dietary_restrictions}
+				    	onAddItem={this.handleAddition}
 				    />
 
 				</Form.Group>

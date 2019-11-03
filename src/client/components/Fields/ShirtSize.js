@@ -6,7 +6,8 @@ const ShirtSize = ({ error, onChange, opts, value }) => {
 		<Form.Field width={3} error={Boolean(error)} required>
 			<label>Shirt Size</label>
 			<Dropdown
-				placeholder="These are unisex sizes"
+				fluid
+				placeholder="Unisex sizes"
 				selection
 				options={opts}
 				onChange={onChange}
