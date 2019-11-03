@@ -21,6 +21,7 @@ class ApplyForm extends React.Component {
 			linkedin: "",
 			major: "",
 			gender: "",
+			ethnicity: "",
 			phone_number: "",
 			shirt_size: "",
 			transportation: "",
@@ -53,6 +54,7 @@ class ApplyForm extends React.Component {
 		this.updateLinkedin = (evt, { value }) => this.updateField("linkedin", value);
 		this.updateMajor = (evt, { value }) => this.updateField("major", value);
 		this.updateGender = (evt, { value }) => this.updateField("gender", value);
+		this.updateEthnicity = (evt, { value }) => this.updateField("ethnicity", value);
 		this.updatePhoneNumber = (evt, { value }) => this.updateField("phone_number", value);
 		this.updateShirtSize = (evt, { value }) => this.updateField("shirt_size", value);
 		this.updateTransportation = (evt, { value }) => this.updateField("transportation", value);
@@ -128,18 +130,26 @@ class ApplyForm extends React.Component {
 				    	value={this.state.gender}
 				    />
 
-				    <Fields.PhoneNumber
-				    	error={errors["phone_number"]}
-				    	onChange={this.updatePhoneNumber}
-				    	value={this.state.phone_number}
+				    <Fields.Ethnicity
+				    	error={errors["ethnicity"]}
+				    	opts={opts.ethnicity}
+				    	onChange={this.updateEthnicity}
+				    	value={this.state.ethnicity}
 				    />
+
 				</Form.Group>
-				<Form.Group widths="equal">
+				<Form.Group>
 				    <Fields.ShirtSize
 				    	error={errors["shirt_size"]}
 				    	opts={opts.shirt_size}
 				    	onChange={this.updateShirtSize}
 				    	value={this.state.shirt_size}
+				    />
+
+				    <Fields.PhoneNumber
+				    	error={errors["phone_number"]}
+				    	onChange={this.updatePhoneNumber}
+				    	value={this.state.phone_number}
 				    />
 
 				    <Fields.DietaryRestrictions

@@ -5,6 +5,7 @@ import Github from "./Github";
 import Linkedin from "./Linkedin";
 import Major from "./Major";
 import Gender from "./Gender";
+import Ethnicity from "./Ethnicity";
 import PhoneNumber from "./PhoneNumber";
 import ShirtSize from "./ShirtSize";
 import Transportation from "./Transportation";
@@ -19,6 +20,7 @@ export {
 	Linkedin,
 	Major,
 	Gender,
+	Ethnicity,
 	PhoneNumber,
 	ShirtSize,
 	Transportation,

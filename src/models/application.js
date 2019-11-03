@@ -10,6 +10,9 @@ module.exports = function(sequelize, DataTypes) {
         len: [0, 20]
       }
     },
+    ethnicity: {
+      type: DataTypes.STRING,
+    },
     major: {
       type: DataTypes.STRING,
       allowNull: false
@@ -34,6 +37,13 @@ module.exports = function(sequelize, DataTypes) {
     transportation: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    github: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: {
+        msg: "Somebody has already applied with that github account already"
+      }
     },
     github: {
       type: DataTypes.STRING,

@@ -39,6 +39,10 @@ export const gender = ["Male", "Female", "Non-Binary", "Other"].map(gender => (
 	{ key: gender, value: gender, text: gender }
 ));
 
+export const ethnicity = ["American Indian / Alaska Native", "Asian", "Black / African American", "Hispanic / Latino", "Native Hawaiian / Other Pacific Islander", "White", "Other"].map(ethnicity => (
+	{ key: ethnicity, value: ethnicity, text: ethnicity }
+));
+
 export const transportation = [
 	{ key: "1", value: "1", text: "I can provide my own means of transportation." },
 	{ key: "2", value: "2", text: "I will take the buses provided by SB Hacks (Only select schools in California)" },

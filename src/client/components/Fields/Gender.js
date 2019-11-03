@@ -3,7 +3,7 @@ import { Form, Dropdown, Label } from "semantic-ui-react";
 
 const Gender = ({ onChange, error, opts, value }) => {
 	return (
-		<Form.Field width={9} error={Boolean(error)}>
+		<Form.Field width={4} error={Boolean(error)}>
 			<label>Gender</label>
 			<Dropdown
 				placeholder="gender"
