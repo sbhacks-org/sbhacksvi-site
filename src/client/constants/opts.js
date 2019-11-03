@@ -35,7 +35,7 @@ export const shirt_size = [
 	{ key: "XXL", value: "XXL", text: "XX-Large" }
 ];
 
-export const gender = ["Male", "Female", "Other"].map(gender => (
+export const gender = ["Male", "Female", "Non-Binary", "Other"].map(gender => (
 	{ key: gender, value: gender, text: gender }
 ));
 
