@@ -12,6 +12,8 @@ $errorColorRgba: rgba(244, 67, 54, .3);
 $fontColor: #7498bc;
 $linkColor: white;
 $bgColor: #0d2e59;
+$bgColor1: #012d5c;
+$bgColor2: #021126;
 
 @import 'initialpage';
 @import 'button';
@@ -56,15 +58,20 @@ h1 {
 
 h1.header {
   margin: 0;
-  font-size: 5vw;
+  font-size: 6vw;
 }
 
 a {
   display: inline-block;
 }
 
+#bodyDiv {
+  overflow-x: hidden;
+}
+
 #content-container { 
-  background: $bgColor;
+/*  background: $bgColor;
+*/  background-image: linear-gradient($bgColor1, $bgColor2);
   /*
   background: linear-gradient(#191919, #333333);
   background: -webkit-linear-gradient(#191919, #333333);
@@ -81,8 +88,14 @@ a {
   }
 }
 
-.grow { transition: all .2s ease-in-out; }
-.grow:hover { transform: scale(1.05); }
+.grow {
+  transition: all .2s ease-in-out;
+  border-radius: 100%;
+}
+.grow:hover { 
+  transform: scale(1.05);
+  border: solid $l-blue;
+}
 
 @mixin on-circle($item-count, $circle-size, $item-size, $divisor) {
   position: relative;
@@ -116,30 +129,38 @@ a {
   }
 }
 
+.main-div {
+  width: 100vw;
+  height: 70vw;
+  margin-bottom: 5vw;
+}
+
 .ten-circle {
-  @include on-circle($item-count: 10, $circle-size: 65vh, $item-size: 6em, $divisor: 1.4); 
-  width: 65vh;
-  height: 65vh;
+  @include on-circle($item-count: 10, $circle-size: 65vw, $item-size: 6em, $divisor: 1.7); 
+  width: 55vw;
+  height: 55vw;
 }
 
 .eight-circle {
-  @include on-circle($item-count: 8, $circle-size: 65vh, $item-size: 6em, $divisor: 1.7); 
-  width: 50vh;
-  height: 50vh;
+  @include on-circle($item-count: 8, $circle-size: 65vw, $item-size: 6em, $divisor: 1.7); 
+  width: 55vw;
+  height: 55vw;
 }
 
 .empty-circle {
-  width: 100vh;
-  height: 100vh;
-  left: 25%;
-  pointer-events: none;
+  width: 55vw;
+  height: 55vw;
+/*  left: 25%;
+*/  pointer-events: none;
 }
 
 .circle{
   margin: auto;
   border: 4px solid $fontColor;
-  border-radius: 50%;
-  z-index: 86;
+  border-color: rgba(116, 152, 188, .4);
+  border-radius: 100%;
+/*  opacity: .6;
+*/  z-index: 86;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -152,21 +173,21 @@ a {
     justify-content: center;
     align-items: center;
     p {
-      font-size: 0.8em;
+      font-size: 1.8vw;
     }
   }
   h1 {
     font-family: 'nexalight';
     text-align: center;
-    font-weight: 800;
-    display: block;
+/*    font-weight: 800;
+*/    display: block;
     line-height: 1;
-    margin: 50px auto 0px auto;
-    font-size: 4vw;
+    margin: 6vw auto 0px auto;
+    font-size: 6vw;
   }
   h2 {
     font-family: 'nexalight';
-    font-size: 1.8em;
+    font-size: 2vw;
   }
   h3 {
     margin-top: 15px;
@@ -178,32 +199,42 @@ a {
     text-decoration: none;
     display: block;
   }
-  .bubble {
-    background: url("../webAssets/Asset 34.svg") no-repeat top left;
-  }
+
   .round {
-    height: 110px;
-    width: 110px;
+    /*height: 110px;
+    width: 110px;*/
     p {
-      font-size: 0.7em;
+      font-size: 1.8vw;
       margin: -10px auto;
       font-family: 'nexalight';
     }
     h2 {
+      font-size: 4vw;
       margin: -10 auto 2px auto;
     }
     img { 
       display: block; 
-      max-width: 100%; 
-      border-radius: 50%;
+/*      max-width: 100%; 
+*/      border-radius: 100%;
       opacity: 1;
     }
   }
 }
 
+.bubble {
+    background: url("../webAssets/Asset 34.svg") no-repeat top left;
+    height: 14vw;
+    width: 14vw;
+    right: -2.8vw;
+    bottom: -3vw;
+  }
+
+.bounce {
+  animation: bounce 2s infinite;
+  animation-timing-function: linear;
+}
+
 .bubble-overlay {
-  height: 110px;
-  width: 110px;
   position: absolute;
   pointer-events: none;
 }
@@ -219,4 +250,9 @@ a {
 .none {
   display: none;
 }
+
+#ruins {
+  width: 100vw;
+}
+
 @import 'responsive';

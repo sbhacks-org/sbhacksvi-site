@@ -600,3 +600,67 @@
     }
   }
 }
+
+@media screen and (orientation: portrait) and (max-width: 450px) {
+  #apply {
+    width: 40vw;
+    height: 15vw;
+    left: calc((100% - 40vw) / 2);
+    bottom: calc((100% - 15vw) / 5);
+    font-size: 6vw;
+  }
+
+  .ten-circle, .eight-circle, .empty-circle {
+    width: 120vw;
+    height: 120vw;
+  }
+
+  .ten-circle {
+    @include on-circle($item-count: 10, $circle-size: 120vw, $item-size: 6em, $divisor: 2.8);
+  }
+
+  .circle {
+    margin-left: -17vw;
+  }
+
+  #intro h1 {
+    font-size: 12vw;
+    padding-top: 6vw;
+  }
+
+  .circle .circle-content p {
+    font-size: 3.7vw;
+  }
+
+  p {
+    margin-block-start: .5em;
+    margin-block-end: 1em;
+    margin-inline-start: 17vw;
+    margin-inline-end: 17vw;
+  }
+
+  .circle .round h2 {
+    font-size: 5vw;
+  }
+
+  .circle .round p {
+    font-size: 2.2vw;
+  }
+
+  #intro .recap #recap-button {
+    height: 13vw;
+    margin: 0;
+    border-radius: 100%;
+    border: solid $l-blue;
+  }
+
+  #intro .recap h2 {
+    color: $l-blue;
+    width: 29vw;
+    font-size: 4vw;
+  }
+
+  .main-div {
+    margin-bottom: 10vw;
+  }
+}

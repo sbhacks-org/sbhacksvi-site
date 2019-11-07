@@ -1,12 +1,15 @@
 $bgColor: #0d2e59;
 
 #faq {
-	padding: 200px 25px;
+	/*width: 100vw;
+	height: 100vh;*/
+	/*padding: 200px 25px;*/
 }
 
 .long-bubble {
   	background: url("../webAssets/Asset 35.svg") no-repeat;
   	background-color: $bgColor;
+  	background-color: rgba(13, 46, 89, .6);
   	vertical-align: top;
 	display: inline-table;
 	width: 28%;
@@ -15,10 +18,18 @@ $bgColor: #0d2e59;
 	padding: 1em 2%;
 	margin: 5px 35px;
 	z-index: 90;
+	animation-play-state: paused;
 	h1 {
 		margin: 0;
 		font-size: 1em;
 	}
+}
+
+.long-bubble:hover {
+	color: $l-blue;
+	animation-play-state: running;
+	animation: bounce 2s infinite;
+	animation-timing-function: linear;
 }
 
 .collapsible {
@@ -28,9 +39,10 @@ $bgColor: #0d2e59;
 }
 
 .faq-block {
-	margin-top: 140px;
-	position: relative;
+/*	margin-top: 140px;
+*/	position: relative;
 	z-index: 100;
+	bottom: 41vw;
 }
 
 .answer {

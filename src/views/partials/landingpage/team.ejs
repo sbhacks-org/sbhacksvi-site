@@ -51,7 +51,7 @@
 	];
 %>
 
-<div class = "team">
+<div class = "team main-div" id = "team">
 	<div class="eight-circle circle small">
 	  	<h1>TEAM</h1>
 	  	<div class = "circle-content">
@@ -59,12 +59,12 @@
 		</div>
 		<% organizer_profiles.forEach((profile_item) => { %>
 		  	<li>
-		  		<div class="round bg-overlay-pos grow">
+		  		<div class="round bg-overlay-pos bounce">
 		  			<a href="<%- profile_item.link %>" target="_blank">
 		  				<img src="/images/organizers/<%- profile_item.pic %>">
 		  			</a>
 		  		</div>
-		  		<div class="bubble bubble-overlay ">
+		  		<div class="bubble bubble-overlay bounce grow">
 		  		</div>
 		  	</li>
 		<% }) %>
