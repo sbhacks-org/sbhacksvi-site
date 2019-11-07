@@ -1,4 +1,21 @@
 <div id = "landing">
+	<!-- Top Navigation Menu -->
+	<div class="mobNavBar">
+	  <!-- Navigation links (hidden by default) -->
+	  <div id="navLinks">
+	  	<a href = "#landing">SB HACKS VI</a>
+	  	<a href = "#intro">INTRO</a>
+	  	<a href = "#faq">FAQ</a>
+	  	<a href = "#team">TEAM</a>
+	  	<a href = "#sponsor-container">SPONSORS</a>
+	  	<a href = "https://sbhacksv.herokuapp.com/">SB HACKS V</a>
+	  </div>
+	  <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+	  <a href="javascript:void(0);" class="icon">
+	    <i class="fa fa-bars" id="burgerIcon"></i>
+	  </a>
+	</div>
+
 		<div id = "navBar">
 			<ul>
 				<li><a href = "https://sbhacksv.herokuapp.com/">SB HACKS V</a></li>
@@ -73,3 +90,20 @@
 			</div>
 		</div> -->
 	</div>
+
+	<script>
+		console.log("burger");
+		var icon = document.getElementById("burgerIcon");
+
+		function toggleMobNavBar() {
+		  var x = document.getElementById("navLinks");
+		  if (x.style.display === "block") {
+		    x.style.display = "none";
+		  } else {
+		    x.style.display = "block";
+		  }
+		}
+
+		icon.addEventListener("click", toggleMobNavBar);
+		// icon.addEventListener("touchstart", toggleMobNavBar);
+	</script>

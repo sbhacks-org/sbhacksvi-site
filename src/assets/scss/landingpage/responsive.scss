@@ -602,6 +602,14 @@
 }
 
 @media screen and (orientation: portrait) and (max-width: 450px) {
+  .mobNavBar {
+    display: initial;
+  }
+
+  #navBar {
+    display: none;
+  }
+
   #apply {
     width: 40vw;
     height: 15vw;
@@ -619,8 +627,12 @@
     @include on-circle($item-count: 10, $circle-size: 120vw, $item-size: 6em, $divisor: 2.8);
   }
 
+  .eight-circle {
+    @include on-circle($item-count: 8, $circle-size: 120vw, $item-size: 6em, $divisor: 2.8);
+  }
+
   .circle {
-    margin-left: -17vw;
+    margin-left: -10vw;
   }
 
   #intro h1 {
@@ -661,6 +673,59 @@
   }
 
   .main-div {
-    margin-bottom: 10vw;
+    margin-bottom: 72vw;
   }
+
+  .circle h1 {
+    font-size: 12vw;
+    padding-top: 6vw;
+  }
+
+  .faq-block {
+    bottom: 90vw;
+    height: 75vw;
+    overflow: scroll;
+  }
+
+  .long-bubble {
+    width: 75%;
+    background-color: transparent;
+  }
+
+  .long-bubble h1 {
+    margin: 1.8vw;
+    font-size: 4vw;
+  }
+
+  #team h1 {
+    padding-top: 30vw;
+  }
+
+  .bubble {
+    height: 20vw;
+    width: 20vw;
+    right: -5.8vw;
+    bottom: -6vw;
+  }
+
+  .team a {
+    bottom: 4.1vw;
+    right: 4.3vw;
+  }
+
+  .team img {
+    width: 17vw;
+  }
+
+  h1.header {
+    font-size: 12vw;
+    padding-top: 6vw;
+  }
+
+  #content-container {
+    width: 100vw;
+    padding: 0;
+    padding-top: 20vw;
+  }
+
 }
