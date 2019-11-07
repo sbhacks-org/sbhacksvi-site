@@ -56,7 +56,7 @@
     "hasha": "^3.0.0",
     "helmet": "^3.21.2",
     "html-minifier": "^3.5.4",
-    "mongoose": "^5.7.7",
+    "mongoose": "^5.7.8",
     "morgan": "^1.9.1",
     "node-cache": "^4.1.1",
     "node-sass": "^4.9.2",
