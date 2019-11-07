@@ -1,12 +1,22 @@
 .team {
-	width: 100vw;
-	height: 100vh;
+	position: relative;
+	top: 14vw;
 	a {
+		position: relative;
+	    bottom: 1.5vw;
+	    right: 1.8vw;
+	    border-radius: 100%;
+	    &:hover {
+	    	border: solid $l-blue;
+	    	bottom: calc(1.5vw + 3px);
+	    	right: calc(1.8vw + 3px);
+	    }
+	}
+	img {
+		width: 12vw;
+		opacity: 0.4;
 		&:hover {
 			opacity: 1;
 		}
-	}
-	img {
-		opacity: 0.4;
 	}
 }
