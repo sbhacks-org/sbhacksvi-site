@@ -38,18 +38,37 @@ $bgColor: #0d2e59;
   }
 }
 
+.upTriangle {
+	display: none;
+}
+
 .faq-block {
 /*	margin-top: 140px;
 */	position: relative;
 	z-index: 100;
 	bottom: 41vw;
+	.faqArrow {
+		width: 2.5vw;
+	    float: right;
+	    position: relative;
+	    top: .5vw;
+	    right: 0vw;
+	}
 }
 
 .answer {
   max-height: 0;
   display: block;
   margin-top: 25px;
-  font-size: 0.7em;
+  font-size: 1.2vw;
   transition: max-height 0.2s ease-out;
   overflow: hidden;
+}
+
+#scrollTriangle {
+	margin: auto;
+	width: 10vw;
+	position: relative;
+	bottom: 81vw;
+	display: none;
 }

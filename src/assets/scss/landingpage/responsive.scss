@@ -689,9 +689,33 @@
 
   .faq-block {
     bottom: 90vw;
-    height: 75vw;
+    height: 65vw;
     overflow-y: scroll;
     overflow-x: hidden;
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+    }
+    &::-webkit-scrollbar:vertical {
+      width: 3vw;
+      padding-right: 1vw;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 8px;
+      border: 2px solid $fontColor;
+      background-color: rgba(0, 0, 0, .5);
+    }
+    .faqArrow {
+      top: 3vw;
+      right: .8vw;
+      width: 6vw;
+    }
+    .answer {
+      font-size: 3.8vw;
+    }
+  }
+
+  #scrollTriangle {
+    display: initial;
   }
 
   .long-bubble {
@@ -699,7 +723,7 @@
     background-color: transparent;
     h1 {
       margin: 1.8vw;
-      font-size: 4vw;
+      font-size: 3.8vw;
     }
     p {
       font-size: 2em;

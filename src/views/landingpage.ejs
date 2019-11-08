@@ -85,12 +85,12 @@
 		  coll[i].addEventListener("click", function() {
 		  	// console.log("clieck");
 		    this.classList.toggle("active");
-		    var content = this.childNodes[1];
-		    console.log(content.style.display);
+		    var content = this.childNodes[7];
+		    console.log(this.childNodes);
 		    if (content.style.maxHeight){
 		      	content.style.maxHeight = null;
 		    } else {
-				console.log("scrolling");
+				// console.log("scrolling");
 		      	content.style.maxHeight = content.scrollHeight + "px";
 		    }
 		  });

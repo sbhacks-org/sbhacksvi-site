@@ -58,9 +58,48 @@
 	<div class = "faq-block">
 		<% qa_blocks.forEach((qa_block) => { %>
 			<div class="long-bubble collapsible">
+				<img src="images/downTriangle.png" class="faqArrow downTriangle">
+				<img src="images/upTriangle.png" class="faqArrow upTriangle">
 				<h1><%- qa_block.question %></h1>
 				<p class="answer"><%- qa_block.answer %></p>
 			</div>
 		<% }) %>
 	</div>
+	<img src="images/downTriangle.png" class="downTriangle bounce" id="scrollTriangle">
 </div>
+
+<script>
+	var qaToggles = document.getElementsByClassName("collapsible");
+	for (var i = 0; i < qaToggles.length; i++) {
+		qaToggles[i].addEventListener("click", switchArrows);
+	}
+
+	function switchArrows(e) {
+		var upTrig, downTrig = null;
+		questionChilds = this.childNodes;
+		for (var i = 0; i < questionChilds.length; i++) {
+			// console.log(questionChilds[i].className);
+			if (questionChilds[i].className == "faqArrow upTriangle") {
+				upTrig = questionChilds[i];
+				// console.log(upTrig);
+			}
+			else if (questionChilds[i].className == "faqArrow downTriangle") {
+				downTrig = questionChilds[i];
+				// console.log(downTrig);
+			}
+		}
+		if (upTrig && downTrig) {
+			// console.log("toggle");
+			if (downTrig.style.display != "none") {
+				downTrig.style.display = "none";
+				upTrig.style.display = "initial"
+			}
+			else {
+				downTrig.style.display = "initial";
+				upTrig.style.display = "none";
+			}
+		}
+	}
+</script>
+
+
