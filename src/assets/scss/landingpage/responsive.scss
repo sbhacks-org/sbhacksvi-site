@@ -690,17 +690,22 @@
   .faq-block {
     bottom: 90vw;
     height: 75vw;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
 
   .long-bubble {
     width: 75%;
     background-color: transparent;
-  }
-
-  .long-bubble h1 {
-    margin: 1.8vw;
-    font-size: 4vw;
+    h1 {
+      margin: 1.8vw;
+      font-size: 4vw;
+    }
+    p {
+      font-size: 2em;
+      margin-inline-start: 0vw;
+      margin-inline-end: 0vw;
+    }
   }
 
   #team h1 {
@@ -714,13 +719,18 @@
     bottom: -6vw;
   }
 
-  .team a {
-    bottom: 4.1vw;
-    right: 4.3vw;
-  }
-
-  .team img {
-    width: 17vw;
+  .team {
+    a {
+      bottom: 4.1vw;
+      right: 4.3vw;
+      &:hover {
+        bottom: calc(4vw + 3px);
+        right: calc(4vw + 3px);
+      }
+    }
+    img {
+      width: 17vw;
+    }
   }
 
   h1.header {
