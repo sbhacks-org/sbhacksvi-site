@@ -246,6 +246,12 @@
 }
 
 @media screen and (min-width: 1200px) {
+    #apply {
+      --width: 17vw;
+      --height: 7vw;
+      font-size: 2.6vw;
+    }
+    
     #otter {
         right: calc((100% - 156px) * .15);
     }
@@ -274,11 +280,11 @@
     }
 
     #centerLogo {
-        width: 13%;
-        max-height: 250px;
-        height: auto;
-        left: 44%;
-        top: calc((100% - (13vw * 1.25)) / 2);
+        width: 14vw;
+/*        max-height: 250px;
+*/        height: auto;
+        /*left: 44%;
+        top: calc((100% - (13vw * 1.25)) / 2);*/
     }
 
     #info {
@@ -601,7 +607,7 @@
   }
 }
 
-@media screen and (orientation: portrait) and (max-width: 450px) {
+@media screen and (orientation: portrait) and (max-width: 550px) {
   .mobNavBar {
     display: initial;
   }
@@ -729,3 +735,7 @@
   }
 
 }
+
+/*@media screen and (orientation: landscape) and (max-height: 700px) {
+
+}*/

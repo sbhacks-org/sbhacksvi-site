@@ -114,9 +114,10 @@
   background-position: center;
   width: 100vw;
   height: 100vh;
-  position: flex;
+  position: relative;
   //z-index: -2;
   overflow: hidden;
+  min-height: 700px;
 }
 
 .mobNavBar {
@@ -188,6 +189,7 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
+    padding-right: 15px;
     top: 0;
     width: 100%;
     li {
@@ -213,18 +215,34 @@
 }
 
 #apply {
+  --width: 21vw;
+  --height: 8vw;
   background: url("../webAssets/Asset 37.svg") no-repeat top left;
   font-family: 'nexalight', sans-serif;
-  width: 13vw;
-  height: 5vw;
-  left: calc((100% - 14vw) / 2);
-  bottom: calc((100% - 5vw) / 6);
+  width: var(--width);
+  height: var(--height);
+  left: calc((100% - var(--width)) / 2);
+  bottom: calc((100% - var(--height)) / 6);
   cursor: pointer;
   padding: 2px 8px;
   z-index: 3;
-  h2 {
+  position: relative;
+  font-size: 3.2vw;
+/*  text-decoration-line: none;
+*/  /*h2 {
     margin: 0;
-    font-size: 2vw;
+    font-size: 4vw;
+  }*/
+}
+
+#centerInfo {
+  position: relative;
+  bottom: 15vw;
+  a {
+    text-decoration: none;
+    &:hover {
+      color: $l-blue;
+    }
   }
 }
 
@@ -239,13 +257,13 @@
 #centerLogo {
   width: 185px;
     height: 230.69px;
-  position: absolute;
-  left: calc((100% - 185px) / 2);
-}
+  position: relative;
+/*  left: calc((100% - 185px) / 2);
+*/}
 
 
 .info-container {
-    position: absolute;
+    position: relative;
     width: 100%;
     text-align: center;
     top: calc((100% - 230.69px) / 2 + 230.69px);
