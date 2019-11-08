@@ -93,11 +93,11 @@ a {
 
 .grow {
   transition: all .2s ease-in-out;
-  border-radius: 100%;
+  // border-radius: 100%;
 }
 .grow:hover { 
   transform: scale(1.05);
-  border: solid $l-blue;
+  // border: solid $l-blue;
 }
 
 @mixin on-circle($item-count, $circle-size, $item-size, $divisor) {
