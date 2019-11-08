@@ -7,7 +7,7 @@ const Github = ({ error, onChange, value }) => {
 			<label>Github</label>
 			<Input
 	    		fluid
-				icon="at"
+				icon="github"
 				iconPosition="left"
 				placeholder="github username"
 				name="github"

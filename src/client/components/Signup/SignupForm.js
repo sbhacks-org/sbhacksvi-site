@@ -63,7 +63,7 @@ class SignupForm extends React.Component {
 					<label>Email</label>
 					<Input
 						fluid
-						icon="at"
+						icon="envelope outline"
 						iconPosition="left"
 						placeholder="Email Address"
 						name="email"

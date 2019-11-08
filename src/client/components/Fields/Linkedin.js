@@ -7,7 +7,7 @@ const Linkedin = ({ error, onChange, value }) => {
 	    	<label>Linkedin</label>
 	    	<Input
 	    		fluid
-	    		icon="at"
+	    		icon="linkedin"
 	    		iconPosition="left"
 	    		placeholder="linkedin username"
 	    		name="linkedin"
