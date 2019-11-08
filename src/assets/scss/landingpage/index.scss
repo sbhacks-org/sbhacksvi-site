@@ -77,9 +77,9 @@ a {
   background: -o-linear-gradient($bgColor1, $bgColor2);
   background: -moz-linear-gradient($bgColor1, $bgColor2);
   
-  padding-top: 10%;
-  margin: 0;
-  margin-top: -1px;
+/*  padding-top: 10%;
+*/  margin: 0;
+  margin-top: -10px;
   padding-bottom: 0;
   padding-left: 0;
   a {
@@ -88,6 +88,29 @@ a {
     // &:hover {
     //   opacity: 0.5;
     // }
+  }
+  #backgroundCliffs {
+    width: 100vw;
+    overflow: hidden;
+    #leftCliff {
+      float: left;
+      width: 40vw;
+      position: relative;
+      right: 1vw;
+    }
+    #rightCliff {
+      float: right;
+      width: 38vw;
+      position: relative;
+      left: 1vw;
+    }
+  }
+  #ruins {
+    width: 100vw;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    margin: 0;
   }
 }
 
@@ -258,12 +281,5 @@ a {
   display: none;
 }
 
-#ruins {
-  width: 100vw;
-  position: relative;
-  left: 0;
-  bottom: 0;
-  margin: 0;
-}
 
 @import 'responsive';
