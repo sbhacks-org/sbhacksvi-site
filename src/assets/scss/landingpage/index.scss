@@ -71,17 +71,17 @@ a {
 }
 
 #content-container { 
-/*  background: $bgColor;
-*/  background-image: linear-gradient($bgColor1, $bgColor2);
-  /*
-  background: linear-gradient(#191919, #333333);
-  background: -webkit-linear-gradient(#191919, #333333);
-  background: -o-linear-gradient(#191919, #333333);
-  background: -moz-linear-gradient(#191919, #333333);
-  */
+
+  background: linear-gradient($bgColor1, $bgColor2);
+  background: -webkit-linear-gradient($bgColor1, $bgColor2);
+  background: -o-linear-gradient($bgColor1, $bgColor2);
+  background: -moz-linear-gradient($bgColor1, $bgColor2);
+  
   padding-top: 10%;
   margin: 0;
   margin-top: -1px;
+  padding-bottom: 0;
+  padding-left: 0;
   a {
     color: white;
     text-decoration: underline;
@@ -235,6 +235,10 @@ a {
 .bounce {
   animation: bounce 2s infinite;
   animation-timing-function: linear;
+}
+
+.bounce:nth-of-type(4) {
+  animation-delay: 1s;
 }
 
 .bubble-overlay {

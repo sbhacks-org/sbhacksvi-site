@@ -494,8 +494,8 @@
   }
   #content-container
   {
-    padding: 10% 4%;
-  }
+/*    padding: 10% 4%;
+*/  }
   #intro {
     h1 {
       font-size: 5vw;
@@ -582,7 +582,7 @@
   }
   #content-container
   {
-    padding: 10% 25px;
+    /*padding: 10% 25px;*/
     #faq {
       .faq-item {
         margin: 15px 0px;
@@ -630,25 +630,42 @@
   }
 
   .ten-circle {
-    @include on-circle($item-count: 10, $circle-size: 120vw, $item-size: 6em, $divisor: 2.8);
+    @include on-circle($item-count: 10, $circle-size: 120vw, $item-size: 6em, $divisor: 3);
   }
 
   .eight-circle {
-    @include on-circle($item-count: 8, $circle-size: 120vw, $item-size: 6em, $divisor: 2.8);
+    @include on-circle($item-count: 8, $circle-size: 120vw, $item-size: 6em, $divisor: 3.1);
   }
 
   .circle {
     margin-left: -10vw;
+    .circle-content {
+      p {
+        font-size: 3.7vw;
+      }
+    }
+    .round {
+      h2 {
+        font-size: 5vw;
+      }
+      p {
+        font-size: 3.2vw;
+      }
+    }
+    h1 {
+      font-size: 12vw;
+      padding-top: 6vw;
+    }
   }
 
-  #intro h1 {
+  /*#intro h1 {
     font-size: 12vw;
     padding-top: 6vw;
-  }
+  }*/
 
-  .circle .circle-content p {
+ /* .circle .circle-content p {
     font-size: 3.7vw;
-  }
+  }*/
 
   p {
     margin-block-start: .5em;
@@ -657,15 +674,65 @@
     margin-inline-end: 17vw;
   }
 
-  .circle .round h2 {
+/*  .circle .round h2 {
     font-size: 5vw;
   }
 
   .circle .round p {
     font-size: 2.2vw;
+  }*/
+  #intro {
+    #hours {
+      display: none;
+    }
+    #mobHours {
+      display: flex;
+    }
+    .recap {
+      display: none;
+      #recap-button {
+        height: 13vw;
+        margin: 0;
+        border-radius: 100%;
+        border: solid $l-blue;
+      }
+      h2 {
+        color: $l-blue;
+        width: 29vw;
+        font-size: 4vw;
+      }
+    }
+    h1 {
+      font-size: 12vw;
+      padding-top: 6vw;
+    }
+    .circle-content {
+      margin-top: 0;
+      p {
+          margin-inline-start: 26vw;
+          margin-inline-end: 26vw;
+          /*#first {
+            margin-block-start: 4vw;
+            margin-block-end: 30vw;
+          }
+          #second {
+          margin-inline-start: 23vw;
+          margin-inline-end: 23vw;
+          }*/
+      }
+    }
+    .none a {
+      display: flex;
+      div {
+        height: calc(20vw - 3px);
+        width: calc(20vw - 3px);
+        background-image: url("../webAssets/Asset 38.svg");
+        border-radius: 100%;
+        border: solid $l-blue;
+      }
+    }
   }
-
-  #intro .recap #recap-button {
+/*  #intro .recap #recap-button {
     height: 13vw;
     margin: 0;
     border-radius: 100%;
@@ -676,16 +743,16 @@
     color: $l-blue;
     width: 29vw;
     font-size: 4vw;
-  }
+  }*/
 
   .main-div {
     margin-bottom: 72vw;
   }
 
-  .circle h1 {
+/*  .circle h1 {
     font-size: 12vw;
     padding-top: 6vw;
-  }
+  }*/
 
   .faq-block {
     bottom: 90vw;
@@ -739,21 +806,28 @@
   .bubble {
     height: 20vw;
     width: 20vw;
-    right: -5.8vw;
+    right: -5vw;
     bottom: -6vw;
   }
 
   .team {
     a {
       bottom: 4.1vw;
-      right: 4.3vw;
+      right: 5vw;
       &:hover {
-        bottom: calc(4vw + 3px);
-        right: calc(4vw + 3px);
+        bottom: calc(4.1vw + 3px);
+        right: calc(5vw + 3px);
       }
     }
     img {
       width: 17vw;
+    }
+    .circle-content {
+      margin-top: 0;
+    }
+    p {
+      margin-inline-start: 23vw;
+      margin-inline-end: 23vw;
     }
   }
 

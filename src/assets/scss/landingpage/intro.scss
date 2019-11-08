@@ -84,7 +84,16 @@
 			height: 7vw;
 			cursor: pointer;
 			margin: 1.2vw;
+			border: solid $l-blue;
+			border-radius: 100%
 		}
+	}
+	#mobHours {
+		display: none;
+	}
+
+	.none a {
+		display: none;
 	}
 
 	/*.bounce:nth-child(2) {
