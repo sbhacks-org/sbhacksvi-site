@@ -295,7 +295,7 @@
 /*        top: calc((100% - (13vw * 1.25)) / 2 + (13vw * 1.25));
 */    }
     
-    img#lights1 {
+    /*img#lights1 {
         width: 60%;
         left: 25%;
         top: 17%;
@@ -335,7 +335,7 @@
       width: 70%;
         left: 15%;
         top: 0;
-    }
+    }*/
 }
 
 @media screen and (max-height: 650px) {
@@ -851,6 +851,27 @@
 
 }
 
-/*@media screen and (orientation: landscape) and (max-height: 700px) {
+@media screen and (min-height: 1200px) and (max-aspect-ratio: 4/3) {
+  #landing {
+    div#center {
+      width: 140vw;
+    }
 
-}*/
+    #otter {
+      width: 222px;
+    }
+  }
+
+  img#greenKelp {
+    width: 103%;
+  }
+
+  img#darkKelp {
+    width: 60%;
+  }
+
+  img#blueKelp {
+    width: 104%;
+  }
+  
+}

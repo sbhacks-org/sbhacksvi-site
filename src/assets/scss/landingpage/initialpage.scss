@@ -129,7 +129,7 @@
 
 #centerInfo {
   position: absolute;
-  top: 50vh;
+  top: 50%;
   left: 50vw;
   transform: translate(-50%, -40%);
   /*bottom: 12vw;*/
@@ -212,29 +212,33 @@ img#waveGroup {
 }
 
 img#lights1 {
-  width: 49%;
-    width: 542px;
-  position: absolute;
+  width: 60%;
+/*    width: 542px;
+*/  position: absolute;
   left: 25%;
   top: 17%;
 }
 
 img#lights2 {
-  width: 53%;
-    width: 586px;
-  position: absolute;
+  width: 65%;
+/*    width: 586px;
+*/  position: absolute;
   left: 14%;
   top: 12%;
   animation-delay: 2s;
 }
 
 img#spotLight {
-  width: 18%;
-    width: 199px;
-  position: absolute;
+  width: 22%;
+/*    width: 199px;
+*/  position: absolute;
   top: 19%;
   left: 38%;
     z-index: 1;
+}
+
+#waves {
+  width: 100%;
 }
 
 .waves {
@@ -244,34 +248,34 @@ img#spotLight {
 }
 
 img#wave4 {
-/*  width: 43%;*/
-    width: 510px;
-  left: 3%;
+  width: 57%;
+/*    width: 510px;
+*/  left: 3%;
   top: 8%;
   animation-delay: 3s;
 }
 
 img#wave3 {
-/*  width: 64%;*/
-    width: 758px;
-  left: 18%;
+  width: 84%;
+/*    width: 758px;
+*/  left: 18%;
   top: 6%;
   animation-delay: 1s;
     z-index: -1;
 }
 
 img#wave2 {
-/*  width: 55%;*/
-  width: 652px;
-    left: 15%;
+  width: 72%;
+/*  width: 652px;
+*/    left: 15%;
   top: 16%;
   animation-delay: 2s
 }
 
 img#wave1 {
-/*  width: 53%;*/
-    width: 628px;
-  left: 15%;
+  width: 70%;
+/*    width: 628px;
+*/  left: 15%;
   top: 0;
 }
 
@@ -396,11 +400,4 @@ img#rightBiome {
     transform: translateX(200vw);
   }
   to {transform: translateX(-200vw);}
-}
-
-@keyframes reverseSwim {
-  from {
-    transform: translateX(-200vw);
-  }
-  to {transform: translateX(200vw);}
 }

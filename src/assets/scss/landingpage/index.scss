@@ -113,7 +113,19 @@ a {
     margin: 0;
   }
   #backgroundFish {
-    top: -10vw;
+    bottom: 10vw;
+    transform: translateX(200%);
+    animation-delay: 10s;
+  }
+  #reverseFish {
+    animation-delay: 3s;
+    transform: translateX(-200%);
+/*    animation-direction: reverse;
+*/    bottom: 18vw;
+    img {
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+    }
   }
 }
 
