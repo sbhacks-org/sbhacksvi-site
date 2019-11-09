@@ -45,7 +45,7 @@ class Apply extends React.Component {
 	submitApplication(fields) {
 		const xhttp = new XMLHttpRequest();
 
-		console.log('submitting: ', fields);
+		// console.log('submitting: ', fields);
 
 		this.startApply();
 
@@ -61,7 +61,7 @@ class Apply extends React.Component {
 		const { isAuthenticated, applicationFields } = this.props;
 		
 		if(!isAuthenticated) {
-			console.log("routing to signup");
+			// console.log("routing to signup");
 			return <Redirect to={{
 							pathname: "/signup",
 							state: { referrer: location.pathname }
