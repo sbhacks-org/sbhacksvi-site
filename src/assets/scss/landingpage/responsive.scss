@@ -62,12 +62,12 @@
 
 /*iPhone 5/SE and Galaxy S5*/
 @media screen and (device-aspect-ratio: 40/71), (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) {
-    #centerLogo {
+    /*#centerLogo {
         top: calc((100% - 400px) / 2);
     }
     .info-container {
         top: calc((100% - 390px) / 2 + 230.69px);
-    }
+    }*/
     #emailField {
         bottom: calc((100% - 100px) / 4.5);
     }
@@ -78,12 +78,12 @@
 
 /*iPhone 6/7/8 and Galaxy S8*/
 @media screen and (min-device-width : 375px) and (max-device-width : 667px), (min-width: 360px) and (max-width: 767px) {
-    #centerLogo {
+    /*#centerLogo {
         top: calc((100% - 400px) / 2);
     }
     .info-container {
         top: calc((100% - 390px) / 2 + 230.69px);
-    }
+    }*/
     #emailField {
         bottom: calc((100% - 50px) / 4.5);
     }
@@ -93,9 +93,9 @@
 }
 
 @media screen and (min-width: 600px) {
-    #info {
-        font-size: 15px;
-    }
+    /*#info {
+        font-size: 1.5px;
+    }*/
 
     .alertContainer {
         bottom: 0;
@@ -156,9 +156,9 @@
 }
 
 @media screen and (min-width: 768px) {
-    #info {
+    /*#info {
         font-size: 20px;
-    }
+    }*/
 
     .alertContainer {
         bottom: -70%;
@@ -276,8 +276,8 @@
     div#center {
         width: 80%;
         height: 30vw;
-        left: 10%;
-    }
+/*        left: 10%;
+*/    }
 
     #centerLogo {
         width: 14vw;
@@ -287,9 +287,13 @@
         top: calc((100% - (13vw * 1.25)) / 2);*/
     }
 
+    #centerInfo {
+/*      bottom: calc((100vh - (14vw * .8) - 4vh - 20px - 16px - 6vw) / 2;
+*/    }
+
     #info {
-        top: calc((100% - (13vw * 1.25)) / 2 + (13vw * 1.25));
-    }
+/*        top: calc((100% - (13vw * 1.25)) / 2 + (13vw * 1.25));
+*/    }
     
     img#lights1 {
         width: 60%;
@@ -638,7 +642,7 @@
   }
 
   .circle {
-    margin-left: -10vw;
+    margin-left: -12vw;
     .circle-content {
       p {
         font-size: 3.7vw;
@@ -806,14 +810,14 @@
   .bubble {
     height: 20vw;
     width: 20vw;
-    right: -5vw;
+    right: -7vw;
     bottom: -6vw;
   }
 
   .team {
     a {
       bottom: 4.1vw;
-      right: 5vw;
+      right: 3vw;
       &:hover {
         bottom: calc(4.1vw + 3px);
         right: calc(5vw + 3px);
@@ -839,8 +843,11 @@
   #content-container {
     width: 100vw;
     padding: 0;
-/*    padding-top: 20vw;
-*/  }
+    #backgroundFish {
+      width: 140vw;
+      top: -23vw;
+    }
+  }
 
 }
 
