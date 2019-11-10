@@ -135,6 +135,8 @@ a {
 }
 .grow:hover { 
   transform: scale(1.05);
+  transform: translateX(-2%);
+  transform: translateY(-1.5%);
   // border: solid $l-blue;
 }
 
