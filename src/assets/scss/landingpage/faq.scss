@@ -12,7 +12,7 @@ $bgColor: #0d2e59;
   	background-color: transparent;
   	vertical-align: top;
 	display: inline-table;
-	width: 28%;
+	width: 36%;
 	padding: 2%;
 	text-align: left;
 	padding: 1em 2%;
@@ -47,8 +47,26 @@ $bgColor: #0d2e59;
 */	position: relative;
 	z-index: 100;
 	bottom: 41vw;
+    height: 33vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 80vw;
+    margin: auto;
+    padding-left: 2vw;
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+    }
+    &::-webkit-scrollbar:vertical {
+      width: 2vw;
+      padding-right: 1vw;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 8px;
+      border: 2px solid $fontColor;
+      background-color: rgba(0, 0, 0, .5);
+    }
 	.faqArrow {
-		width: 2.5vw;
+		width: 2vw;
 	    float: right;
 	    position: relative;
 	    top: .5vw;
@@ -68,8 +86,8 @@ $bgColor: #0d2e59;
 
 #scrollTriangle {
 	margin: auto;
-	width: 10vw;
+	width: 3.5vw;
 	position: relative;
-	bottom: 81vw;
-	display: none;
+	bottom: 38.5vw;
+	opacity: .6;
 }
