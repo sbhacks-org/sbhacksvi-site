@@ -36,10 +36,11 @@ module.exports = (app) => {
 		{ proc_env_key: "SLACK_JOIN_URL", link: "/slack" },
 		{ proc_env_key: "WORKSHOP_LINK", link: "/workshop" },
 		{ proc_env_key: "VOLUNTEER_LINK", link: "/volunteers" },
+		{ proc_env_key: "MENTOR_LINK", link: "/mentors" },
 		{ proc_env_key: "ORGANIZER_APPLY_LINK", link: "/organizers" },
 		{ proc_env_key: "FB_EVENT_LINK", link: "/fb-event" },
 		{ proc_env_key: "TOILETRIES_STUDY_LINK", link: "/toiletries-study" },
-		{ proc_env_key: "SLIDE_DECK_LINK", link: "/sponsors-slidedeck" }
+		{ proc_env_key: "SLIDE_DECK_LINK", link: "/sponsors-slidedeck" },
 	];
 
 	proc_links.forEach(({ proc_env_key, link }) => app.get(link, (req, res) => res.redirect(process.env[proc_env_key])));
