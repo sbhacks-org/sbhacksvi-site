@@ -120,7 +120,7 @@ const AddInfo = ({info, application, rsvpAction, cancelRsvpAction}) => {
 			return (
 				<div>
 					<div className="body">
-						<p className="body-text">We are currently reviewing your application. If you don't see an update by January 5th, please email us at <a href="mailto:team@sbhacks.com">team@sbhacks.com</a></p>
+						<p className="body-text">We are currently reviewing your application. If you don't see an update by January 5th, please email us at <a href="mailto:team@sbhacks.com">team@sbhacks.com</a>.</p>
 					</div>
 					{
 						process.env["apps_released"] === "true" ?
@@ -136,17 +136,29 @@ const AddInfo = ({info, application, rsvpAction, cancelRsvpAction}) => {
 	}
 	else
 	{
-		return (
-			<div>
-				<div className="body">
-					<p className="body-text">You have not yet applied. Applications are due December 13th.</p>
-					<Container textAlign='center'>
-						<Link to="/apply" id="apply-link"><Button color="blue">Start Application</Button></Link>
-					</Container>
-				</div>
+		if (process.env["apps_released"] === "true") {
+			return (
+				<div>
+					<div className="body">
+						<p className="body-text">You have not yet applied. Applications are due December 13th.</p>
+						<Container textAlign='center'>
+							<Link to="/apply" id="apply-link"><Button color="blue">Start Application</Button></Link>
+						</Container>
+					</div>
 
-			</div>
-		);
+				</div>
+			);
+		}
+		else {
+			return (
+				<div>
+					<div className="body">
+						<p className="body-text">Applications are now closed. Please email us at <a href="mailto:team@sbhacks.com">team@sbhacks.com</a> if you have any questions.</p>
+					</div>
+
+				</div>
+			);
+		}
 	}
 };
 
