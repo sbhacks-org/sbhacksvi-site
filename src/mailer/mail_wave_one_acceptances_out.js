@@ -30,7 +30,7 @@ Promise.all([renderText, renderHTML])
 		if(answer == "y") {
 			const message = {
 				to: emails,
-				to: "jenniferlai43@gmail.com",
+				// to: "jenniferlai43@gmail.com",
 				from: "SB Hacks <team@sbhacks.com>",
 				subject: "SB Hacks VI Application Update!",
 				text: content[0],

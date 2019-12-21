@@ -66,7 +66,7 @@ const AddInfo = ({info, application, rsvpAction, cancelRsvpAction}) => {
 						<div>
 							<p className="body-text">Please <strong>RSVP</strong> below, no later than <strong>Thursday, December 26th</strong>. If you will not be attending, please let us know as well so we can open up more spots for others.</p>
 							<p className="body-text">If you decide to RSVP, head on over to our facebook event page at <a href="http://www.sbhacks.com/fb-event" target="_blank">www.sbhacks.com/fb-event</a> and click "Going"!</p>
-							<p className="body-text">Also, join the SB Hacks VI slack at <a href="http://www.sbhacks.com/slack" target="_blank">www.sbhacks.com/slack</a> to get a headstart on connecting with other hackers! See you soon!</p>
+							<p className="body-text">Also, join the SB Hacks VI slack at <a href="http://www.sbhacks.com/slack"  target="_blank">www.sbhacks.com/slack</a> to get a headstart on connecting with other hackers! See you soon!</p>
 						</div>;
 				}
 				else
