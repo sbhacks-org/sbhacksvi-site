@@ -64,9 +64,9 @@ const AddInfo = ({info, application, rsvpAction, cancelRsvpAction}) => {
 				{
 					rsvpPrompt =
 						<div>
-							<p className="body-text">We received an overwhelming 2,100+ applications this year and only 450 spots available. To confirm your registration and save your spot, take a minute to <strong>RSVP</strong> no later than <strong>Tuesday, January 8th</strong>. If you will not be attending, please let us know as well so we can open up more spots for others.</p>
+							<p className="body-text">Please <strong>RSVP</strong> below, no later than <strong>Thursday, December 26th</strong>. If you will not be attending, please let us know as well so we can open up more spots for others.</p>
 							<p className="body-text">If you decide to RSVP, head on over to our facebook event page at <a href="http://www.sbhacks.com/fb-event" target="_blank">www.sbhacks.com/fb-event</a> and click "Going"!</p>
-							<p className="body-text">You can also join other hackers and receive updates through our event slack at <a href="http://www.sbhacks.com/slack" target="_blank">www.sbhacks.com/slack</a></p>
+							<p className="body-text">Also, join the SB Hacks VI slack at <a href="http://www.sbhacks.com/slack" target="_blank">www.sbhacks.com/slack</a> to get a headstart on connecting with other hackers! See you soon!</p>
 						</div>;
 				}
 				else
@@ -75,23 +75,24 @@ const AddInfo = ({info, application, rsvpAction, cancelRsvpAction}) => {
 					{
 						rsvpPrompt =
 							<div>
-								<p className="body-text">We received an overwhelming 2,100+ applications this year and only 450 spots available.</p>
-								<p className="body-text">Head on over to our facebook event page at <a href="http://www.sbhacks.com/fb-event" target="_blank">www.sbhacks.com/fb-event</a> and click "Going"!</p>
-								<p className="body-text">You can also join other hackers and receive updates through our event slack at <a href="http://www.sbhacks.com/slack" target="_blank">www.sbhacks.com/slack</a></p>
+								<p className="body-text">Please <strong>RSVP</strong> below, no later than <strong>Thursday, December 26th</strong>. If you will not be attending, please let us know as well so we can open up more spots for others.</p>
+								<p className="body-text">If you decide to RSVP, head on over to our facebook event page at <a href="http://www.sbhacks.com/fb-event" target="_blank">www.sbhacks.com/fb-event</a> and click "Going"!</p>
+								<p className="body-text">Also, join the SB Hacks VI slack at <a href="http://www.sbhacks.com/slack" target="_blank">www.sbhacks.com/slack</a> to get a headstart on connecting with other hackers! See you soon!</p>
 							</div>;
 					}
 					else
 					{
 						rsvpPrompt =
 							<div>
-								<p className="body-text">We received an overwhelming 2,100+ applications this year and only 450 spots available. Unfortunately, you just missed the deadline to RSVP on Tuesday, January 8th. Email us at <a href="mailto:team@sbhacks.com">team@sbhacks.com</a> if you have any questions or concerns!</p>
+								<p className="body-text">Unfortunately, you just missed the deadline to RSVP on Friday, January 3rd. Email us at <a href="mailto:team@sbhacks.com">team@sbhacks.com</a> if you have any questions or concerns!</p>
 							</div>;
 					}
 				}
 				return (
 					<div className="body">
-						<p className="body-text">Congratulations, {info.first_name}! We are thrilled to invite you to SB Hacks V! We were impressed by your application and can't wait for you to create something extraordinary at SB Hacks this January 11-13.</p>
-						<p className="body-text">Information about buses and travel reimbursement will be emailed out to you soon.</p>
+						<p className="body-text">Congratulations!</p>
+						<p className="body-text">The SB Hacks team is delighted to inform you that you’ve been accepted as a participant for SB Hacks VI! We were impressed with your application and look forward to seeing your project during January 10-12, 2020.</p>
+						<p className="body-text">Information regarding transportation will soon be emailed to you, so keep your eye out for that! This year, we’ll be providing buses and travel reimbursements on a case-by-case basis.</p>
 						{ rsvpPrompt }
 						<br />
 						{ rsvpDiv }
@@ -100,17 +101,21 @@ const AddInfo = ({info, application, rsvpAction, cancelRsvpAction}) => {
 			}
 			else if (application.accepted===false)
 			{
+				/* REJECTED */
 				return (
 					<div className="body">
-						<p className="body-text">Unfortunately, we are unable to offer you admission to SB Hacks V. We had an overwhelming 2,100+ applications this year and only 450 spots available. We encourage you to apply next year. Best of luck!</p>
+						<p className="body-text">We had an extremely competitive applicant pool this year with only 400 spots available, and unfortunately, we are unable to offer you admission to SB Hacks VI. We hope to see your application next year!</p>
+						<p className="body-text">If you are still interested in getting involved with SB Hacks VI, consider attending as a <a href="/volunteers" target="_blank">volunteer</a> or <a href="/mentors" target="_blank">mentor</a>! Indicate your interest in our Facebook event page at <a href="http://www.sbhacks.com/fb-event" target="_blank">sbhacks.com/fb-event</a> to stay up-to-date with these possible opportunities!</p>
 					</div>
 				);
 			}
 			else
 			{
+				/* WAITLISTED */
 				return (
 					<div className="body">
-						<p className="body-text">Due to the overwhelming 2100+ applications we received this year, we are unfortunately unable to guarantee you a spot for SB Hacks V. However, given that you're nearby, we would like for you to join us if a spot opens up. We'll be sending you an email soon on what you can do to receive admission to SB Hacks V.</p>
+						<p className="body-text">Thank you for your interest in SB Hacks VI. Your application is currently still under consideration at this time. </p>
+						<p className="body-text">We’ll be sending you an email soon when we have an update for you. Until then, join the Facebook event page at <a href="http://www.sbhacks.com/fb-event" target="_blank">sbhacks.com/fb-event</a> to stay up-to-date with other opportunities to get involved with our hackathon, giveaways, and important announcements!</p>
 					</div>
 				);
 			}
