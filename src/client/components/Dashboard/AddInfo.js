@@ -64,7 +64,7 @@ const AddInfo = ({info, application, rsvpAction, cancelRsvpAction}) => {
 				{
 					rsvpPrompt =
 						<div>
-							<p className="body-text">Please <strong>RSVP</strong> below, no later than <strong>Thursday, December 26th</strong>. If you will not be attending, please let us know as well so we can open up more spots for others.</p>
+							<p className="body-text">Please <strong>RSVP</strong> below, no later than <strong>Friday, January 3rd</strong>. If you will not be attending, please let us know as well so we can open up more spots for others.</p>
 							<p className="body-text">If you decide to RSVP, head on over to our facebook event page at <a href="http://www.sbhacks.com/fb-event" target="_blank">www.sbhacks.com/fb-event</a> and click "Going"!</p>
 							<p className="body-text">Also, join the SB Hacks VI slack at <a href="http://www.sbhacks.com/slack"  target="_blank">www.sbhacks.com/slack</a> to get a headstart on connecting with other hackers! See you soon!</p>
 						</div>;
@@ -75,7 +75,7 @@ const AddInfo = ({info, application, rsvpAction, cancelRsvpAction}) => {
 					{
 						rsvpPrompt =
 							<div>
-								<p className="body-text">Please <strong>RSVP</strong> below, no later than <strong>Thursday, December 26th</strong>. If you will not be attending, please let us know as well so we can open up more spots for others.</p>
+								<p className="body-text">Please <strong>RSVP</strong> below, no later than <strong>Friday, January 3rd</strong>. If you will not be attending, please let us know as well so we can open up more spots for others.</p>
 								<p className="body-text">If you decide to RSVP, head on over to our facebook event page at <a href="http://www.sbhacks.com/fb-event" target="_blank">www.sbhacks.com/fb-event</a> and click "Going"!</p>
 								<p className="body-text">Also, join the SB Hacks VI slack at <a href="http://www.sbhacks.com/slack" target="_blank">www.sbhacks.com/slack</a> to get a headstart on connecting with other hackers! See you soon!</p>
 							</div>;
@@ -112,10 +112,22 @@ const AddInfo = ({info, application, rsvpAction, cancelRsvpAction}) => {
 			else
 			{
 				/* WAITLISTED */
+				/*
 				return (
 					<div className="body">
 						<p className="body-text">Thank you for your interest in SB Hacks VI. Your application is currently still under consideration at this time. </p>
 						<p className="body-text">We’ll be sending you an email soon when we have an update for you. Until then, join the Facebook event page at <a href="http://www.sbhacks.com/fb-event" target="_blank">sbhacks.com/fb-event</a> to stay up-to-date with other opportunities to get involved with our hackathon, giveaways, and important announcements!</p>
+					</div>
+				);
+				*/
+
+				/* WAITLISTED - UCSB Walk-ins */
+				return (
+					<div className="body">
+						<p className="body-text">Thank you for your interest in SB Hacks VI. Unfortunately, we are unable to guarantee you admission to SB Hacks VI. </p>
+						<p className="body-text">Since you attend UCSB, we would still like to offer you a spot on the waitlist.</p>
+						<p className="body-text">If you’re interested, come to SB Hacks on Friday, January 10, after 7 PM to see if we can accommodate you. We will let you into the event if there’s space. In the past, many people have been able to get in this way, so please arrive on time! </p>
+						<p className="body-text">Until then, join the Facebook event page at <a href="http://www.sbhacks.com/fb-event" target="_blank">sbhacks.com/fb-event</a> to stay up-to-date with other opportunities to get involved with our hackathon, giveaways, and important announcements!</p>
 					</div>
 				);
 			}
