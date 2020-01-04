@@ -34,8 +34,9 @@ Promise.all([renderText, renderHTML])
 	rl.question(`Sending out ${emails.length} email(s). Would you like to continue? (y/n): `, (answer) => {
 		if(answer == "y") {
 			const message = {
-				to: emails,
+				// to: emails,
 				// to: "jenniferlai43@gmail.com",
+				to: "rsun0906@berkeley.edu",
 				from: "SB Hacks <team@sbhacks.com>",
 				subject: "SB Hacks VI Application Update!",
 				text: content[0],
