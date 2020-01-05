@@ -33,6 +33,7 @@ module.exports = (app) => {
 
 	let proc_links = [
 		{ proc_env_key: "BUS_SCHEDULE", link: "/buses" },
+		{ proc_env_key: "HACKER_SCHEDULE", link: "/schedule" },
 		{ proc_env_key: "SLACK_JOIN_URL", link: "/slack" },
 		{ proc_env_key: "WORKSHOP_LINK", link: "/workshop" },
 		{ proc_env_key: "VOLUNTEER_LINK", link: "/volunteers" },
