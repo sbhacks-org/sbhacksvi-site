@@ -29,6 +29,8 @@ Promise.all([renderText, renderHTML])
 	let wave_two_emails = JSON.parse(wave_two_email_data)["values"].map((user) => user[0])
 
 	let emails = wave_two_emails.filter(x => !wave_one_emails.includes(x));
+
+	// emails = ["darrenchou1@gmail.com", "ja.ngo7199@gmail.com", "dsxiang@uci.edu", "clairewu@ucsb.edu", "kevinyuen@ucsb.edu"]
 	console.log(emails)
 
 	rl.question(`Sending out ${emails.length} email(s). Would you like to continue? (y/n): `, (answer) => {
@@ -36,7 +38,7 @@ Promise.all([renderText, renderHTML])
 			const message = {
 				// to: emails,
 				// to: "jenniferlai43@gmail.com",
-				to: "rsun0906@berkeley.edu",
+				to: "ryan8xia@gmail.com",
 				from: "SB Hacks <team@sbhacks.com>",
 				subject: "SB Hacks VI Application Update!",
 				text: content[0],
