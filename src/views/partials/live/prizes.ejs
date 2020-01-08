@@ -1,0 +1,75 @@
+	<%
+	let prize_blocks = [
+		{
+			title: "Grand Prize",
+			desc: "",
+			prize: "iPads (7th gen)"
+		},
+		{
+			title: "Runner-Up Prize",
+			desc: "",
+			prize: "Sonos Play:1 Speakers"
+		},
+		{
+			title: "Best Entertainment Hack",
+			desc: "",
+			prize: "Oculus Gos"
+		},
+		{
+			title: "Hacker Raffle",
+			desc: "Accumulate stickers by talking to sponsors, attending workshops, and activities! Those who have enough stickers will be able to participate in the raffle to win a prize. The more stickers you get, the higher change you have of winning!",
+			prize: "Bose Noise Cancelling Wireless Headphones"
+		},
+		{
+			title: "Meme Challenge",
+			desc: "Enter your favorite meme into the meme challenge on slack in #meme-challenge! Best two memes voted on by organizers takes the crown.",
+			prize: "Google Cardboard - Google VR"
+		},
+		{
+			title: "[Invoca] Best Web Application",
+			desc: "",
+			prize: "$50 Amazon gift card and an interview with Invoca for a summer internship"
+		},
+		{
+			title: "[LogMeIn] Best Use Of Machine Learning",
+			desc: "",
+			prize: ""
+		},
+		{
+			title: "[Amazon] Best Alexa Skill",
+			desc: "",
+			prize: "Amazon Echo Show 5s + a tour of Amazon's new Santa Barbara State Street office"
+		},
+		{
+			title: "[Google Cloud Platform] Best Use of GCP",
+			desc: "",
+			prize: ""
+		},
+		{
+			title: "[Firebase] Best Use of Firebase",
+			desc: "Firebase is a suite of tools that allow you to build your applications bigger, better, faster, stronger and quicker. When you're hacking, you don't want to be worried about spinning up servers and choosing a database technology; just use Firebase.",
+			prize: "Stadia Premiere Edition Bundles for each member"
+		},
+		{
+			question: "Are there any rules I should follow?",
+			answer: "You can find the MLH code of conduct <a target='_blank' href='https://static.mlh.io/docs/mlh-code-of-conduct.pdf'>here.</a>"
+		}
+	];
+%>
+
+<div class="row" id="prizes">
+	<h1>Prizes</h1>
+
+	<div class="empty-circle circle small fixed">
+	  	<h1>FAQ</h1>
+	</div>
+	<div class = "prize-block">
+		<% prize_blocks.forEach((prize_block) => { %>
+			<div class = "prize-block">
+				<h1 class="title"><%- prize_block.title %></h1>
+				<p class="desc"><%- prize_block.desc %></p>
+				<p class="prize">Prize: <%- prize_block.prize %></p>
+			</div>
+		<% }) %>
+	</div>
+</div>

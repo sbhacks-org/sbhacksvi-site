@@ -1,66 +1,73 @@
-<html>
 <head>
-	<link rel="stylesheet" type="text/css" href="/css/livepage.css" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+	<meta name="robots" content="index, follow,">
+	<link rel="canonical" href="http://sbhacks.com">
+
+	<link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Lekton" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
 
-	<title>SB Hacks V: Live</title>
-</head>
+	<link rel="stylesheet" type="text/css" href="/css/livepage.css" />
+	<link rel="shortcut icon" type="image/png" href="icons/flaticon_PBf_icon.ico"/>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<title>SB Hacks VI: Live</title>
 <body>
-	<nav id="navbar">
-		<ul id="menu">
-			<li><a href="https://sbhacks.com" style="color:#5089D7;">SB Hacks V</a></li>
-			<li><a href="#Updates">Updates/Important Info</a></li>
-			<li><a href="#Organizers">Organizers</a></li>
-			<li><a href="#Schedule">Schedule</a></li>
-			<li><a href="#Map">Map</a></li>
-		</ul>
-	</nav>
-	<div id="content-container">
-		<div class="row" id="Intro">
-			<img src="/images/logo.png" id="logo">
-			<img src="/images/otter.png" id="leftotter">
-			<img src="/images/otter.png" id="rightotter"><br>
-			<h1 class="title" >SB Hacks V: Live!</h1>
-			<h3> Welcome to SB Hacks Live Page, where you can obtain the newest information about this event!</h3>
-			<h3>Please log into our slack channel for help and other activities.</h3>
-			<h2 id="countdown"></h2>
-			<table >
-				<tr id="time">
-					<td id="days"></td>
-					<td id="hours"></td>
-					<td id="minutes"></td>
-					<td id="seconds"></td>
-				</tr>
-				<tr>
-					<td>Days</td>
-					<td>Hours</td>
-					<td>Minutes</td>
-					<td>Seconds</td>
-				</tr>
-			</table>
-			
-		</div>
-			<!--
-			<div id="project" class="row">
-				<p class="stitle">Project Due On Sunday 10AM</p>
-				<p id="demo"></p>
-				<a href="https://sbhacksiii.devpost.com/" target="_blank"><img class="icon" src="./images/devpost.svg"> Submit Now!</a>
-				<br>
-				<br>
+	<div id="bodyDiv">
+
+		<a id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:fixed;left:50px;top:0;width:10%;z-index:10000" href="https://mlh.io/seasons/na-2020/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2020-season&utm_content=black" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2020/mlh-trust-badge-2020-black.svg" alt="Major League Hacking 2020 Hackathon Season" style="width:100%"></a>
+
+
+		<%- include("partials/live/initialpage") %>
+		<div id="content-container">
+			<div id="backgroundCliffs">
+				<img src="webAssets/Asset 43.svg" id="leftCliff">
+				<img src="webAssets/Asset 44.svg" id="rightCliff">
 			</div>
-		-->	
-		<%- include("partials/live/updates") %>
-		<%- include("partials/live/organizers") %>
 		<%- include("partials/live/schedule") %>
-		<%- include("partials/live/map") %>
+		<div class = "fishSchool" id="reverseFish">
+			<img src = "webAssets/Asset 17.svg" id = "fishGroup">
+			<img src = "webAssets/Asset 24.svg" id = "fish2" class = "fish">
+			<img src = "webAssets/Asset 25.svg" id = "fish3" class = "fish">
+			<img src = "webAssets/Asset 23.svg" id = "fish1" class = "fish">
+		</div>
+		<%- include("partials/live/buses") %>
+		<div class = "fishSchool" id="backgroundFish">
+			<img src = "webAssets/Asset 17.svg" id = "fishGroup">
+			<img src = "webAssets/Asset 24.svg" id = "fish2" class = "fish">
+			<img src = "webAssets/Asset 25.svg" id = "fish3" class = "fish">
+			<img src = "webAssets/Asset 23.svg" id = "fish1" class = "fish">
+		</div>
+			<%- include("partials/live/prizes") %>
+			<%- include("partials/live/logistics") %>
+			<img src="webAssets/Asset 36.svg" id="ruins">
+		</div>
+
 	</div>
 
+
+	<script>
+		// console.log("burger");
+		var icon = document.getElementById("burgerIcon");
+
+		function toggleMobNavBar() {
+		  var x = document.getElementById("navLinks");
+		  if (x.style.display === "block") {
+		    x.style.display = "none";
+		  } else {
+		    x.style.display = "block";
+		  }
+		}
+
+		icon.addEventListener("click", toggleMobNavBar);
+		// icon.addEventListener("touchstart", toggleMobNavBar);
+	</script>
 </body>
-<script src="/js/live/clock.js"></script>
-</html>
+
+
 
 
 

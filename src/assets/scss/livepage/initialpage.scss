@@ -1,0 +1,408 @@
+#landing {
+  background-image: url("../webAssets/Asset 15.svg");
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  //z-index: -2;
+  overflow: hidden;
+  min-height: 700px;
+}
+
+.blurb {
+  font-size: 1.1vw;
+  margin: 30px 30vw;
+}
+
+.mobNavBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 60px;
+  background-image: url("../webAssets/Asset 45.svg");
+  background-size: cover;
+  background-position: right;
+  display: none;
+  margin: 0;
+/*  box-shadow: 0px 15px 12px rgba(0, 0, 0, .2);
+*/}
+
+#navLinks {
+  display: none;
+  width: 100vw;
+  top: 60px;
+  position: relative;
+ 
+  a {
+    color: #7498bc;
+    width: 100vw;
+    height: 10vw;
+    text-decoration: none;
+    font-size: 5vw;
+    display: block;
+    background-image: url("../webAssets/Asset 45.svg");
+    background-size: cover;
+    background-position: right;
+/*    border-bottom: solid 1px $fontColor;
+*//*    background-color: transparent;
+*/    position: relative;
+    padding-top: 20px;
+    opacity: .85;
+    &:hover {
+/*      background-color: rgba(255, 255, 255, .05);
+*/      color: #33ccff;
+    }
+  }
+}
+
+.mobNavBar a.icon {
+  background: transparent;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 40px;
+  margin: 10px;
+}
+
+.mobNavBar, #navLinks, #navLinks a, .mobNavBar a.icon {
+  z-index: 300;
+}
+
+#navBar, #navBar ul, #navBar ul li, #navBar ul li a {
+    z-index: 300;
+}
+
+#navBar {
+  background-image: url("../webAssets/Asset 16.svg");
+  background-size: cover;
+  position: fixed;
+  width: 100vw;
+  min-height: 60px;
+  display: flex;
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-right: 15px;
+    top: 0;
+    width: 100%;
+    li {
+      display: inline;
+      float: right;
+      a {
+        display: block;
+        text-align: center;
+        padding: 20.5px 16px;
+        color: #7498bc;
+        text-decoration-line: none;
+        &:hover {
+          color: #43afed;
+          background-color: rgba(255, 255, 255, .05);
+        }
+      }
+    }    
+  }
+}
+
+.active {
+  color: #43afed;
+}
+
+#apply {
+  --width: 17vw;
+  --height: 6vw;
+  background: url("../webAssets/Asset 37.svg") no-repeat top left;
+  font-family: 'nexalight', sans-serif;
+  width: var(--width);
+  height: var(--height);
+  left: calc((100% - var(--width)) / 2);
+  bottom: calc((100% - var(--height)) / 6);
+  cursor: pointer;
+  padding: 2px 8px;
+  z-index: 3;
+  position: relative;
+  font-size: 2.6vw;
+/*  text-decoration-line: none;
+*/  /*h2 {
+    margin: 0;
+    font-size: 4vw;
+  }*/
+}
+
+#centerInfo {
+  position: absolute;
+  top: 50%;
+  left: 50vw;
+  transform: translate(-50%, -40%);
+  /*bottom: 12vw;*/
+  a {
+    text-decoration: none;
+    &:hover {
+      color: $l-blue;
+    }
+  }
+}
+
+#otter {
+  width: 156px;
+  position: absolute;
+/*  right: 15%;*/
+    right: calc((100% - 156px) * .15);
+    bottom: 15%;
+}
+
+#centerLogo {
+  width: 185px;
+    height: 230.69px;
+  position: relative;
+/*  left: calc((100% - 185px) / 2);
+*/}
+
+
+.info-container {
+    position: relative;
+    width: 100%;
+    text-align: center;
+/*    top: calc((100% - 230.69px) / 2 + 230.69px);
+*/    z-index: 100;
+}
+
+.info-container > h2{
+    margin: 2vh;
+}
+
+a{
+    color: var(--linkColor);
+}
+
+
+.info-item {
+    position: relative;
+    letter-spacing: 3px;
+    font-size: 1.5vw;
+    width: 100vw;
+}
+
+.sponsor-item {
+    font-size: 12px;
+    letter-spacing: 1px;
+    line-height: 3vh;
+}
+
+div#center {
+    position: absolute;
+    width: 900px;
+    height: 300px;
+    top: calc(3% + 60px);
+    left: 50vw;
+    transform: translateX(-50%);
+}
+
+img#waveGroup {
+  width: 100%;
+  position: absolute;
+  left: 3%;
+  top: 0;
+    opacity: .4;
+  display: none;
+}
+
+.lights {
+  opacity: .1;
+  animation: illuminate 7s infinite;
+  animation-timing-function: linear;
+}
+
+img#lights1 {
+  width: 60%;
+/*    width: 542px;
+*/  position: absolute;
+  left: 25%;
+  top: 17%;
+}
+
+img#lights2 {
+  width: 65%;
+/*    width: 586px;
+*/  position: absolute;
+  left: 14%;
+  top: 12%;
+  animation-delay: 2s;
+}
+
+img#spotLight {
+  width: 22%;
+/*    width: 199px;
+*/  position: absolute;
+  top: 19%;
+  left: 38%;
+    z-index: 1;
+}
+
+#waves {
+  width: 100%;
+}
+
+.waves {
+    position: absolute;
+  animation: harmonic 8s infinite;
+  animation-timing-function: linear;
+}
+
+img#wave4 {
+  width: 57%;
+/*    width: 510px;
+*/  left: 3%;
+  top: 8%;
+  animation-delay: 3s;
+}
+
+img#wave3 {
+  width: 84%;
+/*    width: 758px;
+*/  left: 18%;
+  top: 6%;
+  animation-delay: 1s;
+    z-index: -1;
+}
+
+img#wave2 {
+  width: 72%;
+/*  width: 652px;
+*/    left: 15%;
+  top: 16%;
+  animation-delay: 2s
+}
+
+img#wave1 {
+  width: 70%;
+/*    width: 628px;
+*/  left: 15%;
+  top: 0;
+}
+
+div.fishSchool {
+  position: relative;
+  top: 40%;
+  animation: swim 30s infinite;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.fish {
+  position: absolute;
+  top: 48%;
+  animation: bounce 2s infinite;
+  animation-timing-function: linear;
+}
+
+img#fishGroup {
+  width: 100%;
+  position: absolute;
+  top: 48%;
+  opacity: 0;
+}
+
+img#fish1 {
+  width: 73%;
+  left: 11%;
+}
+
+img#fish2 {
+  width: 94%;
+  left: 6%;
+  animation-delay: .2s;
+}
+
+img#fish3 {
+  width: 95%;
+  animation-delay: .4s;
+}
+
+#left {
+  width: 30%;
+    height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+img#leftBiome {
+    position: absolute;
+    width: 100%;
+    bottom: -1%;
+    left: -8%;
+    display: none;
+}
+
+img#leftLand {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+img#darkKelp {
+    width: 40%;
+    position: absolute;
+    left: 0;
+    bottom: 22%;
+}
+
+img#greenKelp {
+    width: 60%;
+    position: absolute;
+    left: 0;
+    bottom: 20%;
+}
+
+img#blueKelp {
+    width: 68%;
+    position: absolute;
+    left: 0;
+    bottom: 8%;
+}
+
+#right {
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    right: 0;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow: hidden;
+}
+
+img#rightBiome {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  right: -15%;
+}
+
+@keyframes illuminate {
+  0%, 100% {opacity: .1;}
+  50% {opacity: 1;}
+}
+
+@keyframes harmonic {
+  0%, 100% {transform: translateX(0);}
+  25% {transform: translateX(-3%);}
+  75% {transform: translateX(3%);}
+}
+
+@keyframes bounce {
+  0%, 50%, 100% {transform: translateY(0);}
+  25% {transform:translateY(-5px);}
+  75% {transform: translateY(-3px);}
+}
+
+@keyframes swim {
+  from {
+    transform: translateX(200vw);
+  }
+  to {transform: translateX(-200vw);}
+}
