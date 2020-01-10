@@ -9,8 +9,8 @@ const sgMail = require("@sendgrid/mail");
 const renderTemplate = require("./renderTemplate");
 const { sequelize } = require("../../src/models");
 
-let renderText = renderTemplate("wave_two_email.txt.ejs");
-let renderHTML = renderTemplate("wave_two_email.ejs");
+let renderText = renderTemplate("3rd_logistics_email.txt.ejs");
+let renderHTML = renderTemplate("3rd_logistics_email.ejs");
 
 sgMail.setApiKey(process.env.SENDGRID_KEY);
 
@@ -22,25 +22,17 @@ let rl = readline.createInterface({
 Promise.all([renderText, renderHTML])
 .then((content) => {
 
-	let wave_one_email_data = fs.readFileSync("./sbh6_wave_one_accepted.json", "utf-8");
-	let wave_one_emails = JSON.parse(wave_one_email_data)["values"].map((user) => user[0])
-
-	let wave_two_email_data = fs.readFileSync("./sbh6_wave_two_accepted_and_waitlist.json", "utf-8");
-	let wave_two_emails = JSON.parse(wave_two_email_data)["values"].map((user) => user[0])
-
-	let emails = wave_two_emails.filter(x => !wave_one_emails.includes(x));
-
-	// emails = ["darrenchou1@gmail.com", "ja.ngo7199@gmail.com", "dsxiang@uci.edu", "clairewu@ucsb.edu", "kevinyuen@ucsb.edu"]
+	let email_data = fs.readFileSync("./sbh6_accepted_1_9_2020.json", "utf-8");
+	let emails = JSON.parse(email_data)["values"].map((user) => user[0])
 	console.log(emails)
 
 	rl.question(`Sending out ${emails.length} email(s). Would you like to continue? (y/n): `, (answer) => {
 		if(answer == "y") {
 			const message = {
-				// to: emails,
+				to: emails,
 				// to: "jenniferlai43@gmail.com",
-				to: "haolinsuncollege@gmail.com",
 				from: "SB Hacks <team@sbhacks.com>",
-				subject: "SB Hacks VI Application Update!",
+				subject: "SB Hacks VI Logistics #3: Parking & Buses",
 				text: content[0],
 				html: content[1]
 			};

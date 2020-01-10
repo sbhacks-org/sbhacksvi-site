@@ -37,7 +37,7 @@ Promise.all([renderText, renderHTML])
 			const message = {
 				// to: emails,
 				// to: "jenniferlai43@gmail.com",
-				to: "ryan8xia@gmail.com",
+				to: "haolinsuncollege@gmail.com",
 				from: "SB Hacks <team@sbhacks.com>",
 				subject: "SB Hacks VI Logistics",
 				text: content[0],
