@@ -1,0 +1,138 @@
+// .prize-blocks {
+// /*	margin-top: 140px;
+// */position: relative;
+// 	z-index: 100;
+//   width: 80vw;
+//   margin: auto;
+//   padding-left: 2vw;
+// }
+
+// .prize-block {
+//   background: rgba(13, 46, 89, 0.3) /* Green background with 30% opacity */;
+//   display: inline-table;
+//   vertical-align: top;
+//   width: 39%;
+//   height: 375px;
+//   padding: 1em;
+//   margin: 1.5%;
+//   z-index: 90;
+//   text-align: center;
+//   border: white solid 1px;
+//   border-radius: 2%;
+//   .title {
+//     margin: 0;
+//     font-size: 1.8em;
+//     text-decoration: underline;
+//     cursor: default;
+//   }
+//   .desc {
+//     font-size: 0.75em;
+//   }
+//   .prize {
+//     font-size: 1.2em;
+//   }
+// }
+
+$bgColor: #0d2e59;
+
+#faq {
+  /*width: 100vw;
+  height: 100vh;*/
+  /*padding: 200px 25px;*/
+}
+
+.long-bubble {
+  background: url("../webAssets/Asset 35.svg") no-repeat;
+  background-color: $bgColor;
+  background-color: transparent;
+  vertical-align: top;
+  display: inline-table;
+  width: 39%;
+  padding: 2%;
+  text-align: left;
+  padding: 1em 2%;
+  margin: 0 1.5%;
+  z-index: 90;
+  animation-play-state: paused;
+  h1 {
+    margin: 0;
+    padding-top: 1%;
+    font-size: 1em;
+  }
+}
+
+.long-bubble:hover {
+  color: $l-blue;
+  animation-play-state: running;
+  animation: bounce 2s infinite;
+  animation-timing-function: linear;
+}
+
+.collapsible {
+  cursor: pointer;
+  &:hover {
+  }
+}
+
+.upTriangle {
+  display: none;
+}
+
+.prize-blocks {
+/*  margin-top: 140px;
+*/  position: relative;
+    z-index: 100;
+    // bottom: 41vw;
+    height: 33vw;
+    // overflow-y: scroll;
+    // overflow-x: hidden;
+    width: 80vw;
+    margin: auto;
+    padding-left: 2vw;
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+    }
+    &::-webkit-scrollbar:vertical {
+      width: 2vw;
+      padding-right: 1vw;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 8px;
+      border: 2px solid $fontColor;
+      background-color: rgba(0, 0, 0, .5);
+    }
+  .faqArrow {
+    width: 2vw;
+      float: right;
+      position: relative;
+      top: .5vw;
+      right: 0vw;
+      opacity: .75;
+  }
+}
+
+.desc-div {
+  max-height: 0;
+  display: block;
+  margin-top: 25px;
+  font-size: 1.2vw;
+  transition: max-height 0.2s ease-out;
+  overflow: hidden;
+}
+
+#scrollTriangle {
+  margin: auto;
+  width: 3.5vw;
+  position: relative;
+  bottom: 38.5vw;
+  opacity: .6;
+}
+
+// .answer {
+//   max-height: 0;
+//   display: block;
+//   margin-top: 25px;
+//   font-size: 1.2vw;
+//   transition: max-height 0.2s ease-out;
+//   overflow: hidden;
+// }

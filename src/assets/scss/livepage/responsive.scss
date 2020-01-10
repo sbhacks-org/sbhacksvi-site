@@ -758,8 +758,8 @@
     padding-top: 6vw;
   }*/
 
-  .faq-block {
-    bottom: 90vw;
+  .prize-blocks {
+    // bottom: 90vw;
     height: 65vw;
     &::-webkit-scrollbar:vertical {
       width: 3vw;
@@ -769,8 +769,8 @@
       right: 2.8vw;
       width: 5vw;
     }
-    .answer {
-      font-size: 3.8vw;
+    .desc-div {
+      font-size: 1.2vw;
     }
   }
 

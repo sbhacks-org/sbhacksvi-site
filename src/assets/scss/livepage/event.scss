@@ -1,0 +1,13 @@
+.wifi {
+	display: inline-table;
+	.column {
+		float: left;
+  		width: 45%;
+  		li {
+  			text-align: left;
+  		}
+	}
+	ol {
+		height: 100%;
+	}
+}

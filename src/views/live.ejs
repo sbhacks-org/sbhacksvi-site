@@ -28,22 +28,22 @@
 				<img src="webAssets/Asset 44.svg" id="rightCliff">
 			</div>
 		<%- include("partials/live/schedule") %>
-		<div class = "fishSchool" id="reverseFish">
+<!-- 		<div class = "fishSchool" id="reverseFish">
 			<img src = "webAssets/Asset 17.svg" id = "fishGroup">
 			<img src = "webAssets/Asset 24.svg" id = "fish2" class = "fish">
 			<img src = "webAssets/Asset 25.svg" id = "fish3" class = "fish">
 			<img src = "webAssets/Asset 23.svg" id = "fish1" class = "fish">
-		</div>
+		</div> -->
 		<%- include("partials/live/buses") %>
-		<div class = "fishSchool" id="backgroundFish">
+<!-- 		<div class = "fishSchool" id="backgroundFish">
 			<img src = "webAssets/Asset 17.svg" id = "fishGroup">
 			<img src = "webAssets/Asset 24.svg" id = "fish2" class = "fish">
 			<img src = "webAssets/Asset 25.svg" id = "fish3" class = "fish">
 			<img src = "webAssets/Asset 23.svg" id = "fish1" class = "fish">
-		</div>
+		</div> -->
 			<%- include("partials/live/prizes") %>
 			<%- include("partials/live/logistics") %>
-			<img src="webAssets/Asset 36.svg" id="ruins">
+			<!-- <img src="webAssets/Asset 36.svg" id="ruins"> -->
 		</div>
 
 	</div>
@@ -64,6 +64,30 @@
 
 		icon.addEventListener("click", toggleMobNavBar);
 		// icon.addEventListener("touchstart", toggleMobNavBar);
+	</script>
+	<script>
+		var coll = document.getElementsByClassName("collapsible");
+		var i;
+
+		for (i = 0; i < coll.length; i++) {
+		  coll[i].addEventListener("click", function() {
+		  	// console.log("clieck");
+		  	// COLLAPSE FOR PROD
+		  	// var collapseIndex = 4;
+		  	// COLLAPSE FOR DEV
+		  	var collapseIndex = 7;
+		    this.classList.toggle("active");
+		    // INDEX FOR prod
+		    var content = this.childNodes[collapseIndex];
+		    console.log(content);
+		    if (content.style.maxHeight){
+		      	content.style.maxHeight = null;
+		    } else {
+				// console.log("scrolling");
+		      	content.style.maxHeight = content.scrollHeight + "px";
+		    }
+		  });
+		}
 	</script>
 </body>
 

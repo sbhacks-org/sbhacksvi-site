@@ -26,33 +26,24 @@
 			prize: "Google Cardboard - Google VR"
 		},
 		{
-			title: "[Invoca] Best Web Application",
+			title: "Invoca: Best Web Application",
 			desc: "",
 			prize: "$50 Amazon gift card and an interview with Invoca for a summer internship"
 		},
 		{
-			title: "[LogMeIn] Best Use Of Machine Learning",
-			desc: "",
-			prize: ""
-		},
-		{
-			title: "[Amazon] Best Alexa Skill",
+			title: "Amazon: Best Alexa Skill",
 			desc: "",
 			prize: "Amazon Echo Show 5s + a tour of Amazon's new Santa Barbara State Street office"
 		},
 		{
-			title: "[Google Cloud Platform] Best Use of GCP",
-			desc: "",
-			prize: ""
+			title: "Google Cloud Platform: Best Use of GCP",
+			desc: "Use any Google Cloud product in your project!",
+			prize: "Prize: Google Home Mini, Cloud Patagonia Backpack, Cloud Pillow, Acrylic Trophy, and Cloud Water Bottle"
 		},
 		{
-			title: "[Firebase] Best Use of Firebase",
+			title: "Firebase: Best Use of Firebase",
 			desc: "Firebase is a suite of tools that allow you to build your applications bigger, better, faster, stronger and quicker. When you're hacking, you don't want to be worried about spinning up servers and choosing a database technology; just use Firebase.",
 			prize: "Stadia Premiere Edition Bundles for each member"
-		},
-		{
-			question: "Are there any rules I should follow?",
-			answer: "You can find the MLH code of conduct <a target='_blank' href='https://static.mlh.io/docs/mlh-code-of-conduct.pdf'>here.</a>"
 		}
 	];
 %>
@@ -60,16 +51,51 @@
 <div class="row" id="prizes">
 	<h1>Prizes</h1>
 
-	<div class="empty-circle circle small fixed">
-	  	<h1>FAQ</h1>
-	</div>
-	<div class = "prize-block">
+	<div class = "prize-blocks">
 		<% prize_blocks.forEach((prize_block) => { %>
-			<div class = "prize-block">
-				<h1 class="title"><%- prize_block.title %></h1>
-				<p class="desc"><%- prize_block.desc %></p>
-				<p class="prize">Prize: <%- prize_block.prize %></p>
+			<div class = "prize-block long-bubble collapsible">
+				<img src="images/downTriangle.png" class="faqArrow downTriangle">
+				<img src="images/upTriangle.png" class="faqArrow upTriangle">
+				<h1><%- prize_block.title %></h1>
+				<div class="desc-div">
+					<p class="desc"><%- prize_block.desc %></p>
+					<p class="prize">Prize: <%- prize_block.prize %></p>
+				</div>
 			</div>
 		<% }) %>
 	</div>
 </div>
+
+<script>
+	var qaToggles = document.getElementsByClassName("collapsible");
+	for (var i = 0; i < qaToggles.length; i++) {
+		qaToggles[i].addEventListener("click", switchArrows);
+	}
+
+	function switchArrows(e) {
+		var upTrig, downTrig = null;
+		questionChilds = this.childNodes;
+		for (var i = 0; i < questionChilds.length; i++) {
+			// console.log(questionChilds[i].className);
+			if (questionChilds[i].className == "faqArrow upTriangle") {
+				upTrig = questionChilds[i];
+				// console.log(upTrig);
+			}
+			else if (questionChilds[i].className == "faqArrow downTriangle") {
+				downTrig = questionChilds[i];
+				// console.log(downTrig);
+			}
+		}
+		if (upTrig && downTrig) {
+			// console.log("toggle");
+			if (downTrig.style.display != "none") {
+				downTrig.style.display = "none";
+				upTrig.style.display = "initial"
+			}
+			else {
+				downTrig.style.display = "initial";
+				upTrig.style.display = "none";
+			}
+		}
+	}
+</script>

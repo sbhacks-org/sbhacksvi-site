@@ -1,3 +1,5 @@
+$l-blue: #33ccff;
+
 #landing {
   background-image: url("../webAssets/Asset 15.svg");
   background-size: cover;
@@ -11,8 +13,8 @@
 }
 
 .blurb {
-  font-size: 1.1vw;
-  margin: 30px 30vw;
+  // font-size: 1em;
+  margin: 30px 20vw;
 }
 
 .mobNavBar {
@@ -139,7 +141,7 @@
   transform: translate(-50%, -40%);
   /*bottom: 12vw;*/
   a {
-    text-decoration: none;
+    text-decoration: underline;
     &:hover {
       color: $l-blue;
     }

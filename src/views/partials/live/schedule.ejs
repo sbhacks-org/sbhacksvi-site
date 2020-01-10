@@ -1,7 +1,269 @@
+<%
+	let friday_events = {
+		date: "January 10, 2020",
+		events: [
+			{
+				start: "5:00 PM",
+				end: "6:00 PM",
+				disp_time: "5:00 PM",
+				event: "Check-in"
+			},
+			{
+				start: "6:00 PM",
+				end: "7:30 PM",
+				disp_time: "6:00 PM",
+				event: "Dinner: Wahoo's"
+			},
+			{
+				start: "7:30 PM",
+				end: "9:00 PM",
+				disp_time: "7:30 PM",
+				event: "Opening Ceremony"
+			},
+			{
+				start: "9:00 PM",
+				end: "10:00 PM",
+				disp_time: "9:00 PM",
+				event: "Hacking Begins + Sponsor Expo"
+			},
+			{
+				start: "9:00 PM",
+				end: "10:00 PM",
+				disp_time: "9:00 PM",
+				event: "Sponsor Expo"
+			},
+			{
+				start: "10:30 PM",
+				end: "11:00 PM",
+				disp_time: "10:30 PM",
+				event: "Workshop: Invoca's Getting Started With Rails and Webpacker"
+			},
+			{
+				start: "11:30 PM",
+				end: "12:00 AM",
+				disp_time: "11:30 PM",
+				event: "Workshop: AppFolio's Getting Started with React"
+			},
+		]
+	};
+
+	let saturday_events = {
+		date: "January 11, 2020",
+		events: [
+			{
+				start: "1:00 AM",
+				end: "2:00 PM",
+				disp_time: "1:00 AM",
+				event: "Workshop: Firebase's Get to know Firebase for Web"
+			},
+			{
+				start: "6:00 AM",
+				end: "7:00 AM",
+				disp_time: "6:00 AM",
+				event: "Sunrise Walk"
+			},
+			{
+				start: "10:00 AM",
+				end: "11:00 AM",
+				disp_time: "10:00 AM",
+				event: "Workshop: Google Cloud's Three Powerful Google Cloud Products for Your Project"
+			},
+			{
+				start: "10:00 AM",
+				end: "11:00 AM",
+				disp_time: "10:00 AM",
+				event: "Maze Excursion"
+			},
+			{
+				start: "11:00 AM",
+				end: "12:00 PM",
+				disp_time: "11:00 AM",
+				event: "Workshop: LogMeIn's Machine Learning Introduction and Machine Learning Models"
+			},
+			{
+				start: "12:00 PM",
+				end: "2:00 PM",
+				disp_time: "12:00 PM",
+				event: "Lunch: Subway's"
+			},
+			{
+				start: "1:00 PM",
+				end: "2:00 PM",
+				disp_time: "1:00 PM",
+				event: "Touch Tanks"
+			},
+			{
+				start: "6:00 PM",
+				end: "8:00 PM",
+				disp_time: "6:00 PM",
+				event: "Dinner: Woodstock's and Santorini's"
+			},
+			{
+				start: "9:00 PM",
+				end: "10:00 PM",
+				disp_time: "9:00 PM",
+				event: "MLH Werewolf Event"
+			}
+		]
+	};
+
+	let sunday_events = {
+		date: "January 11, 2020",
+		events: [
+			{
+				start: "7:00 AM",
+				end: "9:00 AM",
+				disp_time: "8:00 AM",
+				event: "DevPost submission due!"
+			},
+			{
+				start: "8:00 AM",
+				end: "9:30 AM",
+				disp_time: "9:00 AM",
+				event: "Hacking Ends"
+			},
+			{
+				start: "9:30 AM",
+				end: "10:15 AM",
+				disp_time: "9:30 AM",
+				event: "General Judging: Wave 1"
+			},
+			{
+				start: "10:15 AM",
+				end: "11:00 AM",
+				disp_time: "10:15 AM",
+				event: "General Judging: Wave 2"
+			},
+			{
+				start: "11:00 AM",
+				end: "12:30 PM",
+				disp_time: "11:00 AM",
+				event: "Closing Ceremony"
+			},
+			{
+				start: "12:30 PM",
+				end: "1:30 PM",
+				disp_time: "12:30 PM",
+				event: "Dinner: L&L Hawaiian BBQ"
+			},
+			{
+				start: "1:30 PM",
+				end: "2:00 PM",
+				disp_time: "1:30 PM",
+				event: "UCLA/USC Bus Departs"
+			},
+			{
+				start: "1:30 PM",
+				end: "2:00 PM",
+				disp_time: "1:30 PM",
+				event: "UCI/USC Bus Departs"
+			}
+		]
+	};
+%>
+
+
 <div class="row" id="schedule">
 	<h1>Schedule</h1>
 	<!-- <a href="https://docs.google.com/spreadsheets/d/13QUCwYXTTJhBGauUz9XOJ5-B4GJQ5b9qxoqSSKNQQWo/edit?usp=sharing" target="_blank">Click Here for Workshops!</a> -->
 	<a href="/images/schedule.jpg" target="_blank">
 		<img class = "image" src="/images/schedule.jpg" alt="Schedule">
 	</a>
-</div>
+	<div class="cal-container">
+
+		<div class="calendar dark three-column">
+		    <div class="calendar_plan">
+		      <div class="cl_plan">
+		        <div class="cl_title">Friday</div>
+		        <div class="cl_copy">January 10th, 2020</div>
+		      </div>
+		    </div>
+		    <div class="calendar_events">
+		      <p class="ce_title">Events</p>
+		  </div>
+		  <% friday_events.events.forEach((e, i) => { %>
+				<div class="event_item">
+			        <div class="ei_Dot" id="dot_<%- i %>" data-start="<%- e.start %>" data-end="<%- e.end %>" data-date="<%- friday_events.date %>"></div>
+			        <div class="ei_Title"><%- e.disp_time %></div>
+			        <div class="ei_Copy"><%- e.event %></div>
+			    </div>
+			<% }) %>
+		</div>
+		<div class="calendar dark three-column">
+		    <div class="calendar_plan">
+		      <div class="cl_plan">
+		        <div class="cl_title">Saturday</div>
+		        <div class="cl_copy">January 11th, 2020</div>
+		      </div>
+		    </div>
+		    <div class="calendar_events">
+		      <p class="ce_title">Events</p>
+		  </div>
+		  <% saturday_events.events.forEach((e, i) => { %>
+				<div class="event_item">
+			        <div class="ei_Dot" id="dot_<%- i %>" data-start="<%- e.start %>" data-end="<%- e.end %>" data-date="<%- friday_events.date %>"></div>
+			        <div class="ei_Title"><%- e.disp_time %></div>
+			        <div class="ei_Copy"><%- e.event %></div>
+			    </div>
+			<% }) %>
+		</div>
+		<div class="calendar dark three-column">
+		    <div class="calendar_plan">
+		      <div class="cl_plan">
+		        <div class="cl_title">Sunday</div>
+		        <div class="cl_copy">January 12th, 2020</div>
+		      </div>
+		    </div>
+		    <div class="calendar_events">
+		      <p class="ce_title">Events</p>
+		  </div>
+		  <% sunday_events.events.forEach((e, i) => { %>
+				<div class="event_item">
+			        <div class="ei_Dot" id="dot_<%- i %>" data-start="<%- e.start %>" data-end="<%- e.end %>" data-date="<%- friday_events.date %>"></div>
+			        <div class="ei_Title"><%- e.disp_time %></div>
+			        <div class="ei_Copy"><%- e.event %></div>
+			    </div>
+			<% }) %>
+		</div>
+	</div>
+<script>
+	let dotDivs = document.getElementsByClassName("ei_Dot");
+	console.log(dotDivs.length);
+	for (let i = 0; i<dotDivs.length; i++) {
+		let ele = dotDivs[i];
+		let now = new Date();
+		// let calendarDate = Date.parse(ele.getAttribute("data-date"));
+		let calendarDate = new Date(ele.getAttribute("data-date"));
+		// console.log(calendarDate);
+		// console.log(now.getDate());
+		if (calendarDate.getDate() === now.getDate()) {
+			console.log("same date");
+			checkTime(ele.id, ele.getAttribute("data-start"), ele.getAttribute("data-end"));
+		}
+	}
+
+	function dateObj(d) { // date parser ...
+	    var parts = d.split(/:|\s/),
+	        date  = new Date();
+	    if (parts.pop().toLowerCase() == 'pm') parts[0] = (+parts[0]) + 12;
+	    date.setHours(+parts.shift());
+	    date.setMinutes(+parts.shift());
+	    return date;
+	}
+	function checkTime(divId, start, end) {
+		var now = new Date();
+		var startDate = dateObj(start);
+		var endDate = dateObj(end);
+		if (startDate > endDate) { // check if start comes before end
+		    var temp  = startDate; // if so, assume it's across midnight
+		    startDate = endDate;   // and swap the dates
+		    endDate   = temp;
+		}
+		var active = now < endDate && now > startDate ? true : false;
+		console.log("active: " + active);
+		var element = document.getElementById(divId);
+		if (active === true) {
+  			element.classList.add("dot_active");
+		}
+	}
+</script>
