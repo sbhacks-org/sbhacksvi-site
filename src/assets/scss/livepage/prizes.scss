@@ -81,6 +81,7 @@ $bgColor: #0d2e59;
 .prize-blocks {
 /*  margin-top: 140px;
 */  position: relative;
+    display: table;
     z-index: 100;
     // bottom: 41vw;
     height: 33vw;
