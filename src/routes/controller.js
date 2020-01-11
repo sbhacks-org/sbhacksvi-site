@@ -43,6 +43,9 @@ module.exports = (app) => {
 		{ proc_env_key: "TOILETRIES_STUDY_LINK", link: "/toiletries-study" },
 		{ proc_env_key: "SLIDE_DECK_LINK", link: "/sponsors-slidedeck" },
 		{ proc_env_key: "MAP_LINK", link: "/map" },
+		{ proc_env_key: "HACKER_FEEDBACK_LINK", link: "/hack-feedback" },
+		{ proc_env_key: "TRAVEL_REQUEST_LINK", link: "/travel" },
+		{ proc_env_key: "SPONSOR_FEEDBACK_LINK", link: "/sponsor-feedback" },
 	];
 
 	proc_links.forEach(({ proc_env_key, link }) => app.get(link, (req, res) => res.redirect(process.env[proc_env_key])));
