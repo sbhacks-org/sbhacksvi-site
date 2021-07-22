@@ -20,7 +20,9 @@
     "css-live-build": "node-sass ./src/assets/scss/livepage/index.scss ./src/static/css/livepage.css",
     "css-live-build:dev": "node-sass --watch ./src/assets/scss/livepage/index.scss ./src/static/css/livepage.css",
     "db:migrate": "sequelize db:migrate",
-    "node-sass": "node-sass --output-style compressed -o dist/css src/scss"
+    "node-sass": "node-sass --output-style compressed -o dist/css src/scss",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -32,7 +34,7 @@
   "bugs": {
     "url": "https://github.com/dannycho7/SB_Hacks_V/issues"
   },
-  "homepage": "https://github.com/dannycho7/SB_Hacks_V#readme",
+  "homepage": "https://sbhacks-org.github.io/sbhacksvi-site/",
   "dependencies": {
     "@sendgrid/mail": "^6.1.4",
     "aws-sdk": "^2.288.0",
