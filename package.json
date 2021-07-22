@@ -83,7 +83,7 @@
   "devDependencies": {
     "gh-pages": "^3.2.3",
     "install-peers": "^1.0.3",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "nodemon": "^1.18.3"
   }
 }
